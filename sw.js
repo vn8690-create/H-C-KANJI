@@ -1,11 +1,14 @@
-const CACHE_NAME = 'cyber-kanji-v1';
-// Gom hết toàn bộ tài nguyên và các file dữ liệu nhỏ vào đây để chạy offline
+const CACHE_NAME = 'cyber-kanji-v2'; // Đổi tên v2 để ép điện thoại xóa cache cũ ngay lập tức
 const assets = [
   'index.html',
   'script.js',
+  'style.css',
   'manifest.json',
   'n5.json',
-  'n4.json'
+  'n4.json',
+  'n3.json',
+  'n2.json',
+  'n1.json'
 ];
 
 self.addEventListener('install', (e) => {
