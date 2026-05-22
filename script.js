@@ -1,3 +1,10 @@
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js')
+      .then(reg => console.log('Cyber Kanji PWA đã kích hoạt!', reg.scope))
+      .catch(err => console.log('Lỗi PWA:', err));
+  });
+}
 // ==========================================
 // BIẾN TOÀN CỤC ĐIỀU KHIỂN HỆ THỐNG
 // ==========================================
