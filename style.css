@@ -1,0 +1,410 @@
+:root {
+    --bg-dark: #05060e;
+    --panel-bg: #0b0d1b;
+    --panel-border: #1e2243;
+    --cyber-green: #00ff9d;
+    --cyber-blue: #00d2ff;
+    --cyber-pink: #ff0055;
+    --text-main: #f7fafc;
+    --text-muted: #718096;
+}
+
+/* Cấu hình nền tảng chống giật lag trên mobile */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-dark);
+    font-family: 'Inter', sans-serif;
+    color: var(--text-main);
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Khung bọc App chuẩn Mobile dọc */
+.app-shell {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    box-sizing: border-box;
+    background-color: var(--bg-dark);
+}
+
+/* Top Header */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--panel-border);
+    padding-bottom: 12px;
+}
+
+.brand h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--cyber-blue);
+    text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+    margin: 0;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.header-stats {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.streak-badge {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #ff9f43;
+    background: rgba(255, 159, 67, 0.1);
+    border: 1px solid #ff9f43;
+    padding: 4px 8px;
+    border-radius: 6px;
+    text-shadow: 0 0 5px #ff9f43;
+}
+
+.rank-tag {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--cyber-pink);
+    text-shadow: 0 0 5px var(--cyber-pink);
+    background: rgba(255, 0, 85, 0.1);
+    border: 1px solid var(--cyber-pink);
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+/* Điều hướng Màn hình */
+.app-screen {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.d-none {
+    display: none !important;
+}
+
+.menu-intro {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+/* Thiết kế Nút Menu chính kiểu Cyberpunk Hub */
+.menu-card {
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.menu-card:active {
+    transform: scale(0.98);
+}
+
+.learn-card { border-left: 4px solid var(--cyber-blue); }
+.learn-card .card-icon { color: var(--cyber-blue); text-shadow: 0 0 10px var(--cyber-blue); }
+
+.test-card { border-left: 4px solid var(--cyber-pink); }
+.test-card .card-icon { color: var(--cyber-pink); text-shadow: 0 0 10px var(--cyber-pink); }
+
+.card-icon {
+    font-size: 28px;
+    margin-right: 16px;
+    width: 40px;
+    text-align: center;
+}
+
+.card-info {
+    flex: 1;
+}
+
+.card-info h3 {
+    margin: 0 0 4px 0;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.card-info p {
+    margin: 0;
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+.card-arrow {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.global-progress {
+    margin-top: auto;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    padding: 15px 0;
+}
+
+/* Giao diện Lộ trình học theo ngày (Learn Hub) */
+.screen-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.screen-title h2 {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 18px;
+    color: #fff;
+}
+
+.btn-back {
+    background: none;
+    border: 1px solid var(--panel-border);
+    color: var(--text-main);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.level-selector {
+    display: flex;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 4px;
+    margin-bottom: 20px;
+}
+
+.level-tab {
+    flex: 1;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 10px 0;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.level-tab.active {
+    background: var(--cyber-blue);
+    color: var(--bg-dark);
+    box-shadow: 0 0 12px rgba(0, 210, 255, 0.4);
+}
+
+/* Danh sách các item ngày */
+.days-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.day-item {
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.active-day {
+    border-color: rgba(0, 255, 157, 0.3);
+}
+
+.active-day:active { transform: scale(0.98); }
+
+.day-number {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.day-status {
+    font-size: 12px;
+    color: var(--cyber-green);
+}
+
+.locked-day {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.locked-day .day-status {
+    color: var(--text-muted);
+}
+
+/* Hiệu ứng Thẻ Flashcard xoay lật 3D */
+.card-container {
+    perspective: 1000px;
+    height: 220px;
+    margin-bottom: 24px;
+}
+
+.flip-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.flip-card.flipped {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.card-front {
+    background: var(--panel-bg);
+    border: 2px solid var(--cyber-green);
+    box-shadow: 0 0 20px rgba(0, 255, 157, 0.15);
+}
+
+.kanji-display {
+    font-size: 80px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 15px var(--cyber-green);
+    margin: 0;
+}
+
+.tap-hint {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card-back {
+    background: var(--panel-bg);
+    border: 2px solid var(--cyber-blue);
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.15);
+    transform: rotateY(180deg);
+    text-align: center;
+}
+
+.meaning-title {
+    font-size: 26px;
+    color: var(--cyber-blue);
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    letter-spacing: 1px;
+}
+
+.yomi-details {
+    font-size: 14px;
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+.yomi-details p { margin: 4px 0; }
+
+/* Khu vực nút trắc nghiệm và điều hướng ở thumb-zone */
+.quiz-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.answer-btn {
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    color: var(--text-main);
+    padding: 16px;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.answer-btn:active {
+    transform: scale(0.97);
+}
+
+.answer-idx {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    color: var(--text-muted);
+    background: rgba(255,255,255,0.05);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.btn-correct {
+    border-color: var(--cyber-green) !important;
+    color: var(--cyber-green) !important;
+    background: rgba(0, 255, 157, 0.05) !important;
+    box-shadow: 0 0 10px rgba(0, 255, 157, 0.2);
+}
+
+.btn-wrong {
+    border-color: var(--cyber-pink) !important;
+    color: var(--cyber-pink) !important;
+    background: rgba(255, 0, 85, 0.05) !important;
+    box-shadow: 0 0 10px rgba(255, 0, 85, 0.2);
+}
+
+/* Đáy tiến độ */
+.bottom-status {
+    margin-top: auto;
+    background: rgba(255, 255, 255, 0.02);
+    border-top: 1px solid var(--panel-border);
+    padding: 14px 4px 0 4px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.bottom-status strong {
+    color: var(--cyber-blue);
+}
