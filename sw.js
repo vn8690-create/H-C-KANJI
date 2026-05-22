@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cyber-kanji-v2'; // Đổi tên v2 để ép điện thoại xóa cache cũ ngay lập tức
+const CACHE_NAME = 'cyber-kanji-v3'; // Đổi lên v3 để kích hoạt làm mới cache toàn hệ thống
 const assets = [
   'index.html',
   'script.js',
@@ -11,31 +11,38 @@ const assets = [
   'n1.json'
 ];
 
-self.addEventListener('install', (e) => {
+// Cài đặt Service Worker và lưu trữ file vào bộ nhớ đệm
+self.addEventListener('install', e => {
   e.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
+    caches.open(CACHE_NAME).then(cache => {
       return cache.addAll(assets);
-    }).then(() => self.skipWaiting())
+    }).then(() => self.skipWaiting()) // Ép kích hoạt ngay lập tức
   );
 });
 
-self.addEventListener('activate', (e) => {
+// Xóa bỏ các bộ nhớ cache cũ lỗi thời
+self.addEventListener('activate', e => {
   e.waitUntil(
-    caches.keys().then((keys) => {
+    caches.keys().then(keys => {
       return Promise.all(
-        keys.map((key) => {
-          if (key !== CACHE_NAME) return caches.delete(key);
+        keys.map(key => {
+          if (key !== CACHE_NAME) {
+            return caches.delete(key);
+          }
         })
       );
     }).then(() => self.clients.claim())
   );
 });
 
-// Đọc dữ liệu từ bộ nhớ đệm giúp app load siêu tốc khi đi tàu ngầm
-self.addEventListener('fetch', (e) => {
+// Xử lý phản hồi mạng khi offline hoặc online
+self.addEventListener('fetch', e => {
   e.respondWith(
-    caches.match(e.request).then((cachedResponse) => {
-      return cachedResponse || fetch(e.request);
+    caches.match(e.request).then(cachedResponse => {
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+      return fetch(e.request);
     })
   );
 });
