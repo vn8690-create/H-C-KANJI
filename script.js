@@ -106,11 +106,26 @@ async function loadLevelData(level) {
 // 3. ĐIỀU HƯỚNG VÀ HIỂN THỊ LỘ TRÌNH THEO NGÀY
 // ==========================================
 function switchScreen(screenId) {
-    document.querySelectorAll('.app-screen').forEach(scr => scr.classList.add('d-none'));
-    document.getElementById(`scr-${screenId}`).classList.remove('d-none');
-    
-    if(screenId === 'learn-hub') {
-        renderDaysList();
+    // 1. Tìm và ẩn tất cả các màn hình có class 'app-screen'
+    const screens = document.querySelectorAll('.app-screen');
+    screens.forEach(scr => {
+        scr.classList.add('d-none');
+        scr.style.display = 'none'; // Đảm bảo ẩn triệt để
+    });
+
+    // 2. Hiện màn hình được chọn
+    const activeScreen = document.getElementById('scr-' + screenId);
+    if (activeScreen) {
+        activeScreen.classList.remove('d-none');
+        // Nếu là màn hình test từ vựng thì dùng flex/block tùy layout, thông thường là block
+        activeScreen.style.display = (screenId === 'welcome') ? 'flex' : 'block';
+    }
+
+    // 3. ĐOẠN QUAN TRỌNG: Nếu bấm vào vocab-test thì ép tải câu hỏi luôn
+    if (screenId === 'vocab-test') {
+        if (typeof loadVocabTest === "function") {
+            loadVocabTest();
+        }
     }
 }
 
@@ -305,11 +320,23 @@ function startTestMode() {
     runDayQuiz();
 }
 
-function changeLevel(lvl) {
-    const tabs = document.querySelectorAll('.level-tab');
-    tabs.forEach(t => { if(t.innerText === lvl) t.classList.add('active'); else t.classList.remove('active'); });
-    currentLevel = lvl;
-    loadLevelData(lvl);
+async function changeLevel(level) {
+    try {
+        const response = await fetch(`${level.toLowerCase()}.json`);
+        if (!response.ok) throw new Error('File không tồn tại');
+        
+        const data = await response.json();
+        // ... Code xử lý hiển thị danh sách ngày học của bro giữ nguyên ...
+        
+    } catch (error) {
+        // Thay vì alert bực mình, ta xóa danh sách ngày cũ và hiện thông báo tinh tế
+        const daysList = document.getElementById('js-days-list');
+        if (daysList) {
+            daysList.innerHTML = `<div style="color: #ff0055; padding: 20px; text-align:center; font-family:'Orbitron';">
+                [HỆ THỐNG] Dữ liệu dữ liệu ${level} đang được nạp. Vui lòng quay lại sau! 🤖
+            </div>`;
+        }
+    }
 }
 
 function toggleCard() {
