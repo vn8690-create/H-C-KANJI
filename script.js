@@ -1,3 +1,40 @@
+// --- HỆ THỐNG QUẢN LÝ TÊN HỌC VIÊN ---
+
+// Hàm kiểm tra khi vừa load trang
+function checkStudentSession() {
+    const savedName = localStorage.getItem('cyber_student_name');
+    
+    if (savedName) {
+        // Nếu đã có tên rồi, ẩn màn hình chào đi, hiển thị tên lên menu chính
+        document.getElementById('scr-welcome').style.display = 'none';
+        document.getElementById('js-welcome-text').innerHTML = `Chào Đặc Vụ <strong style="color: #00ffcc;">${savedName}</strong>, hôm nay bạn muốn nâng cấp não bộ bằng cách nào?`;
+    } else {
+        // Nếu chưa có tên, bắt buộc phải hiện màn hình chào
+        document.getElementById('scr-welcome').style.display = 'flex';
+    }
+}
+
+// Hàm lưu tên khi bấm nút "Kích Hoạt Hệ Thống"
+function saveStudentName() {
+    const nameInput = document.getElementById('student-name-input').value.trim();
+    
+    if (nameInput === "") {
+        alert("Bro ơi, vui lòng nhập mật danh của mình để hệ thống ghi nhận nhé! 🥷");
+        return;
+    }
+    
+    // Lưu vào bộ nhớ trình duyệt
+    localStorage.setItem('cyber_student_name', nameInput);
+    
+    // Cập nhật text hiển thị và ẩn màn hình đăng nhập
+    document.getElementById('scr-welcome').style.display = 'none';
+    document.getElementById('js-welcome-text').innerHTML = `Chào Đặc Vụ <strong style="color: #00ffcc;">${nameInput}</strong>, hôm nay bạn muốn nâng cấp não bộ bằng cách nào?`;
+    
+    alert(`Hệ thống kích hoạt thành công! Chúc Đặc Vụ ${nameInput} cày nát N5 nhé! 🔥`);
+}
+
+// Chạy hàm kiểm tra ngay khi ứng dụng vừa được tải lên
+window.addEventListener('DOMContentLoaded', checkStudentSession);
 // ==========================================
 // 1. KHỞI TẠO TRẠNG THÁI VÀ DỮ LIỆU APP
 // ==========================================
