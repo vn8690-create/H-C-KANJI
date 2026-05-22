@@ -23,13 +23,13 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // ==========================================
-// 2. BỘ NÃO TẢI DỮ LIỆU TỪ GITHUB (HÀM BRO TÌM ĐÂY NHÉ)
+// 2. BỘ NÃO TẢI DỮ LIỆU TỪ GITHUB
 // ==========================================
 async function loadLevelData(level) {
     try {
         console.log(`Đang gọi dữ liệu cho cấp độ: ${level}`);
         
-        // Gọi file JSON chuẩn (bỏ đuôi toán tử ngẫu nhiên để không lỗi Service Worker)
+        // Gọi file JSON chuẩn
         const response = await fetch(`${level.toLowerCase()}.json`);
         
         if (!response.ok) {
@@ -45,30 +45,15 @@ async function loadLevelData(level) {
             [fullLevelData[i], fullLevelData[j]] = [fullLevelData[j], fullLevelData[i]];
         }
         
-       function renderDaysList() {
-    const daysContainer = document.getElementById('days-container');
-    if (!daysContainer) return;
-    daysContainer.innerHTML = '';
+        // Nạp xong dữ liệu thì tự động vẽ lại danh sách ngày hiển thị trên màn hình
+        renderDaysList();
 
-    // Tự động tính toán số ngày dựa trên tổng số chữ Kanji (Mỗi ngày học 10 chữ)
-    // Nếu có 200 chữ sẽ ra 20 ngày, 400 chữ sẽ tự động ra 40 ngày!
-    const itemsPerPage = 10;
-    const totalDays = Math.ceil(currentLevelData.length / itemsPerPage);
-
-    // Nếu file JSON trống hoặc lỗi không có dữ liệu
-    if (totalDays === 0) {
-        daysContainer.innerHTML = '<p class="no-data-msg">Chưa có dữ liệu cho cấp độ này, bro bổ sung file JSON nhé! 😎</p>';
-        return;
-    }
-
-    // Vòng lặp tự động sinh ra số lượng nút Ngày chính xác theo thực tế
-    for (let i = 1; i <= totalDays; i++) {
-        const btn = document.createElement('button');
-        btn.className = 'day-btn';
-        btn.innerText = `Ngày ${i}`;
-        btn.onclick = () => startSession(i);
-        daysContainer.appendChild(btn);
-    }
+    } catch (error) {
+        console.error("Lỗi nạp dữ liệu:", error);
+        const daysBox = document.getElementById('js-days-list');
+        if (daysBox) {
+            daysBox.innerHTML = `<div style="text-align:center; padding:20px; color:var(--cyber-pink);">⚠️ Lỗi: Không load được file ${level.toLowerCase()}.json. Bro kiểm tra tên file trên GitHub nhé!</div>`;
+        }
     }
 }
 
@@ -86,19 +71,22 @@ function switchScreen(screenId) {
 
 function renderDaysList() {
     const totalWords = fullLevelData.length || 0; 
+    const daysBox = document.getElementById('js-days-list');
+    if (!daysBox) return;
     
+    daysBox.innerHTML = "";
+
     if (totalWords === 0) {
-        const daysBox = document.getElementById('js-days-list');
         daysBox.innerHTML = `<div style="text-align:center; padding:20px; color:var(--text-muted);">Đang tải dữ liệu hoặc file trống, bro đợi xíu hoặc bấm lại tab nhé...</div>`;
         return;
     }
 
-    const totalDays = Math.ceil(totalWords / 10);
-    const daysBox = document.getElementById('js-days-list');
-    daysBox.innerHTML = "";
-
+    // Tự động tính toán số ngày thực tế: Tổng số chữ chia cho 10 từ/ngày
+    const itemsPerPage = 10;
+    const totalDays = Math.ceil(totalWords / itemsPerPage);
     let maxUnlocked = userData.unlockedDays[currentLevel] || 1;
 
+    // Vòng lặp sinh ra số lượng Ngày linh hoạt theo kho chữ (200 chữ = 20 ngày, 400 chữ = 40 ngày)
     for (let d = 1; d <= totalDays; d++) {
         const item = document.createElement('div');
         if (d <= maxUnlocked) {
@@ -294,7 +282,8 @@ function updateGlobalStats() {
     if(userData.xp >= 100 && userData.xp < 300) rank = "THỢ SĂN BỘ THỦ ⚡";
     if(userData.xp >= 300 && userData.xp < 800) rank = "QUÁI KIỆT KANJI 🔥";
     if(userData.xp >= 800) rank = "HUYỀN THOẠI N1 🌌";
-    document.getElementById('rank-display').innerText = rank;
+    const rankDisp = document.getElementById('rank-display');
+    if (rankDisp) rankDisp.innerText = rank;
 }
 
 function saveUserData() { localStorage.setItem('cyber_kanji_v2_data', JSON.stringify(userData)); }
