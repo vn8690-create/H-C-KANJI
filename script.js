@@ -45,10 +45,30 @@ async function loadLevelData(level) {
             [fullLevelData[i], fullLevelData[j]] = [fullLevelData[j], fullLevelData[i]];
         }
         
-        renderDaysList();
-    } catch (err) {
-        console.error("Lỗi chí mạng khi nạp chữ:", err);
-        alert(`Bro ơi, không load được level rồi! Kiểm tra xem file ${level.toLowerCase()}.json đã được tạo trên GitHub chưa nhé!`);
+       function renderDaysList() {
+    const daysContainer = document.getElementById('days-container');
+    if (!daysContainer) return;
+    daysContainer.innerHTML = '';
+
+    // Tự động tính toán số ngày dựa trên tổng số chữ Kanji (Mỗi ngày học 10 chữ)
+    // Nếu có 200 chữ sẽ ra 20 ngày, 400 chữ sẽ tự động ra 40 ngày!
+    const itemsPerPage = 10;
+    const totalDays = Math.ceil(currentLevelData.length / itemsPerPage);
+
+    // Nếu file JSON trống hoặc lỗi không có dữ liệu
+    if (totalDays === 0) {
+        daysContainer.innerHTML = '<p class="no-data-msg">Chưa có dữ liệu cho cấp độ này, bro bổ sung file JSON nhé! 😎</p>';
+        return;
+    }
+
+    // Vòng lặp tự động sinh ra số lượng nút Ngày chính xác theo thực tế
+    for (let i = 1; i <= totalDays; i++) {
+        const btn = document.createElement('button');
+        btn.className = 'day-btn';
+        btn.innerText = `Ngày ${i}`;
+        btn.onclick = () => startSession(i);
+        daysContainer.appendChild(btn);
+    }
     }
 }
 
