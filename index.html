@@ -107,7 +107,23 @@
         </div>
 
     </div>
-
+<div id="scr-vocab-test" class="screen" style="display: none;">
+    <h2 class="zone-title">TEST TỪ VỰNG & KANJI N5</h2>
+    <div class="quiz-container">
+        <div id="vocab-question-box">
+            <p id="vocab-question-text">Câu hỏi sẽ hiện ở đây...</p>
+            <div id="vocab-options-box">
+                </div>
+            <div id="vocab-hint-box" style="display:none; color: #aaa; margin-top: 10px; font-style: italic;"></div>
+            <button id="btn-vocab-hint" onclick="toggleVocabHint()" style="margin-top: 10px;">Gợi ý 💡</button>
+        </div>
+        <div id="vocab-result-box" style="display: none; text-align: center;">
+            <h3>Chúc mừng bro đã hoàn thành!</h3>
+            <p id="vocab-score-text"></p>
+            <button onclick="switchScreen('scr-vocab-test'); loadVocabTest();">Làm lại từ đầu 🔄</button>
+        </div>
+    </div>
+</div>
     <script src="script.js"></script>
 </body>
 </html>
