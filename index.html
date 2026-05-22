@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cyber Kanji - Học Thần Tốc</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #05060e;
+            --panel-bg: #0b0d1b;
+            --panel-border: #1e2243;
+            --cyber-green: #00ff9d;
+            --cyber-blue: #00d2ff;
+            --cyber-pink: #ff0055;
+            --text-main: #f7fafc;
+            --text-muted: #718096;
+        }
+
+        /* Tối ưu hóa chống cuộn và giật màn hình trên điện thoại */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-dark);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Khung bọc App chuẩn Mobile dọc */
+        .app-shell {
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 16px;
+            box-sizing: border-box;
+            background-color: var(--bg-dark);
+        }
+
+        /* Topper Header */
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .brand h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--cyber-blue);
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .user-stats {
+            text-align: right;
+        }
+
+        .rank-tag {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--cyber-pink);
+            text-shadow: 0 0 5px var(--cyber-pink);
+            background: rgba(255, 0, 85, 0.1);
+            border: 1px solid var(--cyber-pink);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        /* Thanh trượt chọn Level JLPT (N5 -> N1) cực Pro */
+        .level-selector {
+            display: flex;
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 12px;
+            padding: 4px;
+            margin-bottom: 20px;
+        }
+
+        .level-tab {
+            flex: 1;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 10px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .level-tab.active {
+            background: var(--cyber-blue);
+            color: var(--bg-dark);
+            box-shadow: 0 0 12px rgba(0, 210, 255, 0.4);
+        }
+
+        /* Hiệu ứng Thẻ Flashcard xoay lật 3D chuyên nghiệp */
+        .card-container {
+            perspective: 1000px;
+            height: 200px;
+            margin-bottom: 24px;
+        }
+
+        .flip-card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .flip-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            padding: 20px;
+        }
+
+        /* Mặt trước: Hiện chữ Kanji to rõ */
+        .card-front {
+            background: var(--panel-bg);
+            border: 2px solid var(--cyber-green);
+            box-shadow: 0 0 20px rgba(0, 255, 157, 0.15);
+        }
+
+        .kanji-display {
+            font-size: 72px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 15px var(--cyber-green);
+            margin: 0;
+        }
+
+        .tap-hint {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Mặt sau: Hiện giải nghĩa chi tiết */
+        .card-back {
+            background: var(--panel-bg);
+            border: 2px solid var(--cyber-blue);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.15);
+            transform: rotateY(180deg);
+            text-align: center;
+        }
+
+        .meaning-title {
+            font-size: 24px;
+            color: var(--cyber-blue);
+            font-weight: 700;
+            margin: 0 0 8px 0;
+        }
+
+        .yomi-details {
+            font-size: 13px;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Khu vực nút trắc nghiệm tối ưu ngón cái (Thumb-zone) */
+        .quiz-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .answer-btn {
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            color: var(--text-main);
+            padding: 16px;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .answer-btn:active {
+            transform: scale(0.97);
+        }
+
+        .answer-idx {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255,255,255,0.05);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* Trạng thái đúng sai bằng màu sắc Cyber hoành tráng */
+        .btn-correct {
+            border-color: var(--cyber-green) !important;
+            color: var(--cyber-green) !important;
+            background: rgba(0, 255, 157, 0.05) !important;
+            box-shadow: 0 0 10px rgba(0, 255, 157, 0.2);
+        }
+
+        .btn-wrong {
+            border-color: var(--cyber-pink) !important;
+            color: var(--cyber-pink) !important;
+            background: rgba(255, 0, 85, 0.05) !important;
+            box-shadow: 0 0 10px rgba(255, 0, 85, 0.2);
+        }
+
+        /* Bảng điểm tinh gọn ở đáy */
+        .bottom-status {
+            margin-top: auto;
+            background: rgba(255, 255, 255, 0.02);
+            border-top: 1px solid var(--panel-border);
+            padding: 12px 4px 0 4px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .bottom-status strong {
+            color: var(--cyber-blue);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-shell">
+        <div class="app-header">
+            <div class="brand">
+                <h1>CYBER KANJI</h1>
+            </div>
+            <div class="user-stats">
+                <span id="rank-display" class="rank-tag">LEVEL 1: TÂN BINH</span>
+            </div>
+        </div>
+
+        <div class="level-selector">
+            <button class="level-tab active" onclick="changeLevel('N5')">N5</button>
+            <button class="level-tab" onclick="changeLevel('N4')">N4</button>
+            <button class="level-tab" onclick="changeLevel('N3')">N3</button>
+            <button class="level-tab" onclick="changeLevel('N2')">N2</button>
+            <button class="level-tab" onclick="changeLevel('N1')">N1</button>
+        </div>
+
+        <div class="card-container" onclick="toggleCard()">
+            <div class="flip-card" id="js-flip-card">
+                <div class="card-face card-front">
+                    <div class="kanji-display" id="js-kanji">水</div>
+                    <div class="tap-hint"><i class="fa-solid fa-arrows-rotate"></i> Chạm để lật nghĩa</div>
+                </div>
+                <div class="card-face card-back">
+                    <div class="meaning-title" id="js-meaning">NƯỚC</div>
+                    <div class="yomi-details">
+                        <p id="js-onyomi"><strong>Onyomi:</strong> スイ (sui)</p>
+                        <p id="js-kunyomi"><strong>Kunyomi:</strong> みず (mizu)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-section" id="js-options-box">
+            <button class="answer-btn" onclick="selectAnswer(0)">
+                <span class="answer-text">Nước (Thủy)</span>
+                <span class="answer-idx">A</span>
+            </button>
+            <button class="answer-btn" onclick="selectAnswer(1)">
+                <span class="answer-text">Lửa (Hỏa)</span>
+                <span class="answer-idx">B</span>
+            </button>
+            <button class="answer-btn" onclick="selectAnswer(2)">
+                <span class="answer-text">Đất (Thổ)</span>
+                <span class="answer-idx">C</span>
+            </button>
+            <button class="answer-btn" onclick="selectAnswer(3)">
+                <span class="answer-text">Vàng (Kim)</span>
+                <span class="answer-idx">D</span>
+            </button>
+        </div>
+
+        <div class="bottom-status">
+            <div>Tiến độ: <strong id="js-progress">0/10</strong> chữ</div>
+            <div>Cyber Điểm: <strong id="js-exp">0 XP</strong></div>
+        </div>
+    </div>
+
+    <script>
+        function toggleCard() {
+            document.getElementById('js-flip-card').classList.toggle('flipped');
+        }
+        
+        function changeLevel(lvl) {
+            // Logic đổi màu tab kích hoạt
+            const tabs = document.querySelectorAll('.level-tab');
+            tabs.forEach(tab => {
+                if(tab.innerText === lvl) tab.classList.add('active');
+                else tab.classList.remove('active');
+            });
+        }
+        
+        function selectAnswer(idx) {
+            // Tạm thời test hiệu ứng
+            const btns = document.querySelectorAll('.answer-btn');
+            if(idx === 0) {
+                btns[idx].classList.add('btn-correct');
+            } else {
+                btns[idx].classList.add('btn-wrong');
+                btns[0].classList.add('btn-correct');
+            }
+        }
+    </script>
+</body>
+</html>
