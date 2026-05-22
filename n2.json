@@ -81,7 +81,6 @@
   { "kanji": "面", "meaning": "Diện (Bề mặt)", "onyomi": "メン", "kunyomi": "おもて / つら", "example": "画面 (Màn hình), 面積 (Diện tích)" },
   { "kanji": "合", "meaning": "Hợp (Phù hợp)", "onyomi": "ゴウ", "kunyomi": "あ-う", "example": "合格 (Thi đỗ), 割合 (Tỷ lệ)" },
   { "kanji": "格", "meaning": "Cách (Tiêu chuẩn)", "onyomi": "カク", "kunyomi": "None", "example": "規格 (Quy cách chuẩn), Tư cách (Quy chuẩn)" },
-  
   { "kanji": "増", "meaning": "Tăng (Gia tăng)", "onyomi": "ゾウ", "kunyomi": "ま-す / ふ-える", "example": "増加 (Gia tăng), 増産 (Tăng sản lượng)" },
   { "kanji": "減", "meaning": "Giảm (Suy giảm)", "onyomi": "ゲン", "kunyomi": "へ-る / へ-らす", "example": "減少 (Giảm thiểu), 減圧 (Giảm áp suất)" },
   { "kanji": "得", "meaning": "Đắc (Đạt được, thu hoạch)", "onyomi": "トク", "kunyomi": "え-る", "example": "納得 (Đồng ý/Thỏa đáng), 得意 (Tâm đắc/Giỏi)" },
@@ -112,8 +111,7 @@
   { "kanji": "示", "meaning": "Thị (Biểu thị, chỉ ra)", "onyomi": "ジ / シ", "kunyomi": "しめ-す", "example": "指示 (Chỉ thị/Ra lệnh), Biểu thị (Hiển thị)" },
   { "kanji": "抜", "meaning": "Bạt (Rút ra, bỏ sót)", "onyomi": "バツ", "kunyomi": "ぬ-く / ぬ-ける", "example": "手抜き (Làm ẩu/Bỏ bước), 追い抜く (Vượt qua)" },
   { "kanji": "留", "meaning": "Lưu (Lưu ý, giữ lại)", "onyomi": "リュウ", "kunyomi": "と-まる", "example": "留意 (Lưu ý), 留守 (Vắng nhà)" },
-
-{ "kanji": "導", "meaning": "Đạo (Dẫn dắt, chỉ đạo)", "onyomi": "ドウ", "kunyomi": "みちび-く", "example": "導入 (Áp dụng/Đưa vào sử dụng), 指導 (Chỉ dẫn)" },
+  { "kanji": "導", "meaning": "Đạo (Dẫn dắt, chỉ đạo)", "onyomi": "ドウ", "kunyomi": "みちび-く", "example": "導入 (Áp dụng/Đưa vào sử dụng), 指導 (Chỉ dẫn)" },
   { "kanji": "守", "meaning": "Thủ (Bảo vệ, tuân thủ)", "onyomi": "シュ / ス", "kunyomi": "まも-る", "example": "遵守 (Tuân thủ quy trình), 保守 (Bảo trì/Bảo dưỡng)" },
   { "kanji": "過", "meaning": "Quá (Vượt quá, quá khứ)", "onyomi": "カ", "kunyomi": "す-ぎる / す-ごす", "example": "過剰 (Quá tải/Dư thừa), 通過 (Đi qua/Pass)" },
   { "kanji": "誤", "meaning": "Ngộ (Nhầm lẫn, lỗi)", "onyomi": "ゴ", "kunyomi": "あやま-る", "example": "誤作動 (Lỗi vận hành máy), 誤差 ( Sai số)" },
