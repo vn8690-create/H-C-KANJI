@@ -1,12 +1,14 @@
-// Quản lý trạng thái màn hình và học tập
+// ==========================================
+// 1. KHỞI TẠO TRẠNG THÁI VÀ DỮ LIỆU APP
+// ==========================================
 let currentLevel = "N5";
 let fullLevelData = []; // Chứa toàn bộ chữ của level từ file JSON
 let dayWords = [];      // 10 chữ của ngày hiện tại
 let currentQuestionIndex = 0;
 let correctAnswerData = null;
-let isQuizMode = false; // false = đang xem mặt card, true = đang làm quiz kiểm tra ngày
+let isQuizMode = false; // false = đang xem mặt card, true = đang làm quiz kiểm tra
 
-// Chỉ số người dùng lưu trữ lâu dài
+// Chỉ số người dùng lưu trữ lâu dài (localStorage)
 let userData = {
     xp: 0,
     streak: 0,
@@ -14,12 +16,45 @@ let userData = {
     unlockedDays: { N5: 1, N4: 1, N3: 1, N2: 1, N1: 1 }
 };
 
+// Chạy ngay khi ứng dụng nạp xong giao diện
 window.addEventListener('DOMContentLoaded', () => {
     loadUserData();
     initPWA();
 });
 
-// Điều hướng chuyển đổi màn hình (Mượt như app thật)
+// ==========================================
+// 2. BỘ NÃO TẢI DỮ LIỆU TỪ GITHUB (HÀM BRO TÌM ĐÂY NHÉ)
+// ==========================================
+async function loadLevelData(level) {
+    try {
+        console.log(`Đang gọi dữ liệu cho cấp độ: ${level}`);
+        
+        // Gọi file JSON chuẩn (bỏ đuôi toán tử ngẫu nhiên để không lỗi Service Worker)
+        const response = await fetch(`${level.toLowerCase()}.json`);
+        
+        if (!response.ok) {
+            throw new Error(`Không tìm thấy file hoặc lỗi mạng: ${response.status}`);
+        }
+        
+        fullLevelData = await response.json();
+        console.log("Đã nạp thành công kho từ vựng. Tổng số chữ:", fullLevelData.length);
+        
+        // Thuật toán xáo trộn toàn bộ kho chữ trước khi chia ngày để đổi mới trải nghiệm
+        for (let i = fullLevelData.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [fullLevelData[i], fullLevelData[j]] = [fullLevelData[j], fullLevelData[i]];
+        }
+        
+        renderDaysList();
+    } catch (err) {
+        console.error("Lỗi chí mạng khi nạp chữ:", err);
+        alert(`Bro ơi, không load được level rồi! Kiểm tra xem file ${level.toLowerCase()}.json đã được tạo trên GitHub chưa nhé!`);
+    }
+}
+
+// ==========================================
+// 3. ĐIỀU HƯỚNG VÀ HIỂN THỊ LỘ TRÌNH THEO NGÀY
+// ==========================================
 function switchScreen(screenId) {
     document.querySelectorAll('.app-screen').forEach(scr => scr.classList.add('d-none'));
     document.getElementById(`scr-${screenId}`).classList.remove('d-none');
@@ -29,20 +64,15 @@ function switchScreen(screenId) {
     }
 }
 
-// Gọi file JSON từ GitHub và phân phối lộ trình
-async function loadLevelData(level) {
-    try {
-        const response = await fetch(`${level.toLowerCase()}.json`);
-        fullLevelData = await response.json();
-        renderDaysList();
-    } catch (err) {
-        console.error("Lỗi nạp chữ:", err);
-    }
-}
-
-// Tạo danh sách các Ngày tự động (Mỗi ngày ngậm đúng 10 từ)
 function renderDaysList() {
-    const totalWords = fullLevelData.length || 10; 
+    const totalWords = fullLevelData.length || 0; 
+    
+    if (totalWords === 0) {
+        const daysBox = document.getElementById('js-days-list');
+        daysBox.innerHTML = `<div style="text-align:center; padding:20px; color:var(--text-muted);">Đang tải dữ liệu hoặc file trống, bro đợi xíu hoặc bấm lại tab nhé...</div>`;
+        return;
+    }
+
     const totalDays = Math.ceil(totalWords / 10);
     const daysBox = document.getElementById('js-days-list');
     daysBox.innerHTML = "";
@@ -63,7 +93,6 @@ function renderDaysList() {
     }
 }
 
-// Kích hoạt học 10 từ của Ngày được chọn
 function startDayStudy(dayNumber) {
     let startIdx = (dayNumber - 1) * 10;
     dayWords = fullLevelData.slice(startIdx, startIdx + 10);
@@ -75,18 +104,27 @@ function startDayStudy(dayNumber) {
 
     document.getElementById('js-zone-title').innerText = `NGÀY ${String(dayNumber).padStart(2, '0')}`;
     currentQuestionIndex = 0;
-    isQuizMode = false; // Bắt đầu bằng việc học lật Flashcard trước
+    isQuizMode = false; 
     switchScreen('study-zone');
     showFlashcard();
 }
 
-// CHẾ ĐỘ 1: Hiện flashcard học thuộc lòng
-// Đổ đáp án chi tiết và từ ghép thực chiến lên mặt sau card
+// ==========================================
+// 4. CHẾ ĐỘ CHẠY FLASHCARD (LẬT MẶT CHỮ)
+// ==========================================
+function showFlashcard() {
+    document.getElementById('js-flip-card').classList.remove('flipped');
+    document.getElementById('js-mode-badge').innerText = "CHẾ ĐỘ: HỌC THẺ FLIP";
+    document.getElementById('js-mode-badge').style.color = "var(--cyber-blue)";
+
+    correctAnswerData = dayWords[currentQuestionIndex];
+    document.getElementById('js-kanji').innerText = correctAnswerData.kanji;
+    
+    // Đổ dữ liệu mặt sau kèm từ ghép thực chiến
     document.getElementById('js-meaning').innerText = correctAnswerData.meaning.toUpperCase();
     document.getElementById('js-onyomi').innerHTML = `<strong>Onyomi:</strong> ${correctAnswerData.onyomi}`;
     document.getElementById('js-kunyomi').innerHTML = `<strong>Kunyomi:</strong> ${correctAnswerData.kunyomi}`;
     
-    // Thêm dòng hiển thị Từ Ghép Thực Chiến xịn sò dưới đây
     const existingExample = document.getElementById('js-example');
     if (existingExample) {
         existingExample.innerHTML = `<strong>Từ ghép đi kèm:</strong> <span style="color: var(--cyber-green);">${correctAnswerData.example}</span>`;
@@ -98,7 +136,7 @@ function startDayStudy(dayNumber) {
         document.querySelector('.card-back .yomi-details').appendChild(p);
     }
 
-    // Nút điều hướng chuyển sang câu tiếp theo hoặc chuyển sang làm Quiz nếu đã xem hết 10 từ
+    // Nút bấm tiến độ điều hướng ở Thumb-zone
     const optionsBox = document.getElementById('js-options-box');
     optionsBox.innerHTML = "";
     
@@ -119,7 +157,9 @@ function startDayStudy(dayNumber) {
     document.getElementById('js-progress').innerText = `${currentQuestionIndex + 1}/${dayWords.length}`;
 }
 
-// CHẾ ĐỘ 2: Trắc nghiệm sinh tử để kiểm tra lại 10 từ vừa học
+// ==========================================
+// 5. CHẾ ĐỘ TRẮC NGHIỆM ĐÁNH GIÁ KIẾN THỨC
+// ==========================================
 function runDayQuiz() {
     document.getElementById('js-flip-card').classList.remove('flipped');
     document.getElementById('js-mode-badge').innerText = "CHẾ ĐỘ: KIỂM TRA";
@@ -128,7 +168,7 @@ function runDayQuiz() {
     correctAnswerData = dayWords[currentQuestionIndex];
     document.getElementById('js-kanji').innerText = correctAnswerData.kanji;
 
-    // Tạo 4 nút trắc nghiệm trộn ngẫu nhiên
+    // Tạo 4 đáp án trắc nghiệm nhiễu trộn ngẫu nhiên
     let options = [correctAnswerData.meaning];
     let fakes = fullLevelData.filter(i => i.meaning !== correctAnswerData.meaning).map(i => i.meaning);
     fakes.sort(() => 0.5 - Math.random());
@@ -157,7 +197,7 @@ function checkQuizAnswer(btn, selectedText) {
     if(selectedText === correctAnswerData.meaning) {
         btn.classList.add('btn-correct');
         userData.xp += 15;
-        if(navigator.vibrate) navigator.vibrate(50);
+        if(navigator.vibrate) navigator.vibrate(50); // Hiệu ứng rung bần bật khi chọn đúng
     } else {
         btn.classList.add('btn-wrong');
         btns.forEach(b => { if(b.querySelector('.answer-text').innerText === correctAnswerData.meaning) b.classList.add('btn-correct'); });
@@ -171,28 +211,24 @@ function checkQuizAnswer(btn, selectedText) {
         if(currentQuestionIndex < dayWords.length) {
             runDayQuiz();
         } else {
-            // ĐÃ HOÀN THÀNH XONG 10 CÂU QUIZ CỦA NGÀY!
             handleDayComplete();
         }
     }, 1500);
 }
 
-// Xử lý khi cày xong 1 ngày: Cộng chuỗi Streak, mở khóa ngày mới
 function handleDayComplete() {
     alert("🎉 Xuất sắc bro ơi! Đã làm chủ hoàn toàn 10 chữ Kanji của ngày hôm nay!");
     
-    // Xử lý tăng chuỗi ngày liên tục (Streak)
     const todayStr = new Date().toDateString();
     if(userData.lastStudyDate !== todayStr) {
         userData.streak += 1;
         userData.lastStudyDate = todayStr;
     }
 
-    // Mở khóa ngày học tiếp theo
     let currentMax = userData.unlockedDays[currentLevel] || 1;
-    let dayCompleted = Math.ceil(fullLevelData.indexOf(dayWords[0]) / 10) + 1;
-    if(dayCompleted > currentMax) {
-        userData.unlockedDays[currentLevel] = dayCompleted;
+    let dayCompleted = Math.ceil((fullLevelData.indexOf(dayWords[0]) + 1) / 10);
+    if(dayCompleted >= currentMax) {
+        userData.unlockedDays[currentLevel] = dayCompleted + 1;
     }
 
     saveUserData();
@@ -200,13 +236,14 @@ function handleDayComplete() {
     switchScreen('learn-hub');
 }
 
-// CHẾ ĐỘ ĐẤU TRƯỜNG TỔNG HỢP (TEST MODE TOÀN LEVEL)
+// ==========================================
+// 6. CHẾ ĐỘ ĐẤU TRƯỜNG CHỚP NHOÁNG (TEST TỔNG HỢP)
+// ==========================================
 function startTestMode() {
     if(fullLevelData.length === 0) {
         alert("Bro vui lòng vào mục Lộ Trình chọn một cấp độ (N5-N1) để tải dữ liệu trước khi vào Đấu trường nhé!");
         return;
     }
-    // Lấy ngẫu nhiên 10 từ bất kỳ trong kho để làm bài test tổng hợp
     dayWords = [...fullLevelData].sort(() => 0.5 - Math.random()).slice(0, 10);
     currentQuestionIndex = 0;
     isQuizMode = true;
@@ -226,7 +263,9 @@ function toggleCard() {
     document.getElementById('js-flip-card').classList.toggle('flipped');
 }
 
-// ĐỒNG BỘ CHỈ SỐ LÊN GIAO DIỆN CYBER
+// ==========================================
+// 7. LƯU TRỮ VÀ KHỞI CHẠY HỆ THỐNG
+// ==========================================
 function updateGlobalStats() {
     document.getElementById('js-streak').innerText = userData.streak;
     document.getElementById('js-menu-exp').innerText = `${userData.xp} XP`;
@@ -243,8 +282,9 @@ function loadUserData() {
     const saved = localStorage.getItem('cyber_kanji_v2_data');
     if(saved) { userData = JSON.parse(saved); }
     updateGlobalStats();
-    loadLevelData(currentLevel);
+    loadLevelData(currentLevel); // Tự động nạp N5 khi mở app lên
 }
+
 function initPWA() {
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').catch(err => console.log(err)); });
