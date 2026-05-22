@@ -81,16 +81,22 @@ function startDayStudy(dayNumber) {
 }
 
 // CHẾ ĐỘ 1: Hiện flashcard học thuộc lòng
-function showFlashcard() {
-    document.getElementById('js-flip-card').classList.remove('flipped');
-    document.getElementById('js-mode-badge').innerText = "CHẾ ĐỘ: HỌC THẺ FLIP";
-    document.getElementById('js-mode-badge').style.color = "var(--cyber-blue)";
-
-    correctAnswerData = dayWords[currentQuestionIndex];
-    document.getElementById('js-kanji').innerText = correctAnswerData.kanji;
+// Đổ đáp án chi tiết và từ ghép thực chiến lên mặt sau card
     document.getElementById('js-meaning').innerText = correctAnswerData.meaning.toUpperCase();
     document.getElementById('js-onyomi').innerHTML = `<strong>Onyomi:</strong> ${correctAnswerData.onyomi}`;
     document.getElementById('js-kunyomi').innerHTML = `<strong>Kunyomi:</strong> ${correctAnswerData.kunyomi}`;
+    
+    // Thêm dòng hiển thị Từ Ghép Thực Chiến xịn sò dưới đây
+    const existingExample = document.getElementById('js-example');
+    if (existingExample) {
+        existingExample.innerHTML = `<strong>Từ ghép đi kèm:</strong> <span style="color: var(--cyber-green);">${correctAnswerData.example}</span>`;
+    } else {
+        const p = document.createElement('p');
+        p.id = 'js-example';
+        p.style.marginTop = '10px';
+        p.innerHTML = `<strong>Từ ghép đi kèm:</strong> <span style="color: var(--cyber-green);">${correctAnswerData.example}</span>`;
+        document.querySelector('.card-back .yomi-details').appendChild(p);
+    }
 
     // Nút điều hướng chuyển sang câu tiếp theo hoặc chuyển sang làm Quiz nếu đã xem hết 10 từ
     const optionsBox = document.getElementById('js-options-box');
