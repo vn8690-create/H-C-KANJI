@@ -1,0 +1,442 @@
+[
+  {
+    "questionNumber": 1,
+    "question": "Hãy chọn cách đọc đúng của chữ Hán trong ngoặc: Vạch kẻ đường này hướng về phía 「東（ひがし）」.",
+    "answerOptions": [
+      { "text": "ひがし", "rationale": "Chữ Đông (東) nghĩa là phía Đông, đọc là ひがし.", "isCorrect": true },
+      { "text": "にし", "rationale": "Đây là chữ Tây (西), nghĩa là phía Tây.", "isCorrect": false },
+      { "text": "みなみ", "rationale": "Đây là chữ Nam (南), nghĩa là phía Nam.", "isCorrect": false },
+      { "text": "きた", "rationale": "Đây là chữ Bắc (北), nghĩa là phía Bắc.", "isCorrect": false }
+    ],
+    "hint": "Hướng mặt trời mọc vào buổi sáng."
+  },
+  {
+    "questionNumber": 2,
+    "question": "Hãy chọn chữ Hán đúng cho từ trong ngoặc: 「いま（今）」なんじですか。",
+    "answerOptions": [
+      { "text": "今", "rationale": "Chữ Kim (今) nghĩa là bây giờ, đọc là いま.", "isCorrect": true },
+      { "text": "何", "rationale": "Chữ Hà (何) nghĩa là cái gì/mấy, đọc là なん/なに.", "isCorrect": false },
+      { "text": "時", "rationale": "Chữ Thời (時) nghĩa là thời gian/giờ, đọc là じ.", "isCorrect": false },
+      { "text": "分", "rationale": "Chữ Phân (分) nghĩa là phút, đọc là ふん.", "isCorrect": false }
+    ],
+    "hint": "Biểu thị mốc thời gian ngay tại thời điểm hiện tại."
+  },
+  {
+    "questionNumber": 3,
+    "question": "Hãy chọn cách đọc đúng của cụm chữ Hán: 「毎日（まいにち）」日本語を勉強します。",
+    "answerOptions": [
+      { "text": "まいにち", "rationale": "Cụm Mỗi Nhật (毎日) nghĩa là mỗi ngày, đọc là まいにち.", "isCorrect": true },
+      { "text": "まいつき", "rationale": "Đây là cụm Mỗi Nguyệt (毎月) - mỗi tháng.", "isCorrect": false },
+      { "text": "まいねん", "rationale": "Đây là cụm Mỗi Niên (毎年) - mỗi năm.", "isCorrect": false },
+      { "text": "まるにち", "rationale": "Từ này sai quy tắc đọc âm của cụm từ.", "isCorrect": false }
+    ],
+    "hint": "Hành động lặp đi lặp lại không bỏ sót ngày nào."
+  },
+  {
+    "questionNumber": 4,
+    "question": "Hãy chọn chữ Hán đúng cho từ trong ngoặc: わたしの車は「あかい（赤）」です。",
+    "answerOptions": [
+      { "text": "赤", "rationale": "Chữ Xích (赤) nghĩa là màu đỏ, tính từ đọc là あかい.", "isCorrect": true },
+      { "text": "青", "rationale": "Chữ Thanh (青) nghĩa là màu xanh da trời, đọc là あおい.", "isCorrect": false },
+      { "text": "白", "rationale": "Chữ Bạch (白) nghĩa là màu trắng, đọc là しろい.", "isCorrect": false },
+      { "text": "黒", "rationale": "Chữ Hắc (黒) nghĩa là màu đen, đọc là くろい.", "isCorrect": false }
+    ],
+    "hint": "Màu của lửa, biển báo dừng lại hoặc đèn tín hiệu nguy hiểm."
+  },
+  {
+    "questionNumber": 5,
+    "question": "Hãy chọn cách đọc đúng của chữ Hán: ろくじに「出（で）ます」。",
+    "answerOptions": [
+      { "text": "でます", "rationale": "Chữ Xuất (出) nghĩa là đi ra, rời khỏi, đọc là でます.", "isCorrect": true },
+      { "text": "いれます", "rationale": "Đây là chữ Nhập (入) nghĩa là cho vào, đọc là いれます.", "isCorrect": false },
+      { "text": "きます", "rationale": "Đây là chữ Lai (来) nghĩa là đến, đọc là きます.", "isCorrect": false },
+      { "text": "いきます", "rationale": "Đây là chữ Hành (行) nghĩa là đi, đọc là いきます.", "isCorrect": false }
+    ],
+    "hint": "Hành động bước ra khỏi nhà hoặc rời xưởng để ra về."
+  },
+  {
+    "questionNumber": 6,
+    "question": "Điền từ thích hợp: 部屋の電気が＿＿＿。明るくなりました。",
+    "answerOptions": [
+      { "text": "つきました", "rationale": "Cụm 電気がつく nghĩa là đèn bật sáng, làm phòng sáng lên (明るい).", "isCorrect": true },
+      { "text": "きえました", "rationale": "Nghĩa là tắt (đèn tắt), phòng sẽ bị tối đi.", "isCorrect": false },
+      { "text": "あけました", "rationale": "Nghĩa là mở (mở cửa, mở hộp), không dùng cho bật đèn.", "isCorrect": false },
+      { "text": "しめました", "rationale": "Nghĩa là đóng (đóng cửa), không phù hợp ngữ cảnh.", "isCorrect": false }
+    ],
+    "hint": "Hành động bật công tắc khiến bóng đèn phát sáng."
+  },
+  {
+    "questionNumber": 7,
+    "question": "Hãy chọn chữ Hán đúng cho từ trong ngoặc: 机の「うえ（上）」に本があります。",
+    "answerOptions": [
+      { "text": "上", "rationale": "Chữ Thượng (上) nghĩa là phía trên, bề mặt trên, đọc là うえ.", "isCorrect": true },
+      { "text": "下", "rationale": "Chữ Hạ (下) nghĩa là phía dưới, đọc là した.", "isCorrect": false },
+      { "text": "中", "rationale": "Chữ Trung (中) nghĩa là bên trong/ở giữa, đọc là なか.", "isCorrect": false },
+      { "text": "外", "rationale": "Chữ Ngoại (外) nghĩa là bên ngoài, đọc là そと.", "isCorrect": false }
+    ],
+    "hint": "Vị trí đặt đồ vật nằm phía trên mặt bàn."
+  },
+  {
+    "questionNumber": 8,
+    "question": "Hãy chọn cách đọc đúng của cụm chữ Hán: 荷物を「半分（はんぶん）」に分けます。",
+    "answerOptions": [
+      { "text": "はんぶん", "rationale": "Cụm Bán Phân (半分) nghĩa là một nửa (50%), đọc là はんぶん.", "isCorrect": true },
+      { "text": "ほんぶん", "rationale": "Cách đọc sai âm. Chữ Bản (本) mới đọc là ほん.", "isCorrect": false },
+      { "text": "はんぷん", "rationale": "Khi đếm phút mới dùng ぷん, phân chia một nửa đọc là ぶん.", "isCorrect": false },
+      { "text": "はぶ分", "rationale": "Cách ghép từ hoàn toàn sai quy tắc.", "isCorrect": false }
+    ],
+    "hint": "Chia đôi một lượng đồ đạc thành hai phần bằng nhau."
+  },
+  {
+    "questionNumber": 9,
+    "question": "Điền từ thích hợp: エレベーターが動きません。＿＿＿を使ってください。",
+    "answerOptions": [
+      { "text": "かいだん", "rationale": "Thang máy hỏng thì phải đi bằng cầu thang bộ (かいだん - 階段).", "isCorrect": true },
+      { "text": "えあこん", "rationale": "Nghĩa là máy điều hòa nhiệt độ.", "isCorrect": false },
+      { "text": "ぽけっと", "rationale": "Nghĩa là túi quần, túi áo.", "isCorrect": false },
+      { "text": "こうば", "rationale": "Nghĩa là phân xưởng/nhà máy quy mô nhỏ.", "isCorrect": false }
+    ],
+    "hint": "Lối đi gồm các bậc gạch để di chuyển lên xuống giữa các tầng."
+  },
+  {
+    "questionNumber": 10,
+    "question": "Hãy chọn chữ Hán đúng cho từ trong ngoặc: 「みず（水）」を飲みます。",
+    "answerOptions": [
+      { "text": "水", "rationale": "Chữ Thủy (水) nghĩa là nước uống, nước lã, đọc là みず.", "isCorrect": true },
+      { "text": "火", "rationale": "Chữ Hỏa (火) nghĩa là ngọn lửa, đọc là ひ.", "isCorrect": false },
+      { "text": "木", "rationale": "Chữ Mộc (木) nghĩa là cây cối, đọc là き.", "isCorrect": false },
+      { "text": "土", "rationale": "Chữ Thổ (土) nghĩa là đất cát, đọc là つち.", "isCorrect": false }
+    ],
+    "hint": "Chất lỏng trong suốt dùng để giải khát hàng ngày."
+  },
+  {
+    "questionNumber": 11,
+    "question": "Hãy chọn cách đọc đúng của chữ Hán trong ngoặc: わたしの「友だち（ともだち）」は親切です。",
+    "answerOptions": [
+      { "text": "ともだち", "rationale": "Chữ Hữu (友) đi với chữ Đạt (達) nghĩa là bạn bè, đọc là ともだち.", "isCorrect": true },
+      { "text": "ゆうだち", "rationale": "Đây là từ mang nghĩa trận mưa rào buổi chiều tà.", "isCorrect": false },
+      { "text": "うちだち", "rationale": "Cách đọc sai hoàn toàn âm của chữ Hữu.", "isCorrect": false },
+      { "text": "ひとだち", "rationale": "Cách đọc sai, không có từ này.", "isCorrect": false }
+    ],
+    "hint": "Những người chơi thân thiết, đồng hành cùng mình."
+  },
+  {
+    "questionNumber": 12,
+    "question": "Hãy chọn chữ Hán đúng cho từ trong ngoặc: きのう、本を「かった（買った）」です。",
+    "answerOptions": [
+      { "text": "買", "rationale": "Chữ Mãi (買) nghĩa là mua đồ, thể quá khứ là 買った (かった).", "isCorrect": true },
+      { "text": "売", "rationale": "Chữ Mại (売) nghĩa là bán đồ, đọc là 売った (いった).", "isCorrect": false },
+      { "text": "読", "rationale": "Chữ Độc (読) nghĩa là đọc sách, đọc là 読んだ (よんだ).", "isCorrect": false },
+      { "text": "書", "rationale": "Chữ Thư (書) nghĩa là viết, viết chữ, đọc là 書いた (かいた).", "isCorrect": false }
+    ],
+    "hint": "Hành động trả tiền để sở hữu một món hàng."
+  },
+  {
+    "questionNumber": 13,
+    "question": "Hãy chọn cách đọc đúng của chữ Hán: この部屋は「広い（ひろい）」ですね。",
+    "answerOptions": [
+      { "text": "ひろい", "rationale": "Chữ Quảng (広) nghĩa là rộng rãi, bao la, tính từ đọc là ひろい.", "isCorrect": true },
+      { "text": "ながい", "rationale": "Đây là chữ Trường (長), nghĩa là dài.", "isCorrect": false },
+      { "text": "おもい", "rationale": "Đây là chữ Trọng (重), nghĩa là nặng.", "isCorrect": false },
+      { "text": "せまい", "rationale": "Đây là chữ Hẹp (狭), nghĩa là chật hẹp.", "isCorrect": false }
+    ],
+    "hint": "Diện tích căn phòng lớn, thoải mái không bị chật chội."
+  },
+  {
+    "questionNumber": 14,
+    "question": "Hãy chọn chữ Hán đúng cho từ trong ngoặc: 会社へ「いく（行く）」とき、バスに乗ります。",
+    "answerOptions": [
+      { "text": "行", "rationale": "Chữ Hành (行) nghĩa là đi (đến một nơi nào đó), đọc là 行く (いく).", "isCorrect": true },
+      { "text": "来", "rationale": "Chữ Lai (来) nghĩa là đến hướng mình, đọc là 来る (くる).", "isCorrect": false },
+      { "text": "帰", "rationale": "Chữ Quy (帰) nghĩa là trở về (nhà/nước), đọc là 帰る (かえる).", "isCorrect": false },
+      { "text": "走", "rationale": "Chữ Tẩu (走) nghĩa là chạy bộ, đọc là 走る (はしる).", "isCorrect": false }
+    ],
+    "hint": "Di chuyển từ vị trí hiện tại tới địa điểm đích."
+  },
+  {
+    "questionNumber": 15,
+    "question": "Hãy chọn cách đọc đúng của chữ Hán trong ngoặc: 毎日、日本語の「先生（せんせい）」と話します。",
+    "answerOptions": [
+      { "text": "せんせい", "rationale": "Cụm Tiên Sanh (先生) nghĩa là giáo viên, thầy cô, đọc là せんせい.", "isCorrect": true },
+      { "text": "がくせい", "rationale": "Đây là chữ Học Sanh (学生) - học sinh/sinh viên.", "isCorrect": false },
+      { "text": "いしゃ", "rationale": "Đây là chữ Y Giả (医者) - bác sĩ y khoa.", "isCorrect": false },
+      { "text": "かいしゃいん", "rationale": "Đây là chữ Hội Xã Viên (会社員) - nhân viên công ty.", "isCorrect": false }
+    ],
+    "hint": "Người đứng lớp truyền đạt kiến thức cho học sinh."
+  },
+  {
+    "questionNumber": 16,
+    "question": "Điền từ thích hợp: ご飯を食べましたから、お腹が＿＿＿です。",
+    "answerOptions": [
+      { "text": "いっぱい", "rationale": "Cụm お腹がいっぱい nghĩa là no bụng (do đã ăn cơm rồi).", "isCorrect": true },
+      { "text": "すきました", "rationale": "Cụm お腹がすく nghĩa là đói bụng, mâu thuẫn với vế đã ăn cơm.", "isCorrect": false },
+      { "text": "いたい", "rationale": "Nghĩa là đau bụng, không phải hệ quả thông thường sau khi ăn.", "isCorrect": false },
+      { "text": "かるい", "rationale": "Nghĩa là nhẹ, không dùng mô tả trạng thái chứa đồ ăn của bụng.", "isCorrect": false }
+    ],
+    "hint": "Trạng thái thỏa mãn, không thể ăn thêm được nữa."
+  },
+  {
+    "questionNumber": 17,
+    "question": "Hãy chọn chữ Hán đúng cho từ trong ngoặc: 「にほんご（日本語）」のクラスは楽しいです。",
+    "answerOptions": [
+      { "text": "日本語", "rationale": "Cụm Nhật Bản Ngữ (日本語) nghĩa là tiếng Nhật Bản.", "isCorrect": true },
+      { "text": "日本国", "rationale": "Cụm Nhật Bản Quốc (日本国) nghĩa là đất nước Nhật Bản.", "isCorrect": false },
+      { "text": "日本文化", "rationale": "Cụm Nhật Bản Văn Hóa (日本文化) nghĩa là văn hóa Nhật.", "isCorrect": false },
+      { "text": "英語", "rationale": "Cụm Anh Ngữ (英語) nghĩa là tiếng Anh.", "isCorrect": false }
+    ],
+    "hint": "Ngôn ngữ của đất nước hoa anh đào."
+  },
+  {
+    "questionNumber": 18,
+    "question": "Hãy chọn cách đọc đúng của chữ Hán: 「千（せん）」円を貸してください。",
+    "answerOptions": [
+      { "text": "せん", "rationale": "Chữ Thiên (千) nghĩa là số đếm hàng nghìn (1000), đọc là せん.", "isCorrect": true },
+      { "text": "まん", "rationale": "Đây là chữ Vạn (万) nghĩa là hàng mười nghìn (10000).", "isCorrect": false },
+      { "text": "ひゃく", "rationale": "Đây là chữ Bách (百) nghĩa là hàng trăm (100).", "isCorrect": false },
+      { "text": "じゅう", "rationale": "Đây là chữ Thập (十) nghĩa là số mười (10).", "isCorrect": false }
+    ],
+    "hint": "Số 1 kèm theo 3 chữ số 0 phía sau."
+  },
+  {
+    "questionNumber": 19,
+    "question": "Hãy chọn chữ Hán đúng cho từ trong ngoặc: カレンダーの「した（下）」にメモがあります。",
+    "answerOptions": [
+      { "text": "下", "rationale": "Chữ Hạ (下) nghĩa là phía dưới, bên dưới, đọc là した.", "isCorrect": true },
+      { "text": "上", "rationale": "Chữ Thượng (上) nghĩa là phía trên, đọc là うえ.", "isCorrect": false },
+      { "text": "左", "rationale": "Chữ Tả (左) nghĩa là phía bên trái, đọc là ひだり.", "isCorrect": false },
+      { "text": "右", "rationale": "Chữ Hữu (右) nghĩa là phía bên phải, đọc là みぎ.", "isCorrect": false }
+    ],
+    "hint": "Vị trí nằm ở phía dưới mặt sàn hoặc dưới một đồ vật treo tường."
+  },
+  {
+    "questionNumber": 20,
+    "question": "Chọn từ thích hợp điền vào chỗ trống: 外は雨が降っていますから、＿＿＿を持っていきます。",
+    "answerOptions": [
+      { "text": "かさ", "rationale": "Trời mưa (雨) thì phải mang theo cái ô/dù (かさ - 傘).", "isCorrect": true },
+      { "text": "くつ", "rationale": "Nghĩa là đôi giày, vật luôn đi dưới chân chứ không dùng để che mưa.", "isCorrect": false },
+      { "text": "かばん", "rationale": "Nghĩa là cái cặp sách/túi xách.", "isCorrect": false },
+      { "text": "かぎ", "rationale": "Nghĩa là chìa khóa tủ/cửa.", "isCorrect": false }
+    ],
+    "hint": "Vật dụng xòe ra dùng để che đầu khi trời mưa hoặc nắng lớn."
+  },
+  {
+    "questionNumber": 21,
+    "question": "Hãy chọn cách đọc đúng của chữ Hán: 「安全（あんぜん）」第一で作業をしてください。",
+    "answerOptions": [
+      { "text": "あんぜん", "rationale": "Cụm An Toàn (安全) nghĩa là sự an toàn, đọc chuẩn xác là あんぜん.", "isCorrect": true },
+      { "text": "あんしん", "rationale": "Đây là chữ An Tâm (安心) nghĩa là yên tâm, nhẹ lòng.", "isCorrect": false },
+      { "text": "きけん", "rationale": "Đây là chữ Nguy Hiểm (危険) mang ý nghĩa hoàn toàn trái ngược.", "isCorrect": false },
+      { "text": "かんぜん", "rationale": "Đây là chữ Hoàn Toàn (完全) nghĩa là trọn vẹn/hoàn hảo.", "isCorrect": false }
+    ],
+    "hint": "Khẩu hiệu hàng đầu trong mọi nhà xưởng, xí nghiệp."
+  },
+  {
+    "questionNumber": 22,
+    "question": "Hãy chọn chữ Hán đúng cho từ trong ngoặc: 毎朝「しんぶん（新聞）」を読みます。",
+    "answerOptions": [
+      { "text": "新聞", "rationale": "Cụm Tân Văn (新聞) nghĩa là tờ báo giấy tin tức, đọc là しんぶん.", "isCorrect": true },
+      { "text": "新車", "rationale": "Cụm Tân Xa (新車) nghĩa là chiếc xe ô tô mới mua.", "isCorrect": false },
+      { "text": "雑誌", "rationale": "Cụm Tạp Chí (雑誌) nghĩa là cuốn tạp chí định kỳ.", "isCorrect": false },
+      { "text": "手紙", "rationale": "Cụm Thủ Chỉ (手紙) nghĩa là bức thư viết tay gửi ai đó.", "isCorrect": false }
+    ],
+    "hint": "Ấn phẩm giấy in tin tức hằng ngày bằng chữ viết."
+  },
+  {
+    "questionNumber": 23,
+    "question": "Hãy chọn cách đọc đúng của chữ Hán: 「外国（がいこく）」の友達に手紙を書きます。",
+    "answerOptions": [
+      { "text": "がいこく", "rationale": "Cụm Ngoại Quốc (外国) nghĩa là nước ngoài, đọc là がいこく.", "isCorrect": true },
+      { "text": "ちゅうごく", "rationale": "Đây là chữ Trung Quốc (中国) - quốc gia Trung Quốc.", "isCorrect": false },
+      { "text": "かんこく", "rationale": "Đây là chữ Hàn Quốc (韓国) - quốc gia Hàn Quốc.", "isCorrect": false },
+      { "text": "こくさい", "rationale": "Đây là chữ Quốc Tế (国際) nghĩa là mang tính quốc tế.", "isCorrect": false }
+    ],
+    "hint": "Các quốc gia nằm bên ngoài lãnh thổ nước mình."
+  },
+  {
+    "questionNumber": 24,
+    "question": "Hãy chọn chữ Hán đúng cho từ trong ngoặc: 日曜日に「ともだち（友達）」に会います。",
+    "answerOptions": [
+      { "text": "友達", "rationale": "Chữ Hữu Đạt (友達) nghĩa là bạn bè, đọc là ともだち.", "isCorrect": true },
+      { "text": "兄弟", "rationale": "Chữ Huynh Đệ (兄弟) nghĩa là anh em trong gia đình.", "isCorrect": false },
+      { "text": "家族", "rationale": "Chữ Gia Tộc (家族) nghĩa là cả nhà/gia đình.", "isCorrect": false },
+      { "text": "両親", "rationale": "Chữ Lưỡng Thân (両親) nghĩa là bố mẹ.", "isCorrect": false }
+    ],
+    "hint": "Người đồng trang lứa chơi thân thiết với mình."
+  },
+  {
+    "questionNumber": 25,
+    "question": "Hãy chọn cách đọc đúng của chữ Hán trong ngoặc: このお寺は「古い（ふるい）」です。",
+    "answerOptions": [
+      { "text": "ふるい", "rationale": "Chữ Cổ (古) nghĩa là cũ, lâu đời, cổ kính, đọc là ふるい.", "isCorrect": true },
+      { "text": "あたらしい", "rationale": "Đây là chữ Tân (新) nghĩa là mới tinh.", "isCorrect": false },
+      { "text": "おもしろい", "rationale": "Đây là chữ Diện Bạch (面白い) nghĩa là thú vị.", "isCorrect": false },
+      { "text": "ただしい", "rationale": "Đây là chữ Chính (正しい) nghĩa là chính xác/đúng đắn.", "isCorrect": false }
+    ],
+    "hint": "Đồ vật đã qua sử dụng lâu năm, không còn mới nữa."
+  },
+  {
+    "questionNumber": 26,
+    "question": "Điền từ thích hợp: ＿＿＿ですから、電気をつけましょう。",
+    "answerOptions": [
+      { "text": "くらい", "rationale": "Vì trời tối (くらい - 暗い) nên hành động bật đèn (電気をつける) là hợp lý.", "isCorrect": true },
+      { "text": "あかるい", "rationale": "Nghĩa là sáng sủa, trời sáng thì không cần thiết bật đèn.", "isCorrect": false },
+      { "text": "あつい", "rationale": "Nghĩa là nóng nực, nếu nóng thì phải bật điều hòa/quạt máy.", "isCorrect": false },
+      { "text": "あぶない", "rationale": "Nghĩa là nguy hiểm, chưa chỉ rõ lý do trực tiếp phải bật đèn.", "isCorrect": false }
+    ],
+    "hint": "Trạng thái thiếu ánh sáng, không nhìn rõ mọi vật."
+  },
+  {
+    "questionNumber": 27,
+    "question": "Hãy chọn chữ Hán đúng cho từ trong ngoặc: 夏休みは「うみ（海）」へ行きたいです。",
+    "answerOptions": [
+      { "text": "海", "rationale": "Chữ Hải (海) nghĩa là biển, đại dương, đọc là うみ.", "isCorrect": true },
+      { "text": "山", "rationale": "Chữ Sơn (山) nghĩa là ngọn núi, đọc là やま.", "isCorrect": false },
+      { "text": "川", "rationale": "Chữ Xuyên (川) nghĩa là con sông, đọc là かわ.", "isCorrect": false },
+      { "text": "池", "rationale": "Chữ Trì (池) nghĩa là cái ao nước nhỏ, đọc là いけ.", "isCorrect": false }
+    ],
+    "hint": "Vùng nước mặn khổng lồ bao quanh các lục địa."
+  },
+  {
+    "questionNumber": 28,
+    "question": "Hãy chọn cách đọc đúng của chữ Hán: 毎日「水をやる（みずをやる）」を忘れないでください。",
+    "answerOptions": [
+      { "text": "みず", "rationale": "Chữ Thủy (水) đơn lẻ đứng trong cụm từ đọc là みず.", "isCorrect": true },
+      { "text": "すい", "rationale": "Âm Onyomi đọc là すい (như trong 水曜日 - thứ tư), ở đây đọc âm Kun.", "isCorrect": false },
+      { "text": "おゆ", "rationale": "Đây là chữ Thang (湯) nghĩa là nước nóng.", "isCorrect": false },
+      { "text": "うみ", "rationale": "Đây là chữ Hải (海) nghĩa là biển.", "isCorrect": false }
+    ],
+    "hint": "Nước lã tưới cây hàng ngày."
+  },
+  {
+    "questionNumber": 29,
+    "question": "Hãy chọn chữ Hán đúng cho từ trong ngoặc: わたしの家は「えき（駅）」から近い。 ",
+    "answerOptions": [
+      { "text": "駅", "rationale": "Chữ Dịch (駅) nghĩa là nhà ga tàu hỏa/xe điện, đọc là えき.", "isCorrect": true },
+      { "text": "院", "rationale": "Chữ Viện (院) trong từ bệnh viện (病院 - びょういん).", "isCorrect": false },
+      { "text": "店", "rationale": "Chữ Điếm (店) nghĩa là cửa hàng/tiệm buôn, đọc là みせ.", "isCorrect": false },
+      { "text": "校", "rationale": "Chữ Hiệu (校) trong từ trường học (学校 - がっこう).", "isCorrect": false }
+    ],
+    "hint": "Nơi hành khách lên xuống tàu chạy trên đường ray."
+  },
+  {
+    "questionNumber": 30,
+    "question": "Chọn từ thích hợp điền vào chỗ trống: 寒いですから、＿＿＿を閉めてください。",
+    "answerOptions": [
+      { "text": "まど", "rationale": "Vì lạnh (寒い) nên cần đóng cửa sổ (まど - 窓) lại để cản gió bớt lạnh.", "isCorrect": true },
+      { "text": "えあこん", "rationale": "Nếu lạnh thì phải bật (つける) điều hòa ấm chứ không dùng từ đóng (閉める).", "isCorrect": false },
+      { "text": "テレビ", "rationale": "Nghĩa là cái tivi, không liên quan đến thời tiết nóng lạnh.", "isCorrect": false },
+      { "text": "ノート", "rationale": "Nghĩa là cuốn vở viết bài.", "isCorrect": false }
+    ],
+    "hint": "Khung cửa kính trên tường dùng để đón gió hoặc nhìn ra ngoài trời."
+  },
+  {
+    "questionNumber": 31,
+    "question": "Hãy chọn cách đọc đúng của chữ Hán: 「時間（じかん）」を守ってください。",
+    "answerOptions": [
+      { "text": "じかん", "rationale": "Cụm Thời Gian (時間) nghĩa là thì giờ/thời gian, đọc chuẩn là じかん.", "isCorrect": true },
+      { "text": "じしょ", "rationale": "Đây là chữ Từ Thư (辞書) nghĩa là quyển từ điển.", "isCorrect": false },
+      { "text": "とき", "rationale": "Chữ Thời (時) khi đứng một mình mới đọc âm Kun là とき.", "isCorrect": false },
+      { "text": "あいだ", "rationale": "Chữ Gian (間) khi đứng một mình mới đọc âm Kun là あいだ.", "isCorrect": false }
+    ],
+    "hint": "Quy tắc hàng đầu về việc đi làm, đi họp đúng giờ."
+  },
+  {
+    "questionNumber": 32,
+    "question": "Hãy chọn chữ Hán đúng cho từ trong ngoặc: 「にしの（西）」ほうに山が見えます。",
+    "answerOptions": [
+      { "text": "西", "rationale": "Chữ Tây (西) nghĩa là phía Tây (hướng mặt trời lặn), đọc là にし.", "isCorrect": true },
+      { "text": "東", "rationale": "Chữ Đông (東) nghĩa là phía Đông, đọc là ひがし.", "isCorrect": false },
+      { "text": "南", "rationale": "Chữ Nam (南) nghĩa là phía Nam, đọc là みなみ.", "isCorrect": false },
+      { "text": "北", "rationale": "Chữ Bắc (北) nghĩa là phía Bắc, đọc là きた.", "isCorrect": false }
+    ],
+    "hint": "Hướng đối diện hoàn toàn với phía Đông (東)."
+  },
+  {
+    "questionNumber": 33,
+    "question": "Hãy chọn cách đọc đúng của cụm chữ Hán: 彼は「一人（ひとり）」で工場へ行きました。",
+    "answerOptions": [
+      { "text": "ひとり", "rationale": "Cụm Nhất Nhân (一人) nghĩa là một mình, là cách đọc đặc biệt: ひとり.", "isCorrect": true },
+      { "text": "いちにん", "rationale": "Cách đọc sai âm ghép đếm người phổ thông.", "isCorrect": false },
+      { "text": "ひとりひと", "rationale": "Cách đọc sai hoàn toàn kết cấu.", "isCorrect": false },
+      { "text": "ふたり", "rationale": "Đây là cụm Nhị Nhân (二人) nghĩa là hai người.", "isCorrect": false }
+    ],
+    "hint": "Chỉ có duy nhất bản thân thực hiện hành động, không có ai đi cùng."
+  },
+  {
+    "questionNumber": 34,
+    "question": "Hãy chọn chữ Hán đúng cho từ trong ngoặc: 「みぎ（右）」に曲がってください。",
+    "answerOptions": [
+      { "text": "右", "rationale": "Chữ Hữu (右) nghĩa là bên phải, tay phải, đọc là みぎ.", "isCorrect": true },
+      { "text": "左", "rationale": "Chữ Tả (左) nghĩa là bên trái, đọc là ひだり.", "isCorrect": false },
+      { "text": "前", "rationale": "Chữ Tiền (前) nghĩa là phía trước, đọc là まえ.", "isCorrect": false },
+      { "text": "後", "rationale": "Chữ Hậu (後) nghĩa là phía sau, đọc là うしろ.", "isCorrect": false }
+    ],
+    "hint": "Phía tay cầm đũa/bút thông thường của đại đa số mọi người."
+  },
+  {
+    "questionNumber": 35,
+    "question": "Hãy chọn cách đọc đúng của chữ Hán: 「足（あし）」が痛いです。",
+    "answerOptions": [
+      { "text": "あし", "rationale": "Chữ Túc (足) nghĩa là cái chân hoặc bàn chân, đọc là あし.", "isCorrect": true },
+      { "text": "て", "rationale": "Đây là chữ Thủ (手) nghĩa là cái tay.", "isCorrect": false },
+      { "text": "め", "rationale": "Đây là chữ Mục (目) nghĩa là con mắt.", "isCorrect": false },
+      { "text": "くち", "rationale": "Đây là chữ Khẩu (口) nghĩa là cái miệng.", "isCorrect": false }
+    ],
+    "hint": "Bộ phận trên cơ thể dùng để đi bộ, chạy và đá bóng."
+  },
+  {
+    "questionNumber": 36,
+    "question": "Điền từ thích hợp: お金がありませんから、何も＿＿＿。",
+    "answerOptions": [
+      { "text": "かえません", "rationale": "Vì không có tiền nên không thể mua (かえません - 買えません) được cái gì cả.", "isCorrect": true },
+      { "text": "たべません", "rationale": "Nghĩa là không ăn, chưa sát nghĩa bằng việc không thể mua do thiếu tiền.", "isCorrect": false },
+      { "text": "いきません", "rationale": "Nghĩa là không đi.", "isCorrect": false },
+      { "text": "みません", "rationale": "Nghĩa là không xem.", "isCorrect": false }
+    ],
+    "hint": "Hành động trao đổi thương mại bị vô hiệu hóa khi ví trống rỗng."
+  },
+  {
+    "questionNumber": 37,
+    "question": "Hãy chọn chữ Hán đúng cho từ trong ngoặc: 日曜日に「ともだち（友達）」に手紙を書きます。",
+    "answerOptions": [
+      { "text": "友達", "rationale": "Chữ Hữu Đạt (友達) nghĩa là bạn bè, đọc là ともだち.", "isCorrect": true },
+      { "text": "先生", "rationale": "Chữ Tiên Sanh (先生) nghĩa là thầy cô, đọc là せんせい.", "isCorrect": false },
+      { "text": "学生", "rationale": "Chữ Học Sanh (学生) nghĩa là học sinh.", "isCorrect": false },
+      { "text": "社員", "rationale": "Chữ Xã Viên (社員) nghĩa là nhân viên công ty.", "isCorrect": false }
+    ],
+    "hint": "Người quen biết, bằng hữu chơi thân với mình."
+  },
+  {
+    "questionNumber": 38,
+    "question": "Hãy chọn cách đọc đúng của chữ Hán: 「花（はな）」がきれいに咲いています。",
+    "answerOptions": [
+      { "text": "はな", "rationale": "Chữ Hoa (花) nghĩa là bông hoa, đọc âm Kun là はな.", "isCorrect": true },
+      { "text": "くさ", "rationale": "Đây là chữ Thảo (草) nghĩa là cỏ dại.", "isCorrect": false },
+      { "text": "き", "rationale": "Đây là chữ Mộc (木) nghĩa là cây cối.", "isCorrect": false },
+      { "text": "うみ", "rationale": "Đây là chữ Hải (海) nghĩa là biển.", "isCorrect": false }
+    ],
+    "hint": "Bộ phận rực rỡ sắc màu, tỏa hương thơm của thực vật."
+  },
+  {
+    "questionNumber": 39,
+    "question": "Hãy chọn chữ Hán đúng cho từ trong ngoặc: このカメラは「たかい（高い）」です。",
+    "answerOptions": [
+      { "text": "高", "rationale": "Chữ Cao (高) nghĩa là cao hoặc đắt tiền, tính từ là 高い (たかい).", "isCorrect": true },
+      { "text": "安", "rationale": "Chữ An (安) trong tính từ 安い (やすい) nghĩa là rẻ tiền.", "isCorrect": false },
+      { "text": "長", "rationale": "Chữ Trường (長) trong tính từ 長い (ながい) nghĩa là dài.", "isCorrect": false },
+      { "text": "古", "rationale": "Chữ Cổ (古) trong tính từ 古い (ふるい) nghĩa là cũ kỹ.", "isCorrect": false }
+    ],
+    "hint": "Mức giá vượt quá khả năng tài chính thông thường, tốn rất nhiều tiền để mua."
+  },
+  {
+    "questionNumber": 40,
+    "question": "Chọn từ thích hợp điền vào chỗ trống: お腹がすきましたから、食堂へ＿＿＿に行きます。",
+    "answerOptions": [
+      { "text": "ごはんをたべ", "rationale": "Đói bụng (お腹がすいた) thì phải đến nhà ăn (食堂) để ăn cơm (ごはんを食べに行く).", "isCorrect": true },
+      { "text": "ほんをよみ", "rationale": "Đến nhà ăn để đọc sách là sai công năng địa điểm.", "isCorrect": false },
+      { "text": "しゃしんをとり", "rationale": "Nghĩa là chụp ảnh.", "isCorrect": false },
+      { "text": "ねに", "rationale": "Nghĩa là đi ngủ.", "isCorrect": false }
+    ],
+    "hint": "Hành động nạp năng lượng vào cơ thể khi đói."
+  }
+]
