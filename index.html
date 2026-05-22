@@ -5,45 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Cyber Kanji Pro</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght=500;700;900&family=Inter:wght=400;500;600;700&display=swap" rel="stylesheet">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css"> </head>
+    <link rel="stylesheet" href="style.css"> 
+</head>
 <body>
 
     <div class="app-shell">
         
         <div class="app-header">
             <div class="brand">
-                <h1 onclick="switchScreen('main-menu')">CYBER KANJI</h1>
+                <h1 onclick="switchScreen('main-menu')" style="cursor: pointer;">CYBER KANJI</h1>
             </div>
             <div class="header-stats">
                 <span id="streak-display" class="streak-badge"><i class="fa-solid fa-fire"></i> <span id="js-streak">0</span> NGÀY</span>
                 <span id="rank-display" class="rank-tag">TÂN BINH 🔰</span>
             </div>
         </div>
-        <div class="menu-item" onclick="switchScreen('scr-vocab-test')">Trắc Nghiệm Từ Vựng 📝</div>
-        <div id="scr-main-menu" class="app-screen">
-//them man hinh tét từ vựng
-<div id="scr-vocab-test" class="screen" style="display: none;">
-    <h2 class="zone-title">TEST TỪ VỰNG & KANJI N5</h2>
-    <div class="quiz-container">
-        <div id="vocab-question-box">
-            <p id="vocab-question-text">Câu hỏi sẽ hiện ở đây...</p>
-            <div id="vocab-options-box">
-                </div>
-            <div id="vocab-hint-box" style="display:none; color: #aaa; margin-top: 10px; font-style: italic;"></div>
-            <button id="btn-vocab-hint" onclick="toggleVocabHint()" style="margin-top: 10px;">Gợi ý 💡</button>
-        </div>
-        <div id="vocab-result-box" style="display: none; text-align: center;">
-            <h3>Chúc mừng bro đã hoàn thành!</h3>
-            <p id="vocab-score-text"></p>
-            <button onclick="switchScreen('scr-vocab-test'); loadVocabTest();">Làm lại từ đầu 🔄</button>
-        </div>
-    </div>
-</div>
-//kết thúc
 
-            
+        <div id="scr-main-menu" class="app-screen">
             <div class="menu-intro">
                 <p>Chào Đặc Vụ, hôm nay bạn muốn nâng cấp não bộ bằng cách nào?</p>
             </div>
@@ -65,9 +45,39 @@
                 </div>
                 <div class="card-arrow"><i class="fa-solid fa-chevron-right"></i></div>
             </div>
+
+            <div class="menu-card vocab-card" onclick="switchScreen('vocab-test')" style="border-left: 4px solid #a349a4;">
+                <div class="card-icon" style="color: #a349a4;"><i class="fa-solid fa-file-signature"></i></div>
+                <div class="card-info">
+                    <h3>TRẮC NGHIỆM TỪ VỰNG</h3>
+                    <p>Cày kho 200 câu hỏi chữ Hán kèm cách đọc siêu tốc cho N5.</p>
+                </div>
+                <div class="card-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+            </div>
             
             <div class="global-progress">
                 Điểm Cyber Tích Lũy: <strong id="js-menu-exp" style="color: var(--cyber-blue);">0 XP</strong>
+            </div>
+        </div>
+
+        <div id="scr-vocab-test" class="app-screen d-none">
+            <div class="screen-title">
+                <button class="btn-back" onclick="switchScreen('main-menu')"><i class="fa-solid fa-arrow-left"></i> Quay lại</button>
+                <h2>TEST TỪ VỰNG & KANJI N5</h2>
+            </div>
+            <div class="quiz-container" style="padding: 20px; background: rgba(0,0,0,0.4); border-radius: 8px; margin-top: 20px;">
+                <div id="vocab-question-box">
+                    <p id="vocab-question-text" style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px;">Câu hỏi sẽ hiện ở đây...</p>
+                    <div id="vocab-options-box" style="display: flex; flex-direction: column; gap: 10px;">
+                        </div>
+                    <div id="vocab-hint-box" style="display:none; color: #00ffcc; margin-top: 15px; font-style: italic; font-size: 0.9rem;"></div>
+                    <button id="btn-vocab-hint" class="btn-back" onclick="toggleVocabHint()" style="margin-top: 15px; background: transparent; border: 1px dashed var(--cyber-blue);">Gợi ý 💡</button>
+                </div>
+                <div id="vocab-result-box" style="display: none; text-align: center; padding: 20px;">
+                    <h3 style="color: var(--cyber-green); font-family: 'Orbitron', sans-serif;">Chúc mừng bro đã hoàn thành!</h3>
+                    <p id="vocab-score-text" style="font-size: 1.2rem; margin: 15px 0;"></p>
+                    <button class="btn-back" onclick="loadVocabTest()" style="background: var(--cyber-blue); color: #000; font-weight: bold;">Làm lại từ đầu 🔄</button>
+                </div>
             </div>
         </div>
 
