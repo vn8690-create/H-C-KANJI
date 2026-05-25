@@ -1,130 +1,146 @@
 // =========================================================================
-// KHU VỰC 1: BIẾN TOÀN CỤC VÀ LƯU TRỮ TRẠNG THÁI
+// KHU VỰC 1: BIẾN TOÀN CỤC & TRẠNG THÁI APP
 // =========================================================================
 let diemXP = parseInt(localStorage.getItem('kanji_pure_xp')) || 0;
-let duLieuHienTai = [];   // Chứa toàn bộ mảng JSON tải về
-let indexHienTai = 0;     // Vị trí chữ đang học
-let thoiGianCho = null;   // Quản lý các lệnh setTimeout để không bị chồng âm thanh
+let duLieuHienTai = []; // Chứa toàn bộ dữ liệu file JSON tải về
+let indexHienTai = 0;   // Chỉ số chữ đang học hiện tại
+let boDemThoiGian = null; // Quản lý setTimeout để không bị chồng chéo âm thanh
 
 // =========================================================================
-// KHU VỰC 2: ĐIỀU HƯỚNG MÀN HÌNH
+// KHU VỰC 2: ĐIỀU HƯỚNG MÀN HÌNH MƯỢT MÀ
 // =========================================================================
 function ChuyenManHinh(idManHinh) {
-    document.querySelectorAll('.man-hinh').forEach(man => man.classList.remove('active'));
+    document.querySelectorAll('.man-hinh').forEach(man => {
+        man.classList.remove('active');
+    });
     const manChon = document.getElementById(idManHinh);
     if (manChon) manChon.classList.add('active');
 }
 
-function DừngHocVaQuayVe() {
+function QuayVeHome() {
+    // Tắt âm thanh đang đọc dở và xóa các lệnh chờ timeline nếu người dùng thoát ra ngoài
     if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-    clearTimeout(thoiGianCho);
+    clearTimeout(boDemThoiGian);
     ChuyenManHinh('man-home');
 }
 
 // =========================================================================
-// KHU VỰC 3: TẢI DỮ LIỆU TỪ FILE JSON (N5 -> N1)
+// KHU VỰC 3: TẢI DỮ LIỆU TỪ FILE JSON (ĐỌC HẾT MẢNG, KHÔNG GIỚI HẠN)
 // =========================================================================
 function TaiDuLieuKanji(tenFile) {
     ChuyenManHinh('man-hoc');
-    document.getElementById('tieu-de-bai-hoc').innerText = `ĐANG TẢI...`;
-    document.getElementById('khu-vuc-the-single').innerHTML = `<div class="loading-chu">Đang kết nối kho dữ liệu...</div>`;
-    document.getElementById('thanh-dieu-khien').classList.add('an-giau');
+    
+    const tieuDe = document.getElementById('tieu-de-bai-hoc');
+    const vungChua = document.getElementById('vung-chua-the-kanji');
+    const nutChuyen = document.getElementById('vung-nut-chuyen-trang');
+    
+    tieuDe.innerText = `ĐANG KẾT NỐI...`;
+    vungChua.innerHTML = `<div class="loading-text">⚡ Đang kích hoạt bộ não từ vựng...</div>`;
+    nutChuyen.classList.add('an-giau');
 
     fetch(`./${tenFile}.json`)
         .then(res => {
-            if (!res.ok) throw new Error("Lỗi tải file JSON");
+            if (!res.ok) throw new Error("Không tìm thấy file dữ liệu.");
             return res.json();
         })
         .then(data => {
-            duLieuHienTai = data;
-            indexHienTai = 0; // Reset về chữ đầu tiên
-            HienThiFlashcardChuHienTai();
+            // SỬA LỖI CHÍ CHÍMẠNG: Gán toàn bộ mảng dữ liệu gốc, bao nhiêu chữ nhận bấy nhiêu chữ!
+            duLieuHienTai = data; 
+            indexHienTai = 0; // Reset về chữ đầu tiên của cấp độ đó
+            
+            ChayFlashcardTungChu();
         })
         .catch(err => {
-            document.getElementById('tieu-de-bai-hoc').innerText = "LỖI";
-            document.getElementById('khu-vuc-the-single').innerHTML = `<p style="color:#ff0055; text-align:center;">❌ File "${tenFile}.json" gặp sự cố cấu trúc.</p>`;
+            console.error(err);
+            tieuDe.innerText = "LỖI HỆ THỐNG";
+            vungChua.innerHTML = `<p class="bao-loi">❌ Không đọc được file "${tenFile}.json". Bro check lại tên file xem nhé!</p>`;
         });
 }
 
 // =========================================================================
-// KHU VỰC 4: QUẢN LÝ TIẾN TRÌNH TỰ ĐỘNG CHẠY (TIMELINE) CỦA 1 CHỮ
+// KHU VỰC 4: QUẢN LÝ DÒNG THỜI GIAN (TIMELINE) CHO TỪNG CHỮ MỘT
 // =========================================================================
-function HienThiFlashcardChuHienTai() {
+function ChayFlashcardTungChu() {
+    const vungChua = document.getElementById('vung-chua-the-kanji');
+    const tieuDe = document.getElementById('tieu-de-bai-hoc');
+    const nutChuyen = document.getElementById('vung-nut-chuyen-trang');
+
+    // Nếu đã học hết sạch mảng chữ cái
     if (duLieuHienTai.length === 0 || indexHienTai >= duLieuHienTai.length) {
-        document.getElementById('khu-vuc-the-single').innerHTML = `<div class="loading-chu">🎉 Chúc mừng bro đã hoàn thành cấp độ này!</div>`;
-        document.getElementById('thanh-dieu-khien').classList.add('an-giau');
+        tieuDe.innerText = "HOÀN THÀNH!";
+        vungChua.innerHTML = `<div class="loading-text" style="color: #00ffcc;">🎉 Quá đỉnh bro ơi! Đã nuốt hết toàn bộ từ vựng cấp độ này rồi!</div>`;
+        nutChuyen.classList.add('an-giau');
         return;
     }
 
-    // Cập nhật thanh tiêu đề tiến độ (Ví dụ: N5 [1 / 120])
-    document.getElementById('tieu-de-bai-hoc').innerText = `TIẾN ĐỘ: ${indexHienTai + 1} / ${duLieuHienTai.length}`;
-    
-    // Ẩn nút chuyển trang đi để học xong mới cho bấm
-    document.getElementById('thanh-dieu-khien').classList.add('an-giau');
+    // Hiển thị tiến độ thực tế (Ví dụ: TIẾN ĐỘ: 1 / 150)
+    tieuDe.innerText = `TIẾN ĐỘ: ${indexHienTai + 1} / ${duLieuHienTai.length}`;
+    nutChuyen.classList.add('an-giau'); // Ẩn nút tiếp theo đi, học xong timeline mới hiện
 
     const item = duLieuHienTai[indexHienTai];
-    const vungChua = document.getElementById('khu-vuc-the-single');
-
-    // Trích xuất an toàn biến dữ liệu của bro
+    
+    // Trích xuất các biến chuẩn đét từ file JSON của bro
     const chuKanji = item.kanji || "字";
-    const nghiaRaw = item.meaning || "";
+    const nghiaGoc = item.meaning || "";
     const onyomi = item.onyomi || "";
     const kunyomi = item.kunyomi || "";
     const viDu = item.example || "";
 
-    // Tách âm Hán nằm trong ngoặc đơn (nếu có)
-    let amHan = "Chưa rõ";
-    if (nghiaRaw.includes('(') && nghiaRaw.includes(')')) {
-        amHan = nghiaRaw.substring(nghiaRaw.indexOf('(') + 1, nghiaRaw.indexOf(')'));
+    // Mẹo tách lấy chữ trong ngoặc đơn làm Âm Hán Việt
+    let amHanViet = "Chưa rõ";
+    if (nghiaGoc.includes('(') && nghiaGoc.includes(')')) {
+        amHanViet = nghiaGoc.substring(nghiaGoc.indexOf('(') + 1, nghiaGoc.indexOf(')'));
     }
-    let nghiaTiengViet = nghiaRaw.split('(')[0].trim();
+    let nghiaTiengViet = nghiaGoc.split('(')[0].trim();
 
-    // Khởi tạo khung giao diện (Tất cả thông tin dưới chữ Kanji đều ẩn bằng class 'an-giau')
+    // Đổ khung HTML ra (Mặc định ẩn các phần chi tiết bằng class 'an-giau')
     vungChua.innerHTML = `
-        <div class="the-kanji-card-single">
+        <div class="the-cyber-card">
             <div class="chu-kanji-khong-lo">${chuKanji}</div>
             
-            <div id="step-am-doc" class="khoi-thong-tin an-giau">
-                <div class="label-am-han">ÂM HÁN: ${amHan.toUpperCase()}</div>
-                <div class="text-read"><strong>Onyomi:</strong> ${onyomi}</div>
-                <div class="text-read"><strong>Kunyomi:</strong> ${kunyomi}</div>
+            <div id="step-am-doc" class="khoi-noi-dung an-giau">
+                <div class="label-am-han">ÂM HÁN: ${amHanViet.toUpperCase()}</div>
+                <div class="dong-cach-doc"><strong>Onyomi:</strong> ${onyomi}</div>
+                <div class="dong-cach-doc"><strong>Kunyomi:</strong> ${kunyomi}</div>
             </div>
 
-            <div id="step-nghia" class="khoi-nghia-viet an-giau">
+            <div id="step-nghia-viet" class="khoi-nghia-viet an-giau">
                 <div class="text-nghia">${nghiaTiengViet}</div>
             </div>
 
             <div id="step-tu-ghep" class="khoi-tu-ghep an-giau">
-                <div class="title-ghep">Từ Ghép Ví Dụ:</div>
+                <div class="title-ghep">Từ Ghép Tạo Nghĩa:</div>
                 <div class="content-ghep">${viDu}</div>
             </div>
         </div>
     `;
 
-    // BẮT ĐẦU KÍCH HOẠT CHUỖI TIMELINE TỰ ĐỘNG
-    clearTimeout(thoiGianCho);
+    // DỌN SẠCH BỘ ĐẾM CŨ ĐỂ KHÔNG BỊ TRÙNG LẶP
+    clearTimeout(boDemThoiGian);
 
-    // BƯỚC 1: Đợi 1 giây -> Hiện âm đọc + Đọc Onyomi tiếng Nhật
-    thoiGianCho = setTimeout(() => {
+    // ====== BẮT ĐẦU KÍCH HOẠT TIMELINE ======
+    
+    // BƯỚC A: Đợi 1 giây (1000ms) -> Hiện khối âm đọc & Máy tự phát âm tiếng Nhật
+    boDemThoiGian = setTimeout(() => {
         const phanAmDoc = document.getElementById('step-am-doc');
-        if(phanAmDoc) phanAmDoc.className = "khoi-thong-tin hien-hien";
+        if (phanAmDoc) phanAmDoc.className = "khoi-noi-dung hien-hien";
 
-        PhatAmGiongNhat(onyomi, () => {
+        DocTiengNhat(onyomi, () => {
             
-            // BƯỚC 2: Đọc xong tiếng Nhật -> Đợi 0.5 giây -> Hiện nghĩa + Đọc nghĩa tiếng Việt
-            thoiGianCho = setTimeout(() => {
-                const phanNghia = document.getElementById('step-nghia');
-                if(phanNghia) phanNghia.className = "khoi-nghia-viet hien-hien";
+            // BƯỚC B: Sau khi đọc xong Onyomi -> Nghỉ 0.5 giây -> Hiện nghĩa tiếng Việt & Đọc nghĩa tiếng Việt
+            boDemThoiGian = setTimeout(() => {
+                const phanNghia = document.getElementById('step-nghia-viet');
+                if (phanNghia) phanNghia.className = "khoi-nghia-viet hien-hien";
 
-                PhatAmGiongViet(nghiaTiengViet, () => {
+                DocTiengViet(nghiaTiengViet, () => {
                     
-                    // BƯỚC 3: Đọc xong nghĩa -> Đợi 0.5 giây -> Hiện từ ghép + Hiện nút chuyển chữ
-                    thoiGianCho = setTimeout(() => {
+                    // BƯỚC C: Sau khi đọc xong nghĩa -> Nghỉ 0.5 giây -> Hiện từ ghép & Kích hoạt nút chuyển chữ
+                    boDemThoiGian = setTimeout(() => {
                         const phanTuGhep = document.getElementById('step-tu-ghep');
-                        if(phanTuGhep) phanTuGhep.className = "khoi-tu-ghep hien-hien";
+                        if (phanTuGhep) phanTuGhep.className = "khoi-tu-ghep hien-hien";
                         
-                        // Hiện nút chuyển sang từ tiếp theo
-                        document.getElementById('thanh-dieu-khien').classList.remove('an-giau');
+                        // Hiện nút bấm chuyển trang để người học bấm qua bài mới
+                        nutChuyen.classList.remove('an-giau');
                         CongDiemXP();
                     }, 500);
 
@@ -137,43 +153,43 @@ function HienThiFlashcardChuHienTai() {
 
 function ChuyenChuTiepTheo() {
     indexHienTai++;
-    HienThiFlashcardChuHienTai();
+    ChayFlashcardTungChu();
 }
 
 // =========================================================================
-// KHU VỰC 5: HỆ THỐNG PHÁT ÂM CHUẨN (WEB SPEECH API)
+// KHU VỰC 5: HỆ THỐNG BỘ LOA PHÁT ÂM (WEB SPEECH API THUẦN)
 // =========================================================================
-function PhatAmGiongNhat(vanBan, callback) {
-    if (!vanBan || vanBan === "None") { if(callback) callback(); return; }
+function DocTiengNhat(vanBan, khiDocXong) {
+    if (!vanBan || vanBan === "None") { if(khiDocXong) khiDocXong(); return; }
     if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        let thongSo = new SpeechSynthesisUtterance(vanBan.replace(/[\/()（）\-,ー]/g, ' '));
-        thongSo.lang = 'ja-JP';
-        thongSo.rate = 0.82;
-        thongSo.onend = () => { if(callback) callback(); };
-        thongSo.onerror = () => { if(callback) callback(); };
-        window.speechSynthesis.speak(thongSo);
+        window.speechSynthesis.cancel(); // Dọn dẹp âm thanh cũ
+        let utterance = new SpeechSynthesisUtterance(vanBan.replace(/[\/()（）\-,ー]/g, ' '));
+        utterance.lang = 'ja-JP';
+        utterance.rate = 0.85; // Tốc độ đọc chuẩn học tập
+        utterance.onend = () => { if(khiDocXong) khiDocXong(); };
+        utterance.onerror = () => { if(khiDocXong) khiDocXong(); };
+        window.speechSynthesis.speak(utterance);
     } else {
-        if(callback) callback();
+        if(khiDocXong) khiDocXong();
     }
 }
 
-function PhatAmGiongViet(vanBan, callback) {
-    if (!vanBan) { if(callback) callback(); return; }
+function DocTiengViet(vanBan, khiDocXong) {
+    if (!vanBan) { if(khiDocXong) khiDocXong(); return; }
     if ('speechSynthesis' in window) {
-        let thongSo = new SpeechSynthesisUtterance(vanBan);
-        thongSo.lang = 'vi-VN';
-        thongSo.rate = 0.9;
-        thongSo.onend = () => { if(callback) callback(); };
-        thongSo.onerror = () => { if(callback) callback(); };
-        window.speechSynthesis.speak(thongSo);
+        let utterance = new SpeechSynthesisUtterance(vanBan);
+        utterance.lang = 'vi-VN';
+        utterance.rate = 0.95;
+        utterance.onend = () => { if(khiDocXong) khiDocXong(); };
+        utterance.onerror = () => { if(khiDocXong) khiDocXong(); };
+        window.speechSynthesis.speak(utterance);
     } else {
-        if(callback) callback();
+        if(khiDocXong) khiDocXong();
     }
 }
 
 // =========================================================================
-// KHU VỰC 6: ĐỒNG BỘ ĐIỂM SỐ
+// KHU VỰC 6: HỆ THỐNG ĐIỂM THƯỞNG XP
 // =========================================================================
 function CongDiemXP() {
     diemXP += 1;
