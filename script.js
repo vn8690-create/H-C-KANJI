@@ -1,178 +1,179 @@
 // =========================================================================
-// KHU VỰC 1: CẤU HÌNH BIẾN TOÀN CỤC (QUẢN LÝ ĐIỂM SỐ VÀ DỮ LIỆU)
+// KHU VỰC 1: BIẾN TOÀN CỤC VÀ LƯU TRỮ TRẠNG THÁI
 // =========================================================================
 let diemXP = parseInt(localStorage.getItem('kanji_pure_xp')) || 0;
-let duLieuHienTai = [];
+let duLieuHienTai = [];   // Chứa toàn bộ mảng JSON tải về
+let indexHienTai = 0;     // Vị trí chữ đang học
+let thoiGianCho = null;   // Quản lý các lệnh setTimeout để không bị chồng âm thanh
 
 // =========================================================================
-// KHU VỰC 2: QUẢN LÝ CHUYỂN MÀN HÌNH (ẨN / HIỆN GIAO DIỆN)
+// KHU VỰC 2: ĐIỀU HƯỚNG MÀN HÌNH
 // =========================================================================
 function ChuyenManHinh(idManHinh) {
-    // Tìm tất cả các màn hình có class là 'man-hinh' để ẩn đi
-    document.querySelectorAll('.man-hinh').forEach(man => {
-        man.classList.remove('active');
-    });
-    // Kích hoạt hiển thị màn hình được chọn
+    document.querySelectorAll('.man-hinh').forEach(man => man.classList.remove('active'));
     const manChon = document.getElementById(idManHinh);
     if (manChon) manChon.classList.add('active');
 }
 
+function DừngHocVaQuayVe() {
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    clearTimeout(thoiGianCho);
+    ChuyenManHinh('man-home');
+}
+
 // =========================================================================
-// KHU VỰC 3: TẢI DỮ LIỆU TỪ FILE JSON (N5.JSON -> N1.JSON)
+// KHU VỰC 3: TẢI DỮ LIỆU TỪ FILE JSON (N5 -> N1)
 // =========================================================================
 function TaiDuLieuKanji(tenFile) {
-    // Chuyển ngay sang màn hình học để người dùng biết app đang xử lý
     ChuyenManHinh('man-hoc');
-    
-    const tieuDe = document.getElementById('tieu-de-bai-hoc');
-    const vungChua = document.getElementById('vung-chua-the-kanji');
-    
-    tieuDe.innerText = `ĐANG TẢI DỮ LIỆU ${tenFile.toUpperCase()}...`;
-    vungChua.innerHTML = "";
+    document.getElementById('tieu-de-bai-hoc').innerText = `ĐANG TẢI...`;
+    document.getElementById('khu-vuc-the-single').innerHTML = `<div class="loading-chu">Đang kết nối kho dữ liệu...</div>`;
+    document.getElementById('thanh-dieu-khien').classList.add('an-giau');
 
-    // Thực hiện đọc file JSON từ thư mục gốc GitHub
     fetch(`./${tenFile}.json`)
         .then(res => {
-            if (!res.ok) throw new Error("Không tìm thấy file JSON");
+            if (!res.ok) throw new Error("Lỗi tải file JSON");
             return res.json();
         })
         .then(data => {
             duLieuHienTai = data;
-            tieuDe.innerText = `CẤP ĐỘ ${tenFile.toUpperCase()} (${data.length} CHỮ)`;
-            
-            // CHÚ Ý: Đã sửa lỗi chính tả dính chữ ở đây để kích hoạt timeline tự động chạy
-            InDanhSachKanjiTuDong();
+            indexHienTai = 0; // Reset về chữ đầu tiên
+            HienThiFlashcardChuHienTai();
         })
         .catch(err => {
-            console.error(err);
-            tieuDe.innerText = "LỖI HỆ THỐNG";
-            vungChua.innerHTML = `<p class="bao-loi">❌ Không đọc được file "${tenFile}.json". Bro kiểm tra lại xem file đã nằm ở thư mục gốc chưa nhé!</p>`;
+            document.getElementById('tieu-de-bai-hoc').innerText = "LỖI";
+            document.getElementById('khu-vuc-the-single').innerHTML = `<p style="color:#ff0055; text-align:center;">❌ File "${tenFile}.json" gặp sự cố cấu trúc.</p>`;
         });
 }
 
 // =========================================================================
-// KHU VỰC 4: TIMELINE TỰ ĐỘNG HIỆN CHỮ VÀ PHÁT ÂM THEO DÒNG THỜI GIAN
+// KHU VỰC 4: QUẢN LÝ TIẾN TRÌNH TỰ ĐỘNG CHẠY (TIMELINE) CỦA 1 CHỮ
 // =========================================================================
-function InDanhSachKanjiTuDong() {
-    const vungChua = document.getElementById('vung-chua-the-kanji');
-    vungChua.innerHTML = "";
-
-    duLieuHienTai.forEach((item, index) => {
-        // 1. Tạo khung thẻ HTML cho từng chữ Kanji
-        const theKanji = document.createElement('div');
-        theKanji.className = 'the-kanji-card';
-        
-        // Bốc chuẩn xác các biến dữ liệu từ file JSON của bro
-        const chuKanji = item.kanji || "字";
-        const nghia = item.meaning || "";
-        const onyomi = item.onyomi || "";
-        const kunyomi = item.kunyomi || "";
-        const viDu = item.example || "";
-
-        // 2. Thiết lập cấu trúc hiển thị (Mặc định ẩn các khối bằng class 'an-giau')
-        theKanji.innerHTML = `
-            <div class="card-top">
-                <div class="chu-to">${chuKanji}</div>
-                <div class="thong-tin-chu">
-                    <div class="khoi-am-doc an-giau">
-                        <div class="am-han">Âm Hán: ${nghia.split('(')[1]?.replace(')', '') || 'Chưa rõ'}</div>
-                        <div class="cach-doc"><strong>Onyomi:</strong> ${onyomi}</div>
-                        <div class="cach-doc"><strong>Kunyomi:</strong> ${kunyomi}</div>
-                    </div>
-                    <div class="khoi-nghia an-giau">
-                        <div class="nghia-tieng-viet">${nghia.split('(')[0]}</div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-bottom an-giau">
-                <strong>Từ ghép ví dụ:</strong> ${viDu}
-            </div>
-        `;
-
-        vungChua.appendChild(theKanji);
-
-        // 3. ĐIỀU PHỐI DÒNG THỜI GIAN (TIMELINE ANIMATION)
-        const phanAmDoc = theKanji.querySelector('.khoi-am-doc');
-        const phanNghia = theKanji.querySelector('.khoi-nghia');
-        const phanTuGhep = theKanji.querySelector('.card-bottom');
-
-        // BƯỚC A: Đợi đúng 1 giây (1000ms), hiện phần âm đọc và máy tự động phát âm Onyomi
-        setTimeout(() => {
-            phanAmDoc.classList.remove('an-giau');
-            phanAmDoc.classList.add('hien-hien');
-            
-            // Phát âm tiếng Nhật mẫu, khi máy đọc xong hoàn toàn mới nhảy sang Bước B
-            PhatAmTiengNhat(onyomi, () => {
-                
-                // BƯỚC B: Nghỉ 0.5 giây sau khi đọc xong Onyomi, hiện nghĩa tiếng Việt và tự động đọc nghĩa tiếng Việt
-                setTimeout(() => {
-                    phanNghia.classList.remove('an-giau');
-                    phanNghia.classList.add('hien-hien');
-                    
-                    let nghiaThuan = nghia.split('(')[0].trim();
-                    PhatAmTiengViet(nghiaThuan, () => {
-                        
-                        // BƯỚC C: Nghỉ 0.5 giây sau khi đọc xong tiếng Việt, hiện khối từ ghép chữ Hán lên
-                        setTimeout(() => {
-                            phanTuGhep.classList.remove('an-giau');
-                            phanTuGhep.classList.add('hien-hien');
-                            CongDiemXP(); // Hoàn thành 1 chu kỳ thì tặng điểm thưởng
-                        }, 500);
-                        
-                    });
-                }, 500);
-
-            });
-        }, 1000);
-
-    });
-}
-
-// =========================================================================
-// KHU VỰC 5: BỘ LOA PHÁT ÂM ĐA NGÔN NGỮ (WEB SPEECH API)
-// =========================================================================
-
-// Phát âm giọng Nhật Bản (lo cho phần Onyomi / Kunyomi / Kanji)
-function PhatAmTiengNhat(chuoiDoc, hanhDongKhiDocXong) {
-    if (!chuoiDoc || chuoiDoc === "None") {
-        if(hanhDongKhiDocXong) hanhDongKhiDocXong();
+function HienThiFlashcardChuHienTai() {
+    if (duLieuHienTai.length === 0 || indexHienTai >= duLieuHienTai.length) {
+        document.getElementById('khu-vuc-the-single').innerHTML = `<div class="loading-chu">🎉 Chúc mừng bro đã hoàn thành cấp độ này!</div>`;
+        document.getElementById('thanh-dieu-khien').classList.add('an-giau');
         return;
     }
+
+    // Cập nhật thanh tiêu đề tiến độ (Ví dụ: N5 [1 / 120])
+    document.getElementById('tieu-de-bai-hoc').innerText = `TIẾN ĐỘ: ${indexHienTai + 1} / ${duLieuHienTai.length}`;
+    
+    // Ẩn nút chuyển trang đi để học xong mới cho bấm
+    document.getElementById('thanh-dieu-khien').classList.add('an-giau');
+
+    const item = duLieuHienTai[indexHienTai];
+    const vungChua = document.getElementById('khu-vuc-the-single');
+
+    // Trích xuất an toàn biến dữ liệu của bro
+    const chuKanji = item.kanji || "字";
+    const nghiaRaw = item.meaning || "";
+    const onyomi = item.onyomi || "";
+    const kunyomi = item.kunyomi || "";
+    const viDu = item.example || "";
+
+    // Tách âm Hán nằm trong ngoặc đơn (nếu có)
+    let amHan = "Chưa rõ";
+    if (nghiaRaw.includes('(') && nghiaRaw.includes(')')) {
+        amHan = nghiaRaw.substring(nghiaRaw.indexOf('(') + 1, nghiaRaw.indexOf(')'));
+    }
+    let nghiaTiengViet = nghiaRaw.split('(')[0].trim();
+
+    // Khởi tạo khung giao diện (Tất cả thông tin dưới chữ Kanji đều ẩn bằng class 'an-giau')
+    vungChua.innerHTML = `
+        <div class="the-kanji-card-single">
+            <div class="chu-kanji-khong-lo">${chuKanji}</div>
+            
+            <div id="step-am-doc" class="khoi-thong-tin an-giau">
+                <div class="label-am-han">ÂM HÁN: ${amHan.toUpperCase()}</div>
+                <div class="text-read"><strong>Onyomi:</strong> ${onyomi}</div>
+                <div class="text-read"><strong>Kunyomi:</strong> ${kunyomi}</div>
+            </div>
+
+            <div id="step-nghia" class="khoi-nghia-viet an-giau">
+                <div class="text-nghia">${nghiaTiengViet}</div>
+            </div>
+
+            <div id="step-tu-ghep" class="khoi-tu-ghep an-giau">
+                <div class="title-ghep">Từ Ghép Ví Dụ:</div>
+                <div class="content-ghep">${viDu}</div>
+            </div>
+        </div>
+    `;
+
+    // BẮT ĐẦU KÍCH HOẠT CHUỖI TIMELINE TỰ ĐỘNG
+    clearTimeout(thoiGianCho);
+
+    // BƯỚC 1: Đợi 1 giây -> Hiện âm đọc + Đọc Onyomi tiếng Nhật
+    thoiGianCho = setTimeout(() => {
+        const phanAmDoc = document.getElementById('step-am-doc');
+        if(phanAmDoc) phanAmDoc.className = "khoi-thong-tin hien-hien";
+
+        PhatAmGiongNhat(onyomi, () => {
+            
+            // BƯỚC 2: Đọc xong tiếng Nhật -> Đợi 0.5 giây -> Hiện nghĩa + Đọc nghĩa tiếng Việt
+            thoiGianCho = setTimeout(() => {
+                const phanNghia = document.getElementById('step-nghia');
+                if(phanNghia) phanNghia.className = "khoi-nghia-viet hien-hien";
+
+                PhatAmGiongViet(nghiaTiengViet, () => {
+                    
+                    // BƯỚC 3: Đọc xong nghĩa -> Đợi 0.5 giây -> Hiện từ ghép + Hiện nút chuyển chữ
+                    thoiGianCho = setTimeout(() => {
+                        const phanTuGhep = document.getElementById('step-tu-ghep');
+                        if(phanTuGhep) phanTuGhep.className = "khoi-tu-ghep hien-hien";
+                        
+                        // Hiện nút chuyển sang từ tiếp theo
+                        document.getElementById('thanh-dieu-khien').classList.remove('an-giau');
+                        CongDiemXP();
+                    }, 500);
+
+                });
+            }, 500);
+
+        });
+    }, 1000);
+}
+
+function ChuyenChuTiepTheo() {
+    indexHienTai++;
+    HienThiFlashcardChuHienTai();
+}
+
+// =========================================================================
+// KHU VỰC 5: HỆ THỐNG PHÁT ÂM CHUẨN (WEB SPEECH API)
+// =========================================================================
+function PhatAmGiongNhat(vanBan, callback) {
+    if (!vanBan || vanBan === "None") { if(callback) callback(); return; }
     if ('speechSynthesis' in window) {
-        let chuoiChuan = chuoiDoc.replace(/[\/()（）\-,ー]/g, ' ').trim();
-        let utterance = new SpeechSynthesisUtterance(chuoiChuan);
-        utterance.lang = 'ja-JP';
-        utterance.rate = 0.85; // Tốc độ đọc hơi chậm một chút để nghe rõ âm
-        
-        // Kích hoạt hành động tiếp theo ngay khi loa ngừng phát âm
-        utterance.onend = function() {
-            if(hanhDongKhiDocXong) hanhDongKhiDocXong();
-        };
-        window.speechSynthesis.speak(utterance);
+        window.speechSynthesis.cancel();
+        let thongSo = new SpeechSynthesisUtterance(vanBan.replace(/[\/()（）\-,ー]/g, ' '));
+        thongSo.lang = 'ja-JP';
+        thongSo.rate = 0.82;
+        thongSo.onend = () => { if(callback) callback(); };
+        thongSo.onerror = () => { if(callback) callback(); };
+        window.speechSynthesis.speak(thongSo);
     } else {
-        if(hanhDongKhiDocXong) hanhDongKhiDocXong();
+        if(callback) callback();
     }
 }
 
-// Phát âm giọng Việt Nam (lo cho phần giải nghĩa Tiếng Việt)
-function PhatAmTiengViet(chuoiDoc, hanhDongKhiDocXong) {
+function PhatAmGiongViet(vanBan, callback) {
+    if (!vanBan) { if(callback) callback(); return; }
     if ('speechSynthesis' in window) {
-        let utterance = new SpeechSynthesisUtterance(chuoiDoc);
-        utterance.lang = 'vi-VN';
-        utterance.rate = 0.92; // Tốc độ đọc tiếng Việt tự nhiên
-        
-        // Kích hoạt hành động tiếp theo ngay khi loa ngừng phát âm
-        utterance.onend = function() {
-            if(hanhDongKhiDocXong) hanhDongKhiDocXong();
-        };
-        window.speechSynthesis.speak(utterance);
+        let thongSo = new SpeechSynthesisUtterance(vanBan);
+        thongSo.lang = 'vi-VN';
+        thongSo.rate = 0.9;
+        thongSo.onend = () => { if(callback) callback(); };
+        thongSo.onerror = () => { if(callback) callback(); };
+        window.speechSynthesis.speak(thongSo);
     } else {
-        if(hanhDongKhiDocXong) hanhDongKhiDocXong();
+        if(callback) callback();
     }
 }
 
 // =========================================================================
-// KHU VỰC 6: HỆ THỐNG ĐIỂM THƯỞNG XP (LƯU TRỮ VÀO TRÌNH DUYỆT)
+// KHU VỰC 6: ĐỒNG BỘ ĐIỂM SỐ
 // =========================================================================
 function CongDiemXP() {
     diemXP += 1;
@@ -180,7 +181,6 @@ function CongDiemXP() {
     document.getElementById('id-xp').innerText = diemXP;
 }
 
-// Tự động đồng bộ và hiển thị điểm XP ngay khi người dùng vừa truy cập vào app
 window.addEventListener('DOMContentLoaded', () => {
     document.getElementById('id-xp').innerText = diemXP;
 });
