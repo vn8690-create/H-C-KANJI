@@ -3,155 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Cyber Kanji Pro</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght=500;700;900&family=Inter:wght=400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css"> 
+    <title>CYBER KANJI - Kích Hoạt Não Bộ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="app-shell">
-
-<div id="scr-welcome" class="app-screen" style="position: fixed; top:0; left:0; width:100%; height:100%; background:#0a0a12; z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; text-align: center;">
-    <h1 style="font-family: 'Orbitron', sans-serif; color: var(--cyber-blue); font-size: 2.5rem; letter-spacing: 2px; margin-bottom: 10px;">CYBER KANJI</h1>
-    <p style="color: #888; font-size: 0.95rem; margin-bottom: 30px;">HỆ THỐNG KÍCH HOẠT NÃO BỘ TỪ VỰNG N5 - N1</p>
-    
-    <div style="background: rgba(255,255,255,0.03); border: 1px solid #222; padding: 25px; border-radius: 8px; width: 100%; max-width: 360px;">
-        <label style="display: block; text-align: left; color: #fff; font-size: 0.9rem; margin-bottom: 10px; font-family: 'Orbitron', sans-serif;">MẬT DANH ĐẶC VỤ (TÊN CỦA BẠN):</label>
-        <input type="text" id="student-name-input" placeholder="Nhập tên tại đây..." style="width: 100%; padding: 12px; background: #000; border: 1px solid var(--cyber-blue); color: #fff; border-radius: 4px; font-size: 1rem; margin-bottom: 20px; outline: none; text-align: center; box-shadow: 0 0 5px rgba(0, 255, 204, 0.2);">
-        <button onclick="saveStudentName()" style="width: 100%; padding: 12px; background: var(--cyber-blue); color: #000; font-weight: bold; border: none; border-radius: 4px; cursor: pointer; font-family: 'Orbitron', sans-serif; text-transform: uppercase;">Kích Hoạt Hệ Thống ⚡</button>
-    </div>
-</div>
-
-        <div class="app-header">
-            <div class="brand">
-                <h1 onclick="switchScreen('main-menu')" style="cursor: pointer;">CYBER KANJI</h1>
-            </div>
+        
+        <header class="app-header">
+            <div class="logo-neon" onclick="appNavigation.goHome()">CYBER-KANJI</div>
             <div class="header-stats">
-                <span id="streak-display" class="streak-badge"><i class="fa-solid fa-fire"></i> <span id="js-streak">0</span> NGÀY</span>
-                <span id="rank-display" class="rank-tag">TÂN BINH 🔰</span>
-            </div>
-        </div>
-
-        <div id="scr-main-menu" class="app-screen">
-            <div class="menu-intro">
-                <p>Chào Đặc Vụ, hôm nay bạn muốn nâng cấp não bộ bằng cách nào?</p>
-
-<p id="js-welcome-text">Chào Đặc Vụ, hôm nay bạn muốn nâng cấp não bộ bằng cách nào?</p>
-            </div>
-
-            <div class="menu-card learn-card" onclick="switchScreen('learn-hub')">
-                <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
-                <div class="card-info">
-                    <h3>PHÒNG HỌC</h3>
-                    <p>Học 10 từ Kanji mỗi ngày theo lộ trình thông minh.</p>
+                <div class="stat-badge xp">
+                    <i class="fa-solid fa-brain"></i> <span id="xp-count">0</span> XP
                 </div>
-                <div class="card-arrow"><i class="fa-solid fa-chevron-right"></i></div>
-            </div>
-
-            <div class="menu-card test-card" onclick="startTestMode()">
-                <div class="card-icon"><i class="fa-solid fa-shuttle-space"></i></div>
-                <div class="card-info">
-                    <h3>ĐẤU TRƯỜNG SINH TỬ</h3>
-                    <p>Bài kiểm tra tổng hợp tính thời gian. Thử thách nâng Rank!</p>
-                </div>
-                <div class="card-arrow"><i class="fa-solid fa-chevron-right"></i></div>
-            </div>
-
-            <div class="menu-card vocab-card" onclick="switchScreen('vocab-test')" style="border-left: 4px solid #a349a4;">
-                <div class="card-icon" style="color: #a349a4;"><i class="fa-solid fa-file-signature"></i></div>
-                <div class="card-info">
-                    <h3>TRẮC NGHIỆM TỪ VỰNG</h3>
-                    <p>Cày kho 200 câu hỏi chữ Hán kèm cách đọc siêu tốc cho N5.</p>
-                </div>
-                <div class="card-arrow"><i class="fa-solid fa-chevron-right"></i></div>
-            </div>
-            
-            <div class="global-progress">
-                Điểm Cyber Tích Lũy: <strong id="js-menu-exp" style="color: var(--cyber-blue);">0 XP</strong>
-            </div>
-        </div>
-
-        <div id="scr-vocab-test" class="app-screen d-none">
-            <div class="screen-title">
-                <button class="btn-back" onclick="switchScreen('main-menu')"><i class="fa-solid fa-arrow-left"></i> Quay lại</button>
-                <h2>TEST TỪ VỰNG & KANJI N5</h2>
-            </div>
-            <div class="quiz-container" style="padding: 20px; background: rgba(0,0,0,0.4); border-radius: 8px; margin-top: 20px;">
-                <div id="vocab-question-box">
-                    <p id="vocab-question-text" style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px;">Câu hỏi sẽ hiện ở đây...</p>
-                    <div id="vocab-options-box" style="display: flex; flex-direction: column; gap: 10px;">
-                        </div>
-                    <div id="vocab-hint-box" style="display:none; color: #00ffcc; margin-top: 15px; font-style: italic; font-size: 0.9rem;"></div>
-                    <button id="btn-vocab-hint" class="btn-back" onclick="toggleVocabHint()" style="margin-top: 15px; background: transparent; border: 1px dashed var(--cyber-blue);">Gợi ý 💡</button>
-                </div>
-                <div id="vocab-result-box" style="display: none; text-align: center; padding: 20px;">
-                    <h3 style="color: var(--cyber-green); font-family: 'Orbitron', sans-serif;">Chúc mừng bro đã hoàn thành!</h3>
-                    <p id="vocab-score-text" style="font-size: 1.2rem; margin: 15px 0;"></p>
-                    <button class="btn-back" onclick="loadVocabTest()" style="background: var(--cyber-blue); color: #000; font-weight: bold;">Làm lại từ đầu 🔄</button>
+                <div class="stat-badge level" style="color: var(--neon-cyan);">
+                    <i class="fa-solid fa-gauge-high"></i> <span id="level-display">N5</span>
                 </div>
             </div>
-        </div>
+        </header>
 
-        <div id="scr-learn-hub" class="app-screen d-none">
-            <div class="screen-title">
-                <button class="btn-back" onclick="switchScreen('main-menu')"><i class="fa-solid fa-arrow-left"></i> Quay lại</button>
-                <h2>LỘ TRÌNH THEO NGÀY</h2>
-            </div>
+        <main class="main-container">
 
-            <div class="level-selector">
-                <button class="level-tab active" onclick="changeLevel('N5')">N5</button>
-                <button class="level-tab" onclick="changeLevel('N4')">N4</button>
-                <button class="level-tab" onclick="changeLevel('N3')">N3</button>
-                <button class="level-tab" onclick="changeLevel('N2')">N2</button>
-                <button class="level-tab" onclick="changeLevel('N1')">N1</button>
-            </div>
-
-            <div class="days-list" id="js-days-list">
-                <div class="day-item active-day" onclick="startDayStudy(1)">
-                    <div class="day-number">NGÀY 01</div>
-                    <div class="day-status">SẴN SÀNG (0/10 chữ)</div>
+            <section id="scr-login" class="screen active full-height-screen">
+                <div class="login-banner">
+                    <h1 class="hero-title">CYBER KANJI</h1>
+                    <p class="hero-subtitle">HỆ THỐNG KÍCH HOẠT NÃO BỘ TỪ VỰNG N5 - N1</p>
                 </div>
-                <div class="day-item locked-day">
-                    <div class="day-number">NGÀY 02</div>
-                    <div class="day-status"><i class="fa-solid fa-lock"></i> Hoàn thành ngày trước để mở</div>
+
+                <div class="login-card">
+                    <label class="form-label">MẬT DANH ĐẶC VỤ (TÊN CỦA BẠN):</label>
+                    <input type="text" id="agent-name-input" class="cyber-input" placeholder="Nhập tên..." value="nam">
+                    <button class="btn-primary" onclick="appNavigation.activateSystem()">KÍCH HOẠT HỆ THỐNG ⚡</button>
                 </div>
-            </div>
-        </div>
+            </section>
 
-        <div id="scr-study-zone" class="app-screen d-none">
-            <div class="screen-title">
-                <button class="btn-back" onclick="switchScreen('learn-hub')"><i class="fa-solid fa-xmark"></i> Thoát học</button>
-                <h2 id="js-zone-title">NGÀY 01</h2>
-            </div>
+            <section id="scr-home" class="screen">
+                <div class="hero-banner">
+                    <h2 class="hero-title">CHỌN CẤP ĐỘ</h2>
+                    <p class="hero-subtitle">Chào mừng đặc vụ <strong id="js-agent-name" style="color: var(--neon-cyan);">Nam</strong>, hãy chọn mục tiêu!</p>
+                </div>
 
-            <div class="card-container" onclick="toggleCard()">
-                <div class="flip-card" id="js-flip-card">
-                    <div class="card-face card-front">
-                        <div class="kanji-display" id="js-kanji">水</div>
-                        <div class="tap-hint"><i class="fa-solid fa-arrows-rotate"></i> Chạm để lật nghĩa</div>
+                <div class="level-menu-grid">
+                    <div class="menu-item-card" style="--accent-color: #00ffcc;" onclick="learningEngine.startLevel('N5')">
+                        <span class="level-tag">N5</span>
+                        <p>10 Kanji cơ bản phân xưởng</p>
                     </div>
-                    <div class="card-face card-back">
-                        <div class="meaning-title" id="js-meaning">NƯỚC</div>
-                        <div class="yomi-details">
-                            <p id="js-onyomi"><strong>Onyomi:</strong> スイ</p>
-                            <p id="js-kunyomi"><strong>Kunyomi:</strong> みず</p>
-                        </div>
+                    <div class="menu-item-card" style="--accent-color: #0077ff;" onclick="learningEngine.startLevel('N4')">
+                        <span class="level-tag">N4</span>
+                        <p>Giao tiếp tình huống máy móc</p>
+                    </div>
+                    </div>
+            </section>
+
+            <section id="scr-learning" class="screen">
+                <div class="screen-title-zone">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <h2>ĐANG KÍCH HOẠT...</h2>
+                        <button class="btn-back" onclick="appNavigation.goHome()">QUAY LẠI</button>
                     </div>
                 </div>
+                
+                <div id="learning-content-list"></div>
+            </section>
+
+        </main>
+
+        <div id="floating-player" class="mobile-floating-player hidden">
+            <div class="player-left" onclick="learningEngine.playAudio()">
+                <i class="fa-solid fa-volume-high player-wave-icon"></i>
+                <span id="floating-text" class="player-title">Đang phát âm mẫu...</span>
             </div>
+            <div class="player-rights">
+                <button class="btn-player-action close" onclick="learningEngine.closeFloatingPlayer()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+        </div>
 
-            <div class="quiz-section" id="js-options-box"></div>
-
-            <div class="bottom-status">
-                <div>Tiến độ ngày: <strong id="js-progress">1/10</strong></div>
-                <div id="js-mode-badge" style="color: var(--cyber-green);">CHẾ ĐỘ: HỌC THẺ</div>
+        <div id="shadowing-modal" class="mobile-modal-overlay hidden">
+            <div class="mobile-modal-card">
+                <div class="modal-top-bar">
+                    <h3>🎙️ LUYỆN NÓI SHADOWING</h3>
+                    <button class="modal-close-x" onclick="learningEngine.closeShadowingModal()"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <p class="instruction-txt">Nghe máy đọc mẫu trước, sau đó lặp lại thật to:</p>
+                <div id="shadowing-text" class="target-sentence-box">Nội dung câu nói...</div>
+                <div id="countdown" class="countdown-display">READY?</div>
+                <div class="modal-bottom-actions">
+                    <button class="btn-modal-action start" onclick="learningEngine.startShadowing()">BẮT ĐẦU LUYỆN</button>
+                    <button class="btn-modal-action cancel" onclick="learningEngine.closeShadowingModal()">ĐÓNG</button>
+                </div>
             </div>
         </div>
 
     </div>
 
-    <script src="script.js"></script>
+    <script src="cyber_kanji_logic.js"></script>
 </body>
 </html>
