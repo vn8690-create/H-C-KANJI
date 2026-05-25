@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ứng Dụng Học Kanji</title>
+    <title>Cyber Kanji Flashcard</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
@@ -15,8 +15,8 @@
         </header>
 
         <section id="man-home" class="man-hinh active">
-            <div class="welcome">Chào bro! Chọn cấp độ để kích hoạt bộ não từ vựng:</div>
-            <div class="danh-sach-nut">
+            <div class="welcome">Chọn cấp độ để kích hoạt bộ não:</div>
+            <div class="danh-sach-nut-level">
                 <button class="nut-level" onclick="TaiDuLieuKanji('n5')">CẤP ĐỘ N5 🚀</button>
                 <button class="nut-level" onclick="TaiDuLieuKanji('n4')">CẤP ĐỘ N4 ⚡</button>
                 <button class="nut-level" onclick="TaiDuLieuKanji('n3')">CẤP ĐỘ N3 🔥</button>
@@ -27,10 +27,15 @@
 
         <section id="man-hoc" class="man-hinh">
             <div class="thanh-dieu-huong">
-                <h2 id="tieu-de-bai-hoc">Đang tải...</h2>
-                <button class="nut-quay-lai" onclick="ChuyenManHinh('man-home')">QUAY LẠI</button>
+                <span id="tieu-de-bai-hoc">CẤP ĐỘ</span>
+                <button class="nut-quay-lai" onclick="DừngHocVaQuayVe()">QUAY LẠI</button>
             </div>
-            <div id="vung-chua-the-kanji"></div>
+
+            <div id="khu-vuc-the-single"></div>
+
+            <div id="thanh-dieu-khien" class="khu-vuc-nut-chuyen an-giau">
+                <button class="nut-tiep-theo" onclick="ChuyenChuTiepTheo()">CHỮ TIẾP THEO ➡️</button>
+            </div>
         </section>
     </div>
 
