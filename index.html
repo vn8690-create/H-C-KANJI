@@ -1,91 +1,57 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CYBER KANJI</title>
-    <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CYBER KANJI</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
-    <div class="app-shell">
-        <header class="app-header">
-            <div class="logo-neon" onclick="navigation.showScreen('scr-home')">CYBER-KANJI</div>
-            <div class="header-stats">
-                <div class="stat-badge">🪙 <span id="xp-count">0</span> XP</div>
-                <div class="stat-badge">🎯 <span id="level-display">N5</span></div>
-            </div>
-        </header>
+<div class="container">
 
-        <main class="main-container">
-            <section id="scr-login" class="screen active">
-                <div class="login-banner">
-                    <h1 class="hero-title">CYBER KANJI</h1>
-                    <p class="hero-subtitle">HỆ THỐNG KÍCH HOẠT NÃO BỘ TỪ VỰNG N5 - N1</p>
-                </div>
-                <div class="login-card">
-                    <label class="form-label">MẬT DANH ĐẶC VỤ (TÊN CỦA BẠN):</label>
-                    <input type="text" id="agent-name-input" class="cyber-input" value="nam">
-                    <button class="btn-primary" onclick="navigation.login()">KÍCH HOẠT HỆ THỐNG ⚡</button>
-                </div>
-            </section>
+  <h1>CYBER KANJI</h1>
+  <p class="subtitle">HỆ THỐNG KÍCH HOẠT NÃO BỘ TỪ VỰNG N5 - N1</p>
 
-            <section id="scr-home" class="screen">
-                <div class="section-title">CHỌN CẤP ĐỘ</div>
-                <p class="welcome-text">Chào mừng đặc vụ <strong id="js-agent-name" style="color: var(--neon-cyan);">nam</strong>, hãy chọn mục tiêu!</p>
-                
-                <div class="level-menu-grid">
-                    <div class="menu-item-card" onclick="learning.loadData('n5')">
-                        <span class="level-title">N5</span>
-                        <p class="level-desc">Dữ liệu từ vựng Kanji cấp độ N5</p>
-                    </div>
-                    <div class="menu-item-card" onclick="learning.loadData('n4')">
-                        <span class="level-title">N4</span>
-                        <p class="level-desc">Dữ liệu từ vựng Kanji cấp độ N4</p>
-                    </div>
-                    <div class="menu-item-card" onclick="learning.loadData('n3')">
-                        <span class="level-title">N3</span>
-                        <p class="level-desc">Dữ liệu từ vựng Kanji cấp độ N3</p>
-                    </div>
-                </div>
-            </section>
+  <div class="login-box">
+    <label>MẬT DANH ĐẶC VỤ:</label>
+    <input type="text" id="username" placeholder="Tên của bạn">
+    <button id="startBtn">KÍCH HOẠT HỆ THỐNG ⚡</button>
+  </div>
 
-            <section id="scr-learning" class="screen">
-                <div class="learning-header">
-                    <h2 id="learning-title">ĐANG KÍCH HOẠT...</h2>
-                    <button class="btn-back" onclick="navigation.showScreen('scr-home')">QUAY LẠI</button>
-                </div>
+  <div id="welcome"></div>
 
-                <div id="kanji-list-container"></div>
-            </section>
-        </main>
+  <h2>CHỌN CẤP ĐỘ</h2>
 
-        <div id="global-audio-player" class="mobile-floating-player hidden">
-            <div class="player-left" onclick="audioPlayer.replay()">
-                <span class="player-wave-icon">🔊</span>
-                <span id="player-text" class="player-title">Đang phát âm mẫu...</span>
-            </div>
-            <button class="btn-player-action" onclick="audioPlayer.close()">✕</button>
-        </div>
+  <div class="level-buttons">
+    <button onclick="loadLevel('n5.json')">N5</button>
+    <button onclick="loadLevel('n4.json')">N4</button>
+    <button onclick="loadLevel('n3.json')">N3</button>
+    <button onclick="loadLevel('n2.json')">N2</button>
+    <button onclick="loadLevel('n1.json')">N1</button>
+  </div>
 
-        <div id="shadowing-modal" class="mobile-modal-overlay hidden">
-            <div class="mobile-modal-card">
-                <div class="modal-top-bar">
-                    <h3>🎙️ LUYỆN NÓI SHADOWING</h3>
-                    <button class="modal-close-x" onclick="shadowing.close()">✕</button>
-                </div>
-                <p style="font-size: 0.85rem; color: var(--text-sub); margin-bottom: 10px;">Nghe máy đọc mẫu trước, sau đó lặp lại thật to:</p>
-                <div id="shadow-target-box" class="target-sentence-box">-</div>
-                <div id="shadow-status" class="countdown-display">READY?</div>
-                <div class="modal-bottom-actions">
-                    <button class="btn-modal-action start" onclick="shadowing.startListening()">BẮT ĐẦU LUYỆN</button>
-                    <button class="btn-modal-action cancel" onclick="shadowing.close()">ĐÔNG</button>
-                </div>
-            </div>
-        </div>
+  <div id="status"></div>
 
+  <div class="card" id="wordCard">
+    <h2 id="kanji">---</h2>
+    <p id="reading"></p>
+    <p id="meaning"></p>
+
+    <div class="buttons">
+      <button onclick="speakWord()">🔊 PHÁT ÂM</button>
+      <button onclick="nextWord()">➡ TIẾP</button>
     </div>
+  </div>
 
-    <script src="./script.js"></script>
+  <div class="shadowing">
+    <h2>🎤 LUYỆN SHADOWING</h2>
+    <p>Nghe và lặp lại thật to!</p>
+    <button onclick="speakWord()">BẮT ĐẦU</button>
+  </div>
+
+</div>
+
+<script src="./script.js"></script>
 </body>
 </html>
