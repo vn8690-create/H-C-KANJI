@@ -1,57 +1,37 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CYBER KANJI</title>
-  <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Học Kanji Đơn Giản</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
-<div class="container">
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo" onclick="ChuyenManHinh('man-home')">KANJI APP</div>
+            <div class="score-box">XP: <span id="id-xp">0</span></div>
+        </header>
 
-  <h1>CYBER KANJI</h1>
-  <p class="subtitle">HỆ THỐNG KÍCH HOẠT NÃO BỘ TỪ VỰNG N5 - N1</p>
+        <section id="man-home" class="man-hinh active">
+            <div class="welcome">Chào bro! Hãy chọn cấp độ để chiến:</div>
+            <div class="danh-sach-nut">
+                <button class="nut-level" onclick="TaiDuLieuKanji('n5')">HỌC N5 🚀</button>
+                <button class="nut-level" onclick="TaiDuLieuKanji('n4')">HỌC N4 ⚡</button>
+                <button class="nut-level" onclick="TaiDuLieuKanji('n3')">HỌC N3 🔥</button>
+            </div>
+        </section>
 
-  <div class="login-box">
-    <label>MẬT DANH ĐẶC VỤ:</label>
-    <input type="text" id="username" placeholder="Tên của bạn">
-    <button id="startBtn">KÍCH HOẠT HỆ THỐNG ⚡</button>
-  </div>
-
-  <div id="welcome"></div>
-
-  <h2>CHỌN CẤP ĐỘ</h2>
-
-  <div class="level-buttons">
-    <button onclick="loadLevel('n5.json')">N5</button>
-    <button onclick="loadLevel('n4.json')">N4</button>
-    <button onclick="loadLevel('n3.json')">N3</button>
-    <button onclick="loadLevel('n2.json')">N2</button>
-    <button onclick="loadLevel('n1.json')">N1</button>
-  </div>
-
-  <div id="status"></div>
-
-  <div class="card" id="wordCard">
-    <h2 id="kanji">---</h2>
-    <p id="reading"></p>
-    <p id="meaning"></p>
-
-    <div class="buttons">
-      <button onclick="speakWord()">🔊 PHÁT ÂM</button>
-      <button onclick="nextWord()">➡ TIẾP</button>
+        <section id="man-hoc" class="man-hinh">
+            <div class="thanh-dieu-huong">
+                <h2 id="tieu-de-bai-hoc">Đang tải...</h2>
+                <button class="nut-quay-lai" onclick="ChuyenManHinh('man-home')">QUAY LẠI</button>
+            </div>
+            <div id="vung-chua-the-kanji"></div>
+        </section>
     </div>
-  </div>
 
-  <div class="shadowing">
-    <h2>🎤 LUYỆN SHADOWING</h2>
-    <p>Nghe và lặp lại thật to!</p>
-    <button onclick="speakWord()">BẮT ĐẦU</button>
-  </div>
-
-</div>
-
-<script src="./script.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
