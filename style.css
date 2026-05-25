@@ -1,5 +1,5 @@
 /* ==========================================
-   KHU VỰC 1: RESET & THIẾT LẬP KHUNG GIAO DIỆN
+   KHU VỰC 1: RESET & ĐỊNH DẠNG KHUNG CHUẨN MOBILE
    ========================================== */
 * {
     box-sizing: border-box;
@@ -9,7 +9,7 @@
 }
 
 body {
-    background-color: #060913;
+    background-color: #080c14;
     color: #ffffff;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     display: flex;
@@ -19,20 +19,20 @@ body {
 
 .app-container {
     width: 100%;
-    max-width: 500px; /* Tăng độ rộng giúp màn hình thoáng hơn */
-    background: #060913;
+    max-width: 480px; /* Độ rộng tiêu chuẩn cực đẹp cho Mobile */
+    background: #080c14;
     display: flex;
     flex-direction: column;
     padding: 20px;
 }
 
-/* KHU VỰC ĐẦU TRANG */
+/* ĐỊNH DẠNG THANH ĐỈNH TRÊN (HEADER) */
 .app-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 15px;
-    border-bottom: 2px solid #0077ff;
+    border-bottom: 2px solid #0055ff;
     margin-bottom: 25px;
 }
 
@@ -41,21 +41,23 @@ body {
     font-size: 1.3rem;
     color: #00ffcc;
     cursor: pointer;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 10px rgba(0, 255, 204, 0.4);
 }
 
 .score-box {
-    background: #0f172a;
+    background: #111a2e;
     padding: 6px 14px;
     border-radius: 20px;
     font-size: 0.9rem;
     font-weight: bold;
-    border: 1px solid #0077ff;
+    border: 1px solid #0055ff;
 }
 
-/* QUẢN LÝ GIAO DIỆN MÀN HÌNH */
+/* QUẢN LÝ ẨN HIỆN MÀN HÌNH */
 .man-hinh {
     display: none;
+    width: 100%;
 }
 
 .man-hinh.active {
@@ -64,41 +66,44 @@ body {
 }
 
 /* ==========================================
-   KHU VỰC MÀN HÌNH CHÍNH (NÚT CHỌN BÀI)
+   KHU VỰC 2: MÀN HÌNH CHÍNH (THIẾT KẾ NÚT LEVEL RỘNG RÃI)
    ========================================== */
 .welcome {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #94a3b8;
     margin-bottom: 20px;
     text-align: center;
+    line-height: 1.4;
 }
 
-.danh-sach-nut-level {
+.danh-sach-nut {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 15px; /* Tạo khoảng cách thông thoáng giữa các nút */
 }
 
 .nut-level {
-    background: #0f1424;
+    background: #111625;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    border-left: 6px solid #00ffcc;
+    border-left: 6px solid #00ffcc; /* Viền neon bên trái */
     color: white;
-    padding: 20px;
-    font-size: 1.15rem;
+    padding: 18px 20px;
+    font-size: 1.1rem;
     font-weight: bold;
     border-radius: 10px;
     cursor: pointer;
     text-align: left;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.1s ease;
 }
 
 .nut-level:active {
-    background: #1e293b;
+    background: #1d2438;
+    transform: scale(0.98);
 }
 
 /* ==========================================
-   KHU VỰC MÀN HÌNH CHI TIẾT (FLASHCARD SINGLE)
+   KHU VỰC 3: MÀN HÌNH CHI TIẾT HỌC TỪ VỰNG
    ========================================== */
 .thanh-dieu-huong {
     display: flex;
@@ -108,57 +113,59 @@ body {
 }
 
 #tieu-de-bai-hoc {
-    font-weight: bold;
-    font-size: 1rem;
+    font-size: 1.05rem;
     color: #38bdf8;
+    font-weight: bold;
 }
 
 .nut-quay-lai {
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    border: none;
-    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #cbd5e1;
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 8px 14px;
     border-radius: 6px;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     cursor: pointer;
+    font-weight: bold;
 }
 
-/* GIAO DIỆN THẺ FLASHCARD ĐƠN */
-.the-kanji-card-single {
-    background: #0f1424;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+/* THẺ HIỂN THỊ FLASHCARD CYBER */
+.the-cyber-card {
+    background: #111625;
+    border: 1px solid rgba(255, 255, 255, 0.03);
     border-radius: 16px;
-    padding: 30px 20px;
+    padding: 35px 20px;
     text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     margin-bottom: 25px;
 }
 
 .chu-kanji-khong-lo {
-    font-size: 5.5rem; /* Làm chữ Kanji siêu to, dễ nhìn */
+    font-size: 6rem; /* Làm chữ Kanji siêu to khổng lồ cực nét */
     font-weight: bold;
     color: #ffffff;
-    margin-bottom: 20px;
-    text-shadow: 0 0 15px rgba(255,255,255,0.1);
+    margin-bottom: 25px;
+    text-shadow: 0 0 20px rgba(255,255,255,0.15);
 }
 
-/* KHỐI CHỨA THÔNG TIN */
-.khoi-thong-tin {
-    margin-top: 15px;
-    border-top: 1px solid rgba(255,255,255,0.05);
+/* KHỐI HIỂN THỊ ÂM ĐỌC */
+.khoi-noi-dung {
+    border-top: 1px solid rgba(255,255,255,0.06);
     padding-top: 15px;
+    margin-top: 15px;
 }
 
 .label-am-han {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     font-weight: 900;
-    color: #ff00ff; /* Màu nổi cho âm Hán */
+    color: #ff00ff; /* Âm Hán màu hồng Neon rực rỡ */
     margin-bottom: 8px;
+    letter-spacing: 1px;
 }
 
-.text-read {
+.dong-cach-doc {
     font-size: 0.95rem;
-    color: #cbd5e1;
+    color: #94a3b8;
     margin: 4px 0;
 }
 
@@ -166,82 +173,82 @@ body {
 .khoi-nghia-viet {
     margin-top: 15px;
     background: rgba(0, 255, 204, 0.08);
-    padding: 12px;
+    padding: 12px 15px;
     border-radius: 8px;
+    border-left: 3px solid #00ffcc;
 }
 
 .text-nghia {
     font-size: 1.4rem;
     font-weight: bold;
-    color: #00ffcc;
+    color: #00ffcc; /* Nghĩa tiếng Việt màu xanh mint cực mát mắt */
 }
 
-/* KHỐI TỪ GHÉP HÁN TỰ */
+/* KHỐI TỪ GHÉP TẠO NGHĨA */
 .khoi-tu-ghep {
     margin-top: 20px;
-    text-align: left;
-    background: #070a13;
+    background: #080c14;
     padding: 15px;
-    border-radius: 10px;
+    border-radius: 8px;
     border: 1px dashed rgba(255,255,255,0.1);
+    text-align: left;
 }
 
 .title-ghep {
     font-size: 0.85rem;
-    color: #94a3b8;
+    color: #64748b;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
 .content-ghep {
     font-size: 1.1rem;
-    color: #f1f5f9;
+    color: #e2e8f0;
     line-height: 1.5;
 }
 
-/* NÚT BẤM CHUYỂN BÀI */
-.khu-vuc-nut-chuyen {
-    width: 100%;
-}
-
+/* NÚT ĐIỀU KHIỂN CHUYỂN TRANG */
 .nut-tiep-theo {
     width: 100%;
-    background: #0077ff;
+    background: #0055ff;
     color: white;
     border: none;
     padding: 16px;
     font-size: 1.1rem;
     font-weight: bold;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 119, 255, 0.4);
+    box-shadow: 0 4px 15px rgba(0, 85, 255, 0.4);
 }
 
 .nut-tiep-theo:active {
-    background: #0056b3;
+    background: #0044cc;
 }
 
-.loading-chu {
+.loading-text {
     text-align: center;
-    padding: 40px;
-    color: #94a3b8;
+    padding: 50px 20px;
+    color: #64748b;
+    font-size: 1rem;
 }
 
 /* ==========================================
-   KHU VỰC HIỆU ỨNG CHUYỂN ĐỘNG ANIMATION MƯỢT
+   KHU VỰC HIỆU ỨNG HIỂN THỊ ANIMATION MƯỢT
    ========================================== */
 .an-giau {
-    opacity: 0;
-    transform: scale(0.95);
     display: none !important;
 }
 
 .hien-hien {
     display: block !important;
-    animation: hienLenMuan 0.4s forwards ease;
+    animation: hienDanLen 0.4s forwards ease;
 }
 
-@keyframes hienLenMuan {
+@keyframes hienDanLen {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
     to {
         opacity: 1;
         transform: scale(1);
