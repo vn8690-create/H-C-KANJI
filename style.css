@@ -1,83 +1,186 @@
-body {
-    background: #020617;
-    color: white;
-    font-family: Arial, sans-serif;
+* {
+    box-sizing: border-box;
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.container {
-    max-width: 700px;
-    margin: auto;
+body {
+    background-color: #090d16;
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
 }
 
-h1 {
-    font-size: 48px;
+.app-container {
+    width: 100%;
+    max-width: 450px;
+    background: #090d16;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+/* HEADER STYLE */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #0077ff;
+    margin-bottom: 20px;
+}
+
+.logo {
+    font-weight: 900;
+    font-size: 1.2rem;
+    color: #00ffcc;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+.score-box {
+    background: #16223f;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    border: 1px solid #0077ff;
+}
+
+/* QUẢN LÝ ẨN HIỆN MÀN HÌNH */
+.man-hinh {
+    display: none;
+    width: 100%;
+}
+
+.man-hinh.active {
+    display: block;
+}
+
+/* MÀN HÌNH CHÍNH (CHỌN CẤP ĐỘ) */
+.welcome {
+    font-size: 0.95rem;
+    color: #94a3b8;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.danh-sach-nut {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.nut-level {
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-left: 5px solid #00ffcc;
+    color: white;
+    padding: 18px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.nut-level:active {
+    background: #1f2937;
+}
+
+/* MÀN HÌNH HỌC TỪ VỰNG */
+.thanh-dieu-huong {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+#tieu-de-bai-hoc {
+    font-size: 1rem;
     color: #ffffff;
 }
 
-.subtitle {
-    color: #94a3b8;
-    margin-bottom: 30px;
-}
-
-.login-box {
-    margin-bottom: 30px;
-}
-
-input {
-    padding: 10px;
-    width: 250px;
-    margin-right: 10px;
-}
-
-button {
-    background: #2563eb;
-    border: none;
+.nut-quay-lai {
+    background: rgba(255, 255, 255, 0.1);
     color: white;
-    padding: 10px 16px;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
     cursor: pointer;
-    border-radius: 8px;
-    margin: 5px;
 }
 
-button:hover {
-    background: #1d4ed8;
-}
-
-.level-buttons {
-    margin-bottom: 30px;
-}
-
-.card {
-    background: #0f172a;
-    padding: 30px;
-    border-radius: 16px;
-    margin-top: 20px;
-}
-
-#kanji {
-    font-size: 60px;
-}
-
-#reading {
-    font-size: 28px;
-    color: #38bdf8;
-}
-
-#meaning {
-    font-size: 24px;
-    color: #cbd5e1;
-}
-
-.shadowing {
-    margin-top: 40px;
+/* THIẾT KẾ THẺ KANJI CHUẨN */
+.the-kanji-card {
     background: #111827;
-    padding: 20px;
-    border-radius: 16px;
+    border: 1px solid #1f2937;
+    border-left: 4px solid #0077ff;
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 12px;
+    cursor: pointer;
 }
 
-#status {
-    margin-top: 20px;
-    color: #facc15;
+.the-kanji-card:active {
+    background: #1f2937;
+}
+
+.card-top {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.chu-to {
+    font-size: 2.3rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.nghia-tieng-viet {
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: #00ffcc;
+    margin-bottom: 4px;
+}
+
+.cach-doc {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin-top: 2px;
+}
+
+.card-bottom {
+    font-size: 0.85rem;
+    color: #e2e8f0;
+    margin-top: 10px;
+    border-top: 1px dashed #1f2937;
+    padding-top: 8px;
+}
+
+.card-nut-bam {
+    display: flex;
+    margin-top: 10px;
+}
+
+.nut-loa {
+    width: 100%;
+    background: rgba(0, 119, 255, 0.15);
+    border: 1px solid #0077ff;
+    color: white;
+    padding: 8px;
+    font-size: 0.8rem;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.bao-loi {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
 }
