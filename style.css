@@ -1,40 +1,249 @@
 /* ==========================================
-   KHU VỰC CHỈNH HIỆU ỨNG HIỂN THỊ TỰ ĐỘNG
+   KHU VỰC 1: RESET & THIẾT LẬP KHUNG GIAO DIỆN
    ========================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
 
-/* Trạng thái ẩn giấu ban đầu của các phần tử */
+body {
+    background-color: #060913;
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 500px; /* Tăng độ rộng giúp màn hình thoáng hơn */
+    background: #060913;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* KHU VỰC ĐẦU TRANG */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #0077ff;
+    margin-bottom: 25px;
+}
+
+.logo {
+    font-weight: 900;
+    font-size: 1.3rem;
+    color: #00ffcc;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+.score-box {
+    background: #0f172a;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: 1px solid #0077ff;
+}
+
+/* QUẢN LÝ GIAO DIỆN MÀN HÌNH */
+.man-hinh {
+    display: none;
+}
+
+.man-hinh.active {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==========================================
+   KHU VỰC MÀN HÌNH CHÍNH (NÚT CHỌN BÀI)
+   ========================================== */
+.welcome {
+    font-size: 1rem;
+    color: #94a3b8;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.danh-sach-nut-level {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.nut-level {
+    background: #0f1424;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-left: 6px solid #00ffcc;
+    color: white;
+    padding: 20px;
+    font-size: 1.15rem;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: left;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.nut-level:active {
+    background: #1e293b;
+}
+
+/* ==========================================
+   KHU VỰC MÀN HÌNH CHI TIẾT (FLASHCARD SINGLE)
+   ========================================== */
+.thanh-dieu-huong {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#tieu-de-bai-hoc {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #38bdf8;
+}
+
+.nut-quay-lai {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+/* GIAO DIỆN THẺ FLASHCARD ĐƠN */
+.the-kanji-card-single {
+    background: #0f1424;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    margin-bottom: 25px;
+}
+
+.chu-kanji-khong-lo {
+    font-size: 5.5rem; /* Làm chữ Kanji siêu to, dễ nhìn */
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px rgba(255,255,255,0.1);
+}
+
+/* KHỐI CHỨA THÔNG TIN */
+.khoi-thong-tin {
+    margin-top: 15px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 15px;
+}
+
+.label-am-han {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: #ff00ff; /* Màu nổi cho âm Hán */
+    margin-bottom: 8px;
+}
+
+.text-read {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    margin: 4px 0;
+}
+
+/* KHỐI NGHĨA TIẾNG VIỆT */
+.khoi-nghia-viet {
+    margin-top: 15px;
+    background: rgba(0, 255, 204, 0.08);
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.text-nghia {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #00ffcc;
+}
+
+/* KHỐI TỪ GHÉP HÁN TỰ */
+.khoi-tu-ghep {
+    margin-top: 20px;
+    text-align: left;
+    background: #070a13;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px dashed rgba(255,255,255,0.1);
+}
+
+.title-ghep {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.content-ghep {
+    font-size: 1.1rem;
+    color: #f1f5f9;
+    line-height: 1.5;
+}
+
+/* NÚT BẤM CHUYỂN BÀI */
+.khu-vuc-nut-chuyen {
+    width: 100%;
+}
+
+.nut-tiep-theo {
+    width: 100%;
+    background: #0077ff;
+    color: white;
+    border: none;
+    padding: 16px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 119, 255, 0.4);
+}
+
+.nut-tiep-theo:active {
+    background: #0056b3;
+}
+
+.loading-chu {
+    text-align: center;
+    padding: 40px;
+    color: #94a3b8;
+}
+
+/* ==========================================
+   KHU VỰC HIỆU ỨNG CHUYỂN ĐỘNG ANIMATION MƯỢT
+   ========================================== */
 .an-giau {
     opacity: 0;
-    transform: translateY(10px);
-    transition: all 0.6s ease; /* Tạo hiệu ứng trượt nhẹ lên trên khi hiện */
-    display: none; /* Ẩn hẳn để không chiếm diện tích */
+    transform: scale(0.95);
+    display: none !important;
 }
 
-/* Khi Timeline kích hoạt class này, chữ sẽ hiện ra mượt mà */
-.an-giau.hien-hien {
+.hien-hien {
     display: block !important;
-    opacity: 1 !important;
-    transform: translateY(0) !important;
+    animation: hienLenMuan 0.4s forwards ease;
 }
 
-/* Định dạng khối âm đọc */
-.khoi-am-doc {
-    margin-bottom: 8px;
-    padding: 5px 0;
-}
-
-.am-han {
-    font-size: 0.9rem;
-    color: #ff00ff; /* Màu hồng neon nổi bật cho âm Hán */
-    font-weight: bold;
-    margin-bottom: 3px;
-}
-
-/* Định dạng khối nghĩa tiếng Việt */
-.khoi-nghia {
-    background: rgba(0, 255, 204, 0.05);
-    padding: 6px;
-    border-radius: 4px;
-    border-left: 2px solid #00ffcc;
-    margin-top: 5px;
+@keyframes hienLenMuan {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
