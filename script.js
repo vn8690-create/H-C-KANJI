@@ -1,373 +1,225 @@
-// --- HỆ THỐNG QUẢN LÝ TÊN HỌC VIÊN (BẢN UPDATE CHUẨN) ---
+// =========================================================================
+// 🚀 1. TRẠNG THÁI HỆ THỐNG & ĐIỀU HƯỚNG (APP NAVIGATION)
+// =========================================================================
+let userXP = parseInt(localStorage.getItem('cyber_kanji_xp')) || 0;
+let currentAgentName = "";
+let currentLevel = "";
+let currentSpokenText = "";
+let loadedKanjiData = []; // Nơi chứa dữ liệu Kanji bốc từ file JSON về
 
-function checkStudentSession() {
-    const savedName = localStorage.getItem('cyber_student_name');
-    const welcomeScreen = document.getElementById('scr-welcome');
-    const welcomeText = document.getElementById('js-welcome-text');
-    
-    if (savedName) {
-        if (welcomeScreen) welcomeScreen.style.display = 'none';
-        if (welcomeText) {
-            welcomeText.innerHTML = `Chào Đặc Vụ <strong style="color: #00ffcc;">${savedName}</strong>, hôm nay bạn muốn nâng cấp não bộ bằng cách nào?`;
+const appNavigation = {
+    activateSystem: function() {
+        const nameInput = document.getElementById('agent-name-input');
+        const agentName = nameInput.value ? nameInput.value.trim() : "";
+        
+        if (agentName === "") {
+            alert("MẬT DANH ĐẶC VỤ CHƯA NHẬP! KHÔNG THỂ KÍCH HOẠT!");
+            if(nameInput) nameInput.focus();
+            return;
         }
-    } else {
-        if (welcomeScreen) welcomeScreen.style.display = 'flex';
+
+        const btn = document.querySelector('.btn-primary');
+        if(btn) btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> ĐANG KÍCH HOẠT...';
+        
+        setTimeout(() => {
+            currentAgentName = agentName;
+            const nameDisplay = document.getElementById('js-agent-name');
+            if(nameDisplay) nameDisplay.innerText = currentAgentName;
+            
+            if(btn) btn.innerHTML = 'KÍCH HOẠT HỆ THỐNG ⚡';
+            this.goHome();
+        }, 1200);
+    },
+
+    goHome: function() {
+        if (!currentAgentName) { this.switchScreen('scr-login'); return; }
+        this.switchScreen('scr-home');
+        updateStatsDisplay();
+        this.renderLevelsMenu();
+    },
+
+    switchScreen: function(screenId) {
+        learningEngine.closeFloatingPlayer();
+        const screens = document.querySelectorAll('.screen');
+        screens.forEach(scr => scr.classList.remove('active'));
+
+        const activeScreen = document.getElementById(screenId);
+        if (activeScreen) activeScreen.classList.add('active');
+    },
+
+    renderLevelsMenu: function() {
+        const grid = document.querySelector('.level-menu-grid');
+        if (!grid) return;
+        grid.innerHTML = '';
+        
+        const levels = ['N5', 'N4', 'N3', 'N2', 'N1'];
+        const levelColors = { 'N5': '#00ffcc', 'N4': '#0077ff', 'N3': '#e040fb', 'N2': '#ff00ff', 'N1': '#9d00ff' };
+
+        levels.forEach(lvl => {
+            const card = document.createElement('div');
+            card.className = "menu-item-card";
+            card.style = `--accent-color: ${levelColors[lvl]};`;
+            
+            card.innerHTML = `
+                <span class="level-tag">${lvl}</span>
+                <p>Nạp kho dữ liệu ${lvl}.json thực chiến phân xưởng</p>
+            `;
+            
+            // Bấm phát là kích hoạt luồng fetch file JSON tương ứng ngay
+            card.onclick = () => learningEngine.loadJsonData(lvl);
+            grid.appendChild(card);
+        });
     }
+};
+
+// =========================================================================
+// 🔣 2. ĐỘNG CƠ HÚT DỮ LIỆU JSON & PHÁT ÂM (LEARNING ENGINE)
+// =========================================================================
+const learningEngine = {
+    // CHÍ MẠNG: Hàm chọc thẳng vào các file n5.json, n4.json... của bro
+    loadJsonData: function(level) {
+        currentLevel = level;
+        appNavigation.switchScreen('scr-learning');
+        
+        const titleZone = document.querySelector('#scr-learning h2');
+        if(titleZone) titleZone.innerText = `KÍCH HOẠT ${level} - ĐANG TẢI DỮ LIỆU...`;
+        
+        const lvlDisplay = document.getElementById('level-display');
+        if(lvlDisplay) lvlDisplay.innerText = level;
+
+        // Tự động tìm file json theo tên viết thường: n5.json, n4.json...
+        const jsonFileName = `${level.toLowerCase()}.json`;
+
+        fetch(jsonFileName)
+            .then(response => {
+                if (!response.ok) throw new Error("Không tìm thấy file dữ liệu JSON");
+                return response.json();
+            })
+            .then(data => {
+                // Hỗ trợ cả trường hợp file JSON bọc trong một Object hoặc là một mảng Array thuần
+                loadedKanjiData = Array.isArray(data) ? data : (data.kanji || data.data || []);
+                this.renderLearningContent();
+            })
+            .catch(error => {
+                console.error(error);
+                const list = document.getElementById('learning-content-list');
+                if (list) {
+                    list.innerHTML = `
+                        <p style="color:var(--neon-pink); text-align:center; padding:20px;">
+                            ❌ LỖI: Không thể nạp file "${jsonFileName}". <br>
+                            Hãy đảm bảo file này tồn tại trong Repo và chuẩn cú pháp JSON nhé bro!
+                        </p>`;
+                }
+            });
+    },
+
+    renderLearningContent: function() {
+        const list = document.getElementById('learning-content-list');
+        if (!list) return;
+        list.innerHTML = '';
+
+        const titleZone = document.querySelector('#scr-learning h2');
+        if(titleZone) titleZone.innerText = `CẤP ĐỘ ${currentLevel} (${loadedKanjiData.length} KANJI)`;
+
+        if (loadedKanjiData.length === 0) {
+            list.innerHTML = `<p style="color:var(--text-sub); text-align:center; padding:20px;">DỮ LIỆU TRONG FILE JSON ĐANG TRỐNG!</p>`;
+            return;
+        }
+
+        loadedKanjiData.forEach(item => {
+            // Tự động nhận diện các kiểu đặt tên biến của Copilot cũ (kanji hoặc character, âm đọc...)
+            const kanjiChar = item.kanji || item.character || item.word || "字";
+            const amDoc = item.katakana || item.onyomi || item.kunyomi || item.reading || "---";
+            const nghiaViDu = item.example || item.meaning || item.meaning_vi || "Chưa có ví dụ";
+
+            const box = document.createElement('div');
+            box.style = "background: var(--bg-card); border: 1px solid rgba(255,255,255,0.05); border-left: 3px solid var(--neon-blue); padding: 15px; margin-bottom: 12px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; cursor: pointer;";
+            box.innerHTML = `
+                <div style="flex-grow: 1; padding-right: 12px;">
+                    <div style="display:flex; align-items:center; gap:12px;">
+                        <span style="font-family: var(--font-cyber); font-size: 2.2rem; font-weight: 900; color: #fff;">${kanjiChar}</span>
+                        <div>
+                            <div style="color: var(--neon-cyan); font-weight: bold; font-size: 0.95rem;">🔊 [ ${amDoc} ]</div>
+                            <div style="color: var(--text-sub); font-size: 0.75rem; margin-top: 2px;">Dữ liệu phân xưởng</div>
+                        </div>
+                    </div>
+                    <div style="color: #fff; font-size: 0.9rem; font-weight: 500; margin-top: 8px; padding-left:4px;">${nghiaViDu}</div>
+                </div>
+                <button onclick="event.stopPropagation(); learningEngine.openShadowingModal('${nghiaViDu}')" style="background: rgba(0,119,255,0.1); border: 1px solid var(--neon-blue); color: var(--neon-blue); width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem;"><i class="fa-solid fa-microphone"></i></button>
+            `;
+            
+            box.onclick = () => this.speakSample(amDoc, `${kanjiChar} ➔ ${nghiaViDu}`);
+            list.appendChild(box);
+        });
+    },
+
+    speakSample: function(textToSpeak, title = "") {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            
+            // Lọc bớt ký tự đặc biệt để giọng đọc chuẩn hơn
+            let cleanText = textToSpeak.replace(/[\/()（）\-,ー]/g, ' ').trim().toLowerCase();
+            
+            let speech = new SpeechSynthesisUtterance(cleanText);
+            speech.lang = 'ja-JP'; // Ép giọng chuẩn Nhật Bản cho Kanji
+            speech.rate = 0.8; 
+            
+            window.speechSynthesis.speak(speech);
+
+            currentSpokenText = textToSpeak;
+            const player = document.getElementById('floating-player');
+            const playerText = document.getElementById('floating-text');
+            if(player && playerText) {
+                player.classList.remove('hidden');
+                playerText.innerText = title || textToSpeak;
+            }
+            gainXP(2);
+        }
+    },
+
+    playAudio: function() { if (currentSpokenText) { this.speakSample(currentSpokenText); } },
+    closeFloatingPlayer: function() { const player = document.getElementById('floating-player'); if(player) player.classList.add('hidden'); },
+
+    openShadowingModal: function(text) {
+        this.closeFloatingPlayer();
+        const modal = document.getElementById('shadowing-modal');
+        const txtBox = document.getElementById('shadowing-text');
+        const cd = document.getElementById('countdown');
+        if (modal && txtBox && cd) {
+            txtBox.innerText = text; cd.innerText = "READY?"; modal.classList.remove('hidden');
+        }
+    },
+    closeShadowingModal: function() { const modal = document.getElementById('shadowing-modal'); if (modal) modal.classList.add('hidden'); },
+    startShadowing: function() {
+        const text = document.getElementById('shadowing-text').innerText;
+        const cd = document.getElementById('countdown');
+        if (!cd) return;
+        
+        cd.innerText = "Listening お手本... 🎧";
+        this.speakSample(text.split('-')[0] || text, "Đang nghe mẫu...");
+        
+        setTimeout(() => { if(cd) { cd.innerText = "Say it now! Hãy nhại giọng... 🎙️"; cd.style.color = "var(--neon-cyan)"; } }, 2500);
+        setTimeout(() => { if(cd) { cd.innerText = "SUCCESS! Tốt lắm +10 XP ⚡"; cd.style.color = "var(--neon-purple)"; gainXP(10); } }, 5500);
+    }
+};
+
+// =========================================================================
+// 🏆 3. HỆ THỐNG ĐIỂM SỐ & KHỞI CHẠY KHÔNG KHÓA TRÌNH DUYỆT
+// =========================================================================
+function gainXP(amount) {
+    userXP += amount;
+    localStorage.setItem('cyber_kanji_xp', userXP);
+    updateStatsDisplay();
 }
 
-// Hàm lưu tên khi bấm nút "Kích Hoạt Hệ Thống"
-function saveStudentName() {
-    const nameInput = document.getElementById('student-name-input').value.trim();
-    
-    if (nameInput === "") {
-        alert("Bro ơi, vui lòng nhập mật danh của mình để hệ thống ghi nhận nhé! 🥷");
-        return;
-    }
-    
-    // Lưu vào bộ nhớ trình duyệt
-    localStorage.setItem('cyber_student_name', nameInput);
-    
-    // Ẩn màn hình chào và cập nhật text
-    const welcomeScreen = document.getElementById('scr-welcome');
-    const welcomeText = document.getElementById('js-welcome-text');
-    
-    if (welcomeScreen) welcomeScreen.style.display = 'none';
-    if (welcomeText) {
-        welcomeText.innerHTML = `Chào Đặc Vụ <strong style="color: #00ffcc;">${nameInput}</strong>, hôm nay bạn muốn nâng cấp não bộ bằng cách nào?`;
-    }
-    
-    alert(`Hệ thống kích hoạt thành công! Chúc Đặc Vụ ${nameInput} cày nát N5 nhé! 🔥`);
+function updateStatsDisplay() {
+    const xpCount = document.getElementById('xp-count');
+    if (xpCount) xpCount.innerText = userXP;
 }
 
-// Chạy kiểm tra ngay khi toàn bộ trang (gồm cả CSS/Hình ảnh) đã load xong xuôi
-window.onload = function() {
-    checkStudentSession();
-};
-// ==========================================
-// 1. KHỞI TẠO TRẠNG THÁI VÀ DỮ LIỆU APP
-// ==========================================
-let currentLevel = "N5";
-let fullLevelData = []; // Chứa toàn bộ chữ của level từ file JSON
-let dayWords = [];      // 10 chữ của ngày hiện tại
-let currentQuestionIndex = 0;
-let correctAnswerData = null;
-let isQuizMode = false; // false = đang xem mặt card, true = đang làm quiz kiểm tra
-
-// Chỉ số người dùng lưu trữ lâu dài (localStorage)
-let userData = {
-    xp: 0,
-    streak: 0,
-    lastStudyDate: null,
-    unlockedDays: { N5: 1, N4: 1, N3: 1, N2: 1, N1: 1 }
-};
-
-// Chạy ngay khi ứng dụng nạp xong giao diện
-window.addEventListener('DOMContentLoaded', () => {
-    loadUserData();
-    initPWA();
+window.addEventListener('DOMContentLoaded', (event) => {
+    updateStatsDisplay();
+    document.querySelectorAll('.screen').forEach(scr => scr.classList.remove('active'));
+    const loginScreen = document.getElementById('scr-login');
+    if (loginScreen) loginScreen.classList.add('active');
 });
-
-// ==========================================
-// 2. BỘ NÃO TẢI DỮ LIỆU TỪ GITHUB
-// ==========================================
-async function loadLevelData(level) {
-    try {
-        console.log(`Đang gọi dữ liệu cho cấp độ: ${level}`);
-        
-        // Gọi file JSON chuẩn
-        const response = await fetch(`${level.toLowerCase()}.json`);
-        
-        if (!response.ok) {
-            throw new Error(`Không tìm thấy file hoặc lỗi mạng: ${response.status}`);
-        }
-        
-        fullLevelData = await response.json();
-        console.log("Đã nạp thành công kho từ vựng. Tổng số chữ:", fullLevelData.length);
-        
-        // Thuật toán xáo trộn toàn bộ kho chữ trước khi chia ngày để đổi mới trải nghiệm
-        for (let i = fullLevelData.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [fullLevelData[i], fullLevelData[j]] = [fullLevelData[j], fullLevelData[i]];
-        }
-        
-        // Nạp xong dữ liệu thì tự động vẽ lại danh sách ngày hiển thị trên màn hình
-        renderDaysList();
-
-    } catch (error) {
-        console.error("Lỗi nạp dữ liệu:", error);
-        const daysBox = document.getElementById('js-days-list');
-        if (daysBox) {
-            daysBox.innerHTML = `<div style="text-align:center; padding:20px; color:var(--cyber-pink);">⚠️ Lỗi: Không load được file ${level.toLowerCase()}.json. Bro kiểm tra tên file trên GitHub nhé!</div>`;
-        }
-    }
-}
-
-// ==========================================
-// 3. ĐIỀU HƯỚNG VÀ HIỂN THỊ LỘ TRÌNH THEO NGÀY
-// ==========================================
-function switchScreen(screenId) {
-    // 1. Tìm và ẩn tất cả các màn hình có class 'app-screen'
-    const screens = document.querySelectorAll('.app-screen');
-    screens.forEach(scr => {
-        scr.classList.add('d-none');
-        scr.style.display = 'none'; // Đảm bảo ẩn triệt để
-    });
-
-    // 2. Hiện màn hình được chọn
-    const activeScreen = document.getElementById('scr-' + screenId);
-    if (activeScreen) {
-        activeScreen.classList.remove('d-none');
-        // Nếu là màn hình test từ vựng thì dùng flex/block tùy layout, thông thường là block
-        activeScreen.style.display = (screenId === 'welcome') ? 'flex' : 'block';
-    }
-
-    // 3. ĐOẠN QUAN TRỌNG: Nếu bấm vào vocab-test thì ép tải câu hỏi luôn
-    if (screenId === 'vocab-test') {
-        if (typeof loadVocabTest === "function") {
-            loadVocabTest();
-        }
-    }
-}
-
-function renderDaysList() {
-    const totalWords = fullLevelData.length || 0; 
-    const daysBox = document.getElementById('js-days-list');
-    if (!daysBox) return;
-    
-    daysBox.innerHTML = "";
-
-    if (totalWords === 0) {
-        daysBox.innerHTML = `<div style="text-align:center; padding:20px; color:var(--text-muted);">Đang tải dữ liệu hoặc file trống, bro đợi xíu hoặc bấm lại tab nhé...</div>`;
-        return;
-    }
-
-    // Tự động tính toán số ngày thực tế: Tổng số chữ chia cho 10 từ/ngày
-    const itemsPerPage = 10;
-    const totalDays = Math.ceil(totalWords / itemsPerPage);
-    let maxUnlocked = userData.unlockedDays[currentLevel] || 1;
-
-    // Vòng lặp sinh ra số lượng Ngày linh hoạt theo kho chữ (200 chữ = 20 ngày, 400 chữ = 40 ngày)
-    for (let d = 1; d <= totalDays; d++) {
-        const item = document.createElement('div');
-        if (d <= maxUnlocked) {
-            item.className = "day-item active-day";
-            item.onclick = () => startDayStudy(d);
-            item.innerHTML = `<div class="day-number">NGÀY ${String(d).padStart(2, '0')}</div><div class="day-status">SẴN SÀNG 🔥</div>`;
-        } else {
-            item.className = "day-item locked-day";
-            item.innerHTML = `<div class="day-number">NGÀY ${String(d).padStart(2, '0')}</div><div class="day-status"><i class="fa-solid fa-lock"></i> Chưa mở khóa</div>`;
-        }
-        daysBox.appendChild(item);
-    }
-}
-
-function startDayStudy(dayNumber) {
-    let startIdx = (dayNumber - 1) * 10;
-    dayWords = fullLevelData.slice(startIdx, startIdx + 10);
-    
-    if(dayWords.length === 0) {
-        alert("Ngày này đang được cập nhật thêm chữ bro ơi!");
-        return;
-    }
-
-    document.getElementById('js-zone-title').innerText = `NGÀY ${String(dayNumber).padStart(2, '0')}`;
-    currentQuestionIndex = 0;
-    isQuizMode = false; 
-    switchScreen('study-zone');
-    showFlashcard();
-}
-
-// ==========================================
-// 4. CHẾ ĐỘ CHẠY FLASHCARD (LẬT MẶT CHỮ)
-// ==========================================
-function showFlashcard() {
-    document.getElementById('js-flip-card').classList.remove('flipped');
-    document.getElementById('js-mode-badge').innerText = "CHẾ ĐỘ: HỌC THẺ FLIP";
-    document.getElementById('js-mode-badge').style.color = "var(--cyber-blue)";
-
-    correctAnswerData = dayWords[currentQuestionIndex];
-    document.getElementById('js-kanji').innerText = correctAnswerData.kanji;
-    
-    // Đổ dữ liệu mặt sau kèm từ ghép thực chiến
-    document.getElementById('js-meaning').innerText = correctAnswerData.meaning.toUpperCase();
-    document.getElementById('js-onyomi').innerHTML = `<strong>Onyomi:</strong> ${correctAnswerData.onyomi}`;
-    document.getElementById('js-kunyomi').innerHTML = `<strong>Kunyomi:</strong> ${correctAnswerData.kunyomi}`;
-    
-    const existingExample = document.getElementById('js-example');
-    if (existingExample) {
-        existingExample.innerHTML = `<strong>Từ ghép đi kèm:</strong> <span style="color: var(--cyber-green);">${correctAnswerData.example}</span>`;
-    } else {
-        const p = document.createElement('p');
-        p.id = 'js-example';
-        p.style.marginTop = '10px';
-        p.innerHTML = `<strong>Từ ghép đi kèm:</strong> <span style="color: var(--cyber-green);">${correctAnswerData.example}</span>`;
-        document.querySelector('.card-back .yomi-details').appendChild(p);
-    }
-
-    // Nút bấm tiến độ điều hướng ở Thumb-zone
-    const optionsBox = document.getElementById('js-options-box');
-    optionsBox.innerHTML = "";
-    
-    const nextBtn = document.createElement('button');
-    nextBtn.className = "answer-btn";
-    nextBtn.style.justifyContent = "center";
-    
-    if (currentQuestionIndex < dayWords.length - 1) {
-        nextBtn.innerText = "CHỮ TIẾP THEO 👉";
-        nextBtn.onclick = () => { currentQuestionIndex++; showFlashcard(); };
-    } else {
-        nextBtn.innerText = "⚡ BẮT ĐẦU KIỂM TRA NGAY ⚡";
-        nextBtn.style.borderColor = "var(--cyber-pink)";
-        nextBtn.style.color = "var(--cyber-pink)";
-        nextBtn.onclick = () => { currentQuestionIndex = 0; isQuizMode = true; runDayQuiz(); };
-    }
-    optionsBox.appendChild(nextBtn);
-    document.getElementById('js-progress').innerText = `${currentQuestionIndex + 1}/${dayWords.length}`;
-}
-
-// ==========================================
-// 5. CHẾ ĐỘ TRẮC NGHIỆM ĐÁNH GIÁ KIẾN THỨC
-// ==========================================
-function runDayQuiz() {
-    document.getElementById('js-flip-card').classList.remove('flipped');
-    document.getElementById('js-mode-badge').innerText = "CHẾ ĐỘ: KIỂM TRA";
-    document.getElementById('js-mode-badge').style.color = "var(--cyber-pink)";
-
-    correctAnswerData = dayWords[currentQuestionIndex];
-    document.getElementById('js-kanji').innerText = correctAnswerData.kanji;
-
-    // Tạo 4 đáp án trắc nghiệm nhiễu trộn ngẫu nhiên
-    let options = [correctAnswerData.meaning];
-    let fakes = fullLevelData.filter(i => i.meaning !== correctAnswerData.meaning).map(i => i.meaning);
-    fakes.sort(() => 0.5 - Math.random());
-    for(let i=0; i<3; i++) { if(fakes[i]) options.push(fakes[i]); else options.push(`Đáp án nhiễu ${i}`); }
-    options.sort(() => 0.5 - Math.random());
-
-    const optionsBox = document.getElementById('js-options-box');
-    optionsBox.innerHTML = "";
-    const labels = ["A", "B", "C", "D"];
-    
-    options.forEach((opt, idx) => {
-        const btn = document.createElement('button');
-        btn.className = "answer-btn";
-        btn.onclick = () => checkQuizAnswer(btn, opt);
-        btn.innerHTML = `<span class="answer-text">${opt}</span><span class="answer-idx">${labels[idx]}</span>`;
-        optionsBox.appendChild(btn);
-    });
-
-    document.getElementById('js-progress').innerText = `${currentQuestionIndex + 1}/${dayWords.length}`;
-}
-
-function checkQuizAnswer(btn, selectedText) {
-    const btns = document.querySelectorAll('.answer-btn');
-    btns.forEach(b => b.style.pointerEvents = "none");
-
-    if(selectedText === correctAnswerData.meaning) {
-        btn.classList.add('btn-correct');
-        userData.xp += 15;
-        if(navigator.vibrate) navigator.vibrate(50); // Hiệu ứng rung bần bật khi chọn đúng
-    } else {
-        btn.classList.add('btn-wrong');
-        btns.forEach(b => { if(b.querySelector('.answer-text').innerText === correctAnswerData.meaning) b.classList.add('btn-correct'); });
-    }
-
-    updateGlobalStats();
-    saveUserData();
-
-    setTimeout(() => {
-        currentQuestionIndex++;
-        if(currentQuestionIndex < dayWords.length) {
-            runDayQuiz();
-        } else {
-            handleDayComplete();
-        }
-    }, 1500);
-}
-
-function handleDayComplete() {
-    alert("🎉 Xuất sắc bro ơi! Đã làm chủ hoàn toàn 10 chữ Kanji của ngày hôm nay!");
-    
-    const todayStr = new Date().toDateString();
-    if(userData.lastStudyDate !== todayStr) {
-        userData.streak += 1;
-        userData.lastStudyDate = todayStr;
-    }
-
-    let currentMax = userData.unlockedDays[currentLevel] || 1;
-    let dayCompleted = Math.ceil((fullLevelData.indexOf(dayWords[0]) + 1) / 10);
-    if(dayCompleted >= currentMax) {
-        userData.unlockedDays[currentLevel] = dayCompleted + 1;
-    }
-
-    saveUserData();
-    updateGlobalStats();
-    switchScreen('learn-hub');
-}
-
-// ==========================================
-// 6. CHẾ ĐỘ ĐẤU TRƯỜNG CHỚP NHOÁNG (TEST TỔNG HỢP)
-// ==========================================
-function startTestMode() {
-    if(fullLevelData.length === 0) {
-        alert("Bro vui lòng vào mục Lộ Trình chọn một cấp độ (N5-N1) để tải dữ liệu trước khi vào Đấu trường nhé!");
-        return;
-    }
-    dayWords = [...fullLevelData].sort(() => 0.5 - Math.random()).slice(0, 10);
-    currentQuestionIndex = 0;
-    isQuizMode = true;
-    document.getElementById('js-zone-title').innerText = `ĐẤU TRƯỜNG CHỚP NHOÁNG`;
-    switchScreen('study-zone');
-    runDayQuiz();
-}
-
-async function changeLevel(level) {
-    try {
-        const response = await fetch(`${level.toLowerCase()}.json`);
-        if (!response.ok) throw new Error('File không tồn tại');
-        
-        const data = await response.json();
-        // ... Code xử lý hiển thị danh sách ngày học của bro giữ nguyên ...
-        
-    } catch (error) {
-        // Thay vì alert bực mình, ta xóa danh sách ngày cũ và hiện thông báo tinh tế
-        const daysList = document.getElementById('js-days-list');
-        if (daysList) {
-            daysList.innerHTML = `<div style="color: #ff0055; padding: 20px; text-align:center; font-family:'Orbitron';">
-                [HỆ THỐNG] Dữ liệu dữ liệu ${level} đang được nạp. Vui lòng quay lại sau! 🤖
-            </div>`;
-        }
-    }
-}
-
-function toggleCard() {
-    document.getElementById('js-flip-card').classList.toggle('flipped');
-}
-
-// ==========================================
-// 7. LƯU TRỮ VÀ KHỞI CHẠY HỆ THỐNG
-// ==========================================
-function updateGlobalStats() {
-    document.getElementById('js-streak').innerText = userData.streak;
-    document.getElementById('js-menu-exp').innerText = `${userData.xp} XP`;
-    
-    let rank = "TÂN BINH 🔰";
-    if(userData.xp >= 100 && userData.xp < 300) rank = "THỢ SĂN BỘ THỦ ⚡";
-    if(userData.xp >= 300 && userData.xp < 800) rank = "QUÁI KIỆT KANJI 🔥";
-    if(userData.xp >= 800) rank = "HUYỀN THOẠI N1 🌌";
-    const rankDisp = document.getElementById('rank-display');
-    if (rankDisp) rankDisp.innerText = rank;
-}
-
-function saveUserData() { localStorage.setItem('cyber_kanji_v2_data', JSON.stringify(userData)); }
-function loadUserData() {
-    const saved = localStorage.getItem('cyber_kanji_v2_data');
-    if(saved) { userData = JSON.parse(saved); }
-    updateGlobalStats();
-    loadLevelData(currentLevel); // Tự động nạp N5 khi mở app lên
-}
-
-function initPWA() {
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').catch(err => console.log(err)); });
-    }
-}
