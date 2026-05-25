@@ -3,10 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CYBER KANJI - Kích Hoạt Não Bộ</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Học Kanji N5</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="./style.css">
 </head>
@@ -14,31 +11,30 @@
 
     <div class="app-shell">
         <header class="app-header">
-            <div class="logo-neon" onclick="appNavigation.goHome()">CYBER-KANJI</div>
+            <div class="logo-neon" onclick="appNavigation.goHome()">KANJI LEARNING</div>
             <div class="header-stats">
-                <div class="stat-badge xp"><i class="fa-solid fa-brain"></i> <span id="xp-count">0</span> XP</div>
-                <div class="stat-badge level" style="color: var(--neon-cyan);"><i class="fa-solid fa-gauge-high"></i> <span id="level-display">N5</span></div>
+                <div class="stat-badge xp">XP: <span id="xp-count">0</span></div>
+                <div class="stat-badge level"><span id="level-display">N5</span></div>
             </div>
         </header>
 
         <main class="main-container">
             
-            <section id="scr-login" class="screen active">
+            <section id="scr-login" class="screen">
                 <div class="login-banner">
                     <h1 class="hero-title">CYBER KANJI</h1>
-                    <p class="hero-subtitle">HỆ THỐNG KÍCH HOẠT NÃO BỘ TỪ VỰNG N5 - N1</p>
+                    <p class="hero-subtitle">HỆ THỐNG HỌC TỪ VỰNG TIẾNG NHẬT</p>
                 </div>
                 <div class="login-card">
-                    <label class="form-label">MẬT DANH ĐẶC VỤ (TÊN CỦA BẠN):</label>
-                    <input type="text" id="agent-name-input" class="cyber-input" placeholder="Nhập tên..." value="nam">
+                    <label class="form-label">MẬT DANH ĐẶC VỤ:</label>
+                    <input type="text" id="agent-name-input" class="cyber-input" value="Nam">
                     <button class="btn-primary" onclick="appNavigation.activateSystem()">KÍCH HOẠT HỆ THỐNG ⚡</button>
                 </div>
             </section>
 
             <section id="scr-home" class="screen">
                 <div class="hero-banner">
-                    <h2 class="hero-title" style="font-size: 1.4rem;">CHỌN CẤP ĐỘ LEARNING</h2>
-                    <p class="hero-subtitle">Chào đặc vụ <strong id="js-agent-name" style="color: var(--neon-cyan);">Nam</strong></p>
+                    <p class="hero-subtitle">Chào đặc vụ: <strong id="js-agent-name" style="color: var(--neon-cyan);">Nam</strong></p>
                 </div>
                 <div class="level-menu-grid">
                     </div>
@@ -53,33 +49,6 @@
             </section>
 
         </main>
-
-        <div id="floating-player" class="mobile-floating-player hidden">
-            <div class="player-left" onclick="learningEngine.playAudio()">
-                <i class="fa-solid fa-volume-high player-wave-icon"></i>
-                <span id="floating-text" class="player-title">Đang phát âm...</span>
-            </div>
-            <div class="player-rights">
-                <button class="btn-player-action close" onclick="learningEngine.closeFloatingPlayer()"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-        </div>
-
-        <div id="shadowing-modal" class="mobile-modal-overlay hidden">
-            <div class="mobile-modal-card">
-                <div class="modal-top-bar">
-                    <h3>🎙️ LUYỆN NÓI SHADOWING</h3>
-                    <button class="modal-close-x" onclick="learningEngine.closeShadowingModal()"><i class="fa-solid fa-xmark"></i></button>
-                </div>
-                <p style="font-size:0.75rem; color:var(--text-sub); margin-bottom:10px;">Nghe mẫu rồi lặp lại thật to:</p>
-                <div id="shadowing-text" class="target-sentence-box">Nội dung câu nói...</div>
-                <div id="countdown" class="countdown-display">READY?</div>
-                <div class="modal-bottom-actions">
-                    <button class="btn-modal-action start" onclick="learningEngine.startShadowing()">BẮT ĐẦU LUYỆN</button>
-                    <button class="btn-modal-action cancel" onclick="learningEngine.closeShadowingModal()">ĐÓNG</button>
-                </div>
-            </div>
-        </div>
-
     </div>
 
     <script src="./script.js"></script>
