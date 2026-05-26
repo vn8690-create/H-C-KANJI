@@ -1,0 +1,1389 @@
+[
+  {
+    "id": 1,
+    "kanji": "先生",
+    "options": ["ぜんせい", "せんせい", "せんぜい", "しんせい"],
+    "correct": "せんせい",
+    "meaning": "Giáo viên"
+  },
+  {
+    "id": 2,
+    "kanji": "学生",
+    "options": ["がくせい", "かくせい", "がっせい", "がくぜい"],
+    "correct": "がくせい",
+    "meaning": "Học sinh"
+  },
+  {
+    "id": 3,
+    "kanji": "今日",
+    "options": ["きょう", "きよう", "ちょう", "こんにち"],
+    "correct": "きょう",
+    "meaning": "Hôm nay"
+  },
+  {
+    "id": 4,
+    "kanji": "毎日",
+    "options": ["まいしん", "まいにち", "まいび", "まいにっち"],
+    "correct": "まいにち",
+    "meaning": "Hàng ngày"
+  },
+  {
+    "id": 5,
+    "kanji": "行く",
+    "options": ["かく", "いく", "りく", "おこなう"],
+    "correct": "いく",
+    "meaning": "Đi"
+  },
+  {
+    "id": 6,
+    "kanji": "銀行",
+    "options": ["ぎんこう", "きんこう", "ぎんごう", "ぎんく"],
+    "correct": "ぎんこう",
+    "meaning": "Ngân hàng"
+  },
+  {
+    "id": 7,
+    "kanji": "車",
+    "options": ["くま", "くるま", "しゃ", "こるま"],
+    "correct": "くるま",
+    "meaning": "Ô tô"
+  },
+  {
+    "id": 8,
+    "kanji": "電車",
+    "options": ["てんしゃ", "でんしゃ", "でんじゃ", "てんじゃ"],
+    "correct": "でんしゃ",
+    "meaning": "Tàu điện"
+  },
+  {
+    "id": 9,
+    "kanji": "大きい",
+    "options": ["おきい", "おおきい", "だいい", "たいきい"],
+    "correct": "おおきい",
+    "meaning": "To lớn"
+  },
+  {
+    "id": 10,
+    "kanji": "大学",
+    "options": ["たいがく", "だいがく", "だいかく", "たいかく"],
+    "correct": "だいがく",
+    "meaning": "Trường đại học"
+  },
+  {
+    "id": 11,
+    "kanji": "学校",
+    "options": ["がこう", "がっこう", "かくこう", "かっこう"],
+    "correct": "がっこう",
+    "meaning": "Trường học"
+  },
+  {
+    "id": 12,
+    "kanji": "日本語",
+    "options": ["にほんご", "にっぽんご", "にほんこ", "にほんごう"],
+    "correct": "にほんご",
+    "meaning": "Tiếng Nhật"
+  },
+  {
+    "id": 13,
+    "kanji": "一人",
+    "options": ["いちにん", "ひとり", "いちじん", "ひとつ"],
+    "correct": "ひとり",
+    "meaning": "Một người"
+  },
+  {
+    "id": 14,
+    "kanji": "二人",
+    "options": ["ににん", "ふたり", "にじん", "ふたつ"],
+    "correct": "ふたり",
+    "meaning": "Hai người"
+  },
+  {
+    "id": 15,
+    "kanji": "大人",
+    "options": ["だいにん", "おとな", "たいじん", "おおひと"],
+    "correct": "おとな",
+    "meaning": "Người lớn"
+  },
+  {
+    "id": 16,
+    "kanji": "外国",
+    "options": ["がいこく", "かいこく", "がいごく", "がいこっく"],
+    "correct": "がいこく",
+    "meaning": "Nước ngoài"
+  },
+  {
+    "id": 17,
+    "kanji": "中国",
+    "options": ["ちゅうこく", "ちゅうごく", "じゅうごく", "ちよごく"],
+    "correct": "ちゅうごく",
+    "meaning": "Trung Quốc"
+  },
+  {
+    "id": 18,
+    "kanji": "時間",
+    "options": ["じかん", "しかん", "じがん", "ときま"],
+    "correct": "じかん",
+    "meaning": "Thời gian"
+  },
+  {
+    "id": 19,
+    "kanji": "間",
+    "options": ["かん", "あいだ", "げん", "ま"],
+    "correct": "あいだ",
+    "meaning": "Ở giữa, khoảng giữa"
+  },
+  {
+    "id": 20,
+    "kanji": "一時間",
+    "options": ["いちじかん", "ひとつじかん", "いっじかん", "いちしかん"],
+    "correct": "いちじかん",
+    "meaning": "1 tiếng đồng hồ"
+  },
+  {
+    "id": 21,
+    "kanji": "半分",
+    "options": ["はんぷん", "はんぶん", "ほんぶん", "はんふん"],
+    "correct": "はんぶん",
+    "meaning": "Một nửa"
+  },
+  {
+    "id": 22,
+    "kanji": "三分",
+    "options": ["さんふん", "さんぷん", "さんぶん", "さっぷん"],
+    "correct": "さんぷん",
+    "meaning": "3 phút"
+  },
+  {
+    "id": 23,
+    "kanji": "何分",
+    "options": ["なにふん", "なんぷん", "なんぶん", "なにぶん"],
+    "correct": "なんぷん",
+    "meaning": "Mấy phút"
+  },
+  {
+    "id": 24,
+    "kanji": "新聞",
+    "options": ["しんぶん", "しんぷん", "じんぶん", "しんもん"],
+    "correct": "しんぶん",
+    "meaning": "Báo chí"
+  },
+  {
+    "id": 25,
+    "kanji": "聞く",
+    "options": ["ぶんく", "きく", "しんく", "ききます"],
+    "correct": "きく",
+    "meaning": "Nghe"
+  },
+  {
+    "id": 26,
+    "kanji": "書く",
+    "options": ["かく", "がく", "しょく", "きく"],
+    "correct": "かく",
+    "meaning": "Viết"
+  },
+  {
+    "id": 27,
+    "kanji": "読書",
+    "options": ["どくしょ", "とうしょ", "とくしょ", "どくじょ"],
+    "correct": "どくしょ",
+    "meaning": "Đọc sách"
+  },
+  {
+    "id": 28,
+    "kanji": "下車",
+    "options": ["げしゃ", "かしゃ", "したしゃ", "しんしゃ"],
+    "correct": "げしゃ",
+    "meaning": "Xuống xe"
+  },
+  {
+    "id": 29,
+    "kanji": "地下鉄",
+    "options": ["ちかてつ", "じかてつ", "ちげてつ", "ちかてっつ"],
+    "correct": "ちかてつ",
+    "meaning": "Tàu điện ngầm"
+  },
+  {
+    "id": 30,
+    "kanji": "今週",
+    "options": ["こんしゅう", "いましゅう", "こんしゅ", "ほんしゅう"],
+    "correct": "こんしゅう",
+    "meaning": "Tuần này"
+  },
+  {
+    "id": 31,
+    "kanji": "来週",
+    "options": ["らいしゅ", "らいしゅう", "らいじゅう", "きしゅう"],
+    "correct": "らいしゅう",
+    "meaning": "Tuần sau"
+  },
+  {
+    "id": 32,
+    "kanji": "先週",
+    "options": ["せんしゅ", "せんしゅう", "ぜんしゅう", "さきしゅう"],
+    "correct": "せんしゅう",
+    "meaning": "Tuần trước"
+  },
+  {
+    "id": 33,
+    "kanji": "一週間",
+    "options": ["いちしゅうかん", "いっしゅうかん", "いっしゅかん", "いちしゅかん"],
+    "correct": "いっしゅうかん",
+    "meaning": "1 tuần lễ"
+  },
+  {
+    "id": 34,
+    "kanji": "水泳",
+    "options": ["すいえい", "みずえい", "すいよ", "すいべい"],
+    "correct": "すいえい",
+    "meaning": "Bơi lội"
+  },
+  {
+    "id": 35,
+    "kanji": "水道",
+    "options": ["みずどう", "すいどう", "すいとお", "ずいどう"],
+    "correct": "すいどう",
+    "meaning": "Nước máy"
+  },
+  {
+    "id": 36,
+    "kanji": "火山",
+    "options": ["ひやま", "かざん", "かさん", "ひざん"],
+    "correct": "かざん",
+    "meaning": "Núi lửa"
+  },
+  {
+    "id": 37,
+    "kanji": "登山",
+    "options": ["とざん", "とさん", "やまのぼり", "どうざん"],
+    "correct": "とざん",
+    "meaning": "Leo núi"
+  },
+  {
+    "id": 38,
+    "kanji": "安全",
+    "options": ["あんぜん", "あんせん", "はんぜん", "あんぜ"],
+    "correct": "あんぜん",
+    "meaning": "An toàn"
+  },
+  {
+    "id": 40,
+    "kanji": "安心",
+    "options": ["あんしん", "あんじん", "はんしん", "あんしっん"],
+    "correct": "あんしん",
+    "meaning": "An tâm"
+  },
+  {
+    "id": 41,
+    "kanji": "中心",
+    "options": ["ちゅうしん", "じゅうしん", "なかこころ", "ちゅうじん"],
+    "correct": "ちゅうしん",
+    "meaning": "Trung tâm"
+  },
+  {
+    "id": 42,
+    "kanji": "新車",
+    "options": ["あたらしゃ", "しんしゃ", "しんじゃ", "にいしゃ"],
+    "correct": "しんしゃ",
+    "meaning": "Xe mới"
+  },
+  {
+    "id": 43,
+    "kanji": "新年",
+    "options": ["しんねん", "あらねん", "しんとし", "いまねん"],
+    "correct": "しんねん",
+    "meaning": "Năm mới"
+  },
+  {
+    "id": 44,
+    "kanji": "古本",
+    "options": ["ふるほん", "ふるぼん", "こほん", "ふるぽん"],
+    "correct": "ふるほん",
+    "meaning": "Sách cũ"
+  },
+  {
+    "id": 45,
+    "kanji": "長男",
+    "options": ["ながおとこ", "ちょうなん", "ちょうだん", "しゅなん"],
+    "correct": "ちょうなん",
+    "meaning": "Trưởng nam"
+  },
+  {
+    "id": 46,
+    "kanji": "社長",
+    "options": ["しゃちょう", "じゃちょう", "しゃちょ", "さちょう"],
+    "correct": "しゃちょう",
+    "meaning": "Giám đốc"
+  },
+  {
+    "id": 47,
+    "kanji": "校長",
+    "options": ["こうちょ", "こうちょう", "ごうちょう", "かっちょう"],
+    "correct": "こうちょう",
+    "meaning": "Hiệu trưởng"
+  },
+  {
+    "id": 48,
+    "kanji": "少し",
+    "options": ["すこし", "すくし", "すこい", "すこしも"],
+    "correct": "すこし",
+    "meaning": "Một ít, một chút"
+  },
+  {
+    "id": 49,
+    "kanji": "少年",
+    "options": ["しょうねん", "すこねん", "じょうねん", "しょうね"],
+    "correct": "しょうねん",
+    "meaning": "Thiếu niên"
+  },
+  {
+    "id": 50,
+    "kanji": "多少",
+    "options": ["おおすこ", "たしょう", "だしょう", "たじょう"],
+    "correct": "たしょう",
+    "meaning": "Ít nhiều"
+  },
+  {
+    "id": 51,
+    "kanji": "店員",
+    "options": ["みせいん", "てんいん", "でんいん", "てんえん"],
+    "correct": "てんいん",
+    "meaning": "Nhân viên cửa hàng"
+  },
+  {
+    "id": 52,
+    "kanji": "売店",
+    "options": ["ばいてん", "ばいでん", "うりみせ", "まいてん"],
+    "correct": "ばいてん",
+    "meaning": "Quầy bán hàng"
+  },
+  {
+    "id": 53,
+    "kanji": "買物",
+    "options": ["かいもの", "ばいもの", "かうもの", "がいもの"],
+    "correct": "かいもの",
+    "meaning": "Mua sắm"
+  },
+  {
+    "id": 54,
+    "kanji": "売買",
+    "options": ["うりかい", "ばいばい", "まいまい", "はいはい"],
+    "correct": "ばいばい",
+    "meaning": "Mua bán"
+  },
+  {
+    "id": 55,
+    "kanji": "電気",
+    "options": ["てんき", "でんき", "でんぎ", "てんぎ"],
+    "correct": "でんき",
+    "meaning": "Điện, điện lực"
+  },
+  {
+    "id": 56,
+    "kanji": "天気",
+    "options": ["てんき", "でんき", "てんぎ", "てんきい"],
+    "correct": "てんき",
+    "meaning": "Thời tiết"
+  },
+  {
+    "id": 57,
+    "kanji": "病気",
+    "options": ["びょうき", "びょき", "びょうぎ", "ひょうき"],
+    "correct": "びょうき",
+    "meaning": "Bệnh tật"
+  },
+  {
+    "id": 58,
+    "kanji": "元気",
+    "options": ["けんき", "げんき", "げんぎ", "がんき"],
+    "correct": "げんき",
+    "meaning": "Khỏe mạnh"
+  },
+  {
+    "id": 60,
+    "kanji": "本屋",
+    "options": ["ほんおく", "ほんや", "ほんおくや", "ぽんや"],
+    "correct": "ほんや",
+    "meaning": "Tiệm sách"
+  },
+  {
+    "id": 61,
+    "kanji": "家屋",
+    "options": ["いえや", "かおく", "いえおく", "かや"],
+    "correct": "かおく",
+    "meaning": "Nhà cửa"
+  },
+  {
+    "id": 62,
+    "kanji": "読んだ",
+    "options": ["よんだ", "とんだ", "よみます", "のんだ"],
+    "correct": "よんだ",
+    "meaning": "Đã đọc"
+  },
+  {
+    "id": 63,
+    "kanji": "飲酒",
+    "options": ["のみさけ", "いんしゅ", "いんじゅ", "おんしゅ"],
+    "correct": "いんしゅ",
+    "meaning": "Uống rượu"
+  },
+  {
+    "id": 64,
+    "kanji": "飲食店",
+    "options": ["いんしょくてん", "おんしょくてん", "のみみせてん", "いんしょくでん"],
+    "correct": "いんしょくてん",
+    "meaning": "Quán ăn uống"
+  },
+  {
+    "id": 65,
+    "kanji": "和食",
+    "options": ["わしょく", "わしょっく", "ほうしょく", "なわしょく"],
+    "correct": "わしょく",
+    "meaning": "Món ăn kiểu Nhật"
+  },
+  {
+    "id": 66,
+    "kanji": "洋食",
+    "options": ["ようしょく", "よしょく", "ようじょく", "おうしょく"],
+    "correct": "ようしょく",
+    "meaning": "Món ăn kiểu Tây"
+  },
+  {
+    "id": 67,
+    "kanji": "食事",
+    "options": ["しょくし", "しょくじ", "じょくじ", "しょくち"],
+    "correct": "しょくじ",
+    "meaning": "Bữa ăn"
+  },
+  {
+    "id": 68,
+    "kanji": "大事",
+    "options": ["だいし", "だいじ", "たいじ", "おおごと"],
+    "correct": "だいじ",
+    "meaning": "Quan trọng"
+  },
+  {
+    "id": 69,
+    "kanji": "火事",
+    "options": ["ひじ", "かじ", "がじ", "ひごと"],
+    "correct": "かじ",
+    "meaning": "Hỏa hoạn"
+  },
+  {
+    "id": 70,
+    "kanji": "仕事",
+    "options": ["しこと", "しごと", "じごと", "つめごと"],
+    "correct": "しごと",
+    "meaning": "Công việc"
+  },
+  {
+    "id": 71,
+    "kanji": "見物",
+    "options": ["みもの", "けんぶつ", "けんぶっつ", "みぶつ"],
+    "correct": "けんぶつ",
+    "meaning": "Tham quan, ngắm nhìn"
+  },
+  {
+    "id": 72,
+    "kanji": "建物",
+    "options": ["たてもの", "けんぶつ", "たてぶつ", "たてもん"],
+    "correct": "たてもの",
+    "meaning": "Tòa nhà"
+  },
+  {
+    "id": 73,
+    "kanji": "荷物",
+    "options": ["にもつ", "にかつ", "にもっつ", "にぶつ"],
+    "correct": "にもつ",
+    "meaning": "Hành lý"
+  },
+  {
+    "id": 74,
+    "kanji": "動物",
+    "options": ["どうぶつ", "とうぶつ", "どうぶっつ", "どうもつ"],
+    "correct": "どうぶつ",
+    "meaning": "Động vật"
+  },
+  {
+    "id": 75,
+    "kanji": "同時",
+    "options": ["とうじ", "どうじ", "どうち", "とじ"],
+    "correct": "どうじ",
+    "meaning": "Đồng thời"
+  },
+  {
+    "id": 76,
+    "kanji": "時計",
+    "options": ["とけい", "どけい", "とけえ", "ときい"],
+    "correct": "とけい",
+    "meaning": "Đồng hồ"
+  },
+  {
+    "id": 77,
+    "kanji": "計画",
+    "options": ["けいかく", "けいがく", "げいかく", "けっかく"],
+    "correct": "けいかく",
+    "meaning": "Kế hoạch"
+  },
+  {
+    "id": 78,
+    "kanji": "会話",
+    "options": ["かいわ", "がいわ", "かいは", "かあわ"],
+    "correct": "かいわ",
+    "meaning": "Hội thoại"
+  },
+  {
+    "id": 79,
+    "kanji": "電話",
+    "options": ["てんわ", "でんわ", "でんば", "てんは"],
+    "correct": "でんわ",
+    "meaning": "Điện thoại"
+  },
+  {
+    "id": 80,
+    "kanji": "英語",
+    "options": ["えご", "えいご", "えいこ", "えいごう"],
+    "correct": "えいご",
+    "meaning": "Tiếng Anh"
+  },
+  {
+    "id": 81,
+    "kanji": "外車",
+    "options": ["がいしゃ", "かいしゃ", "そとくるま", "がいじゃ"],
+    "correct": "がいしゃ",
+    "meaning": "Xe ngoại nhập"
+  },
+  {
+    "id": 82,
+    "kanji": "花見",
+    "options": ["はなみ", "はなみる", "かみ", "ばなみ"],
+    "correct": "はなみ",
+    "meaning": "Ngắm hoa"
+  },
+  {
+    "id": 83,
+    "kanji": "花火",
+    "options": ["はなび", "はなひ", "かび", "ばなび"],
+    "correct": "はなび",
+    "meaning": "Pháo hoa"
+  },
+  {
+    "id": 84,
+    "kanji": "花瓶",
+    "options": ["はなびん", "かびん", "はなび」、", "かひん"],
+    "correct": "かびん",
+    "meaning": "Bình hoa"
+  },
+  {
+    "id": 85,
+    "kanji": "お茶",
+    "options": ["おちゃ", "おさ", "おじゃ", "おてぃ"],
+    "correct": "おちゃ",
+    "meaning": "Trà, nước chè"
+  },
+  {
+    "id": 86,
+    "kanji": "茶色",
+    "options": ["ちゃいろ", "さいろ", "ちゃいろく", "さいろく"],
+    "correct": "ちゃいろ",
+    "meaning": "Màu nâu"
+  },
+  {
+    "id": 87,
+    "kanji": "喫茶店",
+    "options": ["きさてん", "きっさてん", "きっざてん", "きさみせ"],
+    "correct": "きっさてん",
+    "meaning": "Quán cà phê"
+  },
+  {
+    "id": 88,
+    "kanji": "鳥肉",
+    "options": ["とりにく", "ちょうにく", "とりのく", "どりにく"],
+    "correct": "とりにく",
+    "meaning": "Thịt gà"
+  },
+  {
+    "id": 89,
+    "kanji": "牛肉",
+    "options": ["うしにく", "ぎゅうにく", "ぎゅにく", "きゅうにく"],
+    "correct": "ぎゅうにく",
+    "meaning": "Thịt bò"
+  },
+  {
+    "id": 90,
+    "kanji": "肉屋",
+    "options": ["にくおく", "にくや", "にくみせ", "にくやさん"],
+    "correct": "肉屋",
+    "meaning": "Cửa hàng bán thịt"
+  },
+  {
+    "id": 91,
+    "kanji": "会社",
+    "options": ["かいしゃ", "がいしゃ", "かいじゃ", "かしゃ"],
+    "correct": "かいしゃ",
+    "meaning": "Công ty"
+  },
+  {
+    "id": 92,
+    "kanji": "社会",
+    "options": ["しゃかい", "じゃかい", "さかい", "しゃがい"],
+    "correct": "しゃかい",
+    "meaning": "Xã hội"
+  },
+  {
+    "id": 93,
+    "kanji": "神社",
+    "options": ["しんじゃ", "じんじゃ", "しんしゃ", "じんしゃ"],
+    "correct": "じんじゃ",
+    "meaning": "Đền thần đạo"
+  },
+  {
+    "id": 94,
+    "kanji": "出張",
+    "options": ["でちょう", "しゅっちょう", "しゅちょう", "しゅつじょう"],
+    "correct": "しゅっちょう",
+    "meaning": "Đi công tác"
+  },
+  {
+    "id": 95,
+    "kanji": "出口",
+    "options": ["でくち", "でぐち", "しゅつぐち", "でぐちく"],
+    "correct": "でぐち",
+    "meaning": "Cửa ra"
+  },
+  {
+    "id": 96,
+    "kanji": "入り口",
+    "options": ["いりくち", "いりぐち", "はいりぐち", "にゅうぐち"],
+    "correct": "いりぐち",
+    "meaning": "Cửa vào"
+  },
+  {
+    "id": 97,
+    "kanji": "入る",
+    "options": ["いる", "はいる", "いれる", "にゅうる"],
+    "correct": "はいる",
+    "meaning": "Đi vào"
+  },
+  {
+    "id": 98,
+    "kanji": "入れる",
+    "options": ["いれる", "はいれる", "おれる", "にゅうれる"],
+    "correct": "いれる",
+    "meaning": "Cho vào, bỏ vào"
+  },
+  {
+    "id": 99,
+    "kanji": "入学",
+    "options": ["いるがく", "にゅうがく", "にゅがく", "はいがく"],
+    "correct": "にゅうがく",
+    "meaning": "Nhập học"
+  },
+  {
+    "id": 100,
+    "kanji": "出国",
+    "options": ["でこく", "しゅっこく", "しゅつこく", "でっこく"],
+    "correct": "しゅっこく",
+    "meaning": "Xuất cảnh"
+  },
+  {
+    "id": 101,
+    "kanji": "外国人",
+    "options": ["がいこくじん", "がいこくにん", "かいこくじん", "がいごくじん"],
+    "correct": "がいこくじん",
+    "meaning": "Người nước ngoài"
+  },
+  {
+    "id": 102,
+    "kanji": "手紙",
+    "options": ["てかみ", "てがみ", "しゅし", "てがみい"],
+    "correct": "てがみ",
+    "meaning": "Bức thư"
+  },
+  {
+    "id": 103,
+    "kanji": "切手",
+    "options": ["きりて", "きって", "きつて", "せって"],
+    "correct": "きって",
+    "meaning": "Tem thư"
+  },
+  {
+    "id": 104,
+    "kanji": "下手",
+    "options": ["したて", "へた", "したてい", "しもて"],
+    "correct": "へた",
+    "meaning": "Kém cỏi"
+  },
+  {
+    "id": 105,
+    "kanji": "上手",
+    "options": ["うわて", "じょうず", "かみて", "じょうす"],
+    "correct": "じょうず",
+    "meaning": "Giỏi giang"
+  },
+  {
+    "id": 106,
+    "kanji": "足首",
+    "options": ["あしくび", "あしくみ", "そくしゅ", "たらくび"],
+    "correct": "あしくび",
+    "meaning": "Cổ chân"
+  },
+  {
+    "id": 107,
+    "kanji": "一足",
+    "options": ["いちあし", "いっそく", "いちそく", "いっぞく"],
+    "correct": "いっそく",
+    "meaning": "1 đôi (giày, tất)"
+  },
+  {
+    "id": 108,
+    "kanji": "遠足",
+    "options": ["えんあし", "えんそく", "おんそく", "えんぞく"],
+    "correct": "えんそく",
+    "meaning": "Dã ngoại"
+  },
+  {
+    "id": 109,
+    "kanji": "目上",
+    "options": ["めうえ", "もくじょう", "めかみ", "まうえ"],
+    "correct": "めうえ",
+    "meaning": "Cấp trên, người bề trên"
+  },
+  {
+    "id": 110,
+    "kanji": "目的",
+    "options": ["めてき", "もくてき", "もくてきい", "ぼくてき"],
+    "correct": "もくてき",
+    "meaning": "Mục đích"
+  },
+  {
+    "id": 111,
+    "kanji": "耳鼻科",
+    "options": ["みじびか", "じびか", "みみはなか", "じひか"],
+    "correct": "じびか",
+    "meaning": "Khoa tai mũi họng"
+  },
+  {
+    "id": 112,
+    "kanji": "見学",
+    "options": ["みがく", "けんがく", "みんがく", "けんかく"],
+    "correct": "けんかく",
+    "meaning": "Kiến tập, tham quan học tập"
+  },
+  {
+    "id": 113,
+    "kanji": "意見",
+    "options": ["いけん", "いげん", "いみみ", "おんけん"],
+    "correct": "いけん",
+    "meaning": "Ý kiến"
+  },
+  {
+    "id": 114,
+    "kanji": "日本料理",
+    "options": ["にほんりょうり", "にっぽんりょうり", "にほんりょり", "にほんりょうじ"],
+    "correct": "にほん料理",
+    "meaning": "Món ăn Nhật Bản"
+  },
+  {
+    "id": 115,
+    "kanji": "一分",
+    "options": ["いちふん", "いっぷん", "いちぶん", "いっぷ分"],
+    "correct": "いっぷん",
+    "meaning": "1 phút"
+  },
+  {
+    "id": 116,
+    "kanji": "六分",
+    "options": ["ろくふん", "ろっぷん", "ろくぶん", "ろっふん"],
+    "correct": "ろっぷん",
+    "meaning": "6 phút"
+  },
+  {
+    "id": 117,
+    "kanji": "八分",
+    "options": ["はちふん", "はっぷん", "はちぶん", "はっふん"],
+    "correct": "はっぷん",
+    "meaning": "8 phút"
+  },
+  {
+    "id": 118,
+    "kanji": "十分",
+    "options": ["じゅうふん", "じゅっぷん", "じゅうぶん", "じゅっふん"],
+    "correct": "じゅっぷん",
+    "meaning": "10 phút (hoặc đầy đủ)"
+  },
+  {
+    "id": 119,
+    "kanji": "青空",
+    "options": ["あおぞら", "あおそら", "せいくう", "せいぞら"],
+    "correct": "あおぞら",
+    "meaning": "Bầu trời xanh"
+  },
+  {
+    "id": 120,
+    "kanji": "空気",
+    "options": ["そらき", "くうき", "くうぎ", "こうき"],
+    "correct": "くうき",
+    "meaning": "Không khí"
+  },
+  {
+    "id": 121,
+    "kanji": "空港",
+    "options": ["くうこう", "くうごう", "そらみなと", "こうこう"],
+    "correct": "くうこう",
+    "meaning": "Sân bay"
+  },
+  {
+    "id": 122,
+    "kanji": "白人",
+    "options": ["しろひと", "はくじん", "はくにん", "しろじん"],
+    "correct": "はくじん",
+    "meaning": "Người da trắng"
+  },
+  {
+    "id": 123,
+    "kanji": "白い",
+    "options": ["しろい", "はくい", "しろき", "しろしい"],
+    "correct": "しろい",
+    "meaning": "Màu trắng"
+  },
+  {
+    "id": 124,
+    "kanji": "黒い",
+    "options": ["くろい", "こくい", "くろき", "くろしい"],
+    "correct": "くろい",
+    "meaning": "Màu đen"
+  },
+  {
+    "id": 125,
+    "kanji": "赤ん坊",
+    "options": ["あかちゃん", "あかんぼう", "せきんぼう", "あかぽう"],
+    "correct": "あかんぼう",
+    "meaning": "Em bé sơ sinh"
+  },
+  {
+    "id": 126,
+    "kanji": "赤い",
+    "options": ["あかい", "せきい", "あかき", "あかいい"],
+    "correct": "あかい",
+    "meaning": "Màu đỏ"
+  },
+  {
+    "id": 127,
+    "kanji": "安心する",
+    "options": ["あんしんする", "はんしんする", "あんじんする", "おんしんする"],
+    "correct": "あんしんする",
+    "meaning": "An tâm, yên tâm"
+  },
+  {
+    "id": 128,
+    "kanji": "半分こ",
+    "options": ["はんふんこ", "はんぶんこ", "ほんぶんこ", "はんぷんこ"],
+    "correct": "はんぶんこ",
+    "meaning": "Chia đôi, chia đều"
+  },
+  {
+    "id": 129,
+    "kanji": "安全第一",
+    "options": ["あんぜんだいいち", "あんせんだいいち", "はんぜんだいいち", "あんぜんたいいち"],
+    "correct": "あんぜんだいいち",
+    "meaning": "An toàn là trên hết"
+  },
+  {
+    "id": 130,
+    "kanji": "男の子",
+    "options": ["おとこのこ", "だんしのこ", "おとこのし", "なんのこ"],
+    "correct": "おとこのこ",
+    "meaning": "Bé trai"
+  },
+  {
+    "id": 131,
+    "kanji": "女の子",
+    "options": ["おんなのこ", "じょしのこ", "おんなのし", "にょのこ"],
+    "correct": "おんなのこ",
+    "meaning": "Bé gái"
+  },
+  {
+    "id": 132,
+    "kanji": "男女",
+    "options": ["おとこおんな", "だんじょ", "なんにょ", "だんにょ"],
+    "correct": "だんじょ",
+    "meaning": "Nam nữ"
+  },
+  {
+    "id": 133,
+    "kanji": "長女",
+    "options": ["ながおんな", "ちょうじょ", "しゅじょ", "ちょうにょ"],
+    "correct": "ちょうじょ",
+    "meaning": "Trưởng nữ"
+  },
+  {
+    "id": 134,
+    "kanji": "右手",
+    "options": ["みぎて", "うしゅ", "みぎで", "うて"],
+    "correct": "みぎて",
+    "meaning": "Tay phải"
+  },
+  {
+    "id": 135,
+    "kanji": "左手",
+    "options": ["ひだりて", "さしゅ", "ひだりで", "さて"],
+    "correct": "ひだりて",
+    "meaning": "Tay trái"
+  },
+  {
+    "id": 136,
+    "kanji": "左右",
+    "options": ["ひだりみぎ", "さゆう", "さう", "ざゆう"],
+    "correct": "さゆう",
+    "meaning": "Trái phải, sự chi phối"
+  },
+  {
+    "id": 137,
+    "kanji": "北口",
+    "options": ["きたくち", "きたぐち", "ほくぐち", "きたぐちく"],
+    "correct": "きたぐち",
+    "meaning": "Cửa Bắc"
+  },
+  {
+    "id": 138,
+    "kanji": "南口",
+    "options": ["みなみくち", "みなみぐち", "なんぐち", "みなみぐちく"],
+    "correct": "みなみぐch",
+    "meaning": "Cửa Nam"
+  },
+  {
+    "id": 139,
+    "kanji": "東口",
+    "options": ["ひがしくち", "ひがしぐち", "とうぐち", "ひがしぐちく"],
+    "correct": "ひがしぐち",
+    "meaning": "Cửa Đông"
+  },
+  {
+    "id": 140,
+    "kanji": "西口",
+    "options": ["にしくち", "にしぐち", "せいぐち", "にしぐちく"],
+    "correct": "にしぐち",
+    "meaning": "Cửa Tây"
+  },
+  {
+    "id": 141,
+    "kanji": "北海道",
+    "options": ["ほっかいみち", "ほっかいどう", "ほかいどう", "ぼっかいどう"],
+    "correct": "ほっかいどう",
+    "meaning": "Đảo Hokkaido"
+  },
+  {
+    "id": 142,
+    "kanji": "東京",
+    "options": ["とうきょ", "とうきょう", "ときょ", "どうきょう"],
+    "correct": "とうきょう",
+    "meaning": "Tokyo"
+  },
+  {
+    "id": 143,
+    "kanji": "京都",
+    "options": ["きょうと", "きょと", "ぎょうと", "きょうど"],
+    "correct": "きょうと",
+    "meaning": "Kyoto"
+  },
+  {
+    "id": 144,
+    "kanji": "本州",
+    "options": ["ほんしゅう", "ほんしゅ", "ぽんしゅう", "ほんじゅう"],
+    "correct": "ほんしゅう",
+    "meaning": "Đảo Honshu"
+  },
+  {
+    "id": 145,
+    "kanji": "九州",
+    "options": ["きゅうしゅ", "きゅうしゅう", "くしゅう", "ぎゅうしゅう"],
+    "correct": "きゅうしゅう",
+    "meaning": "Đảo Kyushu"
+  },
+  {
+    "id": 146,
+    "kanji": "外国語",
+    "options": ["がいこくご", "がいごくご", "かいこくご", "がいこくこ"],
+    "correct": "がいこくご",
+    "meaning": "Ngoại ngữ"
+  },
+  {
+    "id": 147,
+    "kanji": "作文",
+    "options": ["さくふん", "さくぶん", "さっぶん", "さがぶん"],
+    "correct": "さくぶん",
+    "meaning": "Bài văn tập làm văn"
+  },
+  {
+    "id": 148,
+    "kanji": "文学",
+    "options": ["ふんがく", "ぶんがく", "ぶんかく", "もんがく"],
+    "correct": "ぶんがく",
+    "meaning": "Văn học"
+  },
+  {
+    "id": 149,
+    "kanji": "文化",
+    "options": ["ふんか", "ぶんか", "ぶんが", "もんか"],
+    "correct": "ぶんか",
+    "meaning": "Văn hóa"
+  },
+  {
+    "id": 150,
+    "kanji": "化学",
+    "options": ["ばけがく", "かがく", "ばかがく", "ががく"],
+    "correct": "かがく",
+    "meaning": "Hóa học"
+  },
+  {
+    "id": 151,
+    "kanji": "生まれる",
+    "options": ["いきれる", "うまれる", "せいれる", "うまる"],
+    "correct": "うまれる",
+    "meaning": "Được sinh ra"
+  },
+  {
+    "id": 152,
+    "kanji": "一生",
+    "options": ["いちせい", "いっしょう", "いちしょう", "いっせい"],
+    "correct": "いっしょう",
+    "meaning": "Cả đời, suốt đời"
+  },
+  {
+    "id": 153,
+    "kanji": "学生割引",
+    "options": ["がくせいわびき", "がくせいわりびき", "かっせいわびき", "がくぜいわびき"],
+    "correct": "がくせいわりびき",
+    "meaning": "Giảm giá cho học sinh"
+  },
+  {
+    "id": 154,
+    "kanji": "見せる",
+    "options": ["みる", "みせる", "けんせる", "みられる"],
+    "correct": "みせる",
+    "meaning": "Cho xem, cho thấy"
+  },
+  {
+    "id": 155,
+    "kanji": "花家",
+    "options": ["はないえ", "はなや", "かか", "はなやさん"],
+    "correct": "はなや",
+    "meaning": "Cửa hàng hoa"
+  },
+  {
+    "id": 156,
+    "kanji": "読書家",
+    "options": ["どくしょか", "とくしょか", "どくしょや", "どうしょか"],
+    "correct": "どくしょか",
+    "meaning": "Người đam mê đọc sách"
+  },
+  {
+    "id": 157,
+    "kanji": "作家",
+    "options": ["さくか", "さっか", "さっや", "さくしゃ"],
+    "correct": "さっか",
+    "meaning": "Tác giả, nhà văn"
+  },
+  {
+    "id": 158,
+    "kanji": "専門家",
+    "options": ["せんもんか", "せんもんや", "ぜんもんか", "しんもんか"],
+    "correct": "せんもんか",
+    "meaning": "Chuyên gia"
+  },
+  {
+    "id": 159,
+    "kanji": "手足",
+    "options": ["てあし", "しゅそく", "てした", "てあじ"],
+    "correct": "てあし",
+    "meaning": "Tay chân"
+  },
+  {
+    "id": 160,
+    "kanji": "名手",
+    "options": ["なて", "めいしゅ", "みょうしゅ", "めいて"],
+    "correct": "めいしゅ",
+    "meaning": "Người có tay nghề giỏi"
+  },
+  {
+    "id": 161,
+    "kanji": "歌手",
+    "options": ["うたて", "かしゅ", "うたしゅ", "がしゅ"],
+    "correct": "かしゅ",
+    "meaning": "Ca sĩ"
+  },
+  {
+    "id": 162,
+    "kanji": "一足す一",
+    "options": ["いちたすいち", "いっそくいち", "いちあしいち", "ひとたすひと"],
+    "correct": "いちたすいち",
+    "meaning": "1 cộng 1"
+  },
+  {
+    "id": 163,
+    "kanji": "不足",
+    "options": ["ふあし", "ふそく", "ぶそく", "ふぞく"],
+    "correct": "ふそく",
+    "meaning": "Không đủ, thiếu thốn"
+  },
+  {
+    "id": 164,
+    "kanji": "目下",
+    "options": ["めした", "もっか", "めしたい", "もくか"],
+    "correct": "めした",
+    "meaning": "Cấp dưới, người ít tuổi hơn"
+  },
+  {
+    "id": 165,
+    "kanji": "目安",
+    "options": ["めやす", "めあん", "もくあん", "まやす"],
+    "correct": "めやす",
+    "meaning": "Mục tiêu tiêu chuẩn, ước chừng"
+  },
+  {
+    "id": 166,
+    "kanji": "耳打ち",
+    "options": ["みみうち", "じうち", "みみぶち", "じだ"],
+    "correct": "みみうち",
+    "meaning": "Nói thầm vào tai"
+  },
+  {
+    "id": 167,
+    "kanji": "見聞",
+    "options": ["みきき", "けんぶん", "みぶん", "けんもん"],
+    "correct": "けんぶん",
+    "meaning": "Kiến thức dã ngoại, trải nghiệm ngắm nghe"
+  },
+  {
+    "id": 168,
+    "kanji": "月見",
+    "options": ["つきみ", "げつみ", "がつみ", "つきみる"],
+    "correct": "つきみ",
+    "meaning": "Ngắm trăng"
+  },
+  {
+    "id": 169,
+    "kanji": "一言",
+    "options": ["いちこと", "ひとこと", "いちげん", "ひとげん"],
+    "correct": "ひとこと",
+    "meaning": "Một lời, một từ ngắn"
+  },
+  {
+    "id": 170,
+    "kanji": "言葉",
+    "options": ["ことば", "ごば", "ことぱ", "げんぱ"],
+    "correct": "ことば",
+    "meaning": "Từ vựng, ngôn ngữ"
+  },
+  {
+    "id": 171,
+    "kanji": "方言",
+    "options": ["かたこと", "ほうげん", "かたげん", "ほうこと"],
+    "correct": "ほうげん",
+    "meaning": "Tiếng địa phương"
+  },
+  {
+    "id": 172,
+    "kanji": "伝言",
+    "options": ["つたえこと", "でんごん", "てんごん", "でんこと"],
+    "correct": "でんごん",
+    "meaning": "Lời nhắn"
+  },
+  {
+    "id": 173,
+    "kanji": "東南アジア",
+    "options": ["ひがしみなみあじあ", "とうなんあじあ", "とうなんあじあー", "どうなんあじあ"],
+    "correct": "とうなんあじあ",
+    "meaning": "Đông Nam Á"
+  },
+  {
+    "id": 174,
+    "kanji": "東北",
+    "options": ["ひがしきた", "とうほく", "どうほく", "とうぼく"],
+    "correct": "とうほく",
+    "meaning": "Vùng Tohoku (Đông Bắc Nhật Bản)"
+  },
+  {
+    "id": 175,
+    "kanji": "北西",
+    "options": ["きたにし", "ほくせい", "ほくさい", "ぼくせい"],
+    "correct": "ほくせい",
+    "meaning": "Tây Bắc"
+  },
+  {
+    "id": 176,
+    "kanji": "南西",
+    "options": ["みなみにし", "なんせい", "みなみさい", "なんさい"],
+    "correct": "なんせい",
+    "meaning": "Tây Nam"
+  },
+  {
+    "id": 177,
+    "kanji": "西暦",
+    "options": ["にしれき", "せいれき", "さいれき", "せいれっき"],
+    "correct": "せいれき",
+    "meaning": "Tây lịch, Công nguyên"
+  },
+  {
+    "id": 178,
+    "kanji": "大西",
+    "options": ["おおにし", "たいせい", "だいせい", "おおにしさん"],
+    "correct": "おおにし",
+    "meaning": "Họ Oonishi (Họ phổ biến ở Nhật)"
+  },
+  {
+    "id": 179,
+    "kanji": "川上",
+    "options": ["かわかみ", "かわうえ", "せんじょう", "がわかみ"],
+    "correct": "かわかみ",
+    "meaning": "Thượng nguồn sông / Họ Kawakami"
+  },
+  {
+    "id": 180,
+    "kanji": "川下",
+    "options": ["かわした", "かわげ", "せんか", "がわした"],
+    "correct": "かわした",
+    "meaning": "Hạ lưu sông"
+  },
+  {
+    "id": 181,
+    "kanji": "小川",
+    "options": ["ちいさかわ", "おがわ", "こかわ", "おがわさん"],
+    "correct": "おガわ",
+    "meaning": "Dòng suối nhỏ / Họ Ogawa"
+  },
+  {
+    "id": 182,
+    "kanji": "山林",
+    "options": ["やまはやし", "さんりん", "ざんりん", "やまばやし"],
+    "correct": "さんりん",
+    "meaning": "Sơn lâm, rừng núi"
+  },
+  {
+    "id": 183,
+    "kanji": "小山",
+    "options": ["ちいさやま", "おやま", "こやま", "おやまさん"],
+    "correct": "おやま",
+    "meaning": "Ngọn đồi nhỏ / Họ Oyama"
+  },
+  {
+    "id": 184,
+    "kanji": "山田",
+    "options": ["やまのでん", "やまだ", "さんでん", "やまた"],
+    "correct": "やまだ",
+    "meaning": "Họ Yamada"
+  },
+  {
+    "id": 185,
+    "kanji": "水田",
+    "options": ["みずた", "すいでん", "みずでん", "すいた"],
+    "correct": "すいでん",
+    "meaning": "Ruộng lúa nước"
+  },
+  {
+    "id": 186,
+    "kanji": "休日",
+    "options": ["やすみひ", "きゅうじつ", "きゅじつ", "やすみび"],
+    "correct": "きゅうじつ",
+    "meaning": "Ngày nghỉ"
+  },
+  {
+    "id": 187,
+    "kanji": "連休",
+    "options": ["つれやすみ", "れんきゅう", "れんきゅ", "ねんきゅう"],
+    "correct": "れんきゅう",
+    "meaning": "Kỳ nghỉ dài ngày liên tục"
+  },
+  {
+    "id": 188,
+    "kanji": "見方",
+    "options": ["みかた", "けんほう", "みがた", "みほう"],
+    "correct": "みかた",
+    "meaning": "Cách nhìn, góc nhìn"
+  },
+  {
+    "id": 189,
+    "kanji": "見え方",
+    "options": ["みえほう", "みえかた", "みえがた", "みかた"],
+    "correct": "みえかた",
+    "meaning": "Trạng thái hiển thị, cách nhìn thấy"
+  },
+  {
+    "id": 190,
+    "kanji": "読み方",
+    "options": ["よみほう", "よみかた", "よみがた", "どくほう"],
+    "correct": "よみかた",
+    "meaning": "Cách đọc"
+  },
+  {
+    "id": 191,
+    "kanji": "書き方",
+    "options": ["かきほう", "かきかた", "かきがた", "しょほう"],
+    "correct": "かきかた",
+    "meaning": "Cách viết"
+  },
+  {
+    "id": 192,
+    "kanji": "話し方",
+    "options": ["はなしほう", "はなしかた", "はなしがた", "わほう"],
+    "correct": "はなしかた",
+    "meaning": "Cách nói chuyện"
+  },
+  {
+    "id": 193,
+    "kanji": "夕食",
+    "options": ["ゆうしょく", "ゆしょく", "ゆうじょく", "ゆうごはん"],
+    "correct": "ゆうしょく",
+    "meaning": "Bữa ăn tối"
+  },
+  {
+    "id": 194,
+    "kanji": "夕方",
+    "options": ["ゆうかた", "ゆうがた", "ゆがた", "ゆうほう"],
+    "correct": "ゆうがた",
+    "meaning": "Chiều tà, hoàng hôn"
+  },
+  {
+    "id": 195,
+    "kanji": "夕日",
+    "options": ["ゆうひ", "ゆうび", "ゆひ", "ゆうにち"],
+    "correct": "ゆうひ",
+    "meaning": "Ánh mặt trời buổi chiều"
+  },
+  {
+    "id": 196,
+    "kanji": "七夕",
+    "options": ["ななゆう", "たなばた", "しちせき", "しちゆう"],
+    "correct": "たなばた",
+    "meaning": "Lễ Thất Tịch"
+  },
+  {
+    "id": 197,
+    "kanji": "生魚",
+    "options": ["なまさかな", "なまうお", "せいぎょ", "なまざかな"],
+    "correct": "なまざかな",
+    "meaning": "Cá sống"
+  },
+  {
+    "id": 198,
+    "kanji": "金魚",
+    "options": ["かねさかな", "きんぎょ", "きんきょ", "かねぎょ"],
+    "correct": "きんぎょ",
+    "meaning": "Cá vàng"
+  },
+  {
+    "id": 199,
+    "kanji": "大雨",
+    "options": ["おおあめ", "だいう", "たいあめ", "おおあめい"],
+    "correct": "おおあめ",
+    "meaning": "Mưa lớn"
+  },
+  {
+    "id": 200,
+    "kanji": "雨水",
+    "options": ["あめみず", "うすい", "あめすい", "うみず"],
+    "correct": "あめみず",
+    "meaning": "Nước mưa"
+  }
+]
+  
