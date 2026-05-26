@@ -236,10 +236,10 @@ if (loaiHocHienTai === 'kanji') {
         let amHanViet = "Chưa rõ";
         let nghiaTiengViet = "Chưa rõ";
 
-        // 🔥 SỬA LOGIC BÓC TÁCH: Chuẩn hóa tách Âm Hán và Nghĩa Tiếng Việt
+        // Bóc tách an toàn bằng Regex hoặc Split dứt điểm
         if (nghiaGoc.includes('(') && nghiaGoc.includes(')')) {
-            amHanViet = nghiaGoc.split('(')[0].trim(); // Ví dụ: "Lục"
-            nghiaTiengViet = nghiaGoc.substring(nghiaGoc.indexOf('(') + 1, nghiaGoc.indexOf(')')).trim(); // Ví dụ: "Sáu"
+            amHanViet = nghiaGoc.split('(')[0].trim();
+            nghiaTiengViet = nghiaGoc.substring(nghiaGoc.indexOf('(') + 1, nghiaGoc.indexOf(')')).trim();
         } else {
             amHanViet = nghiaGoc;
             nghiaTiengViet = nghiaGoc;
@@ -249,32 +249,33 @@ if (loaiHocHienTai === 'kanji') {
 
         if (vungChua) {
             vungChua.innerHTML = `
-                <div class="the-cyber-card">
-                    <div class="chu-kanji-khong-lo">${chuKanji}</div>
+                <div class="the-cyber-card" style="min-height: 280px; height: auto; padding-bottom: 20px;">
+                    <div class="chu-kanji-khong-lo" style="line-height: 1.2; margin-bottom: 10px;">${chuKanji}</div>
                     
-                    <div id="step-am-doc" class="khoi-noi-dung hien-hien">
-                        <div class="label-am-han">ÂM HÁN: ${amHanViet.toUpperCase()}</div>
+                    <div id="step-am-doc" class="khoi-noi-dung hien-hien" style="margin-bottom: 8px;">
+                        <div class="label-am-han" style="color: #ff00ff; font-weight: bold; font-size: 1.2rem;">ÂM HÁN: ${amHanViet.toUpperCase()}</div>
                     </div>
                     
-                    <div id="step-nghia-viet" class="khoi-nghia-viet hien-hien">
-                        <div class="text-nghia" style="color: #00ffcc; font-size: 1.5rem; font-weight: bold;">
+                    <div id="step-nghia-viet" class="khoi-nghia-viet hien-hien" style="margin-bottom: 15px;">
+                        <div class="text-nghia" style="color: #00ffcc; font-size: 1.4rem; font-weight: bold; background: rgba(0, 255, 204, 0.1); padding: 8px 15px; display: inline-block; border-radius: 8px;">
                             ${nghiaTiengViet}
                         </div>
                     </div>
                     
-                    <div id="step-yomi" class="khoi-yomi-duoi hien-hien" style="${styleAnYomi}">
-                        <div class="dong-cach-doc"><strong>Onyomi:</strong> ${onyomi}</div>
-                        <div class="dong-cach-doc"><strong>Kunyomi:</strong> ${kunyomi}</div>
+                    <div id="step-yomi" class="khoi-yomi-duoi hien-hien" style="${styleAnYomi} margin-bottom: 15px;">
+                        <div class="dong-cach-doc" style="font-size: 0.95rem; color: #cbd5e1; margin-bottom: 4px;"><strong>Onyomi:</strong> ${onyomi}</div>
+                        <div class="dong-cach-doc" style="font-size: 0.95rem; color: #cbd5e1;"><strong>Kunyomi:</strong> ${kunyomi}</div>
                     </div>
-                    <div id="step-tu-ghep" class="khoi-tu-ghep hien-hien" style="${styleAnYomi}">
-                        <div class="title-ghep">Từ Ghép Tạo Nghĩa:</div>
-                        <div class="content-ghep">${viDu}</div>
+                    
+                    <div id="step-tu-ghep" class="khoi-tu-ghep hien-hien" style="${styleAnYomi} border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 10px;">
+                        <div class="title-ghep" style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 5px;">Từ Ghép Tạo Nghĩa:</div>
+                        <div class="content-ghep" style="font-size: 1.05rem; color: #fff;">${viDu}</div>
                     </div>
                 </div>
             `;
         }
         
-        // Cập nhật lại chuỗi đọc máy cho khớp với thứ tự mới: Đọc Âm Hán trước, Nghĩa sau
+        // Đồng bộ chuẩn 3 tham số truyền vào Timeline để không lỗi Engine đọc
         let chuoiDocKanjiViet = `Âm Hán, ${amHanViet}, Nghĩa là, ${nghiaTiengViet}`;
         KichHoatTimeline("", chuoiDocKanjiViet, "");
     }
