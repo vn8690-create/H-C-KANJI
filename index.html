@@ -60,10 +60,21 @@
                 </div>
             </section>
 
-            <section id="man-hoc-chi-tiet" class="man-hinh">
+        <section id="man-hoc-chi-tiet" class="man-hinh">
                 <div class="thanh-dieu-huong">
                     <h2 id="tieu-de-bai-hoc">Đang tải...</h2>
                     <button class="nut-quay-lai" onclick="ThoatHocChiTiet()">QUAY LẠI</button>
+                </div>
+
+                <div class="khung-cai-dat-hoc">
+                    <label class="item-switch">
+                        <input type="checkbox" id="chk-hien-yomi" checked onchange="CapNhatCaiDatHoc()">
+                        <span class="custom-label">Hiển thị Onyomi/Kunyomi</span>
+                    </label>
+                    <label class="item-switch">
+                        <input type="checkbox" id="chk-auto-next" onchange="CapNhatCaiDatHoc()">
+                        <span class="custom-label">Tự chuyển bài (sau 2s) ⏳</span>
+                    </label>
                 </div>
                 
                 <div id="vung-chua-the-dong"></div>
