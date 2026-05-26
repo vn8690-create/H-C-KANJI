@@ -318,11 +318,11 @@ function KichHoatTimeline(textNhat, textViet) {
                             clearTimeout(boDemTuDongChuyen);
                             boDemTuDongChuyen = setTimeout(() => {
                                 ChuyenBaiTiepTheo();
-                            }, 2000);
+                            }, 2000); // 2000ms = 2 giây tự chuyển từ tiếp theo
                         }
-                    }, 500);
+                    }, 500);  // Khoảng chờ hiển thị khối Yomi/Ví dụ sau khi đọc xong nghĩa Việt
                 });
-            }, 500);
+            }, 1000); // 🔥 CHỈNH CHỖ NÀY: 500 tức là 0.5 giây | 1000 tức là 1 giâ
         });
     }, 1000);
 }
