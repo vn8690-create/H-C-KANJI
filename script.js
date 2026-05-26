@@ -90,10 +90,13 @@ function CapNhatCaiDatHoc() {
 }
 
 // =========================================================================
-// TẢI DỮ LIỆU ĐỘNG CHO FLASHCARD HỌC
+// TẢI DỮ LIỆU ĐỘNG CHO FLASHCARD HỌC (ĐÃ TÍCH HỢP LƯU TIẾN ĐỘ)
 // =========================================================================
+let tenFileHienTai = ''; // Biến toàn cục mới để lưu tên file đang chạy
+
 function TaiDuLieuHoc(loaiHoc, tenFile) {
     loaiHocHienTai = loaiHoc;
+    tenFileHienTai = tenFile; // Ghi nhớ tên file phục vụ lưu tiến độ cá nhân
     
     if(tenFile === 'n5_grammar') {
         document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
@@ -118,13 +121,46 @@ function TaiDuLieuHoc(loaiHoc, tenFile) {
         .then(res => { if (!res.ok) throw new Error(); return res.json(); })
         .then(data => {
             duLieuHienTai = data; 
-            indexHienTai = 0; 
-            ChayDongThoiGianFlashcard();
+
+            // Kiểm tra xem danh mục file này trước đó đã có bộ nhớ lưu trữ chưa
+            let tienDoCu = parseInt(localStorage.getItem(`tien_do_${tenFile}`)) || 0;
+
+            if (tienDoCu > 0 && tienDoCu < duLieuHienTai.length) {
+                // Xuất hiện hộp thoại Cyber hỏi ý kiến học viên lựa chọn tiến độ
+                vungChua.innerHTML = `
+                    <div class="the-cyber-card" style="text-align: center; padding: 40px 20px;">
+                        <h3 style="color: #00ffcc; margin-bottom: 20px; font-size: 1.4rem;">🎯 PHÁT HIỆN TIẾN ĐỘ CŨ</h3>
+                        <p style="color: #cbd5e1; margin-bottom: 30px; font-size: 0.95rem; line-height: 1.6;">
+                            Bro đang học dở ở từ thứ <strong>${tienDoCu + 1}</strong> của mục này.<br>
+                            Bro muốn tiếp tục hành trình hay muốn cày lại từ đầu?
+                        </p>
+                        <div style="display: flex; flex-direction: column; gap: 15px;">
+                            <button class="nut-tiep-theo" style="background: linear-gradient(135deg, #00f5a0 0%, #00d9f6 100%); color: #000; font-weight: bold; width: 100%;" onclick="KichHoatTienDo(${tienDoCu})">
+                                HỌC TIẾP TỪ THỨ ${tienDoCu + 1} ➡️
+                            </button>
+                            <button class="nut-quay-lai" style="border: 1px solid #ef4444; color: #ef4444; width: 100%; margin: 0; background: rgba(239, 68, 68, 0.05);" onclick="KichHoatTienDo(0)">
+                                🔄 HỌC LẠI TỪ ĐẦU
+                            </button>
+                        </div>
+                    </div>
+                `;
+                tieuDe.innerText = "LỰA CHỌN TIẾN ĐỘ";
+            } else {
+                // Chưa học bao giờ hoặc học xong rồi thì tự nhảy từ đầu
+                indexHienTai = 0; 
+                ChayDongThoiGianFlashcard();
+            }
         })
         .catch(() => {
             tieuDe.innerText = "LỖI DATA";
             vungChua.innerHTML = `<p class="bao-loi">❌ Không tải được file "${tenFile}.json". Bro check lại file trên GitHub nhé!</p>`;
         });
+}
+
+// Hàm bổ trợ chuyển tiếp lựa chọn index học
+function KichHoatTienDo(indexChon) {
+    indexHienTai = indexChon;
+    ChayDongThoiGianFlashcard();
 }
 
 function ChayDongThoiGianFlashcard() {
@@ -134,10 +170,23 @@ function ChayDongThoiGianFlashcard() {
 
     if (duLieuHienTai.length === 0 || indexHienTai >= duLieuHienTai.length) {
         tieuDe.innerText = "HOÀN THÀNH!";
-        vungChua.innerHTML = `<div class="loading-text" style="color: #00ffcc;">🎉 Chúc mừng đặc vụ đã hoàn thành trọn vẹn danh mục này!</div>`;
+        vungChua.innerHTML = `
+            <div class="loading-text" style="color: #00ffcc; text-align:center;">
+                🎉 Chúc mừng đặc vụ đã hoàn thành trọn vẹn danh mục này!
+                <br><br>
+                <button class="nut-quay-lai" style="border: 1px solid #00ffcc; color: #00ffcc; margin-top:20px; background: rgba(0, 255, 204, 0.05);" onclick="ResetToanBoTienDoFile()">
+                    🔄 RESET HỌC LẠI TỪ ĐẦU
+                </button>
+            </div>
+        `;
         nutChuyen.classList.add('an-giau');
+        // Reset dữ liệu bộ nhớ về 0 để hôm sau vào không bị kẹt ở trang hoàn thành
+        localStorage.setItem(`tien_do_${tenFileHienTai}`, 0);
         return;
     }
+
+    // ĐỒNG BỘ TIẾN ĐỘ HỌC VÀO LOCALSTORAGE NGAY KHI HIỂN THỊ TỪ MỚI
+    localStorage.setItem(`tien_do_${tenFileHienTai}`, indexHienTai);
 
     tieuDe.innerText = `TIẾN ĐỘ: ${indexHienTai + 1} / ${duLieuHienTai.length}`;
     nutChuyen.classList.add('an-giau');
@@ -285,6 +334,14 @@ function ChuyenBaiTiepTheo() {
     ChayDongThoiGianFlashcard(); 
 }
 
+// Hàm hỗ trợ học viên reset tiến độ bằng tay
+function ResetToanBoTienDoFile() {
+    if(confirm("Bro có chắc chắn muốn xóa tiến độ của mục này để học lại từ đầu không?")) {
+        localStorage.setItem(`tien_do_${tenFileHienTai}`, 0);
+        indexHienTai = 0;
+        ChayDongThoiGianFlashcard();
+    }
+}
 // =========================================================================
 // KHU VỰC ĐẤU TRƯỜNG TEST TRẮC NGHIỆM 4 ĐÁP ÁN
 // =========================================================================
