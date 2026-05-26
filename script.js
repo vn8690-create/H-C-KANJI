@@ -416,20 +416,31 @@ function ResetToanBoTienDoFile() {
 // =========================================================================
 // KHU VỰC ĐẤU TRƯỜNG TEST TRẮC NGHIỆM 4 ĐÁP ÁN
 // =========================================================================
+// =========================================================================
+// KHU VỰC ĐẤU TRƯỜNG TEST TRẮC NGHIỆM 4 ĐÁP ÁN (ĐÃ FIX & NÂNG CẤP THÔNG MINH)
+// =========================================================================
 function KichHoatLamDe(theLoai) {
     theLoaiTestChon = theLoai;
     ChuyenTab('man-lam-bai-test');
     
-    let fileNguon = (theLoai === 'ngu-phap') ? 'n5_grammar' : capDoTestChon;
+    // Tự động nhận diện file: Nếu chọn Kanji N5 thì gọi file trắc nghiệm n5_quiz, còn lại giữ nguyên
+    let fileNguon = (capDoTestChon.toLowerCase() === 'n5' && theLoai === 'kanji') ? 'n5_quiz' : capDoTestChon;
+    if (theLoai === 'ngu-phap') {
+        fileNguon = 'n5_grammar';
+    }
     
-    fetch(`./fileNguon}.json`)
-        .then(res => res.json())
+    // Đã sửa lỗi sập app: Thêm dấu $ chuẩn chỉ cú pháp Template Literal ``
+    fetch(`./${fileNguon}.json`)
+        .then(res => {
+            if (!res.ok) throw new Error();
+            return res.json();
+        })
         .then(khoGoc => {
             TaoDeTracNghiem(khoGoc);
         })
         .catch(() => {
             const cauHoiTxt = document.getElementById('test-cau-hoi-text');
-            if (cauHoiTxt) cauHoiTxt.innerText = `❌ Lỗi kết nối đề thi level ${capDoTestChon.toUpperCase()} rồi đại ca ơi!`;
+            if (cauHoiTxt) cauHoiTxt.innerText = `❌ Lỗi kết nối đề thi file "${fileNguon}.json" rồi đại ca ơi!`;
         });
 }
 
@@ -440,49 +451,68 @@ function TaoDeTracNghiem(khoGoc) {
         return;
     }
     
-    let danhSachTron = [...khoGoc].sort(() => 0.5 - Math.random());
-    let soCau = Math.min(10, danhSachTron.length);
     mangCauHoiTest = [];
 
-    for (let i = 0; i < soCau; i++) {
-        let itemGoc = danhSachTron[i];
-        let cauHoi = "";
-        let dapAnDung = "";
-        
-        if (theLoaiTestChon === 'kanji') {
-            cauHoi = `Chữ Kanji này có âm Hán Việt là gì: <br><span style="font-size:3.5rem; font-weight:bold; color:#fff;">${itemGoc.kanji}</span>`;
-            let nghia = itemGoc.meaning || "";
-            dapAnDung = (nghia.includes('(') && nghia.includes(')')) ? nghia.split('(')[0].trim() : nghia;
-        } else if (theLoaiTestChon === 'tu-vung') {
-            cauHoi = `Nghĩa tiếng Việt của từ: <br><span style="font-size:2.8rem; font-weight:bold; color:#00ffcc;">${itemGoc.kanji}</span> là gì?`;
-            let nghia = itemGoc.meaning || "";
-            dapAnDung = (nghia.includes('(') && nghia.includes(')')) ? nghia.substring(nghia.indexOf('(') + 1, nghia.indexOf(')')) : nghia;
-        } else {
-            cauHoi = `Cấu trúc: <br><span style="font-size:2.3rem; font-weight:bold; color:#38bdf8;">${itemGoc.grammar}</span> có ý nghĩa gì?`;
-            let dapAnDungRaw = itemGoc.meaning || "";
-            dapAnDung = dapAnDungRaw;
+    // 🌟 TRƯỜNG HỢP 1: Xử lý file trắc nghiệm thuần có sẵn cấu trúc (như n5_quiz.json)
+    if (khoGoc[0] && khoGoc[0].options !== undefined) {
+        // Trộn ngẫu nhiên và bốc ra 20 câu để test cho đỡ ngợp
+        let danhSachN5Tron = [...khoGoc].sort(() => 0.5 - Math.random());
+        let soCauN5 = Math.min(20, danhSachN5Tron.length); 
+
+        for (let i = 0; i < soCauN5; i++) {
+            let itemN5 = danhSachN5Tron[i];
+            mangCauHoiTest.push({
+                cauHoiText: `Cách đọc Hiragana chính xác của chữ Kanji này là gì: <br><span style="font-size:3.5rem; font-weight:bold; color:#fff; text-shadow: 0 0 10px #ff00ff;">${itemN5.kanji}</span>`,
+                dung: itemN5.correct,
+                // Trộn vị trí các lựa chọn A, B, C, D để mỗi lần làm lại là một vị trí khác nhau
+                luaChon: [...itemN5.options].sort(() => 0.5 - Math.random())
+            });
         }
+    } 
+    // 🌟 TRƯỜNG HỢP 2: Tự động sinh đề từ file dữ liệu Flashcard (N3, N2, Ngữ pháp...)
+    else {
+        let danhSachTron = [...khoGoc].sort(() => 0.5 - Math.random());
+        let soCau = Math.min(10, danhSachTron.length);
 
-        let cacTuKhac = khoGoc.filter(x => x !== itemGoc);
-        let dapAnNhieu = cacTuKhac.map(x => {
-            let n = x.meaning || "";
+        for (let i = 0; i < soCau; i++) {
+            let itemGoc = danhSachTron[i];
+            let cauHoi = "";
+            let dapAnDung = "";
+            
             if (theLoaiTestChon === 'kanji') {
-                return (n.includes('(') && n.includes(')')) ? n.split('(')[0].trim() : n;
+                cauHoi = `Chữ Kanji này có âm Hán Việt là gì: <br><span style="font-size:3.5rem; font-weight:bold; color:#fff;">${itemGoc.kanji}</span>`;
+                let nghia = itemGoc.meaning || "";
+                dapAnDung = (nghia.includes('(') && nghia.includes(')')) ? nghia.split('(')[0].trim() : nghia;
             } else if (theLoaiTestChon === 'tu-vung') {
-                return (n.includes('(') && n.includes(')')) ? n.substring(n.indexOf('(') + 1, n.indexOf(')')) : n;
+                cauHoi = `Nghĩa tiếng Việt của từ: <br><span style="font-size:2.8rem; font-weight:bold; color:#00ffcc;">${itemGoc.kanji}</span> là gì?`;
+                let nghia = itemGoc.meaning || "";
+                dapAnDung = (nghia.includes('(') && nghia.includes(')')) ? nghia.substring(nghia.indexOf('(') + 1, nghia.indexOf(')')) : nghia;
             } else {
-                return n;
+                cauHoi = `Cấu trúc: <br><span style="font-size:2.3rem; font-weight:bold; color:#38bdf8;">${itemGoc.grammar}</span> có ý nghĩa gì?`;
+                dapAnDung = itemGoc.meaning || "";
             }
-        });
-        
-        dapAnNhieu = [...new Set(dapAnNhieu)].filter(d => d !== dapAnDung).sort(() => 0.5 - Math.random());
-        let bo4DapAn = [dapAnDung, dapAnNhieu[0], dapAnNhieu[1], dapAnNhieu[2]].sort(() => 0.5 - Math.random());
 
-        mangCauHoiTest.push({
-            cauHoiText: cauHoi,
-            dung: dapAnDung,
-            luaChon: bo4DapAn
-        });
+            let cacTuKhac = khoGoc.filter(x => x !== itemGoc);
+            let dapAnNhieu = cacTuKhac.map(x => {
+                let n = x.meaning || "";
+                if (theLoaiTestChon === 'kanji') {
+                    return (n.includes('(') && n.includes(')')) ? n.split('(')[0].trim() : n;
+                } else if (theLoaiTestChon === 'tu-vung') {
+                    return (n.includes('(') && n.includes(')')) ? n.substring(n.indexOf('(') + 1, n.indexOf(')')) : n;
+                } else {
+                    return n;
+                }
+            });
+            
+            dapAnNhieu = [...new Set(dapAnNhieu)].filter(d => d !== dapAnDung).sort(() => 0.5 - Math.random());
+            let bo4DapAn = [dapAnDung, dapAnNhieu[0], dapAnNhieu[1], dapAnNhieu[2]].sort(() => 0.5 - Math.random());
+
+            mangCauHoiTest.push({
+                cauHoiText: cauHoi,
+                dung: dapAnDung,
+                luaChon: bo4DapAn
+            });
+        }
     }
 
     indexTestHienTai = 0;
