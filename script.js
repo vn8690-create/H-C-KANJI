@@ -1,204 +1,351 @@
 // =========================================================================
-// KHU VỰC 1: BIẾN TOÀN CỤC & TRẠNG THÁI APP
+// BIẾN TOÀN CỤC & TRẠNG THÁI APP
 // =========================================================================
 let diemXP = parseInt(localStorage.getItem('kanji_pure_xp')) || 0;
-let duLieuHienTai = []; // Chứa toàn bộ dữ liệu file JSON tải về
-let indexHienTai = 0;   // Chỉ số chữ đang học hiện tại
-let boDemThoiGian = null; // Quản lý setTimeout để không bị chồng chéo âm thanh
+let duLieuHienTai = []; 
+let indexHienTai = 0;   
+let loaiHocHienTai = ''; 
+let boDemThoiGian = null; 
+
+// Biến bổ sung phục vụ cho Đấu Trường Test
+let capDoTestChon = '';   // 'n5', 'n4'...
+let theLoaiTestChon = ''; // 'kanji', 'tu-vung', 'ngu-phap'
+let mangCauHoiTest = [];   // Chứa 10 câu trắc nghiệm được trộn
+let indexTestHienTai = 0;
+let daBamDapAn = false;
 
 // =========================================================================
-// KHU VỰC 2: ĐIỀU HƯỚNG MÀN HÌNH MƯỢT MÀ
+// ĐIỀU HƯỚNG MENU TAB
 // =========================================================================
-function ChuyenManHinh(idManHinh) {
-    document.querySelectorAll('.man-hinh').forEach(man => {
-        man.classList.remove('active');
-    });
-    const manChon = document.getElementById(idManHinh);
-    if (manChon) manChon.classList.add('active');
-}
-
-function QuayVeHome() {
-    // Tắt âm thanh đang đọc dở và xóa các lệnh chờ timeline nếu người dùng thoát ra ngoài
+function ChuyenTab(idManHinh) {
     if ('speechSynthesis' in window) window.speechSynthesis.cancel();
     clearTimeout(boDemThoiGian);
-    ChuyenManHinh('man-home');
+
+    document.querySelectorAll('.man-hinh').forEach(man => man.classList.remove('active'));
+    
+    const manChon = document.getElementById(idManHinh);
+    if (manChon) manChon.classList.add('active');
+
+    document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+    if (idManHinh === 'man-home') document.getElementById('btn-nav-home').classList.add('active');
+    if (idManHinh === 'man-kanji') document.getElementById('btn-nav-kanji').classList.add('active');
+    if (idManHinh === 'man-test-levels') document.getElementById('btn-nav-test').classList.add('active');
+    if (idManHinh === 'man-grammar') document.getElementById('btn-nav-grammar').classList.add('active');
+}
+
+function ThoatHocChiTiet() {
+    if (loaiHocHienTai === 'grammar') {
+        ChuyenTab('man-home');
+    } else {
+        ChuyenTab('man-kanji');
+    }
+}
+
+// Lựa chọn cấp độ Test
+function ChonCapDoTest(capDo) {
+    capDoTestChon = capDo;
+    document.getElementById('tieu-de-level-test').innerText = `ĐANG CHỌN: TEST ${capDo.toUpperCase()}`;
+    ChuyenTab('man-test-the-loai');
 }
 
 // =========================================================================
-// KHU VỰC 3: TẢI DỮ LIỆU TỪ FILE JSON (ĐỌC HẾT MẢNG, KHÔNG GIỚI HẠN)
+// TẢI DỮ LIỆU ĐỘNG CHO FLASHCARD HỌC
 // =========================================================================
-function TaiDuLieuKanji(tenFile) {
-    ChuyenManHinh('man-hoc');
+function TaiDuLieuHoc(loaiHoc, tenFile) {
+    loaiHocHienTai = loaiHoc;
+    
+    if(tenFile === 'n5_grammar') {
+        document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+        document.getElementById('btn-nav-grammar').classList.add('active');
+    }
+
+    ChuyenTab('man-hoc-chi-tiet');
     
     const tieuDe = document.getElementById('tieu-de-bai-hoc');
-    const vungChua = document.getElementById('vung-chua-the-kanji');
+    const vungChua = document.getElementById('vung-chua-the-dong');
     const nutChuyen = document.getElementById('vung-nut-chuyen-trang');
     
     tieuDe.innerText = `ĐANG KẾT NỐI...`;
-    vungChua.innerHTML = `<div class="loading-text">⚡ Đang kích hoạt bộ não từ vựng...</div>`;
+    vungChua.innerHTML = `<div class="loading-text">⚡ Đang đồng bộ bộ não dữ liệu...</div>`;
     nutChuyen.classList.add('an-giau');
 
     fetch(`./${tenFile}.json`)
-        .then(res => {
-            if (!res.ok) throw new Error("Không tìm thấy file dữ liệu.");
-            return res.json();
-        })
+        .then(res => { if (!res.ok) throw new Error(); return res.json(); })
         .then(data => {
-            // SỬA LỖI CHÍ CHÍMẠNG: Gán toàn bộ mảng dữ liệu gốc, bao nhiêu chữ nhận bấy nhiêu chữ!
             duLieuHienTai = data; 
-            indexHienTai = 0; // Reset về chữ đầu tiên của cấp độ đó
-            
-            ChayFlashcardTungChu();
+            indexHienTai = 0; 
+            ChayDongThoiGianFlashcard();
         })
-        .catch(err => {
-            console.error(err);
-            tieuDe.innerText = "LỖI HỆ THỐNG";
-            vungChua.innerHTML = `<p class="bao-loi">❌ Không đọc được file "${tenFile}.json". Bro check lại tên file xem nhé!</p>`;
+        .catch(() => {
+            tieuDe.innerText = "LỖI DATA";
+            vungChua.innerHTML = `<p class="bao-loi">❌ Không tải được file "${tenFile}.json". Bro check lại file trên GitHub nhé!</p>`;
         });
 }
 
-// =========================================================================
-// KHU VỰC 4: QUẢN LÝ DÒNG THỜI GIAN (TIMELINE) CHO TỪNG CHỮ MỘT
-// =========================================================================
-function ChayFlashcardTungChu() {
-    const vungChua = document.getElementById('vung-chua-the-kanji');
+function ChayDongThoiGianFlashcard() {
+    const vungChua = document.getElementById('vung-chua-the-dong');
     const tieuDe = document.getElementById('tieu-de-bai-hoc');
     const nutChuyen = document.getElementById('vung-nut-chuyen-trang');
 
-    // Nếu đã học hết sạch mảng chữ cái
     if (duLieuHienTai.length === 0 || indexHienTai >= duLieuHienTai.length) {
         tieuDe.innerText = "HOÀN THÀNH!";
-        vungChua.innerHTML = `<div class="loading-text" style="color: #00ffcc;">🎉 Quá đỉnh bro ơi! Đã nuốt hết toàn bộ từ vựng cấp độ này rồi!</div>`;
+        vungChua.innerHTML = `<div class="loading-text" style="color: #00ffcc;">🎉 Chúc mừng đặc vụ đã hoàn thành trọn vẹn danh mục này!</div>`;
         nutChuyen.classList.add('an-giau');
         return;
     }
 
-    // Hiển thị tiến độ thực tế 
     tieuDe.innerText = `TIẾN ĐỘ: ${indexHienTai + 1} / ${duLieuHienTai.length}`;
-    nutChuyen.classList.add('an-giau'); // Ẩn nút tiếp theo đi, học xong timeline mới hiện
-
-    const item = duLieuHienTai[indexHienTai];
-    
-    const chuKanji = item.kanji || "字";
-    const nghiaGoc = item.meaning || "";
-    const onyomi = item.onyomi || "";
-    const kunyomi = item.kunyomi || "";
-    const viDu = item.example || "";
-
-    // Tách lấy chữ trong ngoặc đơn để làm Âm Hán Việt chuẩn (Ví dụ: NGẤN)
-    let amHanViet = "Chưa rõ";
-    if (nghiaGoc.includes('(') && nghiaGoc.includes(')')) {
-        amHanViet = nghiaGoc.substring(nghiaGoc.indexOf('(') + 1, nghiaGoc.indexOf(')'));
-    }
-    // Lấy phần nghĩa thuần tiếng Việt (Ví dụ: Vết sẹo, vết xước bề mặt)
-    let nghiaTiengViet = nghiaGoc.split('(')[0].trim();
-
-    // THAY ĐỔI CẤU TRÚC GIAO DIỆN THEO Ý BRO:
-    vungChua.innerHTML = `
-        <div class="the-cyber-card">
-            <div class="chu-kanji-khong-lo">${chuKanji}</div>
-            
-            <div id="step-am-doc" class="khoi-noi-dung an-giau">
-                <div class="label-am-han">ÂM HÁN: ${amHanViet.toUpperCase()}</div>
-            </div>
-
-            <div id="step-nghia-viet" class="khoi-nghia-viet an-giau">
-                <div class="text-nghia">${nghiaTiengViet}</div>
-            </div>
-
-            <div id="step-yomi" class="khoi-yomi-duoi an-giau" style="margin-top: 15px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.05);">
-                <div class="dong-cach-doc" style="color: #cbd5e1; font-size: 0.95rem; margin: 4px 0;"><strong>Onyomi:</strong> ${onyomi}</div>
-                <div class="dong-cach-doc" style="color: #cbd5e1; font-size: 0.95rem; margin: 4px 0;"><strong>Kunyomi:</strong> ${kunyomi}</div>
-            </div>
-
-            <div id="step-tu-ghep" class="khoi-tu-ghep an-giau">
-                <div class="title-ghep">Từ Ghép Tạo Nghĩa:</div>
-                <div class="content-ghep">${viDu}</div>
-            </div>
-        </div>
-    `;
-
-    // DỌN SẠCH BỘ ĐẾM CŨ ĐỂ KHÔNG BỊ TRÙNG LẶP
+    nutChuyen.classList.add('an-giau');
     clearTimeout(boDemThoiGian);
 
-    // ====== KÍCH HOẠT CHUỖI TIMELINE TỰ ĐỘNG CHẠY MỚI ======
-    
-    // ĐOẠN A: Đợi 1 giây -> Hiện Âm Hán (NGẤN) + Đọc Onyomi tiếng Nhật lên trước
+    const item = duLieuHienTai[indexHienTai];
+
+    if (loaiHocHienTai === 'kanji') {
+        const chuKanji = item.kanji || "字";
+        const nghiaGoc = item.meaning || "";
+        const onyomi = item.onyomi || "";
+        const kunyomi = item.kunyomi || "";
+        const viDu = item.example || "";
+
+        let amHanViet = "Chưa rõ";
+        if (nghiaGoc.includes('(') && nghiaGoc.includes(')')) {
+            amHanViet = nghiaGoc.substring(nghiaGoc.indexOf('(') + 1, nghiaGoc.indexOf(')'));
+        }
+        let nghiaTiengViet = nghiaGoc.split('(')[0].trim();
+
+        vungChua.innerHTML = `
+            <div class="the-cyber-card">
+                <div class="chu-kanji-khong-lo">${chuKanji}</div>
+                <div id="step-am-doc" class="khoi-noi-dung an-giau">
+                    <div class="label-am-han">ÂM HÁN: ${amHanViet.toUpperCase()}</div>
+                </div>
+                <div id="step-nghia-viet" class="khoi-nghia-viet an-giau">
+                    <div class="text-nghia">${nghiaTiengViet}</div>
+                </div>
+                <div id="step-yomi" class="khoi-yomi-duoi an-giau">
+                    <div class="dong-cach-doc"><strong>Onyomi:</strong> ${onyomi}</div>
+                    <div class="dong-cach-doc"><strong>Kunyomi:</strong> ${kunyomi}</div>
+                </div>
+                <div id="step-tu-ghep" class="khoi-tu-ghep an-giau">
+                    <div class="title-ghep">Từ Ghép Tạo Nghĩa:</div>
+                    <div class="content-ghep">${viDu}</div>
+                </div>
+            </div>
+        `;
+        KichHoatTimeline(onyomi, nghiaTiengViet);
+    } else {
+        const cauTruc = item.grammar || "";
+        const nghiaNguPhap = item.meaning || "";
+        const giaiThich = item.explanation || "";
+        const mangViDu = item.examples || [];
+
+        let htmlViDu = "";
+        mangViDu.forEach(vd => {
+            htmlViDu += `
+                <div class="vd-item" style="margin-bottom: 12px; text-align:left;">
+                    <div class="vd-ja" style="font-size:1.2rem; color:#fff; line-height:2.2;">${vd.ja}</div>
+                    <div class="vd-vi" style="font-size:0.9rem; color:#00ffcc;">💡 ${vd.vi}</div>
+                </div>
+            `;
+        });
+
+        vungChua.innerHTML = `
+            <div class="the-cyber-card">
+                <div class="chu-kanji-khong-lo" style="font-size: 2.5rem; color: #38bdf8;">${cauTruc}</div>
+                <div id="step-am-doc" class="khoi-noi-dung an-giau">
+                    <div class="label-am-han" style="color: #ff00ff;">Ý NGHĨA: ${nghiaNguPhap.toUpperCase()}</div>
+                </div>
+                <div id="step-nghia-viet" class="khoi-nghia-viet an-giau" style="text-align:left;">
+                    <div class="text-nghia" style="font-size:0.95rem; color:#cbd5e1; font-weight:normal;">
+                        <strong>Cách dùng:</strong> ${giaiThich}
+                    </div>
+                </div>
+                <div id="step-tu-ghep" class="khoi-tu-ghep an-giau" style="display:block !important;">
+                    <div class="title-ghep">Các Câu Ví Dụ:</div>
+                    <div>${htmlViDu}</div>
+                </div>
+            </div>
+        `;
+        KichHoatTimeline(cauTruc, nghiaNguPhap);
+    }
+}
+
+function KichHoatTimeline(textNhat, textViet) {
+    const nutChuyen = document.getElementById('vung-nut-chuyen-trang');
     boDemThoiGian = setTimeout(() => {
-        const phanAmDoc = document.getElementById('step-am-doc');
-        if (phanAmDoc) phanAmDoc.className = "khoi-noi-dung hien-hien";
-
-        DocTiengNhat(onyomi, () => {
-            
-            // ĐOẠN B: Đọc xong tiếng Nhật -> Đợi 0.5 giây -> Hiện nghĩa tiếng Việt + Đọc nghĩa tiếng Việt luôn
+        const step1 = document.getElementById('step-am-doc');
+        if (step1) step1.className = "khoi-noi-dung hien-hien";
+        DocGiọngMay(textNhat, 'ja-JP', 0.85, () => {
             boDemThoiGian = setTimeout(() => {
-                const phanNghia = document.getElementById('step-nghia-viet');
-                if (phanNghia) phanNghia.className = "khoi-nghia-viet hien-hien";
-
-                DocTiengViet(nghiaTiengViet, () => {
-                    
-                    // ĐOẠN C: Đọc xong nghĩa -> Đợi 0.5 giây -> Hiện khối Onyomi/Kunyomi và Từ ghép + Hiện nút chuyển trang
+                const step2 = document.getElementById('step-nghia-viet');
+                if (step2) step2.className = "khoi-nghia-viet hien-hien";
+                DocGiọngMay(textViet, 'vi-VN', 0.95, () => {
                     boDemThoiGian = setTimeout(() => {
-                        const phanYomi = document.getElementById('step-yomi');
-                        const phanTuGhep = document.getElementById('step-tu-ghep');
-                        
-                        if (phanYomi) phanYomi.className = "khoi-yomi-duoi hien-hien";
-                        if (phanTuGhep) phanTuGhep.className = "khoi-tu-ghep hien-hien";
-                        
-                        // Kích hoạt hiển thị nút chuyển bài
+                        const step3 = document.getElementById('step-yomi');
+                        const step4 = document.getElementById('step-tu-ghep');
+                        if (step3) step3.className = "khoi-yomi-duoi hien-hien";
+                        if (step4) step4.className = "khoi-tu-ghep hien-hien";
                         nutChuyen.classList.remove('an-giau');
-                        CongDiemXP();
+                        CongDiemXP(1);
                     }, 500);
-
                 });
             }, 500);
-
         });
     }, 1000);
 }
 
-function ChuyenChuTiepTheo() {
-    indexHienTai++;
-    ChayFlashcardTungChu();
-}
+function ChuyenBaiTiepTheo() { indexHienTai++; ChayDongThoiGianFlashcard(); }
 
 // =========================================================================
-// KHU VỰC 5: HỆ THỐNG BỘ LOA PHÁT ÂM (WEB SPEECH API THUẦN)
+// HOÀN THIỆN LOGIC KHU VỰC ĐẤU TRƯỜNG TEST TRẮC NGHIỆM 4 ĐÁP ÁN
 // =========================================================================
-function DocTiengNhat(vanBan, khiDocXong) {
-    if (!vanBan || vanBan === "None") { if(khiDocXong) khiDocXong(); return; }
-    if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel(); // Dọn dẹp âm thanh cũ
-        let utterance = new SpeechSynthesisUtterance(vanBan.replace(/[\/()（）\-,ー]/g, ' '));
-        utterance.lang = 'ja-JP';
-        utterance.rate = 0.85; // Tốc độ đọc chuẩn học tập
-        utterance.onend = () => { if(khiDocXong) khiDocXong(); };
-        utterance.onerror = () => { if(khiDocXong) khiDocXong(); };
-        window.speechSynthesis.speak(utterance);
+function KichHoatLamDe(theLoai) {
+    theLoaiTestChon = theLoai;
+    ChuyenTab('man-lam-bai-test');
+    
+    let fileNguồn = (theLoai === 'ngu-phap') ? 'n5_grammar' : capDoTestChon;
+    
+    fetch(`./${fileNguồn}.json`)
+        .then(res => res.json())
+        .then(khoGốc => {
+            TaoDeTracNghiem(khoGốc);
+        })
+        .catch(() => {
+            document.getElementById('test-cau-hoi-text').innerText = `❌ Lỗi kết nối đề thi level ${capDoTestChon.toUpperCase()} rồi đại ca ơi!`;
+        });
+}
+
+function TaoDeTracNghiem(khoGốc) {
+    if(!khoGốc || khoGốc.length < 4) {
+        document.getElementById('test-cau-hoi-text').innerText = "❌ Kho dữ liệu quá ít, không đủ tạo đề trắc nghiệm!";
+        return;
+    }
+    
+    // Trộn ngẫu nhiên kho gốc để bốc ra tối đa 10 câu làm đề test
+    let danhSachTrộn = [...khoGốc].sort(() => 0.5 - Math.random());
+    let soCau = Math.min(10, danhSachTrộn.length);
+    mangCauHoiTest = [];
+
+    for (let i = 0; i < soCau; i++) {
+        let itemGốc = danhSachTrộn[i];
+        let cauHoi = "";
+        let dapAnDung = "";
+        
+        // Tùy biến câu hỏi theo thể loại đã chọn
+        if (theLoaiTestChon === 'kanji') {
+            cauHoi = `Chữ Kanji này có âm Hán Việt là gì: <br><span style="font-size:3.5rem; font-weight:bold; color:#fff;">${itemGốc.kanji}</span>`;
+            let nghia = itemGốc.meaning || "";
+            dapAnDung = (nghia.includes('(') && nghia.includes(')')) ? nghia.substring(nghia.indexOf('(') + 1, nghia.indexOf(')')) : nghia;
+        } else if (theLoaiTestChon === 'tu-vung') {
+            cauHoi = `Nghĩa tiếng Việt của từ: <br><span style="font-size:2.8rem; font-weight:bold; color:#00ffcc;">${itemGốc.kanji}</span> là gì?`;
+            dapAnDung = (itemGốc.meaning || "").split('(')[0].trim();
+        } else {
+            // Ngữ pháp
+            cauHoi = `Cấu trúc: <br><span style="font-size:2.3rem; font-weight:bold; color:#38bdf8;">${itemGốc.grammar}</span> có ý nghĩa gì?`;
+            dapAnDung = itemGốc.meaning || "";
+        }
+
+        // Tạo danh sách đáp án nhiễu (3 đáp án sai) từ các từ khác trong kho
+        let cácTừKhác = khoGốc.filter(x => x !== itemGốc);
+        let dapAnNhieu = cácTừKhác.map(x => {
+            if (theLoaiTestChon === 'kanji') {
+                let n = x.meaning || "";
+                return (n.includes('(') && n.includes(')')) ? n.substring(n.indexOf('(') + 1, n.indexOf(')')) : n;
+            } else if (theLoaiTestChon === 'tu-vung') {
+                return (x.meaning || "").split('(')[0].trim();
+            } else {
+                return x.meaning || "";
+            }
+        });
+        
+        // Lọc trùng đáp án nhiễu
+        dapAnNhieu = [...new Set(dapAnNhieu)].filter(d => d !== dapAnDung).sort(() => 0.5 - Math.random());
+        
+        // Lấy 3 đáp án nhiễu độc bản ghép với đáp án đúng thành mảng 4 lựa chọn
+        let bo4DapAn = [dapAnDung, dapAnNhieu[0], dapAnNhieu[1], dapAnNhieu[2]].sort(() => 0.5 - Math.random());
+
+        mangCauHoiTest.push({
+            cauHoiText: cauHoi,
+            dung: dapAnDung,
+            luaChon: bo4DapAn
+        });
+    }
+
+    indexTestHienTai = 0;
+    HienThiCauHoiTest();
+}
+
+function HienThiCauHoiTest() {
+    daBamDapAn = false;
+    document.getElementById('vung-nut-chuyen-test').classList.add('an-giau');
+    
+    let phanTuCau = mangCauHoiTest[indexTestHienTai];
+    document.getElementById('test-tien-do').innerText = `Câu hỏi: ${indexTestHienTai + 1} / ${mangCauHoiTest.length}`;
+    document.getElementById('test-cau-hoi-text').innerHTML = phanTuCau.cauHoiText;
+
+    let khungDapAn = document.getElementById('test-danh-sach-dap-an');
+    khungDapAn.innerHTML = "";
+
+    phanTuCau.luaChon.forEach(da => {
+        let nutOpt = document.createElement('button');
+        nutOpt.className = "nut-option-test";
+        nutOpt.innerText = da;
+        nutOpt.onclick = () => KiemTraKetQuaTest(nutOpt, da, phanTuCau.dung);
+        khungDapAn.appendChild(nutOpt);
+    });
+}
+
+function KiemTraKetQuaTest(nutBam, textChon, textDung) {
+    if(daBamDapAn) return; // Khóa không cho bấm đổi ý
+    daBamDapAn = true;
+
+    let tatCaNut = document.querySelectorAll('.nut-option-test');
+    tatCaNut.forEach(nut => {
+        if(nut.innerText === textDung) {
+            nut.classList.add('dap-an-dung-style'); // Tô xanh đáp án đúng
+        }
+    });
+
+    if (textChon === textDung) {
+        nutBam.classList.add('dap-an-dung-style');
+        CongDiemXP(5); // Làm đúng đề test thưởng nóng luôn 5 XP bốc lửa
     } else {
-        if(khiDocXong) khiDocXong();
+        nutBam.classList.add('dap-an-sai-style'); // Tô đỏ đáp án chọn sai
+    }
+
+    document.getElementById('vung-nut-chuyen-test').classList.remove('an-giau');
+}
+
+function CauTestTiepTheo() {
+    indexTestHienTai++;
+    if(indexTestHienTai >= mangCauHoiTest.length) {
+        document.getElementById('test-cau-hoi-text').innerHTML = `🎉 <span style="color:#00ffcc;">QUÁ ĐỈNH BRO ƠI!</span><br>Đã hoàn thành xuất sắc bài test trắc nghiệm!`;
+        document.getElementById('test-danh-sach-dap-an').innerHTML = "";
+        document.getElementById('vung-nut-chuyen-test').classList.add('an-giau');
+    } else {
+        HienThiCauHoiTest();
     }
 }
 
-function DocTiengViet(vanBan, khiDocXong) {
-    if (!vanBan) { if(khiDocXong) khiDocXong(); return; }
+// =========================================================================
+// PHÁT ÂM VÀ XP
+// =========================================================================
+function DocGiọngMay(vanBan, ngonNgu, tocDo, khiXong) {
+    if (!vanBan || vanBan === "None") { if(khiXong) khiXong(); return; }
     if ('speechSynthesis' in window) {
-        let utterance = new SpeechSynthesisUtterance(vanBan);
-        utterance.lang = 'vi-VN';
-        utterance.rate = 0.95;
-        utterance.onend = () => { if(khiDocXong) khiDocXong(); };
-        utterance.onerror = () => { if(khiDocXong) khiDocXong(); };
+        window.speechSynthesis.cancel();
+        let vanBanSach = vanBan.replace(/<rt>.*?<\/rt>/g, '').replace(/<\/?[^>]+(>|$)/g, "").replace(/[\/()（）\-,ー]/g, ' ');
+        let utterance = new SpeechSynthesisUtterance(vanBanSach);
+        utterance.lang = ngonNgu;
+        utterance.rate = tocDo;
+        utterance.onend = () => { if(khiXong) khiXong(); };
+        utterance.onerror = () => { if(khiXong) khiXong(); };
         window.speechSynthesis.speak(utterance);
-    } else {
-        if(khiDocXong) khiDocXong();
-    }
+    } else { if(khiXong) khiXong(); }
 }
 
-// =========================================================================
-// KHU VỰC 6: HỆ THỐNG ĐIỂM THƯỞNG XP
-// =========================================================================
-function CongDiemXP() {
-    diemXP += 1;
+function CongDiemXP(soDiem) {
+    diemXP += soDiem;
     localStorage.setItem('kanji_pure_xp', diemXP);
     document.getElementById('id-xp').innerText = diemXP;
 }
