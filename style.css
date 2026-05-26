@@ -310,6 +310,63 @@ rt { font-size: 0.55em; color: #00ffcc; padding-bottom: 2px; }
     text-shadow: 0 0 10px rgba(0, 255, 204, 0.4);
 }
 
+/* Khung chứa các câu hỏi trắc nghiệm */
+.the-cyber-card-test {
+    background: rgba(15, 23, 42, 0.8);
+    border: 2px solid #38bdf8;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+    border-radius: 12px;
+    padding: 30px 20px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Khung xếp dọc các đáp án */
+.khung-dap-an-doc {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Tạo khoảng cách giữa các nút */
+    width: 100%;
+}
+
+/* Style gốc cho 4 nút đáp án */
+.nut-option-test {
+    width: 100%;
+    padding: 14px 20px;
+    background: rgba(30, 41, 59, 0.7);
+    color: #cbd5e1;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    font-size: 1.05rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: left; /* Căn lề trái cho dễ đọc câu trả lời */
+    transition: all 0.2s ease;
+}
+
+/* Hiệu ứng di chuột hoặc chạm nhẹ */
+.nut-option-test:hover {
+    background: rgba(51, 65, 85, 0.8);
+    border-color: #38bdf8;
+    color: #fff;
+}
+
+/* 🔥 TRẠNG THÁI ĐÚNG: Rực sáng neon xanh lá */
+.dap-an-dung-style {
+    background: rgba(16, 185, 129, 0.15) !important;
+    border-color: #10b981 !important;
+    color: #10b981 !important;
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+    font-weight: bold;
+}
+
+/* ❌ TRẠNG THÁI SẠI: Rực sáng neon đỏ rực */
+.dap-an-sai-style {
+    background: rgba(239, 68, 68, 0.15) !important;
+    border-color: #ef4444 !important;
+    color: #ef4444 !important;
+    box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+}
 /* TIỆN ÍCH HIỆU ỨNG TRẠNG THÁI */
 .an-giau { display: none !important; }
 .hien-hien { display: block !important; animation: hienDan 0.3s forwards; }
