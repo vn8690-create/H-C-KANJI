@@ -329,36 +329,49 @@ function ChayDongThoiGianFlashcard() {
 // =========================================================================
 // HÀM KÍCH HOẠT TIMELINE PHÁT ÂM THEO HÀNG ĐỢI TUẦN TỰ (CHỐNG NUỐT CHỮ)
 // =========================================================================
-function KichHoatTimeline(textNhat, textViet, textViDuNhat = "") {
-    const nutChuyen = document.getElementById('vung-nut-chuyen-trang');
+function KichHoatTimeline(vanBanTiengNhat, vanBanTiengViet, cauViDuNhat) {
+    // 1. Tính toán tổng độ dài ký tự của tất cả các chuỗi cần đọc
+    const tongSoKyTu = vanBanTiengNhat.length + vanBanTiengViet.length + cauViDuNhat.length;
     
-    if (nutChuyen) nutChuyen.classList.remove('an-giau');
-    CongDiemXP(1);
+    // 2. Tốc độ đọc trung bình khoảng 150-200ms cho mỗi ký tự (tùy bro chỉnh)
+    // Càng nhiều chữ thì thời gian chờ (thời gian delay) càng tự động tăng lên
+    let thoiGianChoDoc = tongSoKyTu * 180; 
 
-    // Kiểm tra xem có đang bị MUTE không
-    if (!isMuted) {
-        if ('speechSynthesis' in window) {
-            window.speechSynthesis.cancel(); 
-        }
-
-        if (loaiHocHienTai === 'kanji') {
-            DocGiongMay(textViet, 'vi-VN', 0.95);
-        } else {
-            // Chuỗi đọc nối đuôi bất đồng bộ an toàn qua callback (onend)
-            DocGiongMay(textNhat, 'ja-JP', 0.85, () => {
-                setTimeout(() => {
-                    DocGiongMay(textViet, 'vi-VN', 0.95, () => {
-                        if (textViDuNhat && textViDuNhat.trim() !== "") {
-                            setTimeout(() => {
-                                DocGiongMay(textViDuNhat, 'ja-JP', 0.85);
-                            }, 400); 
-                        }
-                    });
-                }, 300); 
-            });
-        }
+    // Đặt một mức thời gian tối thiểu (ví dụ: ít nhất phải chờ 4 giây mới được tính tiếp)
+    if (thoiGianChoDoc < 4000) {
+        thoiGianChoDoc = 4000; 
     }
 
+    // --- LOGIC PHÂN CHIA THỜI GIAN HIỂN THỊ CÁC KHỐI TEXT (STEPS) ---
+    // Chia đều thời gian để các hiệu ứng neon, hiện text cuốn theo tiếng đọc
+    const thoiGianMoiStep = Math.floor(thoiGianChoDoc / 3);
+
+    // Step 1: Hiện Cấu trúc / Âm Hán (Ngay lập tức)
+    HienThiKhoiNoiDung('step-am-doc'); 
+    
+    // Step 2: Hiện Nghĩa Tiếng Việt
+    boDemThoiGian = setTimeout(() => {
+        HienThiKhoiNoiDung('step-nghia-viet');
+    }, thoiGianMoiStep);
+
+    // Step 3: Hiện Giải thích / Ví dụ mẫu
+    boDemThoiGian = setTimeout(() => {
+        HienThiKhoiNoiDung('step-yomi');
+        HienThiKhoiNoiDung('step-tu-ghep');
+    }, thoiGianMoiStep * 2);
+
+    // --- 🚨 KHỐI TỰ ĐỘNG NEXT BÀI (THÔNG MINH) ---
+    // Chỉ kích hoạt khi bro bật checkbox "Tự chuyển bài"
+    if (document.getElementById('checkbox-tu-chuyen-bai')?.checked) {
+        clearTimeout(boDemTuDongChuyen);
+        
+        // Cộng thêm 1.5 giây nghỉ (1500ms) sau khi đọc xong hoàn toàn rồi mới NEXT
+        boDemTuDongChuyen = setTimeout(() => {
+            indexHienTai++;
+            ChayDongThoiGianFlashcard();
+        }, thoiGianChoDoc + 1500); 
+    }
+}
     // KÍCH HOẠT TỰ ĐỘNG CHUYỂN BÀI THÔNG MINH
     if (tuDongChuyenBai) {
         const itemHienTai = duLieuHienTai[indexHienTai];
