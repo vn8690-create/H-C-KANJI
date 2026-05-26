@@ -6,14 +6,14 @@ let duLieuHienTai = [];
 let indexHienTai = 0;   
 let loaiHocHienTai = ''; 
 let boDemThoiGian = null; 
-let boDemTuDongChuyen = null; // Quản lý luồng tự động chuyển trang sau 2s
+let boDemTuDongChuyen = null; // Quản lý luồng tự động chuyển trang thông minh
 
 // Trạng thái cấu hình học tập (Lưu trạng thái On/Off của user)
 let hienThiYomi = true;
 let tuDongChuyenBai = false;
 
 // Biến bổ sung phục vụ cho Đấu Trường Test
-let capDoTestChon = '';   
+let capDoTestChon = '';    
 let theLoaiTestChon = ''; 
 let mangCauHoiTest = [];   
 let indexTestHienTai = 0;
@@ -83,8 +83,7 @@ function CapNhatCaiDatHoc() {
         // Nếu bật lên mà nút chuyển trang đã lộ diện rồi thì kích hoạt hẹn giờ đi luôn
         const nutChuyen = document.getElementById('vung-nut-chuyen-trang');
         if(nutChuyen && !nutChuyen.classList.contains('an-giau')) {
-            clearTimeout(boDemTuDongChuyen);
-            boDemTuDongChuyen = setTimeout(() => { ChuyenBaiTiepTheo(); }, 2000);
+            KichHoatTuDongChuyenThongMinh();
         }
     }
 }
@@ -92,11 +91,11 @@ function CapNhatCaiDatHoc() {
 // =========================================================================
 // TẢI DỮ LIỆU ĐỘNG CHO FLASHCARD HỌC (ĐÃ TÍCH HỢP LƯU TIẾN ĐỘ)
 // =========================================================================
-let tenFileHienTai = ''; // Biến toàn cục mới để lưu tên file đang chạy
+let tenFileHienTai = ''; 
 
 function TaiDuLieuHoc(loaiHoc, tenFile) {
     loaiHocHienTai = loaiHoc;
-    tenFileHienTai = tenFile; // Ghi nhớ tên file phục vụ lưu tiến độ cá nhân
+    tenFileHienTai = tenFile; 
     
     if(tenFile === 'n5_grammar') {
         document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
@@ -126,7 +125,6 @@ function TaiDuLieuHoc(loaiHoc, tenFile) {
             let tienDoCu = parseInt(localStorage.getItem(`tien_do_${tenFile}`)) || 0;
 
             if (tienDoCu > 0 && tienDoCu < duLieuHienTai.length) {
-                // Xuất hiện hộp thoại Cyber hỏi ý kiến học viên lựa chọn tiến độ
                 vungChua.innerHTML = `
                     <div class="the-cyber-card" style="text-align: center; padding: 40px 20px;">
                         <h3 style="color: #00ffcc; margin-bottom: 20px; font-size: 1.4rem;">🎯 PHÁT HIỆN TIẾN ĐỘ CŨ</h3>
@@ -146,7 +144,6 @@ function TaiDuLieuHoc(loaiHoc, tenFile) {
                 `;
                 tieuDe.innerText = "LỰA CHỌN TIẾN ĐỘ";
             } else {
-                // Chưa học bao giờ hoặc học xong rồi thì tự nhảy từ đầu
                 indexHienTai = 0; 
                 ChayDongThoiGianFlashcard();
             }
@@ -157,7 +154,6 @@ function TaiDuLieuHoc(loaiHoc, tenFile) {
         });
 }
 
-// Hàm bổ trợ chuyển tiếp lựa chọn index học
 function KichHoatTienDo(indexChon) {
     indexHienTai = indexChon;
     ChayDongThoiGianFlashcard();
@@ -180,18 +176,15 @@ function ChayDongThoiGianFlashcard() {
             </div>
         `;
         nutChuyen.classList.add('an-giau');
-        // Reset dữ liệu bộ nhớ về 0 để hôm sau vào không bị kẹt ở trang hoàn thành
         localStorage.setItem(`tien_do_${tenFileHienTai}`, 0);
         return;
     }
 
-    // ĐỒNG BỘ TIẾN ĐỘ HỌC VÀO LOCALSTORAGE NGAY KHI HIỂN THỊ TỪ MỚI
     localStorage.setItem(`tien_do_${tenFileHienTai}`, indexHienTai);
 
     tieuDe.innerText = `TIẾN ĐỘ: ${indexHienTai + 1} / ${duLieuHienTai.length}`;
     nutChuyen.classList.add('an-giau');
     
-    // Reset sạch sẽ tất cả các bộ đếm thời gian cũ chống chồng luồng dữ liệu
     clearTimeout(boDemThoiGian);
     clearTimeout(boDemTuDongChuyen);
 
@@ -215,7 +208,6 @@ function ChayDongThoiGianFlashcard() {
             nghiaTiengViet = nghiaGoc;
         }
 
-        // Khởi tạo style ẩn/hiện dựa theo cấu hình thời điểm tải thẻ card
         let styleAnYomi = hienThiYomi ? "" : "display: none !important;";
 
         vungChua.innerHTML = `
@@ -238,10 +230,8 @@ function ChayDongThoiGianFlashcard() {
             </div>
         `;
         
-        // Luôn truyền âm Nhật để đọc giọng máy, việc ẩn hiển giao diện xử lý riêng ở dưới
         KichHoatTimeline(onyomi, nghiaTiengViet);
     } else {
-        // GIAO DIỆN HỌC NGỮ PHÁP N5
         const cauTruc = item.grammar || "";
         const nghiaNguPhap = item.meaning || "";
         const giaiThich = item.explanation || "";
@@ -299,7 +289,6 @@ function KichHoatTimeline(textNhat, textViet) {
                             step3.className = "khoi-yomi-duoi hien-hien";
                             step4.className = "khoi-tu-ghep hien-hien";
                             
-                            // Ép kiểu inline !important kiểm tra sát sườn điều kiện nút tích
                             if (hienThiYomi) {
                                 step3.style.setProperty('display', 'block', 'important');
                                 step4.style.setProperty('display', 'block', 'important');
@@ -309,22 +298,40 @@ function KichHoatTimeline(textNhat, textViet) {
                             }
                         }
                         
-                        // Hiện nút chuyển trang thủ công lên
                         if (nutChuyen) nutChuyen.classList.remove('an-giau');
                         CongDiemXP(1);
 
-                        // XỬ LÝ KHÓA TỰ ĐỘNG CHUYỂN BÀI CHUẨN ĐÉT SAU 2 GIÂY
+                        // 🔥 XỬ LÝ KHÓA TỰ ĐỘNG CHUYỂN BÀI THÔNG MINH THEO ĐỘ DÀI CHỮ
                         if (tuDongChuyenBai) {
-                            clearTimeout(boDemTuDongChuyen);
-                            boDemTuDongChuyen = setTimeout(() => {
-                                ChuyenBaiTiepTheo();
-                            }, 2000); // 2000ms = 2 giây tự chuyển từ tiếp theo
+                            KichHoatTuDongChuyenThongMinh();
                         }
-                    }, 500);  // Khoảng chờ hiển thị khối Yomi/Ví dụ sau khi đọc xong nghĩa Việt
+                    }, 500);  
                 });
-            }, 1000); // 🔥 CHỈNH CHỖ NÀY: 500 tức là 0.5 giây | 1000 tức là 1 giâ
+            }, 1000); 
         });
     }, 1000);
+}
+
+// 🔥 HÀM MỚI: Tự tính thời gian đọc hết chữ rồi mới chuyển trang (Hỗ trợ chuẩn iOS)
+function KichHoatTuDongChuyenThongMinh() {
+    clearTimeout(boDemTuDongChuyen);
+
+    // Lấy toàn bộ text hiển thị trên card để đo độ dài
+    const step2Text = document.getElementById('step-nghia-viet')?.innerText || "";
+    const step4Text = document.getElementById('step-tu-ghep')?.innerText || "";
+    const tongKyTu = step2Text.length + step4Text.length;
+
+    // Base thời gian gốc là 2000ms (2s). Mỗi ký tự tiếng Việt + Nhật cộng thêm 70ms để đọc ngấm nghĩa
+    const thoiGianGoc = 2000;
+    const thoiGianMoiKyTu = 70;
+    const thoiGianChoTinhToan = thoiGianGoc + (tongKyTu * thoiGianMoiKyTu);
+
+    // Khống chế thời gian chờ tối thiểu 2.5s và tối đa 9s để không bị quá nhanh hoặc quá lâu
+    const thoiGianChot = Math.max(2500, Math.min(thoiGianChoTinhToan, 9000));
+
+    boDemTuDongChuyen = setTimeout(() => {
+        ChuyenBaiTiepTheo();
+    }, thoiGianChot);
 }
 
 function ChuyenBaiTiepTheo() { 
@@ -334,7 +341,6 @@ function ChuyenBaiTiepTheo() {
     ChayDongThoiGianFlashcard(); 
 }
 
-// Hàm hỗ trợ học viên reset tiến độ bằng tay
 function ResetToanBoTienDoFile() {
     if(confirm("Bro có chắc chắn muốn xóa tiến độ của mục này để học lại từ đầu không?")) {
         localStorage.setItem(`tien_do_${tenFileHienTai}`, 0);
@@ -342,6 +348,7 @@ function ResetToanBoTienDoFile() {
         ChayDongThoiGianFlashcard();
     }
 }
+
 // =========================================================================
 // KHU VỰC ĐẤU TRƯỜNG TEST TRẮC NGHIỆM 4 ĐÁP ÁN
 // =========================================================================
@@ -484,7 +491,6 @@ function DocGiọngMay(vanBan, ngonNgu, tocDo, khiXong) {
     } else { if(khiXong) khiXong(); }
 }
 
-// Hàm hỗ trợ cộng điểm
 function CongDiemXP(soDiem) {
     diemXP += soDiem;
     localStorage.setItem('kanji_pure_xp', diemXP);
