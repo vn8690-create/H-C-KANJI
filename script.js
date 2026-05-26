@@ -191,7 +191,7 @@ function KichHoatTienDo(indexChon) {
 }
 
 // =========================================================================
-// HÀM CHẠY DÒNG THỜI GIAN FLASHCARD & HIỂN THỊ NỘI DUNG (ĐÃ SỬA TUẦN TỰ ĐỌC VÍ DỤ)
+// HÀM CHẠY DÒNG THỜI GIAN FLASHCARD & HIỂN THỊ NỘI DUNG
 // =========================================================================
 function ChayDongThoiGianFlashcard() {
     const vungChua = document.getElementById('vung-chua-the-dong');
@@ -226,7 +226,7 @@ function ChayDongThoiGianFlashcard() {
 
     const item = duLieuHienTai[indexHienTai];
 
-if (loaiHocHienTai === 'kanji') {
+    if (loaiHocHienTai === 'kanji') {
         const chuKanji = item.kanji || "字";
         const nghiaGoc = item.meaning || "";
         const onyomi = item.onyomi || "";
