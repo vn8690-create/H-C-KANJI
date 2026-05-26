@@ -253,4 +253,22 @@ body {
         opacity: 1;
         transform: scale(1);
     }
+
+/* ĐỊNH DẠNG TEXT FURIGANA (RUBY) CHO CAO CẤP */
+ruby {
+    ruby-position: over; /* Ép chữ luôn nằm trên đầu */
+}
+
+rt {
+    font-size: 0.55em; /* Kích thước chữ phụ nhỏ vừa vặn */
+    color: #00ffcc; /* Đổi chữ Furigana sang màu xanh mint neon cực dễ nhìn */
+    letter-spacing: 0.5px;
+    padding-bottom: 2px;
+}
+
+/* Tăng khoảng cách dòng cho câu ví dụ để không bị dính chữ */
+.content-ghep {
+    line-height: 2.2 !important; /* Dãn dòng rộng rãi để Furigana không đè nhau */
+    font-size: 1.2rem;
+}
 }
