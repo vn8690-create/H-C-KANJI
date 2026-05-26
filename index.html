@@ -32,7 +32,7 @@
                     <button class="nut-level" onclick="TaiDuLieuHoc('kanji', 'n4')">CẤP ĐỘ N4 ⚡</button>
                     <button class="nut-level" onclick="TaiDuLieuHoc('kanji', 'n3')">CẤP ĐỘ N3 🔥</button>
                     <button class="nut-level" onclick="TaiDuLieuHoc('kanji', 'n2')">CẤP ĐỘ N2 👑</button>
-                    <button class="nut-level" onclick="NutLevel" onclick="TaiDuLieuHoc('kanji', 'n1')">CẤP ĐỘ N1 🌌</button>
+                    <button class="nut-level" onclick="TaiDuLieuHoc('kanji', 'n1')">CẤP ĐỘ N1 🌌</button>
                 </div>
             </section>
 
@@ -77,31 +77,22 @@
                     <button class="nut-quay-lai" onclick="ThoatHocChiTiet()">QUAY LẠI</button>
                 </div>
 
-<div class="khung-cai-dat-hoc" style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; align-items: center; margin-bottom: 20px;">
-    <label class="item-switch">
-        <input type="checkbox" id="chk-hien-yomi" checked onchange="CapNhatCaiDatHoc()">
-        <span class="custom-label">Hiển thị Onyomi/Kunyomi</span>
-    </label>
+                <div class="khung-cai-dat-hoc" style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; align-items: center; margin-bottom: 20px;">
+                    <label class="item-switch">
+                        <input type="checkbox" id="chk-hien-yomi" checked onchange="CapNhatCaiDatHoc()">
+                        <span class="custom-label">Hiển thị Onyomi/Kunyomi</span>
+                    </label>
 
-    <label class="item-switch">
-        <input type="checkbox" id="chk-auto-next" onchange="CapNhatCaiDatHoc()">
-        <span class="custom-label">Tự chuyển bài (thông minh) ⏳</span>
-    </label>
+                    <label class="item-switch">
+                        <input type="checkbox" id="chk-auto-next" onchange="CapNhatCaiDatHoc()">
+                        <span class="custom-label">Tự chuyển bài (thông minh) ⏳</span>
+                    </label>
 
-    <button id="btn-mute-flashcard" onclick="ThayDoiTrangThaiMute()" style="background: rgba(255, 255, 255, 0.05); border: 1px solid #00ffcc; color: #00ffcc; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-weight: bold; display: flex; align-items: center; gap: 8px; transition: all 0.3s; font-size: 0.85rem; height: 34px;">
-        🔊 ĐANG BẬT TIẾNG
-    </button>
-</div>
-
-<div id="vung-chua-the-dong"></div>
-
-<div id="vung-nut-chuyen-trang" class="an-giau">
-    <button class="nut-tiep-theo" onclick="ChuyenBaiTiepTheo()">BÀI TIẾP THEO ➡️</button>
-</div>
-
-                    
+                    <button id="btn-mute-flashcard" onclick="ThayDoiTrangThaiMute()" style="background: rgba(255, 255, 255, 0.05); border: 1px solid #00ffcc; color: #00ffcc; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-weight: bold; display: flex; align-items: center; gap: 8px; transition: all 0.3s; font-size: 0.85rem; height: 34px;">
+                        🔊 ĐANG BẬT TIẾNG
+                    </button>
                 </div>
-                
+
                 <div id="vung-chua-the-dong"></div>
 
                 <div id="vung-nut-chuyen-trang" class="an-giau">
@@ -111,16 +102,17 @@
 
             <section id="man-lam-bai-test" class="man-hinh">
                 <div class="thanh-dieu-huong">
-                    <div id="test-tien-do" style="color: #38bdf8; font-weight: bold;">Câu hỏi: 1/10</div>
+                    <div id="test-tien-do" style="color: #38bdf8; font-weight: bold;">Câu hỏi: 1 / 10</div>
                     <button class="nut-quay-lai" onclick="ChuyenTab('man-test-levels')">HỦY TEST</button>
                 </div>
                 
-                <div class="khung-cau-hoi-test">
+                <div class="the-cyber-card-test">
                     <div id="test-cau-hoi-text" class="cau-hoi-text">Câu hỏi hiện ra ở đây?</div>
-                    <div id="test-danh-sach-dap-an" class="khung-options"></div>
                 </div>
 
-                <div id="vung-nut-chuyen-test" class="an-giau" style="margin-top: 15px;">
+                <div id="test-danh-sach-dap-an" class="khung-dap-an-doc"></div>
+
+                <div id="vung-nut-chuyen-test" class="an-giau" style="margin-top: 20px;">
                     <button class="nut-tiep-theo" id="nut-kich-cau-tiep" onclick="CauTestTiepTheo()">CÂU TIẾP THEO ➡️</button>
                 </div>
             </section>
