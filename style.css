@@ -1,15 +1,145 @@
-/* Màu bổ sung dành riêng cho danh mục nút bấm Test */
+/* ==========================================
+   RESET HỆ THỐNG & ĐỊNH DẠNG CHUẨN
+   ========================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: #05080f;
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* KHUNG APP CỐ ĐỊNH CHỐNG VỠ TRÊN PC VÀ MOBILE */
+.app-container {
+    width: 100%;
+    max-width: 450px; /* Ép giao diện luôn nằm gọn trong khung điện thoại */
+    height: 100vh;
+    background: #080c14;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(0, 85, 255, 0.2);
+    box-shadow: 0 0 30px rgba(0, 85, 255, 0.15);
+}
+
+/* HEADER ĐỈNH CAO */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 2px solid #0055ff;
+    background: #080c14;
+    z-index: 10;
+}
+
+.logo {
+    font-weight: 900;
+    font-size: 1.25rem;
+    color: #00ffcc;
+    cursor: pointer;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(0, 255, 204, 0.4);
+}
+
+.score-box {
+    background: #111a2e;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    border: 1px solid #0055ff;
+}
+
+/* VÙNG NỘI DUNG CUỘN ĐỘNG CHÍNH */
+.app-main {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 20px 90px 20px; /* Chừa khoảng trống dưới đáy để menu không đè chữ */
+}
+
+/* ==========================================
+   BẮT BUỘC: QUẢN LÝ ẨN HIỆN CÁC MÀN HÌNH
+   ========================================== */
+.man-hinh {
+    display: none !important; /* Mặc định ẩn sạch, chỉ hiện màn nào có class active */
+    width: 100%;
+}
+
+.man-hinh.active {
+    display: flex !important;
+    flex-direction: column;
+}
+
+/* TRANG CHỦ & HƯỚNG DẪN */
+.welcome {
+    font-size: 0.95rem;
+    color: #94a3b8;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.huong-dan-box {
+    background: #111625;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 85, 255, 0.2);
+}
+
+.huong-dan-box p {
+    font-size: 0.9rem;
+    margin: 10px 0;
+    color: #cbd5e1;
+}
+
+/* HỆ THỐNG NÚT BẤM CÁC LEVEL KANJI & TEST */
+.danh-sach-nut {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.nut-level {
+    background: #111625;
+    border: 1px solid rgba(255,255,255,0.02);
+    border-left: 5px solid #00ffcc;
+    color: white;
+    padding: 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.2s;
+}
+
+.nut-level:active {
+    background: #1d2438;
+}
+
+/* Màu viền hồng neon dành riêng cho các nút bấm TEST */
 .nut-level.test-color {
     border-left: 5px solid #ff00ff !important;
-    text-shadow: 0 0 5px rgba(255, 0, 255, 0.2);
 }
 
 .nut-the-loai-test {
     background: #111625;
     border: 1px solid rgba(0, 85, 255, 0.2);
     color: #fff;
-    padding: 18px;
-    font-size: 1.1rem;
+    padding: 16px;
+    font-size: 1.05rem;
     font-weight: bold;
     border-radius: 12px;
     cursor: pointer;
@@ -19,21 +149,68 @@
 
 .nut-the-loai-test:active {
     background: #0055ff;
-    box-shadow: 0 0 15px rgba(0, 85, 255, 0.5);
 }
 
-/* KHUNG TRẮC NGHIỆM */
+/* THÈ FLASHCARD HỌC KANJI VÀ NGỮ PHÁP */
+.the-cyber-card {
+    background: #111625;
+    border-radius: 16px;
+    padding: 30px 15px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.chu-kanji-khong-lo {
+    font-size: 4.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.khoi-noi-dung { margin-top: 10px; }
+.label-am-han { font-size: 1.25rem; font-weight: 900; color: #ff00ff; letter-spacing: 0.5px; }
+.dong-cach-doc { font-size: 0.9rem; color: #94a3b8; margin: 5px 0; }
+
+.khoi-nghia-viet {
+    margin-top: 15px;
+    background: rgba(0, 255, 204, 0.05);
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 3px solid #00ffcc;
+}
+
+.text-nghia { font-size: 1.3rem; font-weight: bold; color: #00ffcc; }
+
+.khoi-tu-ghep {
+    margin-top: 20px;
+    background: #080c14;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px dashed rgba(255,255,255,0.08);
+    text-align: left;
+}
+
+.title-ghep { font-size: 0.8rem; color: #64748b; margin-bottom: 5px; font-weight: bold; }
+
+/* CHỮ FURIGANA CHO NGỮ PHÁP */
+ruby { ruby-position: over; }
+rt { font-size: 0.55em; color: #00ffcc; padding-bottom: 2px; }
+
+/* KHU VỰC ĐẤU TRƯỜNG TRẮC NGHIỆM */
 .khung-cau-hoi-test {
     background: #111625;
     border-radius: 16px;
     padding: 25px 15px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.4);
     margin-top: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 .cau-hoi-text {
-    font-size: 1.15rem;
-    line-height: 1.5;
+    font-size: 1.1rem;
+    line-height: 1.6;
     text-align: center;
     color: #cbd5e1;
     margin-bottom: 25px;
@@ -50,14 +227,14 @@
     border: 1px solid rgba(255,255,255,0.05);
     color: #cbd5e1;
     padding: 14px;
-    font-size: 1rem;
+    font-size: 0.95rem;
     border-radius: 8px;
     cursor: pointer;
     text-align: left;
     transition: all 0.2s;
 }
 
-/* ĐỔI MÀU NEON KHI ĐÁNH GIÁ ĐÁP ÁN ĐÚNG/SAI */
+/* ĐỔI MÀU ĐÁP ÁN ĐÚNG / SAI */
 .dap-an-dung-style {
     background: rgba(0, 255, 204, 0.15) !important;
     border: 2px solid #00ffcc !important;
@@ -70,3 +247,62 @@
     border: 2px solid #ff0066 !important;
     color: #ff0066 !important;
 }
+
+/* ĐIỀU HƯỚNG TRONG MÀN HÌNH BÀI HỌC */
+.thanh-dieu-huong {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+#tieu-de-bai-hoc { font-size: 1rem; color: #38bdf8; }
+.nut-quay-lai { background: rgba(255,255,255,0.08); color: #cbd5e1; border: none; padding: 6px 12px; border-radius: 4px; font-size: 0.75rem; cursor: pointer; }
+.nut-tiep-theo { width: 100%; background: #0055ff; color: white; border: none; padding: 15px; font-size: 1rem; font-weight: bold; border-radius: 10px; cursor: pointer; }
+
+/* ==========================================
+   MENU ĐIỀU HƯỚNG DƯỚI ĐÁY (BOTTOM MENU)
+   ========================================== */
+.app-navigation {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+    background: #111625;
+    border-top: 1px solid rgba(0, 85, 255, 0.3);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 100;
+}
+
+.nav-item {
+    background: none;
+    border: none;
+    color: #64748b;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    height: 100%;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.nav-icon { font-size: 1.2rem; margin-bottom: 3px; }
+.nav-text { font-size: 0.75rem; font-weight: 500; }
+
+/* KHI MENU ĐƯỢC CHỌN ACTIVE */
+.nav-item.active {
+    color: #00ffcc;
+    text-shadow: 0 0 10px rgba(0, 255, 204, 0.4);
+}
+
+/* TIỆN ÍCH HIỆU ỨNG TRẠNG THÁI */
+.an-giau { display: none !important; }
+.hien-hien { display: block !important; animation: hienDan 0.3s forwards; }
+@keyframes hienDan { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: scale(1); } }
+.loading-text { text-align: center; padding: 40px; color: #64748b; }
