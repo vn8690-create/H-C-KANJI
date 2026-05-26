@@ -1,221 +1,483 @@
 [
   {
+    "grammar": "～ は ～",
+    "meaning": "Thì, là, ở",
+    "explanation": "Dùng để biểu thị chủ ngữ hoặc chủ đề của câu văn.",
+    "examples": [
+      { "ja": "私 は <s>ベトナム人</s> です。", "vi": "Tôi là người Việt Nam." }
+    ]
+  },
+  {
+    "grammar": "～ も ～",
+    "meaning": "Cũng, đến mức, đến cả",
+    "explanation": "Dùng khi đối tượng có cùng một tính chất, trạng thái tương tự như đối tượng trước đó.",
+    "examples": [
+      { "ja": "彼 も <ruby>学生<rt>がくせい</rt></ruby> です。", "vi": "Anh ấy cũng là học sinh." }
+    ]
+  },
+  {
+    "grammar": "～ で ～",
+    "meaning": "Tại, ở, vì, bằng, với",
+    "explanation": "Chỉ nơi diễn ra hành động, phương thức thực hiện, nguyên nhân hoặc phạm vi thời gian.",
+    "examples": [
+      { "ja": "<ruby>駅<rt>えき</rt></ruby> で <ruby>友達<rt>ともだち</rt></ruby> に 会います。", "vi": "Tôi gặp bạn ở nhà ga." },
+      { "ja": "日本語 で 話します。", "vi": "Tôi nói chuyện bằng tiếng Nhật." }
+    ]
+  },
+  {
+    "grammar": "～ に / へ ～",
+    "meaning": "Chỉ hướng, địa điểm, thời điểm",
+    "explanation": "Chỉ phương hướng di chuyển hoặc điểm đến của một hành động di chuyển (Đi, Đến, Về).",
+    "examples": [
+      { "ja": "日本 へ <ruby>行<rt>い</rt></ruby>きます。", "vi": "Tôi đi đến Nhật Bản." }
+    ]
+  },
+  {
+    "grammar": "～ に ～ (Thời gian)",
+    "meaning": "Vào, vào lúc",
+    "explanation": "Đặt sau danh từ chỉ thời gian có con số cụ thể để xác định thời điểm xảy ra hành động.",
+    "examples": [
+      { "ja": "6<ruby>時<rt>じ</rt></ruby> に <ruby>起<rt>お</rt></ruby>きます。", "vi": "Tôi thức dậy vào lúc 6 giờ." }
+    ]
+  },
+  {
+    "grammar": "～ を ～",
+    "meaning": "Chỉ đối tượng của hành động",
+    "explanation": "Đứng sau danh từ là tân ngữ trực tiếp chịu sự tác động của ngoại động từ.",
+    "examples": [
+      { "ja": "ごはん を <ruby>食<rt>た</rt></ruby>べます。", "vi": "Tôi ăn cơm." }
+    ]
+  },
+  {
+    "grammar": "～ と ～ (Hành động)",
+    "meaning": "Với",
+    "explanation": "Biểu thị đối tượng cùng tham gia thực hiện hành động với chủ ngữ.",
+    "examples": [
+      { "ja": "<ruby>友達<rt>ともだち</rt></ruby> と 日本へ行きます。", "vi": "Tôi đi Nhật Bản cùng với bạn." }
+    ]
+  },
+  {
+    "grammar": "～ に ～ (Đối tượng)",
+    "meaning": "Cho ~, từ ~",
+    "explanation": "Biểu thị đối tượng tiếp nhận hành động (cho, tặng) hoặc đối tượng nguồn (nhận từ ai).",
+    "examples": [
+      { "ja": "山田さん に 本をあげました。", "vi": "Tôi đã tặng sách cho anh Yamada." }
+    ]
+  },
+  {
+    "grammar": "～ と ～ (Liệt kê)",
+    "meaning": "Và",
+    "explanation": "Dùng để nối các danh từ với nhau nhằm liệt kê toàn bộ các đối tượng.",
+    "examples": [
+      { "ja": "本 と ペン を 買いました。", "vi": "Tôi đã mua sách và bút." }
+    ]
+  },
+  {
+    "grammar": "～ が ～",
+    "meaning": "Nhưng",
+    "explanation": "Dùng để nối hai vế câu có ý nghĩa tương phản hoặc đối lập nhau.",
+    "examples": [
+      { "ja": "日本の<ruby>食べ物<rt>たべもの</rt></ruby>は おいしいです が、高いです。", "vi": "Đồ ăn Nhật Bản ngon nhưng đắt." }
+    ]
+  },
+  {
+    "grammar": "～ から ～ まで",
+    "meaning": "Từ ~ đến ~",
+    "explanation": "Biểu thị điểm bắt đầu và điểm kết thúc của thời gian hoặc không gian.",
+    "examples": [
+      { "ja": "9<ruby>時<rt>じ</rt></ruby> から 5時 まで 働きます。", "vi": "Tôi làm việc từ 9 giờ đến 5 giờ." }
+    ]
+  },
+  {
+    "grammar": "～ あまり ～ ない",
+    "meaning": "Không ~ lắm",
+    "explanation": "Đi với phó từ あまり và động từ/tính từ ở thể phủ định để giảm bớt mức độ.",
+    "examples": [
+      { "ja": "この<ruby>料理<rt>りょうり</rt></ruby>は あまり おいしくない です。", "vi": "Món ăn này không ngon lắm." }
+    ]
+  },
+  {
+    "grammar": "～ 全然 ～ ない",
+    "meaning": "Hoàn toàn ~ không",
+    "explanation": "Nhấn mạnh sự phủ định tuyệt đối (mức độ 0%).",
+    "examples": [
+      { "ja": "英語が 全然 <ruby>分<rt>わ</rt></ruby>かりません。", "vi": "Tôi hoàn toàn không hiểu tiếng Anh." }
+    ]
+  },
+  {
+    "grammar": "～ なかなか ～ ない",
+    "meaning": "Mãi mà, mãi mới",
+    "explanation": "Diễn tả một sự việc mong đợi nhưng rất khó khăn, mãi vẫn chưa xảy ra thực tế.",
+    "examples": [
+      { "ja": "バスが なかなか <ruby>来<rt>き</rt></ruby>ません。", "vi": "Xe buýt mãi mà không thấy đến." }
+    ]
+  },
+  {
+    "grammar": "～ ませんか",
+    "meaning": "Anh/ chị cùng... với tôi không?",
+    "explanation": "Mẫu câu dùng để mời mọc, rủ rê đối phương cùng thực hiện một hành động nào đó.",
+    "examples": [
+      { "ja": "一緒に お茶を <ruby>飲<rt>の</rt></ruby>みませんか。", "vi": "Bạn cùng uống trà với tôi không?" }
+    ]
+  },
+  {
+    "grammar": "～ があります",
+    "meaning": "Có (đồ vật, thực vật)",
+    "explanation": "Diễn tả sự tồn tại của sự vật vô tri vô giác, đồ vật hoặc cây cối.",
+    "examples": [
+      { "ja": "机の上に 本 があります。", "vi": "Có cuốn sách ở trên bàn." }
+    ]
+  },
+  {
+    "grammar": "～ がいます",
+    "meaning": "Có (người, động vật)",
+    "explanation": "Diễn tả sự tồn tại của con người hoặc động vật (những thực thể có khả năng tự chuyển động).",
+    "examples": [
+      { "ja": "教室に 先生 がいます。", "vi": "Có thầy giáo ở trong phòng học." }
+    ]
+  },
+  {
+    "grammar": "～ 動詞 ＋ 数量 ～",
+    "meaning": "Vị trí đặt từ chỉ số lượng",
+    "explanation": "Trong tiếng Nhật, từ chỉ số lượng (đếm vật, đếm người) thường đứng trực tiếp trước động từ.",
+    "examples": [
+      { "ja": "<ruby>林檎<rt>りんご</rt></ruby>を 4つ 買いました。", "vi": "Tôi đã mua 4 quả táo." }
+    ]
+  },
+  {
+    "grammar": "～ に ～ 回",
+    "meaning": "Làm ~ lần trong khoảng thời gian",
+    "explanation": "Diễn tả tần suất thực hiện một hành động trong một quãng thời gian nhất định.",
+    "examples": [
+      { "ja": "1<ruby>週間<rt>しゅうかん</rt></ruby> に 2回 映画を見ます。", "vi": "Một tuần tôi xem phim 2 lần." }
+    ]
+  },
+  {
+    "grammar": "～ ましょう",
+    "meaning": "Chúng ta hãy cùng ~",
+    "explanation": "Dùng khi người nói chủ động kêu gọi, thúc giục đối phương cùng làm gì đó, hoặc đáp lại lời mời.",
+    "examples": [
+      { "ja": "ちょっと <ruby>休<rt>やす</rt></ruby>みましょう。", "vi": "Chúng ta hãy cùng nghỉ ngơi một chút nào." }
+    ]
+  },
+  {
+    "grammar": "～ ましょうか？",
+    "meaning": "Tôi ~ hộ cho anh nhé",
+    "explanation": "Người nói đưa ra lời đề nghị muốn giúp đỡ đối phương làm một việc gì đó.",
+    "examples": [
+      { "ja": "窓を <ruby>閉<rt>し</rt></ruby>めましょうか。", "vi": "Để tôi đóng cửa sổ giúp anh nhé?" }
+    ]
+  },
+  {
+    "grammar": "～ がほしい",
+    "meaning": "Muốn có (danh từ)",
+    "explanation": "Diễn tả ham muốn, ước muốn sở hữu một đồ vật hoặc một thứ gì đó của người nói.",
+    "examples": [
+      { "ja": "私は 新しい 車 がほしいです。", "vi": "Tôi muốn có một chiếc ô tô mới." }
+    ]
+  },
+  {
+    "grammar": "～ たい",
+    "meaning": "Muốn làm... (V-ます ＋ たい)",
+    "explanation": "Diễn tả nguyện vọng, mong muốn thực hiện một hành động nào đó của người nói.",
+    "examples": [
+      { "ja": "日本へ <ruby>行<rt>い</rt></ruby>きたいです。", "vi": "Tôi muốn đi Nhật Bản." }
+    ]
+  },
+  {
+    "grammar": "～ へ ～ を ～ に行きます",
+    "meaning": "Đi đến... để làm gì",
+    "explanation": "Diễn tả mục đích của một hành động di chuyển (V-ます bỏ ます đi với に行きます).",
+    "examples": [
+      { "ja": "スーパーへ 買い出し に行きます。", "vi": "Tôi đi đến siêu thị để mua đồ." }
+    ]
+  },
+  {
+    "grammar": "～ てください",
+    "meaning": "Hãy làm ～",
+    "explanation": "Mẫu câu dùng để yêu cầu, sai khiến hoặc nhờ vả đối phương thực hiện hành động một cách lịch sự.",
+    "examples": [
+      { "ja": "ここに 名前を <ruby>書<rt>か</rt></ruby>いてください。", "vi": "Xin vui lòng viết tên vào đây." }
+    ]
+  },
+  {
+    "grammar": "～ ないでください",
+    "meaning": "(Xin) đừng / không làm ～",
+    "explanation": "Mẫu câu yêu cầu hoặc khuyên bảo đối phương đừng thực hiện một hành động nào đó.",
+    "examples": [
+      { "ja": "写真を <ruby>撮<rt>と</rt></ruby>らないでください。", "vi": "Xin vui lòng đừng chụp ảnh." }
+    ]
+  },
+  {
+    "grammar": "～ てもいいです",
+    "meaning": "Làm ~ cũng được, được phép làm ~",
+    "explanation": "Mẫu câu biểu thị sự cho phép hoặc xin phép đối phương làm một việc gì đó.",
+    "examples": [
+      { "ja": "タバコを <ruby>吸<rt>す</rt></ruby>ってもいいですか。", "vi": "Tôi hút thuốc có được không?" }
+    ]
+  },
+  {
+    "grammar": "～ てはいけません",
+    "meaning": "Không được làm ~",
+    "explanation": "Mẫu câu diễn tả sự cấm đoán, không cho phép thực hiện hành động.",
+    "examples": [
+      { "ja": "ここに 車を <ruby>止<rt>と</rt></ruby>めてはいけません。", "vi": "Không được đỗ xe ở đây." }
+    ]
+  },
+  {
+    "grammar": "～ なくてもいいです",
+    "meaning": "Không phải, không cần ~ cũng được",
+    "explanation": "Diễn tả một trạng thái không bắt buộc, đối phương không cần thực hiện hành động cũng không sao.",
+    "examples": [
+      { "ja": "明日は 来なくてもいいです。", "vi": "Ngày mai bạn không cần đến cũng được." }
+    ]
+  },
+  {
+    "grammar": "～ なければなりません",
+    "meaning": "Phải làm ~",
+    "explanation": "Diễn tả một nghĩa vụ, bổn phận bắt buộc phải thực hiện, không phụ thuộc vào ý chí cá nhân.",
+    "examples": [
+      { "ja": "毎日 <ruby>薬<rt>くすり</rt></ruby>を <ruby>飲<rt>の</rt></ruby>まなければなりません。", "vi": "Mỗi ngày tôi đều phải uống thuốc." }
+    ]
+  },
+  {
+    "grammar": "～ ないといけない",
+    "meaning": "Phải làm ~ (Văn nói sinh hoạt)",
+    "explanation": "Một dạng rút gọn phổ biến trong hội thoại hằng ngày mang nghĩa bắt buộc phải thực hiện.",
+    "examples": [
+      { "ja": "早く <ruby>帰<rt>かえ</rt></ruby>らないといけない。", "vi": "Tôi phải về nhà sớm thôi." }
+    ]
+  },
+  {
+    "grammar": "～ なくちゃいけない",
+    "meaning": "Không thể không (phải làm ~)",
+    "explanation": "Cách nói cực kỳ thân mật trong giao tiếp hằng ngày của mẫu câu phải làm gì.",
+    "examples": [
+      { "ja": "<ruby>宿題<rt>しゅくだい</rt></ruby>を やらなくちゃいけない。", "vi": "Tớ phải làm bài tập về nhà rồi." }
+    ]
+  },
+  {
+    "grammar": "～ だけ ～",
+    "meaning": "Chỉ ～",
+    "explanation": "Biểu thị giới hạn trong số lượng hoặc phạm vi, vế sau đi với câu khẳng định.",
+    "examples": [
+      { "ja": "10分 だけ <ruby>待<rt>ま</rt></ruby>ってください。", "vi": "Xin hãy đợi tôi chỉ 10 phút thôi." }
+    ]
+  },
+  {
     "grammar": "～ から ～",
     "meaning": "Vì ～",
-    "explanation": "Diễn tả nguyên nhân, lý do. Thường dùng trong giao tiếp thân mật hoặc khi muốn nhấn mạnh lý do chủ quan.",
+    "explanation": "Diễn tả nguyên nhân, lý do một cách chủ quan của người nói.",
     "examples": [
-      { "ja": "時間 がありませんから、タクシーで行きます。", "vi": "Vì không có thời gian nên tôi đi bằng taxi." },
-      { "ja": "寒いから、窓を閉めてください。", "vi": "Vì lạnh nên hãy đóng cửa sổ lại." }
+      { "ja": "<ruby>時間<rt>じかん</rt></ruby>がないですから、急ぎます。", "vi": "Vì không có thời gian nên tôi sẽ khẩn trương." }
     ]
   },
   {
     "grammar": "V-る ＋ のが ～",
-    "meaning": "Danh từ hóa động từ (Việc...)",
-    "explanation": "Sử dụng để nói về sở thích, năng lực liên quan đến một hành động cụ thể.",
+    "meaning": "Danh từ hóa động từ (Sở thích/Đánh giá)",
+    "explanation": "Dùng khi đánh giá năng lực hoặc bày tỏ sở thích về một hành động cụ thể.",
     "examples": [
-      { "ja": "私は<ruby>写真<rt>しゃしん</rt></ruby>を<ruby>撮<rt>と</rt></ruby>るのが<ruby>好<rt>す</rt></ruby>きです。", "vi": "Tôi thích việc chụp ảnh." },
-      { "ja": "彼は<ruby>走<rt>はし</rt></ruby>るのが<ruby>速<rt>はや</rt></ruby>いです。", "vi": "Anh ấy chạy (việc chạy) rất nhanh." }
+      { "ja": "私は <ruby>料理<rt>りょうり</rt></ruby>を <ruby>作<rt>つく</rt></ruby>るのが 好きです。", "vi": "Tôi thích việc nấu ăn." }
     ]
   },
   {
     "grammar": "V-る ＋ のを ～",
-    "meaning": "Danh từ hóa động từ",
-    "explanation": "Dùng khi hành động (danh từ hóa) là đối tượng trực tiếp của ngoại động từ (quên, biết...).",
+    "meaning": "Danh từ hóa động từ (Đối tượng hành động)",
+    "explanation": "Biến động từ thành danh từ để làm tân ngữ trực tiếp đứng trước các từ như quên, biết...",
     "examples": [
-      { "ja": "<ruby>宿題<rt>しゅくだい</rt></ruby>をするのを<ruby>忘<rt>わす</rt></ruby>れました。", "vi": "Tôi đã quên mất việc làm bài tập về nhà." }
+      { "ja": "<ruby>鍵<rt>かぎ</rt></ruby>をかけるのを <ruby>忘<rt>わす</rt></ruby>れました。", "vi": "Tôi đã quên mất việc khóa cửa." }
     ]
   },
   {
     "grammar": "V-る ＋ ののは ～",
-    "meaning": "Danh từ hóa động từ",
-    "explanation": "Đưa hành động lên làm chủ ngữ để đưa ra nhận xét, đánh giá.",
+    "meaning": "Danh từ hóa động từ (Làm chủ ngữ)",
+    "explanation": "Biến cụm động từ thành chủ ngữ để đưa ra một định nghĩa, tính chất, nhận xét.",
     "examples": [
-      { "ja": "<ruby>外国語<rt>がいこくご</rt></ruby>を<ruby>勉強<rt>べんきょう</rt></ruby>するのは<ruby>面白<rt>おもしろ</rt></ruby>いです。", "vi": "Việc học ngoại ngữ rất thú vị." }
-    ]
+      { "ja": "日本語を <ruby>勉強<rt>べんきょう</rt></ruby>するのは おもしろいです。", "vi": "Việc học tiếng Nhật rất thú vị." }
+                ]
   },
   {
     "grammar": "もう ＋ V-ました",
     "meaning": "Đã làm gì rồi",
-    "explanation": "Diễn tả một hành động đã hoàn thành trong quá khứ.",
+    "explanation": "Diễn tả một hành động, sự việc đã hoàn tất tính đến thời điểm nói.",
     "examples": [
-      { "ja": "もう<ruby>昼<rt>ひる</rt></ruby>ごはんを<ruby>食<rt>た</rt></ruby>べましたか。", "vi": "Bạn đã ăn cơm trưa chưa?" }
+      { "ja": "もう <ruby>昼<rt>ひる</rt></ruby>ごはんを 食べました。", "vi": "Tôi đã ăn cơm trưa rồi." }
     ]
   },
   {
     "grammar": "まだ ＋ V-ていません",
-    "meaning": "Vẫn chưa làm ～",
-    "explanation": "Diễn tả một hành động chưa thực hiện tính đến thời điểm hiện tại.",
+    "meaning": "Vẫn chưa làm ~",
+    "explanation": "Diễn tả một trạng thái hay hành động chưa được thực hiện ở hiện tại.",
     "examples": [
-      { "ja": "いいえ、まだ<ruby>食<rt>た</rt></ruby>べていません。", "vi": "Không, tôi vẫn chưa ăn." }
+      { "ja": "まだ <ruby>宿題<rt>しゅくだい</rt></ruby>を していません。", "vi": "Tôi vẫn chưa làm bài tập về nhà." }
     ]
   },
   {
     "grammar": "A は B より ～",
     "meaning": "So với B thì A... hơn",
-    "explanation": "Cấu trúc so sánh hơn giữa hai sự vật sự việc.",
+    "explanation": "Cấu trúc dùng để so sánh tính chất giữa hai thực thể.",
     "examples": [
-      { "ja": "この<ruby>鞄<rt>かばん</rt></ruby>はあれより<ruby>重<rt>おも</rt></ruby>いです。", "vi": "Cái cặp này nặng hơn cái kia." }
+      { "ja": "この車は あれ より 早いです。", "vi": "Chiếc xe này chạy nhanh hơn chiếc xe kia." }
     ]
   },
   {
     "grammar": "A は B ほど ～ない",
-    "meaning": "A không ～ bằng B",
-    "explanation": "So sánh kém, diễn tả mức độ của A không đạt tới mức của B.",
+    "meaning": "A không... bằng B",
+    "explanation": "Cấu trúc so sánh kém, biểu thị mức độ của A không bằng mức độ của B.",
     "examples": [
-      { "ja": "<ruby>昨日<rt>きのう</rt></ruby>は<ruby>今日<rt>きょう</rt></ruby>ほど<ruby>暑<rt>あつ</rt></ruby>くないです。", "vi": "Hôm qua không nóng bằng hôm nay." }
+      { "ja": "ハノイは <ruby>東京<rt>とうきょう</rt></ruby> ほど <ruby>寒<rt>さむ</rt></ruby>くないです。", "vi": "Hà Nội không lạnh bằng Tokyo." }
     ]
   },
   {
-    "grammar": "～ と 同じ ～",
-    "meaning": "Giống với ～",
-    "explanation": "So sánh sự tương đồng về tính chất hoặc trạng thái.",
+    "grammar": "～ と同じ ～",
+    "meaning": "Giống với ~, tương tự với ~",
+    "explanation": "Dùng để biểu thị sự tương đồng, giống nhau về mặt tính chất hoặc hình dáng.",
     "examples": [
-      { "ja": "これと<ruby>同<rt>おな</rt></ruby>じものをください。", "vi": "Cho tôi cái giống với cái này." }
+      { "ja": "彼 と <ruby>同<rt>おな</rt></ruby>じ時計を 買いました。", "vi": "Tôi đã mua chiếc đồng hồ giống hệt anh ấy." }
     ]
   },
   {
-    "grammar": "～の中で ～がいちばん ～",
+    "grammar": "～ のなかで ～ がいちばん ～",
     "meaning": "Trong số... thì... nhất",
-    "explanation": "So sánh nhất trong một phạm vi cụ thể.",
+    "explanation": "Mẫu câu so sánh cao nhất trong một phạm vi, tập hợp đối tượng cụ thể.",
     "examples": [
-      { "ja": "1<ruby>年<rt>ねん</rt></ruby>の<ruby>中<rt>なか</rt></ruby>でいつが<ruby>一番<rt>いちばん</rt></ruby><ruby>好<rt>す</rt></ruby>きですか。", "vi": "Trong một năm bạn thích lúc nào nhất?" }
+      { "ja": "果物の なかで <ruby>苺<rt>いちご</rt></ruby> が一番好きです。", "vi": "Trong số các loại hoa quả, tôi thích dâu tây nhất." }
     ]
   },
   {
     "grammar": "～ く / ～ に なる",
     "meaning": "Trở thành, trở nên ～",
-    "explanation": "Diễn tả sự thay đổi trạng thái của sự vật hiện tượng.",
+    "explanation": "Diễn tả sự thay đổi tự nhiên hoặc kết quả biến đổi trạng thái của sự vật.",
     "examples": [
-      { "ja": "テレビの<ruby>音<rt>おと</rt></ruby>を<ruby>大<rt>おお</rt></ruby>きくします。", "vi": "Tôi làm cho tiếng tivi to lên." },
-      { "ja": "20<ruby>歳<rt>さい</rt></ruby>になります。", "vi": "Tôi sẽ trở thành (tròn) 20 tuổi." }
+      { "ja": "天気が <ruby>暖<rt>あたた</rt></ruby>かく なりました。", "vi": "Thời tiết đã trở nên ấm áp hơn rồi." }
     ]
   },
   {
     "grammar": "～ も ～ ない",
-    "meaning": "Cho dù ～ cũng không",
-    "explanation": "Nhấn mạnh sự phủ định, thậm chí mức độ thấp nhất cũng không có.",
+    "meaning": "Cho dù ~ cũng không",
+    "explanation": "Đi kèm từ chỉ số lượng nhỏ nhất để nhấn mạnh sự phủ định hoàn toàn.",
     "examples": [
-      { "ja": "一<ruby>枚<rt>まい</rt></ruby>もありません。", "vi": "Đến một tờ cũng không có." }
+      { "ja": "財布に 1円 も ないです。", "vi": "Trong ví đến 1 Yên cũng không có." }
     ]
   },
   {
     "grammar": "～たり、～たり する",
-    "meaning": "Lúc thì... lúc thì... (và làm ～)",
-    "explanation": "Liệt kê các hành động tiêu biểu, không quan trọng thứ tự thời gian.",
+    "meaning": "Làm ~ làm, và ~",
+    "explanation": "Dùng để liệt kê vài hành động tiêu biểu mang tính đại diện.",
     "examples": [
-      { "ja": "日曜日は本を<ruby>読<rt>よ</rt></ruby>んだり、テレビを見たりします。", "vi": "Chủ nhật tôi lúc thì đọc sách, lúc thì xem tivi." }
+      { "ja": "週末は 買い物をし たり、映画を見 たりします。", "vi": "Cuối tuần tôi lúc thì đi mua sắm, lúc thì xem phim." }
     ]
   },
   {
     "grammar": "～ ている",
-    "meaning": "Đang làm ～",
-    "explanation": "Diễn tả hành động đang tiếp diễn hoặc trạng thái kết quả của một hành động.",
+    "meaning": "Vẫn đang làm ～",
+    "explanation": "Diễn tả một hành động đang trong quá trình tiến hành tại thời điểm nói.",
     "examples": [
-      { "ja": "今、<ruby>本<rt>ほん</rt></ruby>を<ruby>読<rt>よ</rt></ruby>んでいます。", "vi": "Bây giờ tôi đang đọc sách." }
+      { "ja": "今、日本語を <ruby>勉強<rt>べんきょう</rt></ruby>し ている。", "vi": "Bây giờ tôi vẫn đang học tiếng Nhật." }
     ]
   },
   {
     "grammar": "V-る ＋ ことがある",
     "meaning": "Có khi, thỉnh thoảng làm ～",
-    "explanation": "Diễn tả một hành động thỉnh thoảng mới xảy ra.",
+    "explanation": "Diễn tả một thói quen hoặc một hành động đôi khi, thi thoảng mới xảy ra.",
     "examples": [
-      { "ja": "<ruby>朝<rt>あさ</rt></ruby>ごはんを<ruby>食<rt>た</rt></ruby>べないことがあります。", "vi": "Có khi tôi không ăn sáng." }
+      { "ja": "晩ごはんは 自分で <ruby>作<rt>つく</rt></ruby>る ことがあります。", "vi": "Cơm tối thì thỉnh thoảng tôi cũng tự nấu." }
     ]
   },
   {
     "grammar": "V-ない ＋ ことがある",
     "meaning": "Có khi nào không... ?",
-    "explanation": "Diễn tả trạng thái đôi khi không xảy ra hành động đó.",
+    "explanation": "Diễn tả một trạng thái lặp lại là đôi khi không thực hiện hành động đó.",
     "examples": [
-      { "ja": "たまに<ruby>学校<rt>がっこう</rt></ruby>へ<ruby>行<rt>い</rt></ruby>かないことがあります。", "vi": "Thi thoảng cũng có khi tôi không đến trường." }
+      { "ja": "たまに 学校へ <ruby>行<rt>い</rt></ruby>かない ことがあります。", "vi": "Thi thoảng cũng có khi tôi không đến trường." }
     ]
   },
   {
     "grammar": "V-た ＋ ことがある",
     "meaning": "Đã từng làm ～",
-    "explanation": "Diễn tả một trải nghiệm, kinh nghiệm trong quá khứ.",
+    "explanation": "Biểu thị một kinh nghiệm, trải nghiệm trong quá khứ tính đến thời điểm hiện tại.",
     "examples": [
-      { "ja": "<ruby>日本<rt>にほん</rt></ruby>へ<ruby>行<rt>い</rt></ruby>ったことがあります。", "vi": "Tôi đã từng đi Nhật Bản." }
+      { "ja": "富士山に <ruby>登<rt>のぼ</rt></ruby>った ことがあります。", "vi": "Tôi đã từng leo núi Phú Sĩ." }
     ]
   },
   {
     "grammar": "～ や ～ など",
     "meaning": "Như là... và... (liệt kê không hết)",
-    "explanation": "Dùng để liệt kê vài danh từ tiêu biểu trong số nhiều danh từ.",
+    "explanation": "Dùng để liệt kê tượng trưng một vài danh từ tiêu biểu.",
     "examples": [
-      { "ja": "机の上に本やペンなどがあります。", "vi": "Trên bàn có những thứ như sách và bút." }
+      { "ja": "カバンの中に 本 や ペン など があります。", "vi": "Trong cặp có những thứ như là sách và bút." }
     ]
   },
   {
     "grammar": "～ ので ～",
     "meaning": "Bởi vì ～",
-    "explanation": "Diễn tả nguyên nhân lý do một cách nhẹ nhàng, khách quan, lịch sự.",
+    "explanation": "Diễn tả nguyên nhân lý do một cách khách quan, mang sắc thái lịch sự, nhẹ nhàng.",
     "examples": [
-      { "ja": "<ruby>用事<rt>ようじ</rt></ruby>があるので、お<ruby>先<rt>さき</rt></ruby>に<ruby>失礼<rt>しつれい</rt></ruby>します。", "vi": "Vì có việc bận nên tôi xin phép về trước." }
+      { "ja": "<ruby>頭<rt>あたま</rt></ruby>が痛い ので、早く寝ます。", "vi": "Bởi vì đau đầu nên tôi đi ngủ sớm." }
     ]
   },
   {
     "grammar": "～ でしょう？",
     "meaning": "～ đúng không?",
-    "explanation": "Dùng để xác nhận lại điều gì đó với người nghe khi mình khá chắc chắn.",
+    "explanation": "Dùng ở cuối câu để tìm kiếm sự đồng tình hoặc xác nhận lại từ người nghe.",
     "examples": [
-      { "ja": "明日は休みでしょう？", "vi": "Ngày mai nghỉ đúng không?" }
+      { "ja": "明日は <ruby>試験<rt>しけん</rt></ruby> でしょう？", "vi": "Ngày mai là kỳ thi đúng không nhỉ?" }
     ]
   },
   {
     "grammar": "たぶん ～ でしょう",
-    "meaning": "Chắc hẳn là ～, có lẽ ～",
-    "explanation": "Diễn tả sự dự đoán của người nói dựa trên một căn cứ nào đó.",
+    "meaning": "Chắc hẳn là ~, có lẽ ~",
+    "explanation": "Diễn tả sự suy đoán của người nói với mức độ tin tưởng khá cao.",
     "examples": [
-      { "ja": "明日はたぶん雨でしょう。", "vi": "Ngày mai có lẽ sẽ mưa." }
+      { "ja": "明日は たぶん 雨 でしょう。", "vi": "Ngày mai chắc hẳn là trời sẽ mưa." }
     ]
   },
   {
-    "grammar": "～ と 思います",
+    "grammar": "～ と思います",
     "meaning": "Tôi nghĩ rằng ～",
-    "explanation": "Diễn tả ý kiến, suy nghĩ cá nhân của người nói.",
+    "explanation": "Dùng để bày tỏ quan điểm, ý kiến hoặc suy đoán mang tính cá nhân.",
     "examples": [
-      { "ja": "日本はきれいだと思います。", "vi": "Tôi nghĩ rằng Nhật Bản đẹp." }
+      { "ja": "物価は 高い と思います。", "vi": "Tôi nghĩ rằng giá cả đắt đỏ." }
     ]
   },
   {
-    "grammar": "～ と 言います",
+    "grammar": "～ と言います",
     "meaning": "Nói là ～",
-    "explanation": "Dùng để trích dẫn gián tiếp hoặc trực tiếp một lời nói.",
+    "explanation": "Dùng để truyền đạt, trích dẫn lại một lời phát ngôn của ai đó.",
     "examples": [
-      { "ja": "田中さんは「おやすみなさい」と言いました。", "vi": "Anh Tanaka đã nói là 'Chúc ngủ ngon'." }
+      { "ja": "田中さんは 明日 休む と言いました。", "vi": "Anh Tanaka nói là ngày mai sẽ nghỉ." }
     ]
   },
   {
-    "grammar": "V-る / N-の ＋ 前に",
-    "meaning": "Trước khi ～",
-    "explanation": "Diễn tả trình tự thời gian, hành động này xảy ra trước hành động kia.",
+    "grammar": "V-る / N-の ＋ まえに",
+    "meaning": "Trước khi làm ～",
+    "explanation": "Biểu thị trình tự thời gian, hành động này thực hiện trước hành động kia.",
     "examples": [
-      { "ja": "<ruby>寝<rt>ね</rt></ruby>る<ruby>前<rt>まえ</rt></ruby>に、本を<ruby>読<rt>よ</rt></ruby>みます。", "vi": "Trước khi ngủ, tôi đọc sách." }
+      { "ja": "寝る まえに 、お祈りをします。", "vi": "Trước khi đi ngủ, tôi làm lễ cầu nguyện." }
     ]
   },
   {
     "grammar": "V-て ＋ から",
-    "meaning": "Sau khi ～ (thứ tự hành động)",
-    "explanation": "Nhấn mạnh trình tự: sau khi xong việc A thì mới làm việc B.",
+    "meaning": "Sau khi làm ～ (trình tự liên tiếp)",
+    "explanation": "Nhấn mạnh sau khi hoàn thành hành động vế trước thì hành động vế sau mới bắt đầu.",
     "examples": [
-      { "ja": "手を<ruby>洗<rt>あら</rt></ruby>ってから、ごはんを<ruby>食<rt>た</rt></ruby>べます。", "vi": "Sau khi rửa tay thì mới ăn cơm." }
+      { "ja": "映画を 見てから 、喫茶店へ行きました。", "vi": "Sau khi xem phim xong, chúng tôi đã đi đến quán cà phê." }
     ]
   },
   {
     "grammar": "V-た ＋ あとで",
-    "meaning": "Sau khi làm ～",
-    "explanation": "Diễn tả sự việc xảy ra sau một sự việc khác.",
+    "meaning": "Sau khi ～",
+    "explanation": "Diễn tả một hành động xảy ra sau khi một sự việc khác đã kết thúc hoàn toàn.",
     "examples": [
-      { "ja": "<ruby>仕事<rt>しごと</rt></ruby>が<ruby>終<rt>お</rt></ruby>わったあとで、飲みに行きます。", "vi": "Sau khi xong việc, chúng tôi đi nhậu." }
+      { "ja": "仕事が 終わった あとで 、飲みに行きます。", "vi": "Sau khi kết thúc công việc, chúng tôi sẽ đi nhậu." }
     ]
   },
   {
     "grammar": "～ とき",
-    "meaning": "Khi ～",
-    "explanation": "Dùng để nối hai vế câu biểu thị thời điểm xảy ra một trạng thái hay hành động.",
+    "meaning": "Khi làm ～, lúc ～",
+    "explanation": "Dùng để liên kết các mệnh đề, chỉ thời điểm xảy ra trạng thái hoặc hành động.",
     "examples": [
-      { "ja": "<ruby>暇<rt>ひま</rt></ruby>なとき、テレビを見ます。", "vi": "Khi rảnh rỗi, tôi xem tivi." }
+      { "ja": "子供の とき 、日本に住んでいました。", "vi": "Khi còn là một đứa trẻ, tôi đã sống ở Nhật Bản." }
     ]
   }
 ]
