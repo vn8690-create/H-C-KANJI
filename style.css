@@ -153,13 +153,22 @@ body {
 
 /* THÈ FLASHCARD HỌC KANJI VÀ NGỮ PHÁP */
 .the-cyber-card {
-    background: #111625;
+    background: #111827; /* Hoặc màu nền cyber của bro */
+    border: 1px solid #1f2937;
     border-radius: 16px;
-    padding: 30px 15px;
+    padding: 20px;
     text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-    margin-bottom: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-sizing: border-box;
+    /* Ghi đè để tự co giãn */
+    height: auto !important; 
+    min-height: 280px;
+    overflow: visible !important; 
+}
+
+/* Đảm bảo vùng chứa các nút không bị che */
+#vung-chua-the-dong {
+    height: auto !important;
+    overflow: visible !important;
 }
 
 .chu-kanji-khong-lo {
