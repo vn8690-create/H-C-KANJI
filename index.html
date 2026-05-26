@@ -3,83 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Cyber Kanji Flashcard</title>
+    <title>Cyber Kanji & Grammar</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
     <div class="app-container">
         <header class="app-header">
-            <div class="logo" onclick="ChuyenManHinh('man-home')">CYBER KANJI</div>
+            <div class="logo" onclick="ChuyenTab('man-home')">CYBER KANJI</div>
             <div class="score-box">XP: <span id="id-xp">0</span></div>
         </header>
 
-        <section id="man-home" class="man-hinh active">
-            <div class="welcome">Chọn cấp độ để kích hoạt bộ não:</div>
-            <div class="danh-sach-nut-level">
-                <button class="nut-level" onclick="TaiDuLieuKanji('n5')">CẤP ĐỘ N5 🚀</button>
-                <button class="nut-level" onclick="TaiDuLieuKanji('n4')">CẤP ĐỘ N4 ⚡</button>
-                <button class="nut-level" onclick="TaiDuLieuKanji('n3')">CẤP ĐỘ N3 🔥</button>
-                <button class="nut-level" onclick="TaiDuLieuKanji('n2')">CẤP ĐỘ N2 👑</button>
-                <button class="nut-level" onclic<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ứng Dụng Học Kanji</title>
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-
-    <div class="app-container">
-        <header class="app-header">
-            <div class="logo" onclick="QuayVeHome()">CYBER KANJI</div>
-            <div class="score-box">XP: <span id="id-xp">0</span></div>
-        </header>
-
-        <section id="man-home" class="man-hinh active">
-            <div class="welcome">Chào đặc vụ! Chọn cấp độ để kích hoạt bộ não:</div>
-            <div class="danh-sach-nut">
-                <button class="nut-level" onclick="TaiDuLieuKanji('n5')">CẤP ĐỘ N5 🚀</button>
-                <button class="nut-level" onclick="TaiDuLieuKanji('n4')">CẤP ĐỘ N4 ⚡</button>
-                <button class="nut-level" onclick="TaiDuLieuKanji('n3')">CẤP ĐỘ N3 🔥</button>
-                <button class="nut-level" onclick="TaiDuLieuKanji('n2')">CẤP ĐỘ N2 👑</button>
-                <button class="nut-level" onclick="TaiDuLieuKanji('n1')">CẤP ĐỘ N1 🌌</button>
-            </div>
-        </section>
-
-        <section id="man-hoc" class="man-hinh">
-            <div class="thanh-dieu-huong">
-                <h2 id="tieu-de-bai-hoc">Đang tải...</h2>
-                <button class="nut-quay-lai" onclick="QuayVeHome()">QUAY LẠI</button>
-            </div>
+        <main class="app-main">
             
-            <div id="vung-chua-the-kanji"></div>
+            <section id="man-home" class="man-hinh active">
+                <div class="welcome">Chào đặc vụ! Chọn một danh mục dưới thanh Menu để bắt đầu kích hoạt bộ não.</div>
+                <div class="huong-dan-box">
+                    <p>⚡ <strong>HỌC KANJI:</strong> Cày từ vựng từ N5 đến N1 kèm timeline âm thanh sinh động.</p>
+                    <p>📚 <strong>NGỮ PHÁP N5:</strong> Trọn gói cấu trúc chống nản có Furigana trực quan.</p>
+                    <p>⚔️ <strong>PHẦN TEST:</strong> Đấu trường trắc nghiệm tính điểm nâng cao phản xạ.</p>
+                </div>
+            </section>
 
-            <div id="vung-nut-chuyen-trang" class="an-giau">
-                <button class="nut-tiep-theo" onclick="ChuyenChuTiepTheo()">CHỮ TIẾP THEO ➡️</button>
-            </div>
-        </section>
-    </div>
+            <section id="man-kanji" class="man-hinh">
+                <div class="welcome">Chọn cấp độ để luyện từ vựng Kanji:</div>
+                <div class="danh-sach-nut">
+                    <button class="nut-level" onclick="TaiDuLieuHoc('kanji', 'n5')">CẤP ĐỘ N5 🚀</button>
+                    <button class="nut-level" onclick="TaiDuLieuHoc('kanji', 'n4')">CẤP ĐỘ N4 ⚡</button>
+                    <button class="nut-level" onclick="TaiDuLieuHoc('kanji', 'n3')">CẤP ĐỘ N3 🔥</button>
+                    <button class="nut-level" onclick="TaiDuLieuHoc('kanji', 'n2')">CẤP ĐỘ N2 👑</button>
+                    <button class="nut-level" onclick="TaiDuLieuHoc('kanji', 'n1')">CẤP ĐỘ N1 🌌</button>
+                </div>
+            </section>
 
-    <script src="./script.js"></script>
-</body>
-</html>k="TaiDuLieuKanji('n1')">CẤP ĐỘ N1 🌌</button>
-            </div>
-        </section>
+            <section id="man-test-levels" class="man-hinh">
+                <div class="welcome">⚔️ ĐẤU TRƯỜNG TEST - Chọn cấp độ thử thách:</div>
+                <div class="danh-sach-nut">
+                    <button class="nut-level test-color" onclick="ChonCapDoTest('n5')">BÀI TEST N5 🚀</button>
+                    <button class="nut-level test-color" onclick="ChonCapDoTest('n4')">BÀI TEST N4 ⚡</button>
+                    <button class="nut-level test-color" onclick="ChonCapDoTest('n3')">BÀI TEST N3 🔥</button>
+                    <button class="nut-level test-color" onclick="ChonCapDoTest('n2')">BÀI TEST N2 👑</button>
+                    <button class="nut-level test-color" onclick="ChonCapDoTest('n1')">BÀI TEST N1 🌌</button>
+                </div>
+            </section>
 
-        <section id="man-hoc" class="man-hinh">
-            <div class="thanh-dieu-huong">
-                <span id="tieu-de-bai-hoc">CẤP ĐỘ</span>
-                <button class="nut-quay-lai" onclick="DừngHocVaQuayVe()">QUAY LẠI</button>
-            </div>
+            <section id="man-test-the-loai" class="man-hinh">
+                <div class="thanh-dieu-huong">
+                    <div class="welcome" id="tieu-de-level-test" style="margin:0; font-weight:bold; color:#ff00ff;">TEST LEVEL</div>
+                    <button class="nut-quay-lai" onclick="ChuyenTab('man-test-levels')">QUAY LẠI</button>
+                </div>
+                <div class="welcome" style="margin-top:10px;">Chọn thể loại nội dung bro muốn quyết chiến:</div>
+                <div class="danh-sach-nut">
+                    <button class="nut-the-loai-test" onclick="KichHoatLamDe('kanji')">🎯 Chữ Kanji</button>
+                    <button class="nut-the-loai-test" onclick="KichHoatLamDe('tu-vung')">📝 Từ Vựng</button>
+                    <button class="nut-the-loai-test" onclick="KichHoatLamDe('ngu-phap')">📚 Ngữ Pháp</button>
+                </div>
+            </section>
 
-            <div id="khu-vuc-the-single"></div>
+            <section id="man-hoc-chi-tiet" class="man-hinh">
+                <div class="thanh-dieu-huong">
+                    <h2 id="tieu-de-bai-hoc">Đang tải...</h2>
+                    <button class="nut-quay-lai" onclick="ThoatHocChiTiet()">QUAY LẠI</button>
+                </div>
+                
+                <div id="vung-chua-the-dong"></div>
 
-            <div id="thanh-dieu-khien" class="khu-vuc-nut-chuyen an-giau">
-                <button class="nut-tiep-theo" onclick="ChuyenChuTiepTheo()">CHỮ TIẾP THEO ➡️</button>
-            </div>
-        </section>
+                <div id="vung-nut-chuyen-trang" class="an-giau">
+                    <button class="nut-tiep-theo" onclick="ChuyenBaiTiepTheo()">BÀI TIẾP THEO ➡️</button>
+                </div>
+            </section>
+
+            <section id="man-lam-bai-test" class="man-hinh">
+                <div class="thanh-dieu-huong">
+                    <div id="test-tien-do" style="color: #38bdf8; font-weight: bold;">Câu hỏi: 1/10</div>
+                    <button class="nut-quay-lai" onclick="ChuyenTab('man-test-levels')">HỦY TEST</button>
+                </div>
+                
+                <div class="khung-cau-hoi-test">
+                    <div id="test-cau-hoi-text" class="cau-hoi-text">Câu hỏi hiện ra ở đây?</div>
+                    <div id="test-danh-sach-dap-an" class="khung-options">
+                        </div>
+                </div>
+
+                <div id="vung-nut-chuyen-test" class="an-giau" style="margin-top: 15px;">
+                    <button class="nut-tiep-theo" id="nut-kich-cau-tiep" onclick="CauTestTiepTheo()">CÂU TIẾP THEO ➡️</button>
+                </div>
+            </section>
+
+        </main>
+
+        <nav class="app-navigation">
+            <button class="nav-item active" id="btn-nav-home" onclick="ChuyenTab('man-home')">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">Trang Chủ</span>
+            </button>
+            <button class="nav-item" id="btn-nav-kanji" onclick="ChuyenTab('man-kanji')">
+                <span class="nav-icon">🎯</span>
+                <span class="nav-text">Học Kanji</span>
+            </button>
+            <button class="nav-item" id="btn-nav-grammar" onclick="TaiDuLieuHoc('grammar', 'n5_grammar')">
+                <span class="nav-icon">📚</span>
+                <span class="nav-text">Ngữ Pháp N5</span>
+            </button>
+            <button class="nav-item" id="btn-nav-test" onclick="ChuyenTab('man-test-levels')">
+                <span class="nav-icon">⚔️</span>
+                <span class="nav-text">Kiểm Tra</span>
+            </button>
+        </nav>
     </div>
 
     <script src="./script.js"></script>
