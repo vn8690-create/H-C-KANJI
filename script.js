@@ -73,39 +73,42 @@ function ChayFlashcardTungChu() {
         return;
     }
 
-    // Hiển thị tiến độ thực tế (Ví dụ: TIẾN ĐỘ: 1 / 150)
+    // Hiển thị tiến độ thực tế 
     tieuDe.innerText = `TIẾN ĐỘ: ${indexHienTai + 1} / ${duLieuHienTai.length}`;
     nutChuyen.classList.add('an-giau'); // Ẩn nút tiếp theo đi, học xong timeline mới hiện
 
     const item = duLieuHienTai[indexHienTai];
     
-    // Trích xuất các biến chuẩn đét từ file JSON của bro
     const chuKanji = item.kanji || "字";
     const nghiaGoc = item.meaning || "";
     const onyomi = item.onyomi || "";
     const kunyomi = item.kunyomi || "";
     const viDu = item.example || "";
 
-    // Mẹo tách lấy chữ trong ngoặc đơn làm Âm Hán Việt
+    // Tách lấy chữ trong ngoặc đơn để làm Âm Hán Việt chuẩn (Ví dụ: NGẤN)
     let amHanViet = "Chưa rõ";
     if (nghiaGoc.includes('(') && nghiaGoc.includes(')')) {
         amHanViet = nghiaGoc.substring(nghiaGoc.indexOf('(') + 1, nghiaGoc.indexOf(')'));
     }
+    // Lấy phần nghĩa thuần tiếng Việt (Ví dụ: Vết sẹo, vết xước bề mặt)
     let nghiaTiengViet = nghiaGoc.split('(')[0].trim();
 
-    // Đổ khung HTML ra (Mặc định ẩn các phần chi tiết bằng class 'an-giau')
+    // THAY ĐỔI CẤU TRÚC GIAO DIỆN THEO Ý BRO:
     vungChua.innerHTML = `
         <div class="the-cyber-card">
             <div class="chu-kanji-khong-lo">${chuKanji}</div>
             
             <div id="step-am-doc" class="khoi-noi-dung an-giau">
                 <div class="label-am-han">ÂM HÁN: ${amHanViet.toUpperCase()}</div>
-                <div class="dong-cach-doc"><strong>Onyomi:</strong> ${onyomi}</div>
-                <div class="dong-cach-doc"><strong>Kunyomi:</strong> ${kunyomi}</div>
             </div>
 
             <div id="step-nghia-viet" class="khoi-nghia-viet an-giau">
                 <div class="text-nghia">${nghiaTiengViet}</div>
+            </div>
+
+            <div id="step-yomi" class="khoi-yomi-duoi an-giau" style="margin-top: 15px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.05);">
+                <div class="dong-cach-doc" style="color: #cbd5e1; font-size: 0.95rem; margin: 4px 0;"><strong>Onyomi:</strong> ${onyomi}</div>
+                <div class="dong-cach-doc" style="color: #cbd5e1; font-size: 0.95rem; margin: 4px 0;"><strong>Kunyomi:</strong> ${kunyomi}</div>
             </div>
 
             <div id="step-tu-ghep" class="khoi-tu-ghep an-giau">
@@ -118,28 +121,31 @@ function ChayFlashcardTungChu() {
     // DỌN SẠCH BỘ ĐẾM CŨ ĐỂ KHÔNG BỊ TRÙNG LẶP
     clearTimeout(boDemThoiGian);
 
-    // ====== BẮT ĐẦU KÍCH HOẠT TIMELINE ======
+    // ====== KÍCH HOẠT CHUỖI TIMELINE TỰ ĐỘNG CHẠY MỚI ======
     
-    // BƯỚC A: Đợi 1 giây (1000ms) -> Hiện khối âm đọc & Máy tự phát âm tiếng Nhật
+    // ĐOẠN A: Đợi 1 giây -> Hiện Âm Hán (NGẤN) + Đọc Onyomi tiếng Nhật lên trước
     boDemThoiGian = setTimeout(() => {
         const phanAmDoc = document.getElementById('step-am-doc');
         if (phanAmDoc) phanAmDoc.className = "khoi-noi-dung hien-hien";
 
         DocTiengNhat(onyomi, () => {
             
-            // BƯỚC B: Sau khi đọc xong Onyomi -> Nghỉ 0.5 giây -> Hiện nghĩa tiếng Việt & Đọc nghĩa tiếng Việt
+            // ĐOẠN B: Đọc xong tiếng Nhật -> Đợi 0.5 giây -> Hiện nghĩa tiếng Việt + Đọc nghĩa tiếng Việt luôn
             boDemThoiGian = setTimeout(() => {
                 const phanNghia = document.getElementById('step-nghia-viet');
                 if (phanNghia) phanNghia.className = "khoi-nghia-viet hien-hien";
 
                 DocTiengViet(nghiaTiengViet, () => {
                     
-                    // BƯỚC C: Sau khi đọc xong nghĩa -> Nghỉ 0.5 giây -> Hiện từ ghép & Kích hoạt nút chuyển chữ
+                    // ĐOẠN C: Đọc xong nghĩa -> Đợi 0.5 giây -> Hiện khối Onyomi/Kunyomi và Từ ghép + Hiện nút chuyển trang
                     boDemThoiGian = setTimeout(() => {
+                        const phanYomi = document.getElementById('step-yomi');
                         const phanTuGhep = document.getElementById('step-tu-ghep');
+                        
+                        if (phanYomi) phanYomi.className = "khoi-yomi-duoi hien-hien";
                         if (phanTuGhep) phanTuGhep.className = "khoi-tu-ghep hien-hien";
                         
-                        // Hiện nút bấm chuyển trang để người học bấm qua bài mới
+                        // Kích hoạt hiển thị nút chuyển bài
                         nutChuyen.classList.remove('an-giau');
                         CongDiemXP();
                     }, 500);
