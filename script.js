@@ -6,11 +6,16 @@ let duLieuHienTai = [];
 let indexHienTai = 0;   
 let loaiHocHienTai = ''; 
 let boDemThoiGian = null; 
+let boDemTuDongChuyen = null; // Quản lý luồng tự động chuyển trang sau 2s
+
+// Trạng thái cấu hình học tập (Lưu trạng thái On/Off của user)
+let hienThiYomi = true;
+let tuDongChuyenBai = false;
 
 // Biến bổ sung phục vụ cho Đấu Trường Test
-let capDoTestChon = '';   // 'n5', 'n4'...
-let theLoaiTestChon = ''; // 'kanji', 'tu-vung', 'ngu-phap'
-let mangCauHoiTest = [];   // Chứa 10 câu trắc nghiệm được trộn
+let capDoTestChon = '';   
+let theLoaiTestChon = ''; 
+let mangCauHoiTest = [];   
 let indexTestHienTai = 0;
 let daBamDapAn = false;
 
@@ -20,6 +25,7 @@ let daBamDapAn = false;
 function ChuyenTab(idManHinh) {
     if ('speechSynthesis' in window) window.speechSynthesis.cancel();
     clearTimeout(boDemThoiGian);
+    clearTimeout(boDemTuDongChuyen);
 
     document.querySelectorAll('.man-hinh').forEach(man => man.classList.remove('active'));
     
@@ -34,6 +40,7 @@ function ChuyenTab(idManHinh) {
 }
 
 function ThoatHocChiTiet() {
+    clearTimeout(boDemTuDongChuyen);
     if (loaiHocHienTai === 'grammar') {
         ChuyenTab('man-home');
     } else {
@@ -41,11 +48,19 @@ function ThoatHocChiTiet() {
     }
 }
 
-// Lựa chọn cấp độ Test
 function ChonCapDoTest(capDo) {
     capDoTestChon = capDo;
     document.getElementById('tieu-de-level-test').innerText = `ĐANG CHỌN: TEST ${capDo.toUpperCase()}`;
     ChuyenTab('man-test-the-loai');
+}
+
+// Cập nhật cấu hình khi người dùng click checkbox
+function CapNhatCaiDatHoc() {
+    hienThiYomi = document.getElementById('chk-hien-yomi').checked;
+    tuDongChuyenBai = document.getElementById('chk-auto-next').checked;
+    
+    // Nếu tắt tự động chuyển bài khi đang chạy thì hủy bộ đếm ngay lập tức
+    if(!tuDongChuyenBai) clearTimeout(boDemTuDongChuyen);
 }
 
 // =========================================================================
@@ -60,6 +75,10 @@ function TaiDuLieuHoc(loaiHoc, tenFile) {
     }
 
     ChuyenTab('man-hoc-chi-tiet');
+    
+    // Đồng bộ trạng thái checkbox lên giao diện
+    document.getElementById('chk-hien-yomi').checked = hienThiYomi;
+    document.getElementById('chk-auto-next').checked = tuDongChuyenBai;
     
     const tieuDe = document.getElementById('tieu-de-bai-hoc');
     const vungChua = document.getElementById('vung-chua-the-dong');
@@ -97,11 +116,11 @@ function ChayDongThoiGianFlashcard() {
     tieuDe.innerText = `TIẾN ĐỘ: ${indexHienTai + 1} / ${duLieuHienTai.length}`;
     nutChuyen.classList.add('an-giau');
     clearTimeout(boDemThoiGian);
+    clearTimeout(boDemTuDongChuyen);
 
     const item = duLieuHienTai[indexHienTai];
 
     if (loaiHocHienTai === 'kanji') {
-        // --- ĐÃ FIX LỖI ĐẢO NGƯỢC CHUỖI KANJI CHUẨN CHỈ ---
         const chuKanji = item.kanji || "字";
         const nghiaGoc = item.meaning || "";
         const onyomi = item.onyomi || "";
@@ -111,7 +130,6 @@ function ChayDongThoiGianFlashcard() {
         let amHanViet = "Chưa rõ";
         let nghiaTiengViet = "Chưa rõ";
 
-        // Tách chuỗi theo đúng cấu trúc: "GIÁ (Kiếm tiền, máy vận hành)"
         if (nghiaGoc.includes('(') && nghiaGoc.includes(')')) {
             amHanViet = nghiaGoc.split('(')[0].trim();
             nghiaTiengViet = nghiaGoc.substring(nghiaGoc.indexOf('(') + 1, nghiaGoc.indexOf(')'));
@@ -119,6 +137,9 @@ function ChayDongThoiGianFlashcard() {
             amHanViet = nghiaGoc;
             nghiaTiengViet = nghiaGoc;
         }
+
+        // Kiểm tra xem cấu hình có cho hiển thị khối âm đọc Yomi không
+        let styleAnYomi = hienThiYomi ? "" : "display: none !important;";
 
         vungChua.innerHTML = `
             <div class="the-cyber-card">
@@ -129,19 +150,21 @@ function ChayDongThoiGianFlashcard() {
                 <div id="step-nghia-viet" class="khoi-nghia-viet an-giau">
                     <div class="text-nghia">${nghiaTiengViet}</div>
                 </div>
-                <div id="step-yomi" class="khoi-yomi-duoi an-giau">
+                <div id="step-yomi" class="khoi-yomi-duoi an-giau" style="${styleAnYomi}">
                     <div class="dong-cach-doc"><strong>Onyomi:</strong> ${onyomi}</div>
                     <div class="dong-cach-doc"><strong>Kunyomi:</strong> ${kunyomi}</div>
                 </div>
-                <div id="step-tu-ghep" class="khoi-tu-ghep an-giau">
+                <div id="step-tu-ghep" class="khoi-tu-ghep an-giau" style="${styleAnYomi}">
                     <div class="title-ghep">Từ Ghép Tạo Nghĩa:</div>
                     <div class="content-ghep">${viDu}</div>
                 </div>
             </div>
         `;
-        KichHoatTimeline(onyomi, nghiaTiengViet);
+        
+        // Gọi dòng thời gian hiển thị, truyền thêm biến kiểm tra âm đọc Nhật
+        KichHoatTimeline(hienThiYomi ? onyomi : "", nghiaTiengViet);
     } else {
-        // --- GIAO DIỆN HỌC NGỮ PHÁP ---
+        // GIAO DIỆN HỌC NGỮ PHÁP N5
         const cauTruc = item.grammar || "";
         const nghiaNguPhap = item.meaning || "";
         const giaiThich = item.explanation || "";
@@ -183,18 +206,33 @@ function KichHoatTimeline(textNhat, textViet) {
     boDemThoiGian = setTimeout(() => {
         const step1 = document.getElementById('step-am-doc');
         if (step1) step1.className = "khoi-noi-dung hien-hien";
+        
         DocGiọngMay(textNhat, 'ja-JP', 0.85, () => {
             boDemThoiGian = setTimeout(() => {
                 const step2 = document.getElementById('step-nghia-viet');
                 if (step2) step2.className = "khoi-nghia-viet hien-hien";
+                
                 DocGiọngMay(textViet, 'vi-VN', 0.95, () => {
                     boDemThoiGian = setTimeout(() => {
                         const step3 = document.getElementById('step-yomi');
                         const step4 = document.getElementById('step-tu-ghep');
-                        if (step3) step3.className = "khoi-yomi-duoi hien-hien";
-                        if (step4) step4.className = "khoi-tu-ghep hien-hien";
+                        
+                        // Chỉ hiển thị hiệu ứng khối On/Kun nếu người dùng cho phép
+                        if (hienThiYomi) {
+                            if (step3) step3.className = "khoi-yomi-duoi hien-hien";
+                            if (step4) step4.className = "khoi-tu-ghep hien-hien";
+                        }
+                        
                         nutChuyen.classList.remove('an-giau');
                         CongDiemXP(1);
+
+                        // --- TÍNH NĂNG ĐẮT GIÁ: TỰ ĐỘNG CHUYỂN BÀI SAU 2 GIÂY ---
+                        if (tuDongChuyenBai) {
+                            boDemTuDongChuyen = setTimeout(() => {
+                                ChuyenBaiTiepTheo();
+                            }, 2000);
+                        }
+
                     }, 500);
                 });
             }, 500);
@@ -202,10 +240,14 @@ function KichHoatTimeline(textNhat, textViet) {
     }, 1000);
 }
 
-function ChuyenBaiTiepTheo() { indexHienTai++; ChayDongThoiGianFlashcard(); }
+function ChuyenBaiTiepTheo() { 
+    clearTimeout(boDemTuDongChuyen);
+    indexHienTai++; 
+    ChayDongThoiGianFlashcard(); 
+}
 
 // =========================================================================
-// KHU VỰC ĐẤU TRƯỜNG TEST TRẮC NGHIỆM 4 ĐÁP ÁN (ĐÃ ĐỒNG BỘ FIX LOGIC TÁCH CHUỖI)
+// KHU VỰC ĐẤU TRƯỜNG TEST TRẮC NGHIỆM 4 ĐÁP ÁN
 // =========================================================================
 function KichHoatLamDe(theLoai) {
     theLoaiTestChon = theLoai;
@@ -238,7 +280,6 @@ function TaoDeTracNghiem(khoGốc) {
         let cauHoi = "";
         let dapAnDung = "";
         
-        // Bóc tách chuẩn đáp án đúng cho bài test
         if (theLoaiTestChon === 'kanji') {
             cauHoi = `Chữ Kanji này có âm Hán Việt là gì: <br><span style="font-size:3.5rem; font-weight:bold; color:#fff;">${itemGốc.kanji}</span>`;
             let nghia = itemGốc.meaning || "";
@@ -252,7 +293,6 @@ function TaoDeTracNghiem(khoGốc) {
             dapAnDung = itemGốc.meaning || "";
         }
 
-        // Tạo 3 đáp án nhiễu từ kho dữ liệu
         let cácTừKhác = khoGốc.filter(x => x !== itemGốc);
         let dapAnNhieu = cácTừKhác.map(x => {
             let n = x.meaning || "";
@@ -265,10 +305,7 @@ function TaoDeTracNghiem(khoGốc) {
             }
         });
         
-        // Lọc trùng lặp đáp án nhiễu
         dapAnNhieu = [...new Set(dapAnNhieu)].filter(d => d !== dapAnDung).sort(() => 0.5 - Math.random());
-        
-        // Tạo bộ 4 lựa chọn ngẫu nhiên vị trí
         let bo4DapAn = [dapAnDung, dapAnNhieu[0], dapAnNhieu[1], dapAnNhieu[2]].sort(() => 0.5 - Math.random());
 
         mangCauHoiTest.push({
