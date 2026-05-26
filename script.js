@@ -112,17 +112,17 @@ function ThayDoiTrangThaiMute() {
 }
 
 // =========================================================================
-// TẢI DỮ LIỆU ĐỘNG CHO FLASHCARD HỌC
+// TẢI DỮ LIỆU ĐỘNG CHO FLASHCARD HỌC (ĐÃ FIX BIẾN LỖI CHÍ MẠNG)
 // =========================================================================
 function TaiDuLieuHoc(loaiHoc, tenFile) {
     loaiHocHienTai = loaiHoc;
     tenFileHienTai = tenFile; 
     
+    // Đã tối ưu gộp dòng xóa trạng thái active cũ
+    document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
     if (loaiHoc === 'grammar') {
-        document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
         document.getElementById('btn-nav-grammar')?.classList.add('active');
     } else {
-        document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
         document.getElementById('btn-nav-kanji')?.classList.add('active');
     }
 
@@ -141,12 +141,14 @@ function TaiDuLieuHoc(loaiHoc, tenFile) {
     if (vungChua) vungChua.innerHTML = `<div class="loading-text">⚡ Đang đồng bộ bộ não dữ liệu...</div>`;
     if (nutChuyen) nutChuyen.classList.add('an-giau');
 
-    fetch(`./${fileNguon}.json?v=${new Date().getTime()}`)
+    // 🌟 ĐÃ FIX: Thay fileNguon bằng tenFile để bốc đúng file, kèm mã phá cache ?v=
+    fetch(`./${tenFile}.json?v=${new Date().getTime()}`)
         .then(res => { if (!res.ok) throw new Error(); return res.json(); })
         .then(data => {
             duLieuHienTai = data; 
 
-            let tienDoCu = parseInt(localStorage.getItem(`tien_do_${tenFile}`)) || 0;
+            // Sử dụng thống nhất biến toàn cục tenFileHienTai cho đồng bộ bộ nhớ
+            let tienDoCu = parseInt(localStorage.getItem(`tien_do_${tenFileHienTai}`)) || 0;
 
             if (tienDoCu > 0 && tienDoCu < duLieuHienTai.length && vungChua && tieuDe) {
                 vungChua.innerHTML = `
@@ -316,7 +318,7 @@ function ChayDongThoiGianFlashcard() {
         }
 
         let chuoiDocNguPhapViet = `Cấu trúc: ${cauTruc}. Ý nghĩa là: ${nghiaPhap}.`;
-        if (giaiThich.length < 60) chuoiDocNguPhapViet += ` Giải thích: ${giaiThich}`; // Chỉ đọc giải thích nếu nó ngắn gọn để tránh quá tải âm thanh
+        if (giaiThich.length < 60) chuoiDocNguPhapViet += ` Giải thích: ${giaiThich}`; 
         
         KichHoatTimeline(cauTruc, chuoiDocNguPhapViet, vdNhat);
     }
@@ -412,25 +414,25 @@ function ResetToanBoTienDoFile() {
 }
 
 // =========================================================================
-// KHU VỰC ĐẤU TRƯỜNG TEST TRẮC NGHIỆM 4 ĐÁP ÁN (FIX TRIỆT ĐỂ KHÔNG SẬP FILE)
+// KHU VỰC ĐẤU TRƯỜNG TEST TRẮC NGHIỆM 4 ĐÁP ÁN (ĐÃ FIX PHÁ CACHE)
 // =========================================================================
 function KichHoatLamDe(theLoai) {
     theLoaiTestChon = theLoai;
     ChuyenTab('man-lam-bai-test');
     
-    // Nhận diện file thông minh dựa trên Cấp độ + Thể loại để không bốc trượt file
     let fileNguon = capDoTestChon.toLowerCase(); 
     
     if (theLoai === 'ngu-phap') {
         fileNguon = `${fileNguon}_grammar`;
     } else if (theLoai === 'kanji' && fileNguon === 'n5') {
-        fileNguon = 'n5_quiz'; // Giữ nguyên file quiz riêng của N5 Kanji
+        fileNguon = 'n5_quiz'; 
     }
     
     const cauHoiTxt = document.getElementById('test-cau-hoi-text');
     if (cauHoiTxt) cauHoiTxt.innerHTML = `<div class="loading-text">⚡ Đang thiết lập đấu trường trận đấu...</div>`;
 
-   fetch(`./${fileNguon}.json?v=${new Date().getTime()}`)
+    // 🌟 Đuy trì đồng bộ phá cache cho đấu trường test luôn bro nhé
+    fetch(`./${fileNguon}.json?v=${new Date().getTime()}`)
         .then(res => {
             if (!res.ok) throw new Error();
             return res.json();
@@ -454,7 +456,6 @@ function TaoDeTracNghiem(khoGoc) {
     
     mangCauHoiTest = [];
 
-    // 🌟 TRƯỜNG HỢP 1: File cấu trúc đề thi trắc nghiệm dựng sẵn (như n5_quiz.json)
     if (khoGoc[0] && khoGoc[0].options !== undefined) {
         let danhSachN5Tron = [...khoGoc].sort(() => 0.5 - Math.random());
         let soCauN5 = Math.min(20, danhSachN5Tron.length); 
@@ -468,7 +469,6 @@ function TaoDeTracNghiem(khoGoc) {
             });
         }
     } 
-    // 🌟 TRƯỜNG HỢP 2: Tự động trộn & sinh đề trắc nghiệm thông minh từ file Flashcard thường
     else {
         let danhSachTron = [...khoGoc].sort(() => 0.5 - Math.random());
         let soCau = Math.min(10, danhSachTron.length);
@@ -493,7 +493,6 @@ function TaoDeTracNghiem(khoGoc) {
                 dapAnDung = nghiaGoc;
             }
 
-            // Sinh đáp án nhiễu ngẫu nhiên
             let cacTuKhac = khoGoc.filter(x => x !== itemGoc);
             let dapAnNhieu = cacTuKhac.map(x => {
                 let n = x.meaning || x.nghia || "";
@@ -509,7 +508,6 @@ function TaoDeTracNghiem(khoGoc) {
             
             dapAnNhieu = [...new Set(dapAnNhieu)].filter(d => d && d.trim() !== "" && d !== dapAnDung).sort(() => 0.5 - Math.random());
             
-            // Đảm bảo gom đủ 4 đáp án cho menu lựa chọn trắc nghiệm
             let bo4DapAn = [dapAnDung];
             for (let j = 0; j < 3; j++) {
                 if (dapAnNhieu[j]) bo4DapAn.push(dapAnNhieu[j]);
