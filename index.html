@@ -77,15 +77,29 @@
                     <button class="nut-quay-lai" onclick="ThoatHocChiTiet()">QUAY LẠI</button>
                 </div>
 
-                <div class="khung-cai-dat-hoc">
-                    <label class="item-switch">
-                        <input type="checkbox" id="chk-hien-yomi" checked onchange="CapNhatCaiDatHoc()">
-                        <span class="custom-label">Hiển thị Onyomi/Kunyomi</span>
-                    </label>
-                    <label class="item-switch">
-                        <input type="checkbox" id="chk-auto-next" onchange="CapNhatCaiDatHoc()">
-                        <span class="custom-label">Tự chuyển bài (sau 2s) ⏳</span>
-                    </label>
+<div class="khung-cai-dat-hoc" style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; align-items: center; margin-bottom: 20px;">
+    <label class="item-switch">
+        <input type="checkbox" id="chk-hien-yomi" checked onchange="CapNhatCaiDatHoc()">
+        <span class="custom-label">Hiển thị Onyomi/Kunyomi</span>
+    </label>
+
+    <label class="item-switch">
+        <input type="checkbox" id="chk-auto-next" onchange="CapNhatCaiDatHoc()">
+        <span class="custom-label">Tự chuyển bài (thông minh) ⏳</span>
+    </label>
+
+    <button id="btn-mute-flashcard" onclick="ThayDoiTrangThaiMute()" style="background: rgba(255, 255, 255, 0.05); border: 1px solid #00ffcc; color: #00ffcc; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-weight: bold; display: flex; align-items: center; gap: 8px; transition: all 0.3s; font-size: 0.85rem; height: 34px;">
+        🔊 ĐANG BẬT TIẾNG
+    </button>
+</div>
+
+<div id="vung-chua-the-dong"></div>
+
+<div id="vung-nut-chuyen-trang" class="an-giau">
+    <button class="nut-tiep-theo" onclick="ChuyenBaiTiepTheo()">BÀI TIẾP THEO ➡️</button>
+</div>
+
+                    
                 </div>
                 
                 <div id="vung-chua-the-dong"></div>
