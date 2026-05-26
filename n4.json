@@ -1,5 +1,240 @@
 [
-  { "kanji": "犬", "meaning": "Con chó (Khuyển)", "onyomi": "ケン (ken)", "kunyomi": "いぬ (inu)" },
-  { "kanji": "牛", "meaning": "Con trâu/bò (Ngưu)", "onyomi": "ギュウ (gyuu)", "kunyomi": "うし (ushi)" },
-  { "kanji": "院", "meaning": "Bệnh viện/Tòa nhà (Viện)", "onyomi": "イン (in)", "kunyomi": "None" }
+  {
+    "kanji": "駅",
+    "meaning": "DỊCH (Nhà ga)",
+    "onyomi": "エキ",
+    "kunyomi": "None",
+    "example": "東京駅 (Ga Tokyo), 駅員 (Nhân viên ga)"
+  },
+  {
+    "kanji": "旅",
+    "meaning": "LỮ (Du lịch, chuyến đi)",
+    "onyomi": "リョ",
+    "kunyomi": "たび",
+    "example": "旅行 (Du lịch), 一人旅 (Du lịch một mình)"
+  },
+  {
+    "kanji": "速",
+    "meaning": "TỐC (Nhanh)",
+    "onyomi": "ソク",
+    "kunyomi": "はや.い",
+    "example": "速い (Nhanh), 速度 (Tốc độ)"
+  },
+  {
+    "kanji": "遅",
+    "meaning": "TRÌ (Chậm, muộn)",
+    "onyomi": "チ",
+    "kunyomi": "おそ.い、おく.れる",
+    "example": "遅い (Chậm), 遅刻 (Đi muộn)"
+  },
+  {
+    "kanji": "着",
+    "meaning": "TRƯỚC (Đến nơi, mặc)",
+    "onyomi": "チャク",
+    "kunyomi": "つ.く、き.る",
+    "example": "到着 (Đến nơi), 着物 (Kimono)"
+  },
+  {
+    "kanji": "借",
+    "meaning": "TÁ (Mượn)",
+    "onyomi": "シャク",
+    "kunyomi": "か.りる",
+    "example": "借る (Mượn), 借金 (Tiền nợ)"
+  },
+  {
+    "kanji": "返",
+    "meaning": "PHẢN (Trả lại)",
+    "onyomi": "ヘン",
+    "kunyomi": "かえ.す",
+    "example": "返す (Trả lại), 返事 (Trả lời)"
+  },
+  {
+    "kanji": "働",
+    "meaning": "ĐỘNG (Làm việc)",
+    "onyomi": "ドウ",
+    "kunyomi": "はたら.く",
+    "example": "働く (Làm việc), 労働者 (Người lao động)"
+  },
+  {
+    "kanji": "休",
+    "meaning": "HƯU (Nghỉ ngơi)",
+    "onyomi": "キュウ",
+    "kunyomi": "やす.む",
+    "example": "休み (Ngày nghỉ), 休日 (Ngày nghỉ lễ)"
+  },
+  {
+    "kanji": "病",
+    "meaning": "BỆNH (Ốm, bệnh tật)",
+    "onyomi": "ビョウ",
+    "kunyomi": "やまい",
+    "example": "病気 (Bệnh), 病院 (Bệnh viện)"
+  },
+  {
+    "kanji": "院",
+    "meaning": "VIỆN (Tòa nhà, học viện)",
+    "onyomi": "イン",
+    "kunyomi": "None",
+    "example": "入院 (Nhập viện), 大学院 (Cao học)"
+  },
+  {
+    "kanji": "薬",
+    "meaning": "THUỐC (Thuốc chữa bệnh)",
+    "onyomi": "ヤク",
+    "kunyomi": "くすり",
+    "example": "薬 (Thuốc), 薬局 (Hiệu thuốc)"
+  },
+  {
+    "kanji": "意",
+    "meaning": "Ý (Ý chí, ý định)",
+    "onyomi": "イ",
+    "kunyomi": "None",
+    "example": "意見 (Ý kiến), 注意 (Chú ý)"
+  },
+  {
+    "kanji": "味",
+    "meaning": "VỊ (Mùi vị, ý nghĩa)",
+    "onyomi": "ミ",
+    "kunyomi": "あじ",
+    "example": "意味 (Ý nghĩa), 趣味 (Sở thích)"
+  },
+  {
+    "kanji": "以",
+    "meaning": "DĨ (Mốc so sánh, trở lên/dưới)",
+    "onyomi": "イ",
+    "kunyomi": "None",
+    "example": "以上 (Trở lên), 以下 (Trở xuống)"
+  },
+  {
+    "kanji": "最",
+    "meaning": "TỐI (Nhất)",
+    "onyomi": "サイ",
+    "kunyomi": "moっと.も",
+    "example": "最近 (Dạo này), 最高 (Tuyệt nhất)"
+  },
+  {
+    "kanji": "初",
+    "meaning": "SƠ (Đầu tiên, ban đầu)",
+    "onyomi": "ショ",
+    "kunyomi": "はじ.め、はじ.めて",
+    "example": "初めて (Lần đầu tiên), 最初 (Đầu tiên)"
+  },
+  {
+    "kanji": "終",
+    "meaning": "CHUNG (Kết thúc)",
+    "onyomi": "シュウ",
+    "kunyomi": "お.わる",
+    "example": "終わる (Kết thúc), 最終 (Cuối cùng)"
+  },
+  {
+    "kanji": "決",
+    "meaning": "QUYẾT (Quyết định)",
+    "onyomi": "ケツ",
+    "kunyomi": "き.める",
+    "example": "決める (Quyết định), 決して (Tuyệt đối không)"
+  },
+  {
+    "kanji": "配",
+    "meaning": "PHỐI (Phân phối, lo lắng)",
+    "onyomi": "ハイ",
+    "kunyomi": "くば.る",
+    "example": "心配 (Lo lắng), 配達 (Phát chuyển nhanh)"
+  },
+  {
+    "kanji": "便",
+    "meaning": "TIỆN (Tiện lợi, bưu kiện)",
+    "onyomi": "ベン、ビン",
+    "kunyomi": "たより",
+    "example": "便利 (Tiện lợi), 航空便 (Thư máy bay)"
+  },
+  {
+    "kanji": "利",
+    "meaning": "LỢI (Lợi ích, thông minh)",
+    "onyomi": "リ",
+    "kunyomi": "き.く",
+    "example": "利用 (Sử dụng), 利益 (Lợi nhuận)"
+  },
+  {
+    "kanji": "議",
+    "meaning": "NGHỊ (Thảo luận, hội nghị)",
+    "onyomi": "ギ",
+    "kunyomi": "None",
+    "example": "会議 (Cuộc họp), 議員 (Nghị viên)"
+  },
+  {
+    "kanji": "相",
+    "meaning": "TƯƠNG (Tương hỗ, đối tác)",
+    "onyomi": "ソウ、ショウ",
+    "kunyomi": "あい",
+    "example": "相手 (Đối phương), 首相 (Thủ tướng)"
+  },
+  {
+    "kanji": "談",
+    "meaning": "ĐÀM (Bàn bạc, đàm thoại)",
+    "onyomi": "ダン",
+    "kunyomi": "None",
+    "example": "相談 (Thảo luận), 冗談 (Nói đùa)"
+  },
+  {
+    "kanji": "説",
+    "meaning": "THUYẾT (Giải thích, tiểu thuyết)",
+    "onyomi": "セツ",
+    "kunyomi": "と.く",
+    "example": "説明 (Giải thích), 小説 (Tiểu thuyết)"
+  },
+  {
+    "kanji": "続",
+    "meaning": "TỰC (Tiếp tục)",
+    "onyomi": "ゾク",
+    "kunyomi": "つづ.く",
+    "example": "続ける (Tiếp tục), 連続 (Liên tục)"
+  },
+  {
+    "kanji": "無",
+    "meaning": "VÔ (Không có)",
+    "onyomi": "ム、ブ",
+    "kunyomi": "な.い",
+    "example": "無料 (Miễn phí), 無理 (Quá sức)"
+  },
+  {
+    "kanji": "料",
+    "meaning": "LIỆU (Nguyên liệu, chi phí)",
+    "onyomi": "リョウ",
+    "kunyomi": "None",
+    "example": "料理 (Món ăn), 料金 (Chi phí)"
+  },
+  {
+    "kanji": "約",
+    "meaning": "ƯỚC (Lời hứa, ước chừng)",
+    "onyomi": "ヤク",
+    "kunyomi": "None",
+    "example": "約束 (Hẹn gặp), 予約 (Đặt trước)"
+  },
+  {
+    "kanji": "工",
+    "meaning": "CÔNG (Công nghiệp, nhà xưởng)",
+    "onyomi": "コウ、ク",
+    "kunyomi": "None",
+    "example": "工場 (Nhà xưởng/Nhà máy), 工事 (Công trường xây dựng)"
+  },
+  {
+    "kanji": "場",
+    "meaning": "TRƯỜNG (Địa điểm, nơi chốn)",
+    "onyomi": "ジョウ",
+    "kunyomi": "ば",
+    "example": "場所 (Nơi chốn), 駐車場 (Bãi đỗ xe)"
+  },
+  {
+    "kanji": "服",
+    "meaning": "PHỤC (Quần áo, trang phục)",
+    "onyomi": "フク",
+    "kunyomi": "None",
+    "example": "洋服 (Quần áo Tây), 下着 (Quần áo lót)"
+  },
+  {
+    "kanji": "私",
+    "meaning": "TƯ (Tôi, cá nhân)",
+    "onyomi": "シ",
+    "kunyomi": "わたし、わたくし",
+    "example": "私立大学 (Trường đại học tư lập), 私用 (Việc riêng)"
+  }
 ]
