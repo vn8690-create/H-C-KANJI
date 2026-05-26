@@ -20,7 +20,7 @@
                 <div class="welcome">Chào đặc vụ! Chọn một danh mục dưới thanh Menu để bắt đầu kích hoạt bộ não.</div>
                 <div class="huong-dan-box">
                     <p>⚡ <strong>HỌC KANJI:</strong> Cày từ vựng từ N5 đến N1 kèm timeline âm thanh sinh động.</p>
-                    <p>📚 <strong>NGỮ PHÁP N5:</strong> Trọn gói cấu trúc chống nản có Furigana trực quan.</p>
+                    <p>📚 <strong>NGỮ PHÁP:</strong> Trọn gói cấu trúc từ N5 đến N1 chống nản có Furigana trực quan.</p>
                     <p>⚔️ <strong>PHẦN TEST:</strong> Đấu trường trắc nghiệm tính điểm nâng cao phản xạ.</p>
                 </div>
             </section>
@@ -32,7 +32,18 @@
                     <button class="nut-level" onclick="TaiDuLieuHoc('kanji', 'n4')">CẤP ĐỘ N4 ⚡</button>
                     <button class="nut-level" onclick="TaiDuLieuHoc('kanji', 'n3')">CẤP ĐỘ N3 🔥</button>
                     <button class="nut-level" onclick="TaiDuLieuHoc('kanji', 'n2')">CẤP ĐỘ N2 👑</button>
-                    <button class="nut-level" onclick="TaiDuLieuHoc('kanji', 'n1')">CẤP ĐỘ N1 🌌</button>
+                    <button class="nut-level" onclick="NutLevel" onclick="TaiDuLieuHoc('kanji', 'n1')">CẤP ĐỘ N1 🌌</button>
+                </div>
+            </section>
+
+            <section id="man-grammar-levels" class="man-hinh">
+                <div class="welcome">Chọn cấp độ để cày cấu trúc Ngữ Pháp:</div>
+                <div class="danh-sach-nut">
+                    <button class="nut-level" onclick="TaiDuLieuHoc('grammar', 'n5_grammar')">NGỮ PHÁP N5 🚀</button>
+                    <button class="nut-level" onclick="TaiDuLieuHoc('grammar', 'n4_grammar')">NGỮ PHÁP N4 ⚡</button>
+                    <button class="nut-level" onclick="TaiDuLieuHoc('grammar', 'n3_grammar')">NGỮ PHÁP N3 🔥</button>
+                    <button class="nut-level" onclick="TaiDuLieuHoc('grammar', 'n2_grammar')">NGỮ PHÁP N2 👑</button>
+                    <button class="nut-level" onclick="TaiDuLieuHoc('grammar', 'n1_grammar')">NGỮ PHÁP N1 🌌</button>
                 </div>
             </section>
 
@@ -60,7 +71,7 @@
                 </div>
             </section>
 
-        <section id="man-hoc-chi-tiet" class="man-hinh">
+            <section id="man-hoc-chi-tiet" class="man-hinh">
                 <div class="thanh-dieu-huong">
                     <h2 id="tieu-de-bai-hoc">Đang tải...</h2>
                     <button class="nut-quay-lai" onclick="ThoatHocChiTiet()">QUAY LẠI</button>
@@ -92,8 +103,7 @@
                 
                 <div class="khung-cau-hoi-test">
                     <div id="test-cau-hoi-text" class="cau-hoi-text">Câu hỏi hiện ra ở đây?</div>
-                    <div id="test-danh-sach-dap-an" class="khung-options">
-                        </div>
+                    <div id="test-danh-sach-dap-an" class="khung-options"></div>
                 </div>
 
                 <div id="vung-nut-chuyen-test" class="an-giau" style="margin-top: 15px;">
@@ -112,9 +122,9 @@
                 <span class="nav-icon">🎯</span>
                 <span class="nav-text">Học Kanji</span>
             </button>
-            <button class="nav-item" id="btn-nav-grammar" onclick="TaiDuLieuHoc('grammar', 'n5_grammar')">
+            <button class="nav-item" id="btn-nav-grammar" onclick="ChuyenTab('man-grammar-levels')">
                 <span class="nav-icon">📚</span>
-                <span class="nav-text">Ngữ Pháp N5</span>
+                <span class="nav-text">Ngữ Pháp</span>
             </button>
             <button class="nav-item" id="btn-nav-test" onclick="ChuyenTab('man-test-levels')">
                 <span class="nav-icon">⚔️</span>
