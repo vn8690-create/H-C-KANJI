@@ -141,7 +141,7 @@ function TaiDuLieuHoc(loaiHoc, tenFile) {
     if (vungChua) vungChua.innerHTML = `<div class="loading-text">⚡ Đang đồng bộ bộ não dữ liệu...</div>`;
     if (nutChuyen) nutChuyen.classList.add('an-giau');
 
-    fetch(`./${tenFile}.json`)
+    fetch(`./${fileNguon}.json?v=${new Date().getTime()}`)
         .then(res => { if (!res.ok) throw new Error(); return res.json(); })
         .then(data => {
             duLieuHienTai = data; 
@@ -430,7 +430,7 @@ function KichHoatLamDe(theLoai) {
     const cauHoiTxt = document.getElementById('test-cau-hoi-text');
     if (cauHoiTxt) cauHoiTxt.innerHTML = `<div class="loading-text">⚡ Đang thiết lập đấu trường trận đấu...</div>`;
 
-    fetch(`./${fileNguon}.json`)
+   fetch(`./${fileNguon}.json?v=${new Date().getTime()}`)
         .then(res => {
             if (!res.ok) throw new Error();
             return res.json();
