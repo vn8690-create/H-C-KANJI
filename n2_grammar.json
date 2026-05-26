@@ -1,0 +1,1002 @@
+[
+  {
+    "grammar": "～ことにする",
+    "meaning": "Quyết định làm (không làm) gì đó",
+    "explanation": "Diễn tả quyết định của bản thân người nói về một hành động hoặc thói quen trong tương lai.",
+    "examples": [
+      { "ja": "健康のために、 hằng ngày <ruby>運動<rt>うんどう</rt></ruby>する ことにする。", "vi": "Để có sức khỏe, tôi quyết định mỗi ngày sẽ vận động." }
+    ]
+  },
+  {
+    "grammar": "～ばいいのに",
+    "meaning": "Giá mà, ước chi, đáng lẽ nên",
+    "explanation": "Thể hiện sự nuối tiếc, mong muốn một điều trái với thực tế hoặc trách móc nhẹ nhàng.",
+    "examples": [
+      { "ja": "もっと <ruby>勉強<rt>べんきょう</rt></ruby>すればいいのに。", "vi": "Giá mà bạn tập trung học hành nhiều hơn thì tốt biết mấy." }
+    ]
+  },
+  {
+    "grammar": "～なかなか～ない",
+    "meaning": "Khó mà làm gì, mãi mà không",
+    "explanation": "Diễn tả một việc mong đợi hoặc cố gắng nhưng kết quả mãi vẫn chưa xảy ra.",
+    "examples": [
+      { "ja": "漢字が なかなか <ruby>覚<rt>おぼ</rt></ruby>えられない。", "vi": "Chữ Kanji mãi mà tôi không tài nào nhớ được." }
+    ]
+  },
+  {
+    "grammar": "～しか～ない",
+    "meaning": "Chỉ có cách là, đành phải, chỉ có",
+    "explanation": "Nhấn mạnh việc không còn lựa chọn nào khác ngoài phương án này.",
+    "examples": [
+      { "ja": "バスがないから、タクシーで<ruby>行<rt>い</rt></ruby>く しかない。", "vi": "Vì không có xe buýt nên đành phải đi bằng taxi thôi." }
+    ]
+  },
+  {
+    "grammar": "～わけです",
+    "meaning": "Đương nhiên là, tức là, kết luận là",
+    "explanation": "Dùng để đưa ra kết luận logic từ một sự thật, nguyên nhân rõ ràng trước đó.",
+    "examples": [
+      { "ja": "15年日本に住んでいるから、日本語が上手な わけです。", "vi": "Sống ở Nhật tận 15 năm rồi thì đương nhiên là tiếng Nhật giỏi rồi." }
+    ]
+  },
+  {
+    "grammar": "～にあたる",
+    "meaning": "Tương ứng với, trùng với, tại",
+    "explanation": "Chỉ mối quan hệ tương đương, vị trí tương ứng hoặc thời điểm trùng lặp.",
+    "examples": [
+      { "ja": "ベトナムのテトは、日本の正月に あたる。", "vi": "Tết của Việt Nam tương ứng với Tết Dương Lịch của Nhật Bản." }
+    ]
+  },
+  {
+    "grammar": "～以外の",
+    "meaning": "Ngoài ra... thì, khác",
+    "explanation": "Loại trừ đối tượng được nhắc đến để hướng tới các đối tượng khác.",
+    "examples": [
+      { "ja": "この部屋には、関係者 以外 の人は入れません。", "vi": "Ngoài những người có liên quan ra thì người khác không được vào phòng này." }
+    ]
+  },
+  {
+    "grammar": "～というわけではない",
+    "meaning": "Không có nghĩa là~, không hẳn là~",
+    "explanation": "Phủ định một phần, dùng để đính chính một suy đoán quá mức của đối phương.",
+    "examples": [
+      { "ja": "日本料理が嫌い というわけではない が、毎日食べるのはきつい。", "vi": "Không hẳn là tôi ghét đồ ăn Nhật, nhưng ăn hằng ngày thì hơi oải." }
+    ]
+  },
+  {
+    "grammar": "～なるべく",
+    "meaning": "Cố gắng, cố sức trong khả năng có thể",
+    "explanation": "Phó từ đi trước động từ nhằm thể hiện sự nỗ lực thực hiện việc gì đó ở mức tối đa.",
+    "examples": [
+      { "ja": "なるべく 毎朝 <ruby>野菜<rt>やさい</rt></ruby>ジュースを飲むようにしています。", "vi": "Tôi cố gắng hết sức để mỗi sáng đều uống nước ép rau củ." }
+    ]
+  },
+  {
+    "grammar": "別に～ない",
+    "meaning": "Không hề... gì đặc biệt",
+    "explanation": "Nhấn mạnh sự bình thường, không có vấn đề gì nghiêm trọng hay đặc biệt cả.",
+    "examples": [
+      { "ja": "体調は 別に 悪く ないです。", "vi": "Sức khỏe của tôi không hề có gì đáng ngại cả." }
+    ]
+  },
+  {
+    "grammar": "確か～",
+    "meaning": "Chắc chắn là..., hình như là (nhớ không lầm)",
+    "explanation": "Diễn tả sự suy đoán dựa trên một ký ức khá mơ hồ nhưng có độ tin cậy tương đối cao.",
+    "examples": [
+      { "ja": "あの人の名前は 確か 田中さんだったと思う。", "vi": "Tôi nhớ chắc chắn tên người kia dường như là Tanaka." }
+    ]
+  },
+  {
+    "grammar": "何といっても",
+    "meaning": "Dù thế nào thì, nói gì thì nói",
+    "explanation": "Nhấn mạnh một lý do, đặc điểm quan trọng nhất nổi bật hơn hẳn những thứ khác.",
+    "examples": [
+      { "ja": "日本の名物といえば、 何といっても 富士山でしょう。", "vi": "Nói về đặc sản nổi tiếng của Nhật thì dù sao đi nữa vẫn phải là núi Phú Sĩ." }
+    ]
+  },
+  {
+    "grammar": "と言っても",
+    "meaning": "Nói như thế nhưng mà...",
+    "explanation": "Thừa nhận vế trước nhưng bổ sung thêm thông tin ở vế sau để tránh hiểu lầm về mức độ thực tế.",
+    "examples": [
+      { "ja": "日本語ができる と言っても、まだN2のレベルです。", "vi": "Nói là biết tiếng Nhật thế thôi chứ thực ra mới ở trình độ N2 thôi." }
+    ]
+  },
+  {
+    "grammar": "に気をつける",
+    "meaning": "Cẩn thận, thận trọng, để ý...",
+    "explanation": "Yêu cầu hoặc tự nhắc nhở bản thân tập trung chú ý vào một đối tượng, hành động cụ thể.",
+    "examples": [
+      { "ja": "健康 に気をつける ようにしてください。", "vi": "Hãy chú ý giữ gìn sức khỏe nhé." }
+    ]
+  },
+  {
+    "grammar": "碌に～ない",
+    "meaning": "Không... một chút gì ra hồn, chẳng được tử tế",
+    "explanation": "Phê phán hành động không được thực hiện đầy đủ, đạt tiêu chuẩn tối thiểu cần thiết.",
+    "examples": [
+      { "ja": "最近忙しくて、 碌に <ruby>寝<rt>ね</rt></ruby>て いない。", "vi": "Dạo này bận quá, chẳng ngủ nghê được chút nào ra hồn cả." }
+    ]
+  },
+  {
+    "grammar": "～せいか",
+    "meaning": "Có lẽ vì...",
+    "explanation": "Chỉ ra nguyên nhân dẫn đến một kết quả tiêu cực, xấu xí nhưng chưa chắc chắn hoàn toàn.",
+    "examples": [
+      { "ja": "寝不足の せいか、頭が痛い。", "vi": "Có lẽ vì thiếu ngủ nên đầu tôi cứ đau bưng bưng." }
+    ]
+  },
+  {
+    "grammar": "に越したことはない",
+    "meaning": "Nên phải, tốt hơn hết là, không gì bằng",
+    "explanation": "Đưa ra lời khuyên rằng làm việc đó hoặc có điều kiện đó là lý tưởng nhất.",
+    "examples": [
+      { "ja": "お金は ある に越したことはない。", "vi": "Tiền bạc thì tốt hơn hết là cứ có sẵn nhiều vẫn hơn." }
+    ]
+  },
+  {
+    "grammar": "～くせに",
+    "meaning": "Mặc dù... vậy mà (bất mãn, khinh miệt)",
+    "explanation": "Bày tỏ sự chỉ trích, trách móc khi đối tượng có hành động trái ngược hoàn toàn với thân phận, vị trí.",
+    "examples": [
+      { "ja": "男の くせに 、そんなことで泣くなよ。", "vi": "Là đàn ông con trai mà có mỗi việc thế cũng khóc lóc à." }
+    ]
+  },
+  {
+    "grammar": "～ゆえに",
+    "meaning": "Vì..., do vậy... (Văn viết trang trọng)",
+    "explanation": "Dùng trong văn bản, báo cáo để chỉ nguyên nhân, kết quả hệ quả mang tính logic cao.",
+    "examples": [
+      { "ja": "経験不足 ゆえに 、失敗してしまった。", "vi": "Chính vì thiếu kinh nghiệm nên tôi đã gặp thất bại." }
+    ]
+  },
+  {
+    "grammar": "～及び",
+    "meaning": "Và..., cùng với... (Văn bản pháp luật)",
+    "explanation": "Dùng để kết nối nhiều danh từ một cách trang trọng trong văn bản chính thức hoặc thông báo.",
+    "examples": [
+      { "ja": "氏名 及び 住所を記入してください。", "vi": "Vui lòng điền đầy đủ họ tên và địa chỉ cư trú." }
+    ]
+  },
+  {
+    "grammar": "万一 ～",
+    "meaning": "Nếu lỡ trong trường hợp..., ngộ nhỡ",
+    "explanation": "Giả định một tình huống xấu, cực kỳ hiếm khi xảy ra nhưng vẫn cần chuẩn bị phòng ngừa trước.",
+    "examples": [
+      { "ja": "万一 の時のために、保険に入っておく。", "vi": "Đề phòng ngộ nhỡ có chuyện không may xảy ra, tôi đã mua bảo hiểm." }
+    ]
+  },
+  {
+    "grammar": "あえて ～",
+    "meaning": "Dám làm, cố tình làm dù biết khó khăn/bị chỉ trích",
+    "explanation": "Thể hiện ý chí mạnh mẽ của người nói khi thực hiện hành động mạo hiểm hoặc gây tranh cãi.",
+    "examples": [
+      { "ja": "嫌われることを覚悟で、 あえて 反対意見を述べた。", "vi": "Chấp nhận bị ghét, tôi vẫn dám đứng lên nêu ý kiến phản đối." }
+    ]
+  },
+  {
+    "grammar": "～がてら",
+    "meaning": "Nhân tiện làm việc A thì kết hợp làm luôn việc B",
+    "explanation": "Hành động A là chính, nhưng tiện đường hoặc tiện thể thì triển khai luôn việc B.",
+    "examples": [
+      { "ja": "散歩 がてら 、コンビニへ行ってくる。", "vi": "Tiện thể đi dạo bộ thì tôi tạt qua cửa hàng tiện lợi mua đồ luôn." }
+    ]
+  },
+  {
+    "grammar": "～にかけては",
+    "meaning": "Về mặt..., nếu nói về lĩnh vực này thì...",
+    "explanation": "Đánh giá, khẳng định một đối tượng là giỏi nhất, xuất sắc nhất trong một khía cạnh cụ thể.",
+    "examples": [
+      { "ja": "車の運転 にかけては 、 anh ấy là số một.", "vi": "Nếu nói về khoản lái xe ô tô thì anh ấy là số một không ai bằng." }
+    ]
+  },
+  {
+    "grammar": "～かねない",
+    "meaning": "Có lẽ, có nguy cơ lớn dẫn đến kết quả xấu",
+    "explanation": "Đánh giá dựa trên tình hình hiện tại rằng một sự việc tồi tệ rất có khả năng sẽ bùng phát.",
+    "examples": [
+      { "ja": "そんな運転をすると、事故を起こし かねない よ。", "vi": "Lái xe kiểu bốc đầu thế kia thì có ngày gây tai nạn như chơi đấy." }
+    ]
+  },
+  {
+    "grammar": "～からなる",
+    "meaning": "Tạo thành từ, hình thành từ",
+    "explanation": "Dùng để cấu trúc, phân tích các thành phần cấu tạo nên một tổ chức hay một thực thể.",
+    "examples": [
+      { "ja": "このチームは5人のメンバー からなる 。", "vi": "Đội ngũ này được hình thành từ 5 thành viên xuất sắc." }
+    ]
+  },
+  {
+    "grammar": "～ないですむ",
+    "meaning": "Xong rồi... không cần phải, tránh được việc phải làm",
+    "explanation": "Bày tỏ sự nhẹ nhõm khi không cần thực hiện một nghĩa vụ phiền phức nào đó.",
+    "examples": [
+      { "ja": "友達が車を貸してくれたので、レンタカーを借り ないですんだ 。", "vi": "Bạn cho mượn xe nên tôi tránh được khoản phải đi thuê xe ngoài." }
+    ]
+  },
+  {
+    "grammar": "～わけにはいかない",
+    "meaning": "Không thể làm vì lý do đạo đức, xã hội, lương tâm",
+    "explanation": "Bản thân muốn làm nhưng hoàn cảnh hoặc quy chuẩn xã hội không cho phép thực hiện.",
+    "examples": [
+      { "ja": "明日は大事な試験があるから、休む わけにはいかない 。", "vi": "Ngày mai có bài thi quan trọng nên tôi tuyệt đối không thể nghỉ được." }
+    ]
+  },
+  {
+    "grammar": "～ないわけにはいかない",
+    "meaning": "Không thể không làm, bắt buộc phải làm",
+    "explanation": "Tình thế ép buộc hoặc lương tâm cắn rứt khiến người nói buộc phải hành động.",
+    "examples": [
+      { "ja": "お世話になった先生の誘いだから、行か ないわけにはいかない 。", "vi": "Là lời mời của thầy giáo đã giúp đỡ mình nên không thể không đi được." }
+    ]
+  },
+  {
+    "grammar": "～たうえで",
+    "meaning": "Sau khi làm việc A xong thì mới tiến hành việc B",
+    "explanation": "Nhấn mạnh trình tự: việc A là bước chuẩn bị cực kỳ quan trọng, không thể bỏ qua trước khi làm B.",
+    "examples": [
+      { "ja": "よく 相談したうえで 、Quyết định cuối cùng.", "vi": "Sau khi thảo luận thật kỹ càng, chúng tôi mới đưa ra quyết định." }
+    ]
+  },
+  {
+    "grammar": "～ような気がする",
+    "meaning": "Có cảm giác là, dường như là...",
+    "explanation": "Diễn tả một trực giác, cảm nhận cá nhân không có căn cứ rõ ràng hoàn toàn.",
+    "examples": [
+      { "ja": "後ろに誰かがいる ような気がする 。", "vi": "Cứ có cảm giác dường như có ai đó đang đi sau lưng mình ấy." }
+    ]
+  },
+  {
+    "grammar": "いったん～ば / たら",
+    "meaning": "Một khi đã... thì chắc chắn sẽ",
+    "explanation": "Nhấn mạnh điều kiện mang tính quyết định, một khi bắt đầu thì hệ quả theo sau không đổi.",
+    "examples": [
+      { "ja": "いったん 決め たら 、最後までやり抜きなさい。", "vi": "Một khi đã quyết định rồi thì hãy làm cho tới cùng đi." }
+    ]
+  },
+  {
+    "grammar": "～でいいです",
+    "meaning": "Là được rồi, thế là đủ rồi (chấp nhận tạm thời)",
+    "explanation": "Thể hiện sự thỏa hiệp, không cần thứ tốt nhất, mức độ hiện tại là chấp nhận được.",
+    "examples": [
+      { "ja": "お茶 でいいです 。", "vi": "Cho tôi nước trà là được rồi (không cần nước ngọt đâu)." }
+    ]
+  },
+  {
+    "grammar": "やむを得ず",
+    "meaning": "Không thể tránh khỏi, miễn cưỡng, bất đắc dĩ",
+    "explanation": "Phải đưa ra quyết định trái ý muốn do hoàn cảnh ép buộc hoàn toàn.",
+    "examples": [
+      { "ja": "台風のため、 やむを得ず 飛行機をキャンセルした。", "vi": "Do bão lớn, chúng tôi bất đắc dĩ phải hủy chuyến bay." }
+    ]
+  },
+  {
+    "grammar": "～ではないだろうか",
+    "meaning": "Phải chăng là..., có lẽ là... chăng?",
+    "explanation": "Cách đưa ra ý kiến phản biện hoặc nhận định một cách nhẹ nhàng, lịch sự trong văn nghị luận.",
+    "examples": [
+      { "ja": "この計画には問題がある のではないだろうか 。", "vi": "Phải chăng kế hoạch lần này đang tồn tại một vài vấn đề?" }
+    ]
+  },
+  {
+    "grammar": "ろくに～ない",
+    "meaning": "Chẳng làm được việc gì ra hồn (Trùng cấu trúc 15)",
+    "explanation": "Phê phán hành động thiếu sót, không đạt yêu cầu tối thiểu.",
+    "examples": [
+      { "ja": "ご飯を ろくに 食べ ないで仕事ばかりしている。", "vi": "Chẳng ăn uống được chút gì ra hồn mà suốt ngày cắm đầu làm việc." }
+    ]
+  },
+  {
+    "grammar": "～より仕方がない",
+    "meaning": "Không còn cách nào khác, đành phải chịu",
+    "explanation": "Nhấn mạnh trạng thái bế tắc, buộc phải chấp nhận giải pháp duy nhất còn lại.",
+    "examples": [
+      { "ja": "電車が止まったなら、歩く より仕方がない 。", "vi": "Tàu điện dừng chạy rồi thì chỉ còn cách cuốc bộ về nhà thôi." }
+    ]
+  },
+  {
+    "grammar": "せめて ～",
+    "meaning": "Dù chỉ... tối thiểu cũng muốn",
+    "explanation": "Bày tỏ mong ước, nguyện vọng ở mức độ thấp nhất có thể chấp nhận được.",
+    "examples": [
+      { "ja": "せめて 日曜日 くらいはゆっくり休みたい。", "vi": "Ít nhất thì dù chỉ ngày Chủ Nhật tôi cũng muốn nghỉ ngơi thoải mái." }
+    ]
+  },
+  {
+    "grammar": "～ものですから",
+    "meaning": "Vì..., lý do là vì... (Biện hộ, phân trần)",
+    "explanation": "Dùng trong hội thoại lịch sự để giải thích, thanh minh cho một lỗi lầm của bản thân.",
+    "examples": [
+      { "ja": "道が混んでいた ものですから 、遅刻してしまいました。", "vi": "Dạ vì đường tắc quá nên em lỡ bị đến muộn ạ." }
+    ]
+  },
+  {
+    "grammar": "～が気になる",
+    "meaning": "Lo lắng, băn khoăn, luôn để tâm về chuyện gì",
+    "explanation": "Tâm trí bị thu hút, lo ngại về một sự việc chưa rõ ràng kết quả.",
+    "examples": [
+      { "ja": "試験の結果 が気になる 。", "vi": "Tôi cứ bồn chồn lo lắng về kết quả của kỳ thi lần này quá." }
+    ]
+  },
+  {
+    "grammar": "～思うように",
+    "meaning": "Như đã nghĩ, như ý muốn",
+    "explanation": "Thường dùng ở thể phủ định (思うようにいかない) để chỉ việc không theo kế hoạch.",
+    "examples": [
+      { "ja": "計画が 思うように 進まない。", "vi": "Công việc không tiến triển thuận lợi như những gì đã tính toán." }
+    ]
+  },
+  {
+    "grammar": "さすがに ～",
+    "meaning": "Quả là... (Khen ngợi hoặc cảm thán tình huống đương nhiên)",
+    "explanation": "Công nhận một kết quả hoàn toàn xứng đáng với danh tiếng hoặc bản chất của đối tượng.",
+    "examples": [
+      { "ja": "さすがに プロの選手は足が速いね。", "vi": "Quả không hổ danh là tuyển thủ chuyên nghiệp, chạy nhanh thật đấy." }
+    ]
+  },
+  {
+    "grammar": "～ものの",
+    "meaning": "Mặc dù... nhưng thực tế lại...",
+    "explanation": "Thừa nhận sự thật ở vế đầu, nhưng vế sau lại diễn ra một kết quả mâu thuẫn hoàn toàn.",
+    "examples": [
+      { "ja": "家を買った ものの 、ローンが大変だ。", "vi": "Mặc dù đã mua được nhà thật rồi đấy nhưng tiền trả góp mệt mỏi quá." }
+    ]
+  },
+  {
+    "grammar": "一方 / 一方で",
+    "meaning": "Mặt khác, trái lại, đồng thời tồn tại hai khía cạnh",
+    "explanation": "Dùng để đối chiếu song song hai mặt của một vấn đề hoặc hai sự việc khác nhau.",
+    "examples": [
+      { "ja": "彼は仕事を頑張る 一方で 、趣味のカードも楽しんでいる。", "vi": "Anh ấy vừa cày cuốc làm việc, mặt khác vẫn tận hưởng thú vui sưu tầm bài." }
+    ]
+  },
+  {
+    "grammar": "それにしても",
+    "meaning": "Dù sao đi nữa, tuy nhiên, ngay cả như vậy thì vẫn quá...",
+    "explanation": "Chấp nhận tình huống trước đó nhưng bày tỏ thái độ kinh ngạc hoặc không thể tin nổi về mức độ.",
+    "examples": [
+      { "ja": "それにしても 、今日の暑さは異常だね。", "vi": "Dù sao đi nữa thì cái nóng ngày hôm nay đúng là bất bình thường thật." }
+    ]
+  },
+  {
+    "grammar": "～を～にまかせる",
+    "meaning": "Phó thác, giao phó toàn bộ việc gì cho ai",
+    "explanation": "Giao trách nhiệm hoặc quyền quyết định cho đối tượng khác xử lý.",
+    "examples": [
+      { "ja": "この仕事は 専門家に まかせる のがいい。", "vi": "Công việc này tốt nhất là cứ giao phó cho các chuyên gia lo liệu." }
+    ]
+  },
+  {
+    "grammar": "～に至るまで",
+    "meaning": "Từ... cho đến tận mức, ngay cả đến mức cụ thể",
+    "explanation": "Nhấn mạnh phạm vi bao phủ cực rộng, chi tiết từ thứ nhỏ nhất đến thứ lớn nhất.",
+    "examples": [
+      { "ja": "服装から髪型 に至るまで 、厳しくチェックされる。", "vi": "Bị kiểm tra gắt gao từ trang phục cho đến tận kiểu tóc luôn." }
+    ]
+  },
+  {
+    "grammar": "～かねる",
+    "meaning": "Không thể, khó mà có thể làm được (Từ chối lịch sự)",
+    "explanation": "Về mặt tâm lý hoặc lập trường công việc, không thể thực hiện yêu cầu của khách hàng.",
+    "examples": [
+      { "ja": "その質問にはお答えいたし かねます 。", "vi": "Dạ câu hỏi đó tôi xin phép khó lòng mà trả lời quý khách được ạ." }
+    ]
+  },
+  {
+    "grammar": "～さしつかえない",
+    "meaning": "Không có vấn đề gì, không gây chướng ngại, làm vậy cũng được",
+    "explanation": "Cho phép đối phương làm gì đó vì việc đó không làm ảnh hưởng tới đại cục hằng ngày.",
+    "examples": [
+      { "ja": "問題がなければ、サインしても さしつかえない 。", "vi": "Nếu không có vấn đề gì phát sinh thì ký tên vào cũng không sao cả." }
+    ]
+  },
+  {
+    "grammar": "～たちまち",
+    "meaning": "Ngay lập tức, đột nhiên biến đổi nhanh chóng",
+    "explanation": "Trạng thái, bối cảnh biến đổi 180 độ chỉ trong một khoảnh khắc cực ngắn.",
+    "examples": [
+      { "ja": "薬を飲んだら、 たちまち 痛みが消えた。", "vi": "Vừa uống thuốc xong một cái là cơn đau biến mất ngay lập tức." }
+    ]
+  },
+  {
+    "grammar": "～を通じて",
+    "meaning": "Thông qua phương tiện, hoặc suốt toàn bộ khoảng thời gian",
+    "explanation": "Chỉ trung gian môi giới kết nối thông tin, hoặc bao trùm toàn bộ một chu kỳ thời gian.",
+    "examples": [
+      { "ja": "インターネット を通じて 、世界中の人と繋がる。", "vi": "Thông qua Internet, chúng ta có thể kết nối với mọi người toàn cầu." }
+    ]
+  },
+  {
+    "grammar": "なにしろ ～",
+    "meaning": "Dù thế nào đi nữa, căn bản là vì...",
+    "explanation": "Đưa ra một lý do cực kỳ thuyết phục để giải thích cho tình trạng hiện tại.",
+    "examples": [
+      { "ja": " なにしろ 初めてなもので, u sầu.", "vi": "Dù sao đi nữa thì cũng là lần đầu tiên làm nên tôi lo lắng lắm." }
+    ]
+  },
+  {
+    "grammar": "～かたわら",
+    "meaning": "Bên cạnh việc chính A, còn làm thêm việc B (Nghề tay trái)",
+    "explanation": "Diễn tả hai hành động diễn ra trong một khoảng thời gian dài, thường là công việc hằng ngày.",
+    "examples": [
+      { "ja": "彼は大学に通う かたわら 、xưởng làm việc.", "vi": "Bên cạnh việc đi học đại học, anh ấy còn làm thêm dưới nhà xưởng." }
+    ]
+  },
+  {
+    "grammar": "～ごとき",
+    "meaning": "Giống như là..., loại người như... (Xem thường hoặc khiêm tốn)",
+    "explanation": "Ví von trạng thái, hoặc dùng để hạ thấp giá trị của một đối tượng cụ thể.",
+    "examples": [
+      { "ja": "私 ごとき のために、集まっていただきありがとうございます。", "vi": "Vì một kẻ mọn như tôi mà mọi người tập hợp đông đủ thế này, xin cảm ơn." }
+    ]
+  },
+  {
+    "grammar": "～たまらない",
+    "meaning": "Rất là..., chịu không nổi mức độ",
+    "explanation": "Cảm xúc, cảm giác cơ thể dâng cao đến mức bản thân không thể kìm nén được.",
+    "examples": [
+      { "ja": "エアコンが壊れて、暑くて たまらない 。", "vi": "Điều hòa hỏng mất rồi, nóng đến mức không tài nào chịu đựng nổi." }
+    ]
+  },
+  {
+    "grammar": "とうてい ～ ない",
+    "meaning": "Hoàn toàn không thể nào làm được dù có cố gắng",
+    "explanation": "Nhấn mạnh sự bất khả thi tuyệt đối từ góc độ năng lực hoặc thực tế khách quan.",
+    "examples": [
+      { "ja": "こんな大量の漢字は、1日では とうてい 覚えられ ない 。", "vi": "Đống Kanji khổng lồ thế này trong 1 ngày thì hoàn toàn không thể nhớ hết nổi." }
+    ]
+  },
+  {
+    "grammar": "～にのぼる",
+    "meaning": "Đạt con số hơn..., lên tới con số khổng lồ",
+    "explanation": "Dùng trong báo cáo, thống kê khi số lượng tăng cao ngoài mong đợi.",
+    "examples": [
+      { "ja": "被害額は1億円 にのぼる 。", "vi": "Số tiền thiệt hại ước tính đã lên tới con số khổng lồ 100 triệu Yên." }
+    ]
+  },
+  {
+    "grammar": "～さえ ＋ ～ば",
+    "meaning": "Chỉ cần... có được điều kiện này thì tất cả đều ổn",
+    "explanation": "Mẫu câu chỉ ra điều kiện tiên quyết độc nhất để giải quyết triệt để vấn đề.",
+    "examples": [
+      { "ja": "お金 さえ あれ ば 、何でも買えるわけではない。", "vi": "Chỉ cần có tiền thì không phải cái gì cũng mua được đâu." }
+    ]
+  },
+  {
+    "grammar": "～次第だ",
+    "meaning": "Chuyện là, lý do là, kết quả dẫn tới là do...",
+    "explanation": "Dùng để giải thích tiến trình dẫn đến kết cục hiện tại trong văn phong trang trọng.",
+    "examples": [
+      { "ja": "このような事情で、今回の計画を中止した 次第だ 。", "vi": "Do tình hình bất khả kháng như trên nên chúng tôi mới hủy kế hoạch lần này." }
+    ]
+  },
+  {
+    "grammar": "～あげく",
+    "meaning": "Sau một hồi phiền toái, rốt cuộc lại nhận kết quả tồi tệ",
+    "explanation": "Trải qua một quá trình dài suy nghĩ hoặc tranh chấp, cuối cùng thu về kết cục cay đắng.",
+    "examples": [
+      { "ja": "さんざん悩んだ あげく 、買うのをやめた。", "vi": "Sau một hồi đắn đo suy nghĩ nát óc, rốt cuộc tôi lại quyết định không mua nữa." }
+    ]
+  },
+  {
+    "grammar": "～あまり",
+    "meaning": "Vì mức độ quá bất thường nên dẫn đến kết quả lạ lùng",
+    "explanation": "Trạng thái cảm xúc vượt quá ngưỡng kiểm soát thông thường gây ra hệ quả không tốt.",
+    "examples": [
+      { "ja": "緊張の あまり 、声が震えてしまった。", "vi": "Vì quá run và căng thẳng nên giọng của tôi cứ run bần bật lên." }
+    ]
+  },
+  {
+    "grammar": "～以上",
+    "meaning": "Chừng nào, một khi đã... thì phải có trách nhiệm làm",
+    "explanation": "Khẳng định một nghĩa vụ đương nhiên dựa trên một sự thật đã được thiết lập.",
+    "examples": [
+      { "ja": "約束した 以上 、守らなければならない。", "vi": "Một khi đã hứa rồi thì bắt buộc phải giữ lời." }
+    ]
+  },
+  {
+    "grammar": "～一方だ",
+    "meaning": "Trở nên.., ngày càng có xu hướng tiến triển mạnh một chiều",
+    "explanation": "Diễn tả sự biến đổi liên tục của một trạng thái, thường đi với xu hướng xấu đi.",
+    "examples": [
+      { "ja": "物価は上がる 一方だ 。", "vi": "Giá cả thị trường thì cứ ngày một tăng phi mã không thấy điểm dừng." }
+    ]
+  },
+  {
+    "grammar": "～以来",
+    "meaning": "Suốt từ mốc thời gian đó về sau, duy trì trạng thái",
+    "explanation": "Kể từ khi một sự kiện mang tính bước ngoặt xảy ra, trạng thái sau đó không hề thay đổi.",
+    "examples": [
+      { "ja": "日本に来て 以来 、一度も風邪を引いていない。", "vi": "Kể từ khi sang Nhật cho tới nay, tôi chưa từng bị cảm cúm một lần nào." }
+    ]
+  },
+  {
+    "grammar": "～上に",
+    "meaning": "Không chỉ... hơn nữa, lại thêm vào đó",
+    "explanation": "Liệt kê các đặc điểm cùng hướng tính chất tích cực hoặc tiêu cực để nhấn mạnh mức độ.",
+    "examples": [
+      { "ja": "この店は安い 上に 、味もとてもいい。", "vi": "Cửa hàng này không những giá hạt dẻ mà đồ ăn vị lại còn rất ngon nữa." }
+    ]
+  },
+  {
+    "grammar": "～上で",
+    "meaning": "Sau khi làm việc A, dựa trên kết quả đó để làm việc B (Trùng 30)",
+    "explanation": "Nhấn mạnh tiền đề quan trọng cần xác nhận kỹ lưỡng trước khi hành động.",
+    "examples": [
+      { "ja": "書類を確認した 上で 、サインをします。", "vi": "Sau khi check kỹ toàn bộ giấy tờ thì tôi sẽ ký tên." }
+    ]
+  },
+  {
+    "grammar": "～おかげで",
+    "meaning": "Nhờ có... dẫn đến kết quả tốt đẹp",
+    "explanation": "Bày tỏ lòng biết ơn đối với sự giúp đỡ từ người khác hoặc một yếu tố thuận lợi.",
+    "examples": [
+      { "ja": "先生の おかげで 、試験に合格できました。", "vi": "Nhờ có thầy giúp đỡ nên em mới thi đỗ kỳ thi lần này." }
+    ]
+  },
+  {
+    "grammar": "～恐れがある",
+    "meaning": "Có nguy cơ, lo lắng về một viễn cảnh xấu sẽ xảy ra",
+    "explanation": "Dùng trong dự báo thời tiết, tin tức để cảnh báo mối hiểm họa trong tương lai.",
+    "examples": [
+      { "ja": "今夜は大雨になる 恐れがある 。", "vi": "Đêm nay có nguy cơ sẽ xảy ra một trận mưa lớn dữ dội." }
+    ]
+  },
+  {
+    "grammar": "～か～ないかのうちに",
+    "meaning": "Vừa mới... thì ngay lập tức việc khác đã xảy ra hành động",
+    "explanation": "Nhấn mạnh khoảng cách thời gian giữa hai sự việc gần như bằng không, diễn ra đồng thời.",
+    "examples": [
+      { "ja": "ベッドに入る か入らないかのうちに 寝てしまった。", "vi": "Vừa mới đặt lưng xuống giường một cái là tôi đã chìm vào giấc ngủ luôn." }
+    ]
+  },
+  {
+    "grammar": "～かける / ～かけだ",
+    "meaning": "Hành động còn dang dở, chưa kết thúc xong",
+    "explanation": "Trạng thái một việc đang làm giữa chừng thì bị ngắt quãng hoặc chưa hoàn tất.",
+    "examples": [
+      { "ja": "読み かけの 本が机の上に置いてある。", "vi": "Cuốn sách đang đọc dở vẫn được đặt ở trên bàn." }
+    ]
+  },
+  {
+    "grammar": "～がち",
+    "meaning": "Thường có xu hướng, dễ bị rơi vào trạng thái xấu",
+    "explanation": "Chỉ một tần suất lặp lại thường xuyên của một thói quen hoặc hiện tượng tiêu cực.",
+    "examples": [
+      { "ja": "最近、疲れ がち で体調が良くない。", "vi": "Dạo này tôi cứ hay bị mệt mỏi, sức khỏe không được ổn lắm." }
+    ]
+  },
+  {
+    "grammar": "～かと思うと / かと思ったら",
+    "meaning": "Vừa thấy sự việc này xảy ra đã lập tức biến đổi bất ngờ",
+    "explanation": "Bày tỏ sự ngạc nhiên trước tốc độ thay đổi nhanh chóng của đối tượng, hoàn cảnh.",
+    "examples": [
+      { "ja": "赤ちゃんは泣いた かと思うと 、すぐ笑った。", "vi": "Đứa bé vừa mới khóc mếu máo xong mà thoắt cái đã cười toe toét rồi." }
+    ]
+  },
+  {
+    "grammar": "～かねない",
+    "meaning": "Có nguy cơ lớn dẫn đến kết quả xấu (Trùng 25)",
+    "explanation": "Đánh giá khả năng bùng phát tình huống tồi tệ.",
+    "examples": [
+      { "ja": "秘密を漏らすと, rắc rối かねない 。", "vi": "Lộ bí mật ra một cái là có nguy cơ gây rắc rối lớn ngay." }
+    ]
+  },
+  {
+    "grammar": "～かのようだ",
+    "meaning": "Cứ như thể là, với vẻ giống y như là thực tế",
+    "explanation": "Mẫu so sánh ví von bản chất của một sự việc dù sự thật không phải như vậy.",
+    "examples": [
+      { "ja": "彼はすべてを知っている かのようだ 。", "vi": "Anh ta nói chuyện cứ như thể là cái gì trên đời cũng biết hết rồi ấy." }
+    ]
+  },
+  {
+    "grammar": "～からいって",
+    "meaning": "Nếu xét từ góc độ, căn cứ vào khía cạnh này mà nói",
+    "explanation": "Đưa ra nhận định, đánh giá tổng quan dựa trên một tiêu chí cụ thể nổi bật.",
+    "examples": [
+      { "ja": "今の実力 からいって 、合格は難しいだろう。", "vi": "Nếu xét từ thực lực hiện tại thì việc thi đỗ e là hơi khó khăn." }
+    ]
+  },
+  {
+    "grammar": "～から～にかけて",
+    "meaning": "Từ khoảng thời gian/không gian... đến khoảng...",
+    "explanation": "Chỉ một phạm vi đại khái, mơ hồ không phân định rõ ràng biên giới như からまで.",
+    "examples": [
+      { "ja": "昨日 から 今日 にかけて 雨が降り続いた。", "vi": "Mưa rơi liên miên suốt từ khoảng ngày hôm qua đến tận ngày hôm nay." }
+    ]
+  },
+  {
+    "grammar": "～からして",
+    "meaning": "Ngay cả từ cái nhỏ nhất đã như vậy, nói gì đến tổng thể",
+    "explanation": "Đưa ra một ví dụ tiêu biểu mang tính tiêu cực để quy chụp toàn bộ bản chất đối tượng.",
+    "examples": [
+      { "ja": "彼は 挨拶 からして ちゃんとしていない。", "vi": "Nhìn cái cách anh ta chào hỏi từ ban đầu là đã thấy không ra sao rồi." }
+    ]
+  },
+  {
+    "grammar": "～からすると / からすれば",
+    "meaning": "Nhìn từ lập trường, quan điểm của đối tượng",
+    "explanation": "Đứng vào vị trí của một người khác để đưa ra phán đoán hoặc nhận xét khách quan.",
+    "examples": [
+      { "ja": "親 からすると 、子どもの将来が常に心配だ。", "vi": "Đứng ở góc độ làm cha làm mẹ thì lúc nào cũng lo lắng cho tương lai của con." }
+    ]
+  },
+  {
+    "grammar": "～からといって",
+    "meaning": "Dù lý do là... thì cũng không thể lấy đó làm cái cớ",
+    "explanation": "Phủ định lập luận của vế trước, vế sau thường đi kèm dạng phủ định phủ quyết.",
+    "examples": [
+      { "ja": "お金持ちだから といって 、幸せとは限らない。", "vi": "Dẫu lý do có là giàu có đi chăng nữa thì chưa chắc đã hạnh phúc đâu." }
+    ]
+  },
+  {
+    "grammar": "～からには",
+    "meaning": "Vì là chuyện đã quyết/sự thật nên bắt buộc phải làm đến cùng",
+    "explanation": "Thể hiện quyết tâm mạnh mẽ của người nói khi đối mặt với một thực tế không thể đảo ngược.",
+    "examples": [
+      { "ja": "試合に出る からには 、絶対勝ちたいです。", "vi": "Một khi đã ra sân quyết đấu thì mục tiêu duy nhất là phải chiến thắng." }
+    ]
+  },
+  {
+    "grammar": "～から見て",
+    "meaning": "Nhìn từ sự vật, xét theo phương diện biểu hiện bên ngoài",
+    "explanation": "Đưa ra đánh giá dựa trên các bằng chứng trực quan nhìn thấy được từ đối tượng.",
+    "examples": [
+      { "ja": "あの様子 から見て 、彼は怒っているようだ。", "vi": "Nhìn điệu bộ bên ngoài thế kia thì có vẻ anh ấy đang nổi trận lôi đình rồi." }
+    ]
+  },
+  {
+    "grammar": "～代わりに",
+    "meaning": "Thay vì làm việc này thì làm việc khác, hoặc đổi lại",
+    "explanation": "Chỉ sự bù trừ, trao đổi quyền lợi hoặc thay thế đối tượng thực hiện hành động.",
+    "examples": [
+      { "ja": "英語を教えてもらう 代わりに 、ベトナム語を教えます。", "vi": "Đổi lại việc anh dạy tôi tiếng Anh thì tôi sẽ hướng dẫn anh tiếng Việt." }
+    ]
+  },
+  {
+    "grammar": "～気味",
+    "meaning": "Có vẻ hơi, cảm thấy hơi có dấu hiệu của trạng thái xấu",
+    "explanation": "Mức độ nhẹ, diễn tả cảm giác cơ thể hoặc tâm lý bắt đầu có chuyển biến tiêu cực.",
+    "examples": [
+      { "ja": "風邪 気味 なので、今日は早く寝ることにします。", "vi": "Người hơi có vẻ dính cảm rồi nên hôm nay tôi quyết định đi ngủ sớm." }
+    ]
+  },
+  {
+    "grammar": "～きり",
+    "meaning": "Sau khi làm việc gì đó thì bặt vô âm tín, duy trì mãi trạng thái",
+    "explanation": "Hành động xảy ra một lần duy nhất trong quá khứ và sau đó không thấy lặp lại nữa.",
+    "examples": [
+      { "ja": "彼は「さようなら」と言った きり 、戻ってこない。", "vi": "Anh ấy nói câu biệt ly xong một cái là đi biền biệt không thấy về." }
+    ]
+  },
+  {
+    "grammar": "～切る / ～切れる",
+    "meaning": "Làm hoàn tất toàn bộ sạch sành sanh không còn sót lại",
+    "explanation": "Nhấn mạnh mức độ triệt để hoặc trạng thái cạn kiệt năng lượng khi thực hiện hành động.",
+    "examples": [
+      { "ja": "長い小説を読み 切った 。", "vi": "Tôi đã cày xong xuôi hoàn toàn cuốn tiểu thuyết dày cộp này rồi." }
+    ]
+  },
+  {
+    "grammar": "～くせに",
+    "meaning": "Mặc dù, lại còn, ngay cả (Trùng 18)",
+    "explanation": "Bày tỏ thái độ tức giận, mỉa mai.",
+    "examples": [
+      { "ja": "知らない くせに 、知っているふりをするな。", "vi": "Đã không biết cái gì rồi thì đừng có mà tinh tướng giả vờ biết." }
+    ]
+  },
+  {
+    "grammar": "～くらい / ～ぐらい",
+    "meaning": "Đến mức độ như là, hoặc biểu thị mức độ tối thiểu",
+    "explanation": "Dùng hình ảnh ví von để người nghe hình dung rõ nét về cường độ của trạng thái.",
+    "examples": [
+      { "ja": "お腹が痛くて、動けない くらい だ。", "vi": "Bụng tôi đau quặn lên đến mức không tài nào nhúc nhích nổi đây này." }
+    ]
+  },
+  {
+    "grammar": "～げ",
+    "meaning": "Có vẻ dường như phản chiếu tâm trạng bên trong",
+    "explanation": "Dùng trong văn thơ, tiểu thuyết để miêu tả sắc thái biểu cảm hiện rõ trên khuôn mặt, dáng vẻ.",
+    "examples": [
+      { "ja": "彼女は 寂しげ な顔をして遠くを見つめていた。", "vi": "Cô ấy mang một khuôn mặt đượm vẻ cô đơn lặng lẽ nhìn về phía xa xăm." }
+    ]
+  },
+  {
+    "grammar": "～こそ",
+    "meaning": "Chính là, chính vì lý do này chứ không phải thứ khác",
+    "explanation": "Từ nhấn mạnh cao độ, gạt bỏ toàn bộ các phương án khác để khẳng định đối tượng độc tôn.",
+    "examples": [
+      { "ja": "今年 こそ 、N2に絶対合格してみせる。", "vi": "Chính năm nay chứ không phải lúc nào khác, tôi nhất định sẽ giật bằng N2." }
+    ]
+  },
+  {
+    "grammar": "～ことか",
+    "meaning": "Biết bao nhiêu, không biết chừng nào (Cảm thán)",
+    "explanation": "Thường đi kèm các từ nghi vấn để bộc lộ dòng cảm xúc dâng trào tột độ của người nói.",
+    "examples": [
+      { "ja": "合格できて、どんなに 嬉しかった ことか 。", "vi": "Thi đỗ một cái, ôi chao không biết trong lòng tôi nó sướng đến nhường nào." }
+    ]
+  },
+  {
+    "grammar": "～ことから",
+    "meaning": "Căn cứ từ sự việc thực tế dẫn đến tên gọi hoặc phán đoán",
+    "explanation": "Nêu lên nguồn gốc của một sự thật khách quan hoặc một lý do cụ thể.",
+    "examples": [
+      { "ja": "富士山が見える ことから 、この町は富士見町と呼ばれている。", "vi": "Chính vì từ đây nhìn rõ núi Phú Sĩ nên thị trấn này mới có tên là Fujimi." }
+    ]
+  },
+  {
+    "grammar": "～ことになっている",
+    "meaning": "Quy định, lịch trình, kế hoạch chung đã được thiết lập",
+    "explanation": "Diễn tả những tập quán xã hội hoặc lịch hẹn không phụ thuộc hoàn toàn vào ý chí cá nhân.",
+    "examples": [
+      { "ja": "法律で、車は左側を走る ことになっている 。", "vi": "Theo luật định, ô tô bắt buộc phải di chuyển ở phía bên tay trái." }
+    ]
+  },
+  {
+    "grammar": "～ことに",
+    "meaning": "Thật là... làm sao (Đưa cảm xúc lên đầu câu)",
+    "explanation": "Nhấn mạnh cảm tưởng của người nói về toàn bộ nội dung sự việc sắp sửa được trình bày sau đó.",
+    "examples": [
+      { "ja": "驚いた ことに 、làm việc ở xưởng.", "vi": "Thật là kinh ngạc hết sức, anh ấy lại đang làm việc dưới nhà xưởng." }
+    ]
+  },
+  {
+    "grammar": "～ことはない",
+    "meaning": "Không cần thiết phải thực hiện hành động đó đâu",
+    "explanation": "Đưa ra lời khuyên giải hoặc trấn an đối phương rằng tình hình không nghiêm trọng đến thế.",
+    "examples": [
+      { "ja": "そんなに がっかりする ことはない よ。次があるさ。", "vi": "Không cần phải thất vọng tràn trề thế đâu bro. Vẫn còn cơ hội lần sau mà." }
+    ]
+  },
+  {
+    "grammar": "～最中に",
+    "meaning": "Đúng lúc cao trào đang diễn ra thì có việc khác chen ngang",
+    "explanation": "Hành động vế trước đang chiếm trọn sự tập trung thì một sự cố bất ngờ bùng phát phá vỡ bối cảnh.",
+    "examples": [
+      { "ja": "会議の 最中に 、スマホが鳴ってしまった。", "vi": "Đúng lúc cuộc họp đang vào pha căng thẳng nhất thì điện thoại lại kêu reng reng." }
+    ]
+  },
+  {
+    "grammar": "～ざるを得ない",
+    "meaning": "Đành phải, buộc phải làm dù trong lòng cực kỳ không muốn",
+    "explanation": "Hoàn cảnh khách quan ép buộc khiến người nói không còn một con đường tháo chạy nào khác.",
+    "examples": [
+      { "ja": "台風が来たので、旅行は中止せ ざるを得ない 。", "vi": "Bão đổ bộ rồi thì đành phải ngậm ngùi hủy chuyến đi chơi thôi." }
+    ]
+  },
+  {
+    "grammar": "～しかない",
+    "meaning": "Chỉ là, chỉ còn cách duy nhất (Trùng 4)",
+    "explanation": "Thể hiện quyết tâm hoặc sự bế tắc phải chọn phương án cuối.",
+    "examples": [
+      { "ja": "やる しかない 。", "vi": "Tầm này thì chỉ có lao vào chiến đấu chứ còn cách nào nữa đâu." }
+    ]
+  },
+  {
+    "grammar": "～上は",
+    "meaning": "Một khi mà tình thế đã như vậy thì nghĩa vụ đương nhiên phải làm",
+    "explanation": "Tương tự cấu trúc 以上, mang tính chất trang trọng quyết liệt hơn trong văn viết.",
+    "examples": [
+      { "ja": "社長を引き受けた 上は 、全力を尽くします。", "vi": "Một khi đã ngồi vào ghế Giám đốc, tôi sẽ cống hiến toàn bộ sức lực." }
+    ]
+  },
+  {
+    "grammar": "～せいだ",
+    "meaning": "Hoàn toàn tại vì đổ lỗi cho một nguyên nhân xấu",
+    "explanation": "Quy kết toàn bộ trách nhiệm của kết quả tồi tệ cho một đối tượng cụ thể.",
+    "examples": [
+      { "ja": "お前の せいだ ！", "vi": "Tất cả mọi chuyện ra nông nỗi này hoàn toàn là tại vì mày đấy!" }
+    ]
+  },
+  {
+    "grammar": "～どころか",
+    "meaning": "Thay vì đạt được mức độ A, thực tế ngược lại hoàn toàn chạm đáy B",
+    "explanation": "Bác bỏ thông tin vế trước để đưa ra một sự thật có mức độ tồi tệ hoặc nghiêm trọng hơn nhiều.",
+    "examples": [
+      { "ja": "漢字 どころか 、ひらがなも読めない。", "vi": "Thay vì đọc được chữ Kanji, đến ngay cả chữ Hiragana còn chẳng đọc nổi đây." }
+    ]
+  },
+  {
+    "grammar": "～どころではない",
+    "meaning": "Không phải là lúc thích hợp, hoàn cảnh không cho phép làm gì",
+    "explanation": "Tình hình hiện tại đang quá hỗn loạn hoặc bận rộn, không thể có tâm trí mà hưởng thụ.",
+    "examples": [
+      { "ja": "仕事が忙しくて、旅行 どころではない 。", "vi": "Công việc ngập đầu ngập cổ thế này, thời gian đâu mà đi du lịch nữa." }
+    ]
+  },
+  {
+    "grammar": "～ないばかりか",
+    "meaning": "Không những không làm được điều tốt, trái lại còn tệ hại hơn",
+    "explanation": "Mở rộng phạm vi tiêu cực từ một điểm ban đầu lên quy mô lớn hơn.",
+    "examples": [
+      { "ja": "宿題を しないばかりか 、学校をサボった。", "vi": "Không những không thèm làm bài tập, nó còn cúp học luôn mới gấu chứ." }
+    ]
+  },
+  {
+    "grammar": "～にきまっている",
+    "meaning": "Chắc chắn là, nhất định là như vậy không thể sai được",
+    "explanation": "Khẳng định chắc nịch dựa trên quan điểm, trực giác chủ quan mạnh mẽ của người nói.",
+    "examples": [
+      { "ja": "そんな嘘、すぐに バレる にきまっている 。", "vi": "Cái kiểu nói dối trơ trẽn thế kia thì nhất định là lộ tẩy ngay lập tức." }
+    ]
+  },
+  {
+    "grammar": "～に比べて",
+    "meaning": "So với đối tượng đối chiếu này thì...",
+    "explanation": "Đặt hai sự vật sự việc lên bàn cân để phân tích điểm khác biệt về đặc tính.",
+    "examples": [
+      { "ja": "今年は去年に 比べて 、寒さが厳しいですね。", "vi": "Năm nay so với năm ngoái thì cái lạnh khắc nghiệt hơn hẳn." }
+    ]
+  },
+  {
+    "grammar": "～に加えて",
+    "meaning": "Thêm vào đó, cộng thêm việc này nữa",
+    "explanation": "Liệt kê thêm một yếu tố mới tác động làm tăng cường độ của bối cảnh hiện tại.",
+    "examples": [
+      { "ja": "大雨 に加えて 、強い風も吹き始めた。", "vi": "Cộng thêm vào trận mưa như trút nước, gió lớn bắt đầu gầm rú điên cuồng." }
+    ]
+  },
+  {
+    "grammar": "～に応える",
+    "meaning": "Đáp ứng, đáp lại sự kỳ vọng, mong mỏi của tập thể",
+    "explanation": "Hành động nhằm thỏa mãn, không làm phụ lòng những người đã tin tưởng mình.",
+    "examples": [
+      { "ja": "ファンの 期待に応える ように頑張ります。", "vi": "Tôi sẽ nỗ lực hết mình để đáp lại sự mong mỏi của người hâm mộ." }
+    ]
+  },
+  {
+    "grammar": "～に先立つ",
+    "meaning": "Trước khi chuẩn bị triển khai một sự kiện lớn",
+    "explanation": "Thực hiện các công tác chuẩn bị mang tính nền móng, quy mô lớn trước giờ G.",
+    "examples": [
+      { "ja": "試験の 開始に先立つ 、注意事項を説明します。", "vi": "Trước khi chính thức bắt đầu bài thi, tôi sẽ phổ biến qua quy chế." }
+    ]
+  },
+  {
+    "grammar": "～に際して",
+    "meaning": "Khi, nhân dịp bắt đầu một bước ngoặt quan trọng",
+    "explanation": "Dùng trong văn phong trang trọng, diễn văn, thông báo khi bắt đầu một sự kiện lớn.",
+    "examples": [
+      { "ja": "日本へ 留学するに際して 、色々な準備をした。", "vi": "Nhân dịp chuẩn bị sang Nhật du học, tôi đã hoàn tất rất nhiều thủ tục." }
+    ]
+  },
+  {
+    "grammar": "～にしろ / ～にせよ",
+    "meaning": "Cho dù là trường hợp nào đi chăng nữa thì kết quả vẫn vậy",
+    "explanation": "Đưa ra hai giả định hoặc một đối tượng để khẳng định ý kiến ở vế sau không bị lung lay.",
+    "examples": [
+      { "ja": "行く にしろ 行かない にしろ 、早く連絡してください。", "vi": "Dù có đi hay là không đi thì cũng báo sớm cho tôi một câu nhé." }
+    ]
+  },
+  {
+    "grammar": "～に相違ない",
+    "meaning": "Chắc chắn là, đúng là không thể lệch đi đâu được (Văn viết)",
+    "explanation": "Mẫu khẳng định có độ chắc chắn cao nhất trong văn phong nghị luận, nghị quyết chính thức.",
+    "examples": [
+      { "ja": "犯人は彼 に相違ない 。", "vi": "Hung thủ gây án chắc chắn là hắn ta, không thể sai lệch đi đâu được." }
+    ]
+  },
+  {
+    "grammar": "～に沿って",
+    "meaning": "Dọc theo, tuân theo quy chuẩn, kế hoạch đã vạch sẵn",
+    "explanation": "Hành động bám sát theo một lộ trình, quy tắc để đảm bảo tính đồng bộ.",
+    "examples": [
+      { "ja": "マニュアル に沿って 、作業を進めてください。", "vi": "Hãy tiến hành công việc bám sát theo đúng sách hướng dẫn." }
+    ]
+  },
+  {
+    "grammar": "～につき",
+    "meaning": "Vì... lý do trang trọng trên thông báo công cộng",
+    "explanation": "Dùng ở tiêu đề bảng tin, thông báo cửa hàng để giải thích lý do đóng cửa, sửa chữa.",
+    "examples": [
+      { "ja": "工事中 につき 、立入禁止。", "vi": "Vì khu vực đang thi công công trình, cấm mọi hành vi xâm nhập." }
+    ]
+  },
+  {
+    "grammar": "～にほかならない",
+    "meaning": "Chính là, không có một lý do nào khác ngoài thứ này",
+    "explanation": "Khẳng định nguyên nhân độc tôn, mang tính lý giải sâu sắc bản chất vấn đề.",
+    "examples": [
+      { "ja": "今回の成功は、みんなの 努力にほかならない 。", "vi": "Thành công vang dội lần này chính là nhờ sự nỗ lực của tập thể chứ không gì khác." }
+    ]
+  },
+  {
+    "grammar": "～にもかかわらず",
+    "meaning": "Bất chấp tình hình, mặc dù thực tế cản trở lớn",
+    "explanation": "Hành động ở vế sau diễn ra bình thường, phớt lờ hoàn toàn sự ảnh hưởng dữ dội ở vế trước.",
+    "examples": [
+      { "ja": "大雨 にもかかわらず 、たくさんの人が集まった。", "vi": "Bất chấp trời đổ mưa tầm tã, mọi người vẫn tập trung đông đủ." }
+    ]
+  },
+  {
+    "grammar": "～ぬく",
+    "meaning": "Làm đến cùng vượt qua muôn vàn gian khổ cực hạn",
+    "explanation": "Thể hiện một ý chí sắt đá, làm một việc khó khăn cho tới khi cán đích hoàn toàn.",
+    "examples": [
+      { "ja": "大変な仕事だったが、最後まで やりぬいた 。", "vi": "Dù là công việc cực kỳ khoai nhưng tôi đã kiên trì làm cho tới cùng." }
+    ]
+  },
+  {
+    "grammar": "～のもとで / ～のもとに",
+    "meaning": "Dưới sự chỉ dẫn, tầm ảnh hưởng, hoặc điều kiện bảo hộ",
+    "explanation": "Chỉ bối cảnh hành động diễn ra dưới sự dẫn dắt của người có quyền lực hoặc quy tắc.",
+    "examples": [
+      { "ja": " 先生の 指導のもとで 、研究を進めている。", "vi": "Dưới sự chỉ dẫn tận tình của thầy giáo, tôi đang triển khai đề tài nghiên cứu." }
+    ]
+  },
+  {
+    "grammar": "～末",
+    "meaning": "Sau một hồi lâu vật lộn, cuối cùng đạt được kết quả",
+    "explanation": "Quá trình đắn đo kéo dài, kết quả thu về có thể tốt hoặc xấu tùy bối cảnh câu chuyện.",
+    "examples": [
+      { "ja": "激しい議論の 末 、ようやく意見がまとまった。", "vi": "Sau một hồi tranh luận nảy lửa, cuối cùng các ý kiến cũng thống nhất được." }
+    ]
+  },
+  {
+    "grammar": "～まい",
+    "meaning": "Tuyệt đối không có ý định làm, hoặc chắc là không xảy ra",
+    "explanation": "Thể phủ định ý chí hoặc phủ định suy đoán của bản thân người nói (Ngôi thứ nhất).",
+    "examples": [
+      { "ja": "あんな店、二度と 行くまい 。", "vi": "Cái kiểu làm ăn của quán kia thì có các vàng tôi cũng không bao giờ quay lại." }
+    ]
+  },
+  {
+    "grammar": "～まいか",
+    "meaning": "Chẳng phải là... hay sao, quyết không làm hay sao?",
+    "explanation": "Dạng câu hỏi tu từ bộc lộ suy đoán mang tính nghi vấn cao độ của người nói.",
+    "examples": [
+      { "ja": "彼に本当のことを話そう まいか 、悩んでいる。", "vi": "Tôi đang đau đầu tự hỏi chẳng biết có nên nói sự thật cho anh ấy hay không." }
+    ]
+  },
+  {
+    "grammar": "～わりに",
+    "meaning": "So với tiêu chuẩn thông thường thì kết quả lại bất ngờ trái ngược",
+    "explanation": "Mức độ thực tế của đối tượng không hề cân xứng với tuổi tác, giá tiền hay vị trí của nó.",
+    "examples": [
+      { "ja": "この料理は、値段の わりに おいしいね。", "vi": "Món ăn này so với cái giá rẻ mạt của nó thì vị lại ngon bất ngờ đấy." }
+    ]
+  },
+  {
+    "grammar": "～をきっかけに",
+    "meaning": "Nhân cơ hội, bắt nguồn ngẫu nhiên từ một sự việc nhỏ",
+    "explanation": "Một sự cố, sự việc bất ngờ xảy ra trở thành ngòi nổ làm thay đổi hoàn toàn cục diện sau này.",
+    "examples": [
+      { "ja": "アニメを 見たことをきっかけに 、日本語の勉強を始めた。", "vi": "Bắt nguồn từ việc xem phim anime, tôi đã dấn thân vào học tiếng Nhật." }
+    ]
+  },
+  {
+    "grammar": "～を契機として",
+    "meaning": "Nhân cơ hội, lấy sự kiện mang tính lịch sử làm bước ngoặt",
+    "explanation": "Tương tự như cấu trúc きっかけ nhưng quy mô sự kiện lớn hơn, mang tính chất chính trị xã hội trang trọng.",
+    "examples": [
+      { "ja": "新幹線の 開通を契機として 、町の開発が進んだ。", "vi": "Lấy bước ngoặt mở tuyến tàu Shinkansen, việc quy hoạch thị trấn đã cất cánh." }
+    ]
+  },
+  {
+    "grammar": "～を込めて",
+    "meaning": "Gửi gắm toàn bộ tâm tư, tình cảm, tình yêu thương vào sản phẩm",
+    "explanation": "Hành động làm ra một vật với một tâm niệm chứa chan cảm xúc dành cho người nhận.",
+    "examples": [
+      { "ja": "心を 込めて 、手紙を書きました。", "vi": "Tôi đã viết lá thư này bằng tất cả tấm lòng chân thành của mình." }
+    ]
+  },
+  {
+    "grammar": "～をめぐる",
+    "meaning": "Xoay quanh những tranh chấp, bàn tán về một chủ đề hot",
+    "explanation": "Đi sau một vấn đề trung tâm thu hút nhiều ý kiến trái chiều, đối đầu từ dư luận.",
+    "examples": [
+      { "ja": "土地の所有権 をめぐって 、裁判が続いている。", "vi": "Xoay quanh quyền sở hữu mảnh đất, vụ kiện tụng vẫn đang kéo dài dai dẳng." }
+    ]
+  },
+  {
+    "grammar": "～をもとにして",
+    "meaning": "Dựa trên, lấy chất liệu, tư liệu thực tế để sáng tạo ra cái mới",
+    "explanation": "Phát triển một tác phẩm, mô hình mới dựa trên nền tảng cốt truyện hoặc dữ liệu gốc có sẵn.",
+    "examples": [
+      { "ja": "事実 をもとにして 、この映画は作られました。", "vi": "Bộ phim điện ảnh này được xây dựng hoàn toàn dựa trên những sự kiện có thật." }
+    ]
+  }
+]
