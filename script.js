@@ -276,7 +276,7 @@ if (loaiHocHienTai === 'kanji') {
         }
         
         // Đồng bộ chuẩn 3 tham số truyền vào Timeline để không lỗi Engine đọc
-        let chuoiDocKanjiViet = `Âm Hán, ${amHanViet}, Nghĩa là, ${nghiaTiengViet}`;
+        let chuoiDocKanjiViet = '${amHanViet}, Nghĩa, ${nghiaTiengViet}`;
         KichHoatTimeline("", chuoiDocKanjiViet, "");
     }
 }
