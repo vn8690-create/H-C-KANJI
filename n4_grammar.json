@@ -1,0 +1,515 @@
+[
+  {
+    "grammar": "～（も）～し、～し～",
+    "meaning": "Không những ~ mà còn ~ ; vừa ~ vừa ~",
+    "explanation": "Dùng để liệt kê nhiều lý do, tính chất hoặc nguyên nhân có cùng một xu hướng (cùng khen hoặc cùng chê).",
+    "examples": [
+      { "ja": "この<ruby>店<rt>みせ</rt></ruby>は<ruby>安<rt>やす</rt></ruby>いし、おいしいです。", "vi": "Cửa hàng này vừa rẻ lại vừa ngon." },
+      { "ja": "<ruby>雨<rt>あめ</rt></ruby>も<ruby>降<rt>ふ</rt></ruby>っているし、<ruby>頭<rt>あたま</rt></ruby>も<ruby>痛<rt>いた</rt></ruby>いし、今日は<ruby>休<rt>やす</rt></ruby>みます。", "vi": "Vừa trời đang mưa, đầu lại vừa đau nên hôm nay tôi nghỉ." }
+    ]
+  },
+  {
+    "grammar": "～によると～そうです",
+    "meaning": "Theo ~ thì nghe nói là ~",
+    "explanation": "Dùng để truyền đạt lại thông tin nhận được từ một nguồn nào đó (báo chí, người khác, dự báo thời tiết).",
+    "examples": [
+      { "ja": "<ruby>天気予報<rt>てんきよほう</rt></ruby>によると、明日は<ruby>晴<rt>は</rt></ruby>れるそうです。", "vi": "Theo dự báo thời tiết thì nghe nói ngày mai trời sẽ nắng." }
+    ]
+  },
+  {
+    "grammar": "～そうに/ そうな/ そうです",
+    "meaning": "Có vẻ, trông như ~",
+    "explanation": "Diễn tả sự suy đoán của người nói dựa trên vẻ bề ngoài của sự vật, sự việc quan sát được bằng mắt.",
+    "examples": [
+      { "ja": "このケーキはとてもおいしそうです。", "vi": "Cái bánh ngọt này trông có vẻ rất ngon." },
+      { "ja": "<ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>りそうな<ruby>天気<rt>てんき</rt></ruby>ですね。", "vi": "Thời tiết trông có vẻ sắp mưa nhỉ." }
+    ]
+  },
+  {
+    "grammar": "～てみる",
+    "meaning": "Thử làm ~",
+    "explanation": "Diễn tả hành động làm thử một việc gì đó để xem kết quả ra sao hoặc xem có được không.",
+    "examples": [
+      { "ja": "日本の<ruby>料理<rt>りょうり</rt></ruby>を<ruby>食<rt>た</rt></ruby>べてみたいです。", "vi": "Tôi muốn ăn thử món ăn của Nhật Bản." }
+    ]
+  },
+  {
+    "grammar": "～と～",
+    "meaning": "Hễ mà ~",
+    "explanation": "Diễn tả một hệ quả tất yếu, tự nhiên (hễ hành động A xảy ra thì chắc chắn hành động B sẽ xảy ra). Không dùng cho ý chí, cầu khiến.",
+    "examples": [
+      { "ja": "このボタンを<ruby>押<rt>お</rt></ruby>すと、お<ruby>釣<rt>つ</rt></ruby>りが出ます。", "vi": "Hễ ấn nút này thì tiền thừa sẽ chạy ra." }
+    ]
+  },
+  {
+    "grammar": "～たら～",
+    "meaning": "Nếu, sau khi ~",
+    "explanation": "Dùng để giả định một điều kiện trong tương lai, hoặc hành động vế sau sẽ thực hiện ngay sau khi vế trước hoàn thành.",
+    "examples": [
+      { "ja": "<ruby>安<rt>やす</rt></ruby>かったら、買います。", "vi": "Nếu rẻ thì tôi sẽ mua." },
+      { "ja": "<ruby>駅<rt>えき</rt></ruby>に<ruby>着<rt>つ</rt></ruby>いたら、<ruby>電話<rt>でんわ</rt></ruby>してください。", "vi": "Sau khi đến ga thì hãy gọi điện cho tôi nhé." }
+    ]
+  },
+  {
+    "grammar": "～なら～",
+    "meaning": "Nếu là ~",
+    "explanation": "Dùng khi người nói đưa ra lời khuyên, ý kiến hoặc gợi ý dựa trên thông tin mà người đối diện vừa đề cập.",
+    "examples": [
+      { "ja": "カメラを買うなら、あの<ruby>店<rt>みせ</rt></ruby>がいいですよ。", "vi": "Nếu là mua máy ảnh thì cửa hàng kia tốt đấy." }
+    ]
+  },
+  {
+    "grammar": "～ば～",
+    "meaning": "Nếu ~",
+    "explanation": "Thể điều kiện, dùng khi giả định một tình huống mà kết quả phụ thuộc hoàn toàn vào điều kiện đó.",
+    "examples": [
+      { "ja": "安ければ、たくさん買います。", "vi": "Nếu mà rẻ, tôi sẽ mua nhiều." }
+    ]
+  },
+  {
+    "grammar": "～ば～ほど～",
+    "meaning": "Càng ~ càng ~",
+    "explanation": "Diễn tả sự biến đổi tỉ lệ thuận, khi mức độ của một vế tăng lên thì mức độ của vế kia cũng tăng theo.",
+    "examples": [
+      { "ja": "日本語は<ruby>勉強<rt>べんきょう</rt></ruby>すればするほど<ruby>面白<rt>おもしろ</rt></ruby>くなります。", "vi": "Tiếng Nhật càng học thì càng trở nên thú vị." }
+    ]
+  },
+  {
+    "grammar": "～たがる",
+    "meaning": "Muốn..., thích...",
+    "explanation": "Dùng để diễn tả mong muốn, nguyện vọng của ngôi thứ ba (người khác), không dùng cho bản thân.",
+    "examples": [
+      { "ja": "<ruby>子ども<rt>こども</rt></ruby>は学校へ行きたがっています。", "vi": "Đứa trẻ đang tỏ ra muốn đi học." }
+    ]
+  },
+  {
+    "grammar": "～かもしれない",
+    "meaning": "Không chừng ~, có thể ~",
+    "explanation": "Diễn tả sự dự đoán mang tính không chắc chắn của người nói (khả năng xảy ra khoảng 50%).",
+    "examples": [
+      { "ja": "明日は<ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>るかもしれません。", "vi": "Ngày mai không chừng là trời sẽ mưa." }
+    ]
+  },
+  {
+    "grammar": "～でしょう～",
+    "meaning": "Có lẽ ~",
+    "explanation": "Dùng để suy đoán một sự việc với độ chắc chắn khá cao (khoảng 70-80%).",
+    "examples": [
+      { "ja": "明日はいい<ruby>天気<rt>てんき</rt></ruby>でしょう。", "vi": "Ngày mai có lẽ thời tiết sẽ đẹp." }
+    ]
+  },
+  {
+    "grammar": "～しか～ない",
+    "meaning": "Chỉ ~",
+    "explanation": "Đi với từ biểu thị số lượng mang ý nghĩa phủ định (ngoài cái đó ra không còn cái nào khác), thể hiện cảm xúc tiếc nuối, thiếu thốn.",
+    "examples": [
+      { "ja": "<ruby>財布<rt>さいふ</rt></ruby>の中に100円しかありません。", "vi": "Trong ví chỉ còn có mỗi 100 Yên." }
+    ]
+  },
+  {
+    "grammar": "～ておく（ておきます）",
+    "meaning": "Làm gì trước ~, làm sẵn ~",
+    "explanation": "Diễn tả việc thực hiện một hành động trước để chuẩn bị cho một mục đích hoặc tình huống trong tương lai.",
+    "examples": [
+      { "ja": "<ruby>旅行<rt>りょこう</rt></ruby>の前に、ホテルを<ruby>予約<rt>よやく</rt></ruby>しておきます。", "vi": "Trước chuyến đi du lịch, tôi sẽ đặt phòng khách sạn trước." }
+    ]
+  },
+  {
+    "grammar": "～よう～",
+    "meaning": "Hình như, có lẽ ~",
+    "explanation": "Diễn tả sự suy đoán dựa trên cảm giác hoặc trải nghiệm thực tế của bản thân người nói.",
+    "examples": [
+      { "ja": "あの人は先生のようです。", "vi": "Người kia hình như là giáo viên." }
+    ]
+  },
+  {
+    "grammar": "～とおもう（と思う）",
+    "meaning": "Định làm ~",
+    "explanation": "Dùng khi thể ý chí đi với と思う để biểu thị một dự định, ý định loé lên hoặc đang nhen nhóm trong đầu.",
+    "examples": [
+      { "ja": "来週、日本へ行こうと思います。", "vi": "Tuần sau tôi định sẽ đi Nhật Bản." }
+    ]
+  },
+  {
+    "grammar": "～つもり",
+    "meaning": "Dự định ~, quyết định ~",
+    "explanation": "Diễn tả một ý chí, dự định chắc chắn sẽ thực hiện, đã được lên kế hoạch từ trước.",
+    "examples": [
+      { "ja": "来年、<ruby>大学<rt>だいがく</rt></ruby>を<ruby>受験<rt>じゅけん</rt></ruby>するつもりです。", "vi": "Năm sau tôi dự định sẽ thi vào đại học." }
+    ]
+  },
+  {
+    "grammar": "～よてい（予定）",
+    "meaning": "Theo dự định ~, theo kế hoạch ~",
+    "explanation": "Diễn tả một lịch trình, kế hoạch mang tính chính thức, khách quan (thường do công ty, tập thể sắp đặt).",
+    "examples": [
+      { "ja": "<ruby>飛行機<rt>ひこうき</rt></ruby>は10時に<ruby>到着<rt>とうちゃく</rt></ruby>する予定です。", "vi": "Máy bay theo kế hoạch sẽ hạ cánh lúc 10 giờ." }
+    ]
+  },
+  {
+    "grammar": "～てあげる",
+    "meaning": "Làm cho (ai đó)",
+    "explanation": "Người nói làm một hành động có lợi cho người khác với tinh thần thiện chí (tránh dùng với bề trên).",
+    "examples": [
+      { "ja": "友達に本を<ruby>貸<rt>か</rt></ruby>してあげました。", "vi": "Tôi đã cho người bạn mượn sách." }
+    ]
+  },
+  {
+    "grammar": "～てくれる",
+    "meaning": "Làm cho ~, làm hộ (mình) ~",
+    "explanation": "Ai đó thực hiện một hành động mang lại lợi ích cho người nói hoặc người thân của người nói.",
+    "examples": [
+      { "ja": "鈴木さんが日本語を教えてくれました。", "vi": "Anh Suzuki đã dạy tiếng Nhật giúp cho tôi." }
+    ]
+  },
+  {
+    "grammar": "～てもらう",
+    "meaning": "Được làm cho ~",
+    "explanation": "Người nói nhận được hành động có lợi từ người khác (mình chủ động nhờ vả hoặc bày tỏ lòng biết ơn).",
+    "examples": [
+      { "ja": "私は山田さんに写真を撮ってもらいました。", "vi": "Tôi đã được anh Yamada chụp ảnh hộ cho." }
+    ]
+  },
+  {
+    "grammar": "～ていただけませんか?",
+    "meaning": "Cho tôi ~ có được không?, Nhờ anh làm... giúp tôi được không?",
+    "explanation": "Mẫu câu nhờ vả, yêu cầu một cách cực kỳ lịch sự và trang trọng.",
+    "examples": [
+      { "ja": "漢字を教えていただけませんか。", "vi": "Anh có thể làm ơn dạy chữ Kanji giúp tôi được không?" }
+    ]
+  },
+  {
+    "grammar": "～Ｖ受身（うけみ）",
+    "meaning": "Động từ thể bị động (Bị, được làm gì đó)",
+    "explanation": "Diễn tả một hành động tác động từ đối tượng khác lên chủ ngữ, thường mang nghĩa tiêu cực (bị quấy rầy) hoặc tích cực (được khen).",
+    "examples": [
+      { "ja": "先生に<ruby>褒<rt>ほ</rt></ruby>められました。", "vi": "Tôi đã được thầy giáo khen ngợi." },
+      { "ja": "<ruby>泥棒<rt>どろぼう</rt></ruby>にお金を<ruby>盗<rt>ぬす</rt></ruby>まれました。", "vi": "Tôi bị tên trộm lấy mất tiền." }
+    ]
+  },
+  {
+    "grammar": "V禁止（きんし）",
+    "meaning": "Động từ thể cấm chỉ (Cấm, không được...)",
+    "explanation": "Dùng để ra lệnh một cách dứt khoát, cấm đoán không cho phép thực hiện hành động nào đó. Thường dùng bởi nam giới hoặc trong biển báo.",
+    "examples": [
+      { "ja": "ここに<ruby>入<rt>はい</rt></ruby>るな！", "vi": "Cấm vào đây!" },
+      { "ja": "タバコを<ruby>吸<rt>す</rt></ruby>うな。", "vi": "Cấm hút thuốc." }
+    ]
+  },
+  {
+    "grammar": "～V可能形（かのうけい）",
+    "meaning": "Động từ thể khả năng (Có thể làm)",
+    "explanation": "Biểu thị năng lực của bản thân hoặc điều kiện cho phép để thực hiện một hành động nào đó.",
+    "examples": [
+      { "ja": "私は刺身が<ruby>食<rt>た</rt></ruby>べられます。", "vi": "Tôi có thể ăn được món cá sống (sashimi)." }
+    ]
+  },
+  {
+    "grammar": "~V使役（しえき）",
+    "meaning": "Động từ thể sai khiến (Bắt/ Cho phép làm ~)",
+    "explanation": "Diễn tả việc một người bắt buộc, ra lệnh hoặc cho phép một người khác thực hiện một hành động.",
+    "examples": [
+      { "ja": "社長は社員を働かせます。", "vi": "Giám đốc bắt nhân viên phải làm việc." },
+      { "ja": "<ruby>子ども<rt>こども</rt></ruby>にゲームをさせます。", "vi": "Cho phép con chơi game." }
+    ]
+  },
+  {
+    "grammar": "~V使役受身（しえきうけみ）",
+    "meaning": "Động từ thể bị động sai khiến (Bị bắt phải làm gì đó)",
+    "explanation": "Kết hợp giữa sai khiến và bị động. Diễn tả tâm trạng ức chế, không muốn nhưng vẫn bị người khác bắt phải làm.",
+    "examples": [
+      { "ja": "私は母に野菜を<ruby>食<rt>た</rt></ruby>べさせられました。", "vi": "Tôi đã bị mẹ bắt phải ăn rau." }
+    ]
+  },
+  {
+    "grammar": "～なさい～",
+    "meaning": "Hãy làm... đi",
+    "explanation": "Mẫu câu ra lệnh nhẹ nhàng, thường dùng trong gia đình (bố mẹ nói với con) hoặc giáo viên nói với học sinh.",
+    "examples": [
+      { "ja": "早く<ruby>寝<rt>ね</rt></ruby>なさい。", "vi": "Hãy đi ngủ sớm đi con." }
+    ]
+  },
+  {
+    "grammar": "～ても (V/ A/ N)",
+    "meaning": "Ngay cả khi, thậm chí, cho dù... vẫn...",
+    "explanation": "Mẫu câu giả định điều kiện ngược, cho dù tình huống vế trước có xảy ra thì vế sau vẫn không thay đổi.",
+    "examples": [
+      { "ja": "<ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>っても、サッカーをします。", "vi": "Cho dù trời mưa, chúng tôi vẫn chơi đá bóng." }
+    ]
+  },
+  {
+    "grammar": "～てしまう～",
+    "meaning": "Lỡ làm... / Đã hoàn thành xong...",
+    "explanation": "Diễn tả một hành động đã hoàn thành trọn vẹn, hoặc thể hiện tâm trạng tiếc nuối, hối hận vì một lỗi lầm lỡ xảy ra.",
+    "examples": [
+      { "ja": "<ruby>宿題<rt>しゅくだい</rt></ruby>をもうやってしまいました。", "vi": "Tôi đã làm xong hết đống bài tập mất rồi." },
+      { "ja": "<ruby>電車<rt>でんしゃ</rt></ruby>の中に傘を<ruby>忘<rt>わす</rt></ruby>れてしまいました。", "vi": "Tôi lỡ quên mất cây dù ở trên tàu điện rồi." }
+    ]
+  },
+  {
+    "grammar": "～みたい",
+    "meaning": "Hình như ~, giống như ~",
+    "explanation": "Dùng để so sánh một sự vật có đặc điểm tương đồng với sự vật khác, hoặc suy đoán dựa trên chứng cứ thực tế.",
+    "examples": [
+      { "ja": "あの人はクマみたいです。", "vi": "Người kia nhìn giống như con gấu vậy." }
+    ]
+  },
+  {
+    "grammar": "～ながら～",
+    "meaning": "Vừa... vừa...",
+    "explanation": "Diễn tả hai hành động diễn ra đồng thời cùng một lúc, trong đó hành động vế sau là hành động chính.",
+    "examples": [
+      { "ja": "<ruby>音楽<rt>おんがく</rt></ruby>を聞きながら、<ruby>勉強<rt>べんきょう</rt></ruby>します。", "vi": "Tôi vừa nghe nhạc vừa học bài." }
+    ]
+  },
+  {
+    "grammar": "～のに",
+    "meaning": "Mặc dù... thế mà... / Để... làm gì...",
+    "explanation": "1. Diễn tả sự bất ngờ, bất mãn khi kết quả trái ngược mong đợi. 2. Biểu thị mục đích đi kèm với danh từ/động từ hành động.",
+    "examples": [
+      { "ja": "一生懸命に<ruby>勉強<rt>べんきょう</rt></ruby>したのに、不合格でした。", "vi": "Mặc dù đã học bài hết sức mình thế mà vẫn trượt." },
+      { "ja": "このハサミは紙を<ruby>切<rt>き</rt></ruby>るのに使います。", "vi": "Cây kéo này được dùng để cắt giấy." }
+    ]
+  },
+  {
+    "grammar": "～はずです",
+    "meaning": "Chắc chắn ~, nhất định ~",
+    "explanation": "Thể hiện sự khẳng định mạnh mẽ của người nói dựa trên một căn cứ, lý do logic rõ ràng.",
+    "examples": [
+      { "ja": "彼は今日、来るはずです。", "vi": "Anh ấy chắc chắn hôm nay sẽ đến." }
+    ]
+  },
+  {
+    "grammar": "～はずがない",
+    "meaning": "Không thể nào ~, làm gì có chuyện ~",
+    "explanation": "Phủ định hoàn toàn một khả năng dựa trên căn cứ logic cực kỳ vững chắc.",
+    "examples": [
+      { "ja": "そんな難しい本、彼が読めるはずがない。", "vi": "Cuốn sách khó như thế, anh ta làm sao mà đọc được." }
+    ]
+  },
+  {
+    "grammar": "～せずに",
+    "meaning": "Không làm gì ~ (Cách nói trang trọng)",
+    "explanation": "Là thể viết tay lịch sự của ないで, biểu thị việc thực hiện hành động vế sau mà bỏ qua hành động vế trước.",
+    "examples": [
+      { "ja": "<ruby>朝<rt>あさ</rt></ruby>ごはんを<ruby>食<rt>た</rt></ruby>べずに学校へ行きました。", "vi": "Tôi đã đi học mà không ăn bữa sáng." }
+    ]
+  },
+  {
+    "grammar": "～ないで",
+    "meaning": "Mà không ~",
+    "explanation": "Dùng trong văn nói, biểu thị trạng thái không làm vế trước mà thực hiện vế sau.",
+    "examples": [
+      { "ja": "傘を持たないで出かけました。", "vi": "Tôi đã đi ra ngoài mà không mang theo ô." }
+    ]
+  },
+  {
+    "grammar": "～かどうか",
+    "meaning": "~ hay không",
+    "explanation": "Dùng để lồng một câu hỏi không có từ để hỏi vào bên trong một câu văn lớn.",
+    "examples": [
+      { "ja": "明日、来るかどうか教えてください。", "vi": "Hãy cho tôi biết ngày mai bạn có đến hay không nhé." }
+    ]
+  },
+  {
+    "grammar": "～という～",
+    "meaning": "Gọi là ~, có cái việc ~ như thế",
+    "explanation": "Dùng để định nghĩa, gọi tên hoặc giải thích nội dung cho một danh từ đứng phía sau.",
+    "examples": [
+      { "ja": "これは何という名前の犬ですか。", "vi": "Đây là chú chó tên gọi là gì thế?" }
+    ]
+  },
+  {
+    "grammar": "～やすい",
+    "meaning": "Dễ làm ~",
+    "explanation": "Diễn tả tính chất của một hành động là dễ thực hiện hoặc một sự vật dễ rơi vào trạng thái nào đó.",
+    "examples": [
+      { "ja": "このペンはとても書きやすいです。", "vi": "Cây bút này viết rất là dễ." }
+    ]
+  },
+  {
+    "grammar": "~にくい~",
+    "meaning": "Khó làm ~",
+    "explanation": "Diễn tả tính chất khó khăn về mặt vật lý hoặc tâm lý khi thực hiện hành động.",
+    "examples": [
+      { "ja": "この街は少し住みにくいです。", "vi": "Thành phố này hơi khó sống một chút." }
+    ]
+  },
+  {
+    "grammar": "～てある",
+    "meaning": "Có làm gì đó ~, đang được làm ~",
+    "explanation": "Diễn tả một trạng thái là kết quả của một hành động có mục đích của ai đó tác động lên vật (đi với tha động từ).",
+    "examples": [
+      { "ja": "壁にカレンダーが掛けてあります。", "vi": "Trên tường đang có treo một cuốn lịch." }
+    ]
+  },
+  {
+    "grammar": "～あいだに（間に）",
+    "meaning": "Trong khi, trong lúc ~",
+    "explanation": "Diễn tả một hành động mang tính chất khoảnh khắc xảy ra xen vào giữa một trạng thái, hành động kéo dài ở vế trước.",
+    "examples": [
+      { "ja": "留守の間に、泥棒が入りました。", "vi": "Trong lúc tôi vắng nhà, tên trộm đã lẻn vào." }
+    ]
+  },
+  {
+    "grammar": "～く/ にする",
+    "meaning": "Làm cho trở nên ~, biến đổi thành ~",
+    "explanation": "Diễn tả hành động mang tính chủ quan của con người làm tác động biến đổi trạng thái của một sự vật.",
+    "examples": [
+      { "ja": "部屋をきれいにします。", "vi": "Tôi sẽ dọn dẹp làm cho căn phòng sạch sẽ." }
+    ]
+  },
+  {
+    "grammar": "～てほしい",
+    "meaning": "Muốn (ai đó) làm gì đó cho mình",
+    "explanation": "Thể hiện nguyện vọng, yêu cầu của người nói muốn đối phương thực hiện một hành động cụ thể.",
+    "examples": [
+      { "ja": "あなたに日本語を教えてほしいです。", "vi": "Tôi muốn bạn dạy tiếng Nhật cho tôi." }
+    ]
+  },
+  {
+    "grammar": "～たところ～",
+    "meaning": "Sau khi làm ~ thì nhận ra là...",
+    "explanation": "Diễn tả sau khi thử làm một việc gì đó thì phát hiện ra một kết quả hoặc một tình trạng mới.",
+    "examples": [
+      { "ja": "病院へ行ったところ、ただの風邪でした。", "vi": "Sau khi đến bệnh viện khám thì hóa ra chỉ là cảm cúm thông thường." }
+    ]
+  },
+  {
+    "grammar": "～ことにする",
+    "meaning": "Tôi quyết định làm ~",
+    "explanation": "Diễn tả một quyết định mang tính chủ quan, dựa trên ý chí của bản thân người nói.",
+    "examples": [
+      { "ja": "毎日、日記を書くことにしました。", "vi": "Tôi đã quyết định mỗi ngày sẽ viết nhật ký." }
+    ]
+  },
+  {
+    "grammar": "～ことになっている",
+    "meaning": "Được quy định là ~, theo kế hoạch là ~",
+    "explanation": "Diễn tả một quy định, tập quán hoặc kế hoạch đã được thiết lập chung mà bản thân phải tuân theo.",
+    "examples": [
+      { "ja": "この教室では日本語で話すことになっています。", "vi": "Trong phòng học này có quy định là phải nói bằng tiếng Nhật." }
+    ]
+  },
+  {
+    "grammar": "～とおりに（~通りに）",
+    "meaning": "Làm gì... theo đúng như ~",
+    "explanation": "Diễn tả việc thực hiện một hành động rập khuôn, chính xác theo những gì nhìn thấy, nghe thấy hoặc theo sơ đồ mẫu.",
+    "examples": [
+      { "ja": "私が言う通りに書いてください。", "vi": "Hãy viết theo đúng như những gì tôi nói." }
+    ]
+  },
+  {
+    "grammar": "～ところに/ところへ",
+    "meaning": "Đúng lúc đang... thì...",
+    "explanation": "Diễn tả một sự việc bất ngờ xảy đến đúng vào thời điểm một hành động khác đang diễn ra gay cấn.",
+    "examples": [
+      { "ja": "シャワーを浴びているところに、電話がかかってきました。", "vi": "Đúng lúc đang tắm thì điện thoại reo." }
+    ]
+  },
+  {
+    "grammar": "～もの",
+    "meaning": "Vì... (Biện hộ, làm nũng)",
+    "explanation": "Dùng ở cuối câu để đưa ra lý do bào chữa, biện hộ cho bản thân. Thường dùng bởi phụ nữ và trẻ em.",
+    "examples": [
+      { "ja": "遅れてすみません、電車が止まったんだもの。", "vi": "Xin lỗi vì tôi đến muộn, tại vì tàu điện bị dừng mà." }
+    ]
+  },
+  {
+    "grammar": "～ものか",
+    "meaning": "Không đời nào ~, Vậy nữa sao?...",
+    "explanation": "Dùng để phủ định cực kỳ mạnh mẽ ý kiến của người khác hoặc tự nhủ phủ định ý chí cá nhân.",
+    "examples": [
+      { "ja": "あんな店、二度と行くものか。", "vi": "Cái quán ăn như thế, không đời nào tôi thèm quay lại lần hai." }
+    ]
+  },
+  {
+    "grammar": "～ものなら",
+    "meaning": "Nếu có thể... (thì vẫn muốn làm)",
+    "explanation": "Giả định về một điều gì đó hầu như không có khả năng thực hiện được trong thực tế.",
+    "examples": [
+      { "ja": "帰れるものなら、今すぐ国へ帰りたいです。", "vi": "Nếu mà có thể về được, tôi muốn về nước ngay lập tức bây giờ." }
+    ]
+  },
+  {
+    "grammar": "～ものの",
+    "meaning": "Mặc dù... nhưng mà ~",
+    "explanation": "Diễn tả một sự thật ở vế trước đã xảy ra, nhưng kết quả vế sau lại không tương xứng hoặc diễn biến trái ngược.",
+    "examples": [
+      { "ja": "車を買ったものの、ほとんど運転しません。", "vi": "Mặc dù đã mua ô tô rồi nhưng hầu như tôi chẳng mấy khi lái." }
+    ]
+  },
+  {
+    "grammar": "～ように",
+    "meaning": "Để làm gì đó... / Cầu mong cho...",
+    "explanation": "1. Biểu thị mục đích đi với động từ không chứa ý chí. 2. Đặt ở cuối câu để thể hiện một lời chúc, lời cầu nguyện.",
+    "examples": [
+      { "ja": "忘れないように、ノートに書いておきます。", "vi": "Để không bị quên, tôi ghi sẵn vào trong vở." },
+      { "ja": "試験に合格しますように。", "vi": "Cầu mong cho bài thi sẽ được đỗ." }
+    ]
+  },
+  {
+    "grammar": "～ために～",
+    "meaning": "Để ~, cho ~, vì ~",
+    "explanation": "1. Biểu thị mục đích mang ý chí rõ ràng của chủ ngữ. 2. Biểu thị nguyên nhân khách quan dẫn đến hậu quả.",
+    "examples": [
+      { "ja": "家を買うために、貯金しています。", "vi": "Để mua nhà, tôi đang tiết kiệm tiền." }
+    ]
+  },
+  {
+    "grammar": "～ばあいに（～場合に）",
+    "meaning": "Trường hợp ~, khi ~",
+    "explanation": "Dùng để giả định một tình huống khẩn cấp, sự cố có thể xảy ra và hướng xử lý tiếp theo.",
+    "examples": [
+      { "ja": "火事の場合は、エレベーターを使わないでください。", "vi": "Trong trường hợp hỏa hoạn, xin vui lòng không sử dụng thang máy." }
+    ]
+  },
+  {
+    "grammar": "～たほうがいい・～ないほうがいい",
+    "meaning": "Nên ~, không nên ~",
+    "explanation": "Dùng để đưa ra lời khuyên hoặc gợi ý một cách trực tiếp cho đối phương trong một tình huống cụ thể.",
+    "examples": [
+      { "ja": "タバコは辞めたほうがいいですよ。", "vi": "Anh nên bỏ thuốc lá đi thì tốt hơn đấy." }
+    ]
+  },
+  {
+    "grammar": "～んです",
+    "meaning": "(Đấy) vì ~, giải thích là...",
+    "explanation": "Dùng để nhấn mạnh, giải thích nguyên nhân, lý do hoặc dùng khi muốn mở đầu câu chuyện để hỏi han tình hình.",
+    "examples": [
+      { "ja": "どうして遅れたんですか。バスが来なかったんです。", "vi": "Tại sao lại đến muộn thế? Vì xe buýt không tới đấy chứ." }
+    ]
+  },
+  {
+    "grammar": "～すぎる～",
+    "meaning": "Quá ~",
+    "explanation": "Diễn tả mức độ của một hành động hoặc trạng thái vượt quá giới hạn thông thường, mang nghĩa tiêu cực.",
+    "examples": [
+      { "ja": "昨日はお酒を飲みすぎました。", "vi": "Ngày mai hôm qua tôi đã uống quá nhiều rượu." }
+    ]
+  },
+  {
+    "grammar": "～V可能形ようになる",
+    "meaning": "Đã có thể làm gì ~ (Thay đổi năng lực)",
+    "explanation": "Diễn tả một sự thay đổi trạng thái từ không thể sang có thể thực hiện một năng lực nào đó.",
+    "examples": [
+      { "ja": "毎日練習して、日本語が話せるようになりました。", "vi": "Nhờ luyện tập mỗi ngày, tôi đã có thể nói được tiếng Nhật." }
+    ]
+  },
+  {
+    "grammar": "～Vるようになる",
+    "meaning": "Bắt đầu làm gì ~ (Thay đổi thói quen)",
+    "explanation": "Diễn tả một thói quen hoặc trạng thái mới bắt đầu xuất hiện.",
+    "examples": [
+      { "ja": "日本に来てから、自分で料理を作るようになりました。", "vi": "Từ sau khi đến Nhật, tôi đã bắt đầu tự mình nấu ăn." }
+    ]
+  },
+  {
+    "grammar": "～Vる・ないようにする",
+    "meaning": "Cố gắng sao cho ~, cố gắng sao cho không ~",
+    "explanation": "Diễn tả sự nỗ lực, cố gắng tạo thành một thói quen hoặc hành động đều đặn mang tính ý chí cá nhân.",
+    "examples": [
+      { "ja": "健康のために、毎日野菜を食べるようにしています。", "vi": "Vì sức khỏe, tôi đang cố gắng ăn rau mỗi ngày." }
+    ]
+  }
+]
