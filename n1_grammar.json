@@ -1,152 +1,137 @@
 [
-    {
-        "id": 1,
-        "structure": "～あっての",
-        "meaning": "Chính vì có... / Nhờ có...",
-        "explanation": "Biểu thị ý nghĩa 'Chính vì có điều kiện A nên mới có được trạng thái B'. Nhấn mạnh tầm quan trọng của điều kiện hoặc tiền đề đó.",
-        "example_1": "お客様あっての我が社です。リピーターを大切にしなければならない。",
-        "example_meaning_1": "Chính vì có khách hàng mới có công ty chúng tôi. Chúng ta phải trân trọng những khách hàng quay lại.",
-        "example_2": "健康あっての人生だ。体を壊しては何にもならない。",
-        "example_meaning_2": "Chính vì có sức khỏe mới có cuộc sống. Phá hủy cơ thể thì chẳng còn ý nghĩa gì nữa."
-    },
-    {
-        "id": 2,
-        "structure": "～いかんに関わらず / ～いかんによらず",
-        "meaning": "Bất kể... / Không phụ thuộc vào...",
-        "explanation": "Biểu thị ý nghĩa 'bất kể nội dung hay tình trạng phía trước có ra sao thì sự việc phía sau vẫn diễn ra như nhau'.",
-        "example_1": "理由のいかんに関わらず、いかなる暴力も許されない。",
-        "example_meaning_1": "Bất kể lý do là gì đi nữa, mọi hành vi bạo lực đều không được phép chấp nhận.",
-        "example_2": "国籍のいかんによらず、優秀な人材は積極的に採用する方針だ。",
-        "example_meaning_2": "Bất kể quốc tịch là gì, phương châm của chúng tôi là tích cực tuyển dụng nhân tài ưu tú."
-    },
-    {
-        "id": 3,
-        "structure": "～いかんだ / ～いかんによって",
-        "meaning": "Tùy thuộc vào... / Tùy vào...",
-        "explanation": "Biểu thị ý nghĩa 'kết quả phía sau sẽ thay đổi, quyết định tùy thuộc vào tình trạng hoặc nội dung phía trước'.",
-        "example_1": "明日の試合の開催は、天候いかんだ。",
-        "example_meaning_1": "Việc tổ chức trận đấu ngày mai tùy thuộc vào thời tiết.",
-        "example_2": "今回のプロジェクトの成否は、君たちの努力いかんによって決まる。",
-        "example_meaning_2": "Sự thành bại của dự án lần này quyết định tùy thuộc vào sự nỗ lực của các cậu."
-    },
-    {
-        "id": 4,
-        "structure": "～いとも",
-        "meaning": "Hết sức... / Quá đỗi... (dễ dàng)",
-        "explanation": "Nhấn mạnh việc làm một hành động nào đó một cách cực kỳ dễ dàng, không tốn chút công sức nào (thường đi với thể khả năng).",
-        "example_1": "彼はその難解なパズルをいとも簡単に解いてしまった。",
-        "example_meaning_1": "Anh ấy đã giải bài toán đố khó giải đó một cách hết sức dễ dàng.",
-        "example_2": "最新のAIを使えば、このようなプログラムはいとも容易に作成できる。",
-        "example_meaning_2": "Nếu sử dụng AI mới nhất, một chương trình như thế này có thể được tạo ra một cách quá đỗi dễ dàng."
-    },
-    {
-        "id": 5,
-        "structure": "～おうが / ～おうと",
-        "meaning": "Dù có... đi chăng nữa thì vẫn...",
-        "explanation": "Dạng ý chí + が/と. Biểu thị ý nghĩa dù trong hoàn cảnh nào hay ai có nói gì đi nữa thì ý chí, kết quả phía sau vẫn không thay đổi.",
-        "example_1": "周囲の人が何と言おうが、私は自分の決めた道を歩む。",
-        "example_meaning_1": "Dù người xung quanh có nói gì đi chăng nữa, tôi vẫn sẽ bước đi trên con đường mình đã chọn.",
-        "example_2": "どこへ行こうと、私の心はいつも君と共にある。",
-        "example_meaning_2": "Dù có đi bất cứ nơi đâu đi chăng nữa, trái tim anh vẫn luôn ở bên cạnh em."
-    },
-    {
-        "id": 6,
-        "structure": "～おうが～まいが",
-        "meaning": "Dù có... hay không... thì vẫn...",
-        "explanation": "Kết hợp dạng ý chí và dạng phủ định 'まい'. Biểu thị ý nghĩa dù có làm hay không làm hành động đó thì kết quả phía sau vẫn giữ nguyên.",
-        "example_1": "雨が降ろうが降るまいが、明日のサッカーの試合は決行されます。",
-        "example_meaning_1": "Dù trời có mưa hay không mưa, trận đấu bóng đá ngày mai vẫn sẽ tiến hành.",
-        "example_2": "あなたが信じようが信じまいが、これは紛れもない事実です。",
-        "example_meaning_2": "Dù bạn có tin hay không tin, đây vẫn là một sự thật không thể chối cãi."
-    },
-    {
-        "id": 7,
-        "structure": "～おるまじき",
-        "meaning": "Không thể nào chấp nhận được / Không được phép...",
-        "explanation": "Đứng trên lập trường, thân phận hoặc tư cách đó thì hành động hay thái độ đó là hoàn toàn sai trái, không được phép làm (Thường đi với danh từ ở phía sau).",
-        "example_1": "それは教員としてあるまじき行為であり、厳しく処分されるべきだ。",
-        "example_meaning_1": "Đó là hành vi không thể chấp nhận được với tư cách là một giáo viên, cần phải bị xử lý nghiêm khắc.",
-        "example_2": "プロの選手にあるまじき無責任な発言に、ファンは失望した。",
-        "example_meaning_2": "Người hâm mộ đã thất vọng trước phát ngôn vô trách nhiệm không thể chấp nhận được của một vận động viên chuyên nghiệp."
-    },
-    {
-        "id": 8,
-        "structure": "～かぎりだ",
-        "meaning": "Cực kỳ... / Rất đỗi... (cảm xúc)",
-        "explanation": "Đi sau các tính từ chỉ cảm xúc (vui, buồn, tiếc nuối...) để nhấn mạnh tâm trạng của người nói đang ở mức độ cao nhất.",
-        "example_1": "長年の夢だった留学が決まり、嬉しいかぎりです。",
-        "example_meaning_1": "Việc đi du học vốn là ước mơ nhiều năm đã được quyết định, tôi cảm thấy cực kỳ vui sướng.",
-        "example_2": "大切な友人が遠くへ引っ越してしまうのは、寂しいかぎりだ。",
-        "example_meaning_2": "Việc người bạn thân thiết chuyển nhà đi xa thật là rất đỗi buồn bã."
-    },
-    {
-        "id": 9,
-        "structure": "～がてら",
-        "meaning": "Tiện thể... / Nhân tiện...",
-        "explanation": "Tận dụng cơ hội khi đang làm một việc chính nào đó để thực hiện luôn một hành động phụ khác.",
-        "example_1": "散歩がてら、近く low của bưu điện để gửi bức thư này luôn.",
-        "example_meaning_1": "Tiện thể đi dạo, tôi qua bưu điện gần đây để gửi bức thư này luôn.",
-        "example_2": "夕食の買い物に Brussel がてら、ちょっと駅前までドライブしよう。",
-        "example_meaning_2": "Tiện thể đi mua đồ ăn tối, chúng ta lái xe ra trước ga một chút đi."
-    },
-    {
-        "id": 10,
-        "structure": "～が早いか",
-        "meaning": "Vừa mới... xong là ngay lập tức...",
-        "explanation": "Diễn tả hành động phía sau xảy ra gần như đồng thời, ngay tức khắc sau khi hành động trước vừa kết thúc (thường mang tính bất ngờ).",
-        "example_1": "授業終了のチャイムが鳴るが早いか、生徒たちは教室を飛び出した。",
-        "example_meaning_1": "Chuông báo kết thúc giờ học vừa mới reo xong là học sinh đã ngay lập tức lao ra khỏi lớp học.",
-        "example_2": "デパートのドアが開くが早いか、待っていた客がバーゲン会場へ押し寄せた。",
-        "example_meaning_2": "Cửa trung tâm thương mại vừa mới mở ra một cái là khách hàng chờ sẵn đã ngay lập tức ùa vào khu giảm giá."
-    },
-    {
-        "id": 11,
-        "structure": "～からある / ～からする / ～からの",
-        "meaning": "Trên... / Hơn... (nhấn mạnh số lượng lớn)",
-        "explanation": "Đi sau từ chỉ số lượng để nhấn mạnh quy mô, kích thước hoặc giá trị của sự vật đó là cực kỳ lớn.",
-        "example_1": "彼は10キロからある道を、毎日歩いて通勤しているそうだ。",
-        "example_meaning_1": "Nghe nói anh ấy hàng ngày đi bộ đi làm trên con đường dài hơn 10 cây số.",
-        "example_2": "彼女は5000万円からする高級マンションを、キャッシュで購入した。",
-        "example_meaning_2": "Cô ấy đã mua căn hộ chung cư cao cấp có giá hơn 50 triệu Yên bằng tiền mặt."
-    },
-    {
-        "id": 12,
-        "structure": "～かるがゆえに",
-        "meaning": "Chính vì... nên...",
-        "explanation": "Cách nói trang trọng, văn viết của '～から'. Dùng để biểu thị nguyên nhân, lý do mang tính logic cao của một sự việc.",
-        "example_1": "未経験であるゆえに、様々な困難に直面したが、良い経験になった。",
-        "example_meaning_1": "Chính vì chưa có kinh nghiệm nên đã đối mặt với nhiều khó khăn, nhưng nó đã trở thành trải nghiệm tốt.",
-        "example_2": "有名人であるゆえに、プライベートの行動まで制限されてしまうのは辛い。",
-        "example_meaning_2": "Chính vì là người nổi tiếng nên đến cả hành động đời tư cũng bị hạn chế thì thật là khổ sở."
-    },
-    {
-        "id": 13,
-        "structure": "～きらいがある",
-        "meaning": "Có xu hướng... / Có thói xấu là... (tiêu cực)",
-        "explanation": "Diễn tả một xu hướng, đặc điểm không tốt, thường hay xảy ra hoặc dễ lặp lại đối với một người hoặc sự việc nào đó.",
-        "example_1": "現代人は忙しさのあまり、食生活がおろそかになりがちできらいがある。",
-        "example_meaning_1": "Người hiện đại vì quá bận rộn nên có xu hướng dễ bỏ bê thói quen ăn uống.",
-        "example_2": " anh là người giỏi nhưng hay tự phụ, cóきらいがあるから気をつけた方がいい。",
-        "example_meaning_2": "Anh ấy là người giỏi nhưng có thói xấu là hay tự phụ, nên cẩn thận thì hơn."
-    },
-    {
-        "id": 14,
-        "structure": "～極まる / ～極まりない",
-        "meaning": "Cực kỳ... / Vô cùng... (tiêu cực)",
-        "explanation": "Dùng với các tính từ để nhấn mạnh trạng thái đó đã đạt đến mức độ tối đa, không thể hơn được nữa (thường mang nghĩa tiêu cực, phê phán).",
-        "example_1": "飲酒運転をして事故を起こすとは、危険極まりない行為だ。",
-        "example_meaning_1": "Uống rượu lái xe rồi gây tai nạn là một hành vi cực kỳ nguy hiểm.",
-        "example_2": "大切な会議に連絡もなしに遅刻してくるとは、失礼極まる。",
-        "example_meaning_2": "Đến muộn trong một cuộc họp quan trọng mà không có cả thông báo thì cực kỳ thất lễ."
-    },
-    {
-        "id": 15,
-        "structure": "～ごとき / ～ごとく",
-        "meaning": "Như... / Giống như...",
-        "explanation": "Cách nói trang trọng, mang tính văn học của '～のように / ～のような'. Dùng để so sánh hoặc đưa ra ví dụ minh họa.",
-        "example_1": "新幹線の如き速さで、時代の技術は進歩している。",
-        "example_meaning_1": "Công nghệ của thời đại đang tiến bộ với tốc độ nhanh như tàu Shinkansen.",
-        "example_2": "私のごとき若者に,このような大役を任せていただき光栄です。",
-        "example_meaning_2": "Được giao phó một trọng trách lớn lao cho một người trẻ tuổi như tôi, tôi rất lấy làm vinh hạnh."
-    }
+  {
+    "grammar": "～あっての",
+    "meaning": "Chính vì có... / Nhờ có...",
+    "explanation": "Biểu thị ý nghĩa 'Chính vì có điều kiện A nên mới có được trạng thái B'. Nhấn mạnh tầm quan trọng của điều kiện hoặc tiền đề đó.",
+    "examples": [
+      { "ja": "<ruby>健康<rt>けんこう</rt></ruby>あっての<ruby>人生<rt>じんせい</rt></ruby>だ。<ruby>体<rt>からだ</rt></ruby>を<ruby>壊<rt>こわ</rt></ruby>しては何にもならない。", "vi": "Chính vì có sức khỏe mới có cuộc sống. Phá hủy cơ thể thì chẳng còn ý nghĩa gì nữa." },
+      { "ja": "お客様あっての我が<ruby>社<rt>しゃ</rt></ruby>です。<ruby>感謝<rt>かんしゃ</rt></ruby>しなければならない。", "vi": "Chính vì có khách hàng mới có công ty chúng tôi. Chúng ta phải biết ơn họ." }
+    ]
+  },
+  {
+    "grammar": "～いkanに関わらず",
+    "meaning": "Bất kể... / Không phụ thuộc vào...",
+    "explanation": "Biểu thị ý nghĩa 'bất kể nội dung hay tình trạng phía trước có ra sao thì sự việc phía sau vẫn diễn ra như nhau'.",
+    "examples": [
+      { "ja": "<ruby>理由<rt>りゆう</rt></ruby>のいかんに関わらず、いかなる<ruby>暴力<rt>ぼうりょく</rt></ruby>も<ruby>許<rt>ゆる</rt></ruby>されない。", "vi": "Bất kể lý do là gì đi nữa, mọi hành vi bạo lực đều không được phép." },
+      { "ja": "<ruby>国籍<rt>こくせき</rt></ruby>のいかんによらず、<ruby>優秀<rt>ゆうしゅう</rt></ruby>な<ruby>人材<rt>じんざい</rt></ruby>を<ruby>採用<rt>さいよう</rt></ruby>する。", "vi": "Bất kể quốc tịch là gì, chúng tôi vẫn tuyển dụng những nhân tài ưu tú." }
+    ]
+  },
+  {
+    "grammar": "～いかんだ",
+    "meaning": "Tùy thuộc vào... / Tùy vào...",
+    "explanation": "Biểu thị ý nghĩa 'kết quả phía sau sẽ thay đổi, quyết định tùy thuộc vào tình trạng hoặc nội dung phía trước'.",
+    "examples": [
+      { "ja": "<ruby>世界<rt>せかい</rt></ruby><ruby>選手権<rt>せんしゅけん</rt></ruby>の<ruby>開催<rt>かいさい</rt></ruby>は、お<ruby>天気<rt>てんき</rt></ruby>いかんだ。", "vi": "Việc tổ chức giải vô địch thế giới tùy thuộc vào tình hình thời tiết." },
+      { "ja": "<ruby>努力<rt>どりょく</rt></ruby>いかんで、 or <ruby>結果<rt>けっか</rt></ruby>は như thế nào cũng <ruby>変<rt>か</rt></ruby>わる。", "vi": "Tùy thuộc vào sự nỗ lực mà kết quả có thể thay đổi thế nào đi nữa." }
+    ]
+  },
+  {
+    "grammar": "～いとも",
+    "meaning": "Hết sức... / Quá đỗi... (dễ dàng)",
+    "explanation": "Nhấn mạnh việc làm một hành động nào đó một cách cực kỳ dễ dàng, không tốn chút công sức nào.",
+    "examples": [
+      { "ja": "彼はその<ruby>難解<rt>なんかい</rt></ruby>なパズルをいとも<ruby>簡単<rt>かんたん</rt></ruby>に<ruby>解<rt>と</rt></ruby>いてしまった。", "vi": "Anh ấy đã giải bài toán đố khó giải đó một cách hết sức dễ dàng." },
+      { "ja": "AIを使えば、このようなコードはいとも<ruby>容易<rt>ようい</rt></ruby>に<ruby>書<rt>か</rt></ruby>ける。", "vi": "Nếu dùng AI, đoạn code như thế này có thể viết được một cách quá đỗi dễ dàng." }
+    ]
+  },
+  {
+    "grammar": "～おうが / ～おうと",
+    "meaning": "Dù có... đi chăng nữa thì vẫn...",
+    "explanation": "Dạng ý chí + が/と. Biểu thị ý nghĩa dù trong hoàn cảnh nào thì kết quả phía sau vẫn không thay đổi.",
+    "examples": [
+      { "ja": "<ruby>周囲<rt>しゅうい</rt></ruby>の人が何と言おうが、私は自分の<ruby>道<rt>みち</rt></ruby>を<ruby>歩<rt>あゆ</rt></ruby>む。", "vi": "Dù người xung quanh có nói gì đi chăng nữa, tôi vẫn bước đi trên con đường của mình." },
+      { "ja": "どこへ<ruby>行<rt>い</rt></ruby>こうと、私の<ruby>心<rt>こころ</rt></ruby>はいつも君と共にある。", "vi": "Dù có đi bất cứ nơi đâu đi chăng nữa, trái tim anh vẫn luôn ở bên em." }
+    ]
+  },
+  {
+    "grammar": "～おうが～まいが",
+    "meaning": "Dù có... hay không... thì vẫn...",
+    "explanation": "Kết hợp dạng ý chí và dạng phủ định 'まい'. Biểu thị ý nghĩa làm hay không làm thì kết quả vẫn thế.",
+    "examples": [
+      { "ja": "<ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>ろうが降るまいが、<ruby>試合<rt>しあい</rt></ruby>は<ruby>決行<rt>けっこう</rt></ruby>されます。", "vi": "Dù trời có mưa hay không mưa, trận đấu vẫn sẽ được tiến hành." },
+      { "ja": "あなたが<ruby>信<rt>しん</rt></ruby>じようが信じまいが、これは<ruby>事実<rt>じじつ</rt></ruby>です。", "vi": "Dù bạn có tin hay không tin, đây vẫn là sự thật." }
+    ]
+  },
+  {
+    "grammar": "～あるまじき",
+    "meaning": "Không thể nào chấp nhận được / Không được phép...",
+    "explanation": "Đứng trên lập trường, thân phận đó thì hành động hay thái độ đó là hoàn toàn không được phép làm.",
+    "examples": [
+      { "ja": "それは<ruby>教員<rt>きょういん</rt></ruby>としてあるまじき<ruby>行為<rt>こうい(</rt></ruby>だ。", "vi": "Đó là hành vi không thể chấp nhận được với tư cách là một giáo viên." },
+      { "ja": "プロの<ruby>選手<rt>せんしゅ</rt></ruby>にあるまじき<ruby>無責任<rt>むせきにん</rt></ruby>な<ruby>発言<rt> hatsugen</rt></ruby>だ。", "vi": "Đó là phát ngôn vô trách nhiệm không thể chấp nhận được của một vận động viên chuyên nghiệp." }
+    ]
+  },
+  {
+    "grammar": "～かぎりだ",
+    "meaning": "Cực kỳ... / Rất đỗi... (cảm xúc)",
+    "explanation": "Đi sau các tính từ chỉ cảm xúc để nhấn mạnh tâm trạng của người nói đang ở mức độ cao nhất.",
+    "examples": [
+      { "ja": "<ruby>長年<rt>ながねん</rt></ruby>の<ruby>夢<rt>ゆめ</rt></ruby>だった<ruby>留学<rt>りゅうがく</rt></ruby>が<ruby>決<rt>き</rt></ruby>まり、<ruby>嬉<rt>うれ</rt></ruby>しいかぎりです。", "vi": "Việc đi du học vốn là ước mơ nhiều năm đã được quyết định, tôi thấy cực kỳ vui sướng." },
+      { "ja": "<ruby>大切<rt>たいせつ</rt></ruby>な<ruby>友人<rt>ゆうじん</rt></ruby>が<ruby>遠<rt>とお</rt></ruby>くへ行ってしまうのは、<ruby>寂<rt>さび</rt></ruby>しいかぎだ。", "vi": "Người bạn thân thiết chuyển đi xa thật là rất đỗi buồn bã." }
+    ]
+  },
+  {
+    "grammar": "～がてら",
+    "meaning": "Tiện thể... / Nhân tiện...",
+    "explanation": "Tận dụng cơ hội khi đang làm một việc chính nào đó để thực hiện luôn một hành động phụ khác.",
+    "examples": [
+      { "ja": "<ruby>散歩<rt>さんぽ</rt></ruby>がてら、<ruby>近く<rt>ちかく</rt></ruby>の<ruby>郵便局<rt>ゆうびんきょく</rt></ruby>まで<ruby>手紙<rt>てがみ</rt></ruby>を出してこよう。", "vi": "Tiện thể đi dạo, tôi qua bưu điện gần đây gửi bức thư luôn." },
+      { "ja": "<ruby>夕食<rt>ゆうしょく</rt></ruby>の<ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>がてら、ちょっとドライブしよう。", "vi": "Tiện thể đi mua đồ ăn tối, chúng ta lái xe lượn một chút đi." }
+    ]
+  },
+  {
+    "grammar": "～が早いか",
+    "meaning": "Vừa mới... xong là ngay lập tức...",
+    "explanation": "Diễn tả hành động phía sau xảy ra gần như đồng thời, ngay tức khắc sau khi hành động trước vừa kết thúc.",
+    "examples": [
+      { "ja": "チャイムが<ruby>鳴<rt>な</rt></ruby>るが早いか、<ruby>生徒<rt>せいと</rt></ruby>たちは<ruby>教室<rt>きょうしつ</rt></ruby>を<ruby>飛び出<rt>とびだ</rt></ruby>した。", "vi": "Chuông vừa mới reo xong là học sinh đã ngay lập tức lao ra khỏi lớp học." },
+      { "ja": "ドアが<ruby>開<rt>あ</rt></ruby>くが早いか、<ruby>客<rt>きゃく</rt></ruby>がバーゲン<ruby>会場<rt>かいじょう</rt></ruby>へ<ruby>殺到<rt>さっとう</rt></ruby>した。", "vi": "Cửa vừa mới mở ra một cái là khách hàng đã ngay lập tức ùa vào khu giảm giá." }
+    ]
+  },
+  {
+    "grammar": "～からある / ～からする",
+    "meaning": "Trên... / Hơn... (nhấn mạnh số lượng)",
+    "explanation": "Đi sau từ chỉ số lượng để nhấn mạnh quy mô, kích thước hoặc giá trị của sự vật đó cực kỳ lớn.",
+    "examples": [
+      { "ja": "彼は10キロからある<ruby>道<rt>みち</rt></ruby>を、<ruby>毎日<rt>まいにち</rt></ruby><ruby>歩<rt>ある</rt></ruby>いて<ruby>通勤<rt>つうきん</rt></ruby>している。", "vi": "Anh ấy hàng ngày đi bộ đi làm trên con đường dài hơn 10 cây số." },
+      { "ja": "彼女は5000<ruby>万円<rt>まんえん</rt></ruby>からする<ruby>高級<rt>こうきゅう</rt></ruby>マンションを<ruby>購入<rt>こうにゅう</rt></ruby>した。", "vi": "Cô ấy đã mua căn hộ chung cư cao cấp có giá hơn 50 triệu Yên." }
+    ]
+  },
+  {
+    "grammar": "～がゆえに",
+    "meaning": "Chính vì... nên...",
+    "explanation": "Cách nói trang trọng, văn viết của '～から'. Biểu thị nguyên nhân, lý do của sự việc.",
+    "examples": [
+      { "ja": "<ruby>未経験<rt>みけいけん</rt></ruby>であるゆえに、様々な<ruby>困難<rt>こんなん</rt></ruby>に<ruby>直面<rt>ちょくめん</rt></ruby>した。", "vi": "Chính vì chưa có kinh nghiệm nên đã đối mặt với nhiều khó khăn." },
+      { "ja": "<ruby>有名人<rt>ゆうめいじん</rt></ruby>であるゆえに、プライベートが<ruby>制限<rt>せいげん</rt></ruby>されるのは<ruby>辛<rt>つら</rt></ruby>い。", "vi": "Chính vì là người nổi tiếng nên đời tư bị hạn chế thì thật là khổ sở." }
+    ]
+  },
+  {
+    "grammar": "～きらいがある",
+    "meaning": "Có xu hướng... / Có thói xấu là... (tiêu cực)",
+    "explanation": "Diễn tả một xu hướng, đặc điểm không tốt, thường hay xảy ra hoặc dễ lặp lại.",
+    "examples": [
+      { "ja": "<ruby>現代人<rt>げんだいじん</rt></ruby>は<ruby>食生活<rt>しょくせいかつ</rt></ruby>がおろそかになりがちなきらいがある。", "vi": "Người hiện đại có xu hướng dễ bỏ bê thói quen ăn uống." },
+      { "ja": "彼は<ruby>優<rt>すぐ</rt></ruby>れた<ruby>人<rt>ひと</rt></ruby>だが、やや<ruby>自負<rt>じふ</rt></ruby>しすぎるきらいがある。", "vi": "Anh ấy là người giỏi nhưng có thói xấu là hơi tự phụ quá đà." }
+    ]
+  },
+  {
+    "grammar": "～極まる / ～極まりない",
+    "meaning": "Cực kỳ... / Vô cùng... (tiêu cực)",
+    "explanation": "Dùng với các tính từ để nhấn mạnh trạng thái đó đã đạt đến mức độ tối đa (thường mang nghĩa tiêu cực, phê phán).",
+    "examples": [
+      { "ja": "<ruby>飲酒<rt>いんしゅ</rt></ruby><ruby>運転<rt>うんてん</rt></ruby>をして<ruby>事故<rt>じこ</rt></ruby>を<ruby>起こ<rt>お</rt></ruby>すとは、<ruby>危険<rt>きけん</rt></ruby>極まりない。", "vi": "Uống rượu lái xe rồi gây tai nạn là một hành vi cực kỳ nguy hiểm." },
+      { "ja": "<ruby>連絡<rt>れんらく</rt></ruby>もなしに<ruby>遅刻<rt>ちこく</rt></ruby>してくるとは、<ruby>失礼<rt>しつれい</rt></ruby>極まる。", "vi": "Đến muộn mà không có cả thông báo thì cực kỳ thất lễ." }
+    ]
+  },
+  {
+    "grammar": "～ごとき / ～ごとく",
+    "meaning": "Như... / Giống như...",
+    "explanation": "Cách nói trang trọng, mang tính văn học của '～のように / ～のような'. Dùng để so sánh hoặc đưa ra ví dụ.",
+    "examples": [
+      { "ja": "新幹線の如き<ruby>速<rt>はや</rt></ruby>さで、<ruby>技術<rt>ぎじゅつ</rt></ruby>は<ruby>進歩<rt>しんぽ</rt></ruby>している。", "vi": "Công nghệ đang tiến bộ với tốc độ nhanh như tàu Shinkansen." },
+      { "ja": "私のごとき<ruby>若者<rt>わかもの</rt></ruby>に、このような<ruby>大役<rt>たいやく</rt></ruby>を任せていただき<ruby>光栄<rt>こうえい</rt></ruby>です。", "vi": "Được giao phó một trọng trách lớn lao cho một người trẻ tuổi như tôi, tôi rất vinh hạnh." }
+    ]
+  }
 ]
