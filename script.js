@@ -191,7 +191,7 @@ function KichHoatTienDo(indexChon) {
 }
 
 // =========================================================================
-// HÀM CHẠY DÒNG THỜI GIAN FLASHCARD & HIỂN THỊ NỘI DUNG
+// HÀM CHẠY DÒNG THỜI GIAN FLASHCARD & HIỂN THỊ NỘI DUNG (ĐÃ SỬA LỖI KẸT NGỮ PHÁP)
 // =========================================================================
 function ChayDongThoiGianFlashcard() {
     const vungChua = document.getElementById('vung-chua-the-dong');
@@ -226,6 +226,7 @@ function ChayDongThoiGianFlashcard() {
 
     const item = duLieuHienTai[indexHienTai];
 
+    // 1️⃣ XỬ LÝ CHO MÀN HÌNH HỌC KANJI
     if (loaiHocHienTai === 'kanji') {
         const chuKanji = item.kanji || "字";
         const nghiaGoc = item.meaning || "";
@@ -236,7 +237,6 @@ function ChayDongThoiGianFlashcard() {
         let amHanViet = "Chưa rõ";
         let nghiaTiengViet = "Chưa rõ";
 
-        // Bóc tách an toàn bằng Regex hoặc Split dứt điểm
         if (nghiaGoc.includes('(') && nghiaGoc.includes(')')) {
             amHanViet = nghiaGoc.split('(')[0].trim();
             nghiaTiengViet = nghiaGoc.substring(nghiaGoc.indexOf('(') + 1, nghiaGoc.indexOf(')')).trim();
@@ -275,9 +275,54 @@ function ChayDongThoiGianFlashcard() {
             `;
         }
         
-        // Đồng bộ chuẩn 3 tham số truyền vào Timeline để không lỗi Engine đọc
         let chuoiDocKanjiViet = `${amHanViet}, Nghĩa, ${nghiaTiengViet}`;
         KichHoatTimeline("", chuoiDocKanjiViet, "");
+
+    // 2️⃣ XỬ LÝ CHO MÀN HÌNH HỌC NGỮ PHÁP (🔥 ĐÃ BỔ SUNG ĐOẠN NÀY)
+    } else if (loaiHocHienTai === 'grammar') {
+        const cauTruc = item.grammar || "";
+        const nghiaPhap = item.meaning || "";
+        const giaiThich = item.explanation || "";
+        
+        // Lấy ví dụ đầu tiên trong mảng examples (nếu có)
+        const mangViDu = item.examples || [];
+        let vdNhat = "";
+        let vdViet = "";
+        if (mangViDu.length > 0) {
+            vdNhat = mangViDu[0].ja || "";
+            vdViet = mangViDu[0].vi || "";
+        }
+
+        if (vungChua) {
+            vungChua.innerHTML = `
+                <div class="the-cyber-card" style="min-height: 280px; height: auto; padding-bottom: 20px;">
+                    <div class="chu-kanji-khong-lo" style="line-height: 1.2; margin-bottom: 15px; font-size: 2.2rem; color: #38bdf8;">${cauTruc}</div>
+                    
+                    <div id="step-nghia-viet" class="khoi-nghia-viet hien-hien" style="margin-bottom: 15px;">
+                        <div class="text-nghia" style="color: #00ffcc; font-size: 1.3rem; font-weight: bold; background: rgba(0, 255, 204, 0.1); padding: 8px 15px; display: inline-block; border-radius: 8px;">
+                            Ý nghĩa: ${nghiaPhap}
+                        </div>
+                    </div>
+
+                    <div id="step-giai-thich" class="khoi-noi-dung hien-hien" style="margin-bottom: 15px; text-align: left; padding: 0 10px;">
+                        <div style="font-size: 0.95rem; color: #94a3b8; margin-bottom: 4px; font-weight: bold;">Giải thích:</div>
+                        <div style="font-size: 1rem; color: #cbd5e1; line-height: 1.5;">${giaiThich}</div>
+                    </div>
+                    
+                    ${vdNhat ? `
+                    <div id="step-tu-ghep" class="khoi-tu-ghep hien-hien" style="border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 12px; text-align: left; padding-left: 10px; padding-right: 10px;">
+                        <div class="title-ghep" style="font-size: 0.9rem; color: #a78bfa; margin-bottom: 5px; font-weight: bold;">Ví Dụ Mẫu:</div>
+                        <div class="content-ghep" style="font-size: 1.1rem; color: #fff; margin-bottom: 4px; font-weight: 500;">${vdNhat}</div>
+                        <div style="font-size: 0.95rem; color: #94a3b8; font-style: italic;">${vdViet}</div>
+                    </div>
+                    ` : ''}
+                </div>
+            `;
+        }
+
+        // Kích hoạt timeline đọc: Đọc cấu trúc tiếng Nhật -> đọc nghĩa tiếng Việt -> đọc câu ví dụ mẫu tiếng Nhật
+        let chuoiDocNguPhapViet = `Cấu trúc, ${nghiaPhap}`;
+        KichHoatTimeline(cauTruc, chuoiDocNguPhapViet, vdNhat);
     }
 }
 
