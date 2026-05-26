@@ -290,6 +290,9 @@ function ChayDongThoiGianFlashcard() {
     }
 }
 
+// =========================================================================
+// CẬP NHẬT LUỒNG CHẠY TIMELINE & PHÁT ÂM TỰ NHIÊN
+// =========================================================================
 function KichHoatTimeline(textNhat, textViet) {
     const nutChuyen = document.getElementById('vung-nut-chuyen-trang');
     
@@ -297,14 +300,15 @@ function KichHoatTimeline(textNhat, textViet) {
     if (nutChuyen) nutChuyen.classList.remove('an-giau');
     CongDiemXP(1);
 
-    // Kích hoạt giọng đọc bất đồng bộ (chạy ngầm không block tiến trình hiển thị)
-    DocGiọngMay(textNhat, 'ja-JP', 0.85, () => {
-        DocGiọngMay(textViet, 'vi-VN', 0.95, () => {
-            // Đọc xong thì hoàn thành nhiệm vụ âm thanh
-        });
+    // Kích hoạt giọng đọc bất đồng bộ (Đọc tiếng Nhật trước, nghỉ một nhịp rồi đọc tiếng Việt)
+    DocGiongMay(textNhat, 'ja-JP', 0.85, () => {
+        // Sau khi đọc xong tiếng Nhật, nghỉ 300ms rồi mới chuyển sang đọc tiếng Việt cho đỡ bị dính chữ
+        setTimeout(() => {
+            DocGiongMay(textViet, 'vi-VN', 0.95);
+        }, 300);
     });
 
-    // 🔥 KÍCH HOẠT TỰ ĐỘNG CHUYỂN BÀI THÔNG MINH NGAY LẬP TỨC (Tính thời gian giữ chữ để đọc)
+    // KÍCH HOẠT TỰ ĐỘNG CHUYỂN BÀI THÔNG MINH (Tính thời gian giữ chữ để đọc)
     if (tuDongChuyenBai) {
         const itemHienTai = duLieuHienTai[indexHienTai];
         let textBoSung = "";
@@ -318,6 +322,36 @@ function KichHoatTimeline(textNhat, textViet) {
         }
 
         KichHoatTuDongChuyenThongMinh(textViet, textBoSung);
+    }
+}
+
+function DocGiongMay(vanBan, ngonNgu, tocDo, khiXong) {
+    if (!vanBan || vanBan === "None") { if (khiXong) khiXong(); return; }
+    
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        
+        // 1. Làm sạch chuỗi, loại bỏ các thẻ HTML nếu có
+        let vanBanSach = vanBan.replace(/<rt>.*?<\/rt>/g, '').replace(/<\/?[^>]+(>|$)/g, "");
+        
+        // 2. Ép các ký tự đặc biệt / ngoặc thành khoảng trống
+        vanBanSach = vanBanSach.replace(/[\/()（）\-ー]/g, ' ');
+        
+        // 3. 🔥 TẠO TRỄ TỰ NHIÊN: Biến dấu phẩy, dấu chấm thành chuỗi khoảng lặng ngắt nhịp (Delay ~0.2s)
+        // Kỹ thuật này giúp bộ TTS trên iOS/Android nhận diện điểm ngắt câu cực tốt
+        vanBanSach = vanBanSach.replace(/[,，、]/g, ',   '); 
+        vanBanSach = vanBanSach.replace(/[.。]/g, '.   ');
+
+        let utterance = new SpeechSynthesisUtterance(vanBanSach);
+        utterance.lang = ngonNgu;
+        utterance.rate = tocDo;
+        
+        utterance.onend = () => { if (khiXong) khiXong(); };
+        utterance.onerror = () => { if (khiXong) khiXong(); };
+        
+        window.speechSynthesis.speak(utterance);
+    } else { 
+        if (khiXong) khiXong(); 
     }
 }
 
