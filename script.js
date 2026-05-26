@@ -11,6 +11,7 @@ let boDemTuDongChuyen = null; // Quản lý luồng tự động chuyển trang 
 // Trạng thái cấu hình học tập (Lưu trạng thái On/Off của user)
 let hienThiYomi = true;
 let tuDongChuyenBai = false;
+let isMuted = false; // 🔥 Biến quản lý trạng thái âm thanh toàn cục
 
 // Biến bổ sung phục vụ cho Đấu Trường Test
 let capDoTestChon = '';    
@@ -98,6 +99,26 @@ function CapNhatCaiDatHoc() {
     }
 }
 
+// 🔥 HÀM THAY ĐỔI TRẠNG THÁI MUTE LOA (Đồng bộ nút bấm bro vừa thêm vào HTML)
+function ThayDoiTrangThaiMute() {
+    isMuted = !isMuted;
+    const btnMute = document.getElementById('btn-mute-flashcard');
+    if (btnMute) {
+        if (isMuted) {
+            window.speechSynthesis.cancel(); // Tắt âm ngay lập tức
+            btnMute.innerHTML = "🔇 ĐANG TẮT TIẾNG";
+            btnMute.style.borderColor = "#ef4444";
+            btnMute.style.color = "#ef4444";
+        } else {
+            btnMute.innerHTML = "🔊 ĐANG BẬT TIẾNG";
+            btnMute.style.borderColor = "#00ffcc";
+            btnMute.style.color = "#00ffcc";
+            // Đọc lại bài hiện tại luôn cho mượt
+            ChayDongThoiGianFlashcard();
+        }
+    }
+}
+
 // =========================================================================
 // TẢI DỮ LIỆU ĐỘNG CHO FLASHCARD HỌC (ĐÃ TÍCH HỢP LƯU TIẾN ĐỘ)
 // =========================================================================
@@ -170,7 +191,7 @@ function KichHoatTienDo(indexChon) {
 }
 
 // =========================================================================
-// HÀM CHẠY DÒNG THỜI GIAN FLASHCARD & HIỂN THỊ NỘI DUNG (SIÊU TỐC - HIỆN CHỮ NGAY)
+// HÀM CHẠY DÒNG THỜI GIAN FLASHCARD & HIỂN THỊ NỘI DUNG (ĐÃ SỬA TUẦN TỰ ĐỌC VÍ DỤ)
 // =========================================================================
 function ChayDongThoiGianFlashcard() {
     const vungChua = document.getElementById('vung-chua-the-dong');
@@ -200,7 +221,6 @@ function ChayDongThoiGianFlashcard() {
     if (tieuDe) tieuDe.innerText = `TIẾN ĐỘ: ${indexHienTai + 1} / ${duLieuHienTai.length}`;
     if (nutChuyen) nutChuyen.classList.add('an-giau');
     
-    // Dọn sạch tất cả các bộ đếm thời gian cũ để tránh xung đột luồng chạy
     clearTimeout(boDemThoiGian);
     clearTimeout(boDemTuDongChuyen);
 
@@ -226,7 +246,6 @@ function ChayDongThoiGianFlashcard() {
 
         let styleAnYomi = hienThiYomi ? "" : "display: none !important;";
 
-        // Render HTML: Toàn bộ class đổi thành "hien-hien" đập chữ ra màn hình luôn
         if (vungChua) {
             vungChua.innerHTML = `
                 <div class="the-cyber-card">
@@ -249,7 +268,8 @@ function ChayDongThoiGianFlashcard() {
             `;
         }
         
-        KichHoatTimeline(onyomi || chuKanji, nghiaTiengViet);
+        let chuoiDocKanjiViet = `Âm Hán, ${amHanViet}, Nghĩa là, ${nghiaTiengViet}`;
+        KichHoatTimeline("", chuoiDocKanjiViet, "");
     } else {
         const cauTruc = item.grammar || "";
         const nghiaNguPhap = item.meaning || "";
@@ -257,6 +277,8 @@ function ChayDongThoiGianFlashcard() {
         const mangViDu = item.examples || [];
 
         let htmlViDu = "";
+        let chuoiDocViDuNhat = "";
+
         mangViDu.forEach(vd => {
             htmlViDu += `
                 <div class="vd-item" style="margin-bottom: 12px; text-align:left;">
@@ -264,9 +286,11 @@ function ChayDongThoiGianFlashcard() {
                     <div class="vd-vi" style="font-size:0.9rem; color:#00ffcc;">💡 ${vd.vi}</div>
                 </div>
             `;
+            if (vd.ja) {
+                chuoiDocViDuNhat += vd.ja + ",  ";
+            }
         });
 
-        // Bung hết nội dung cấu trúc cách dùng ngữ pháp ra ngay lập tức
         if (vungChua) {
             vungChua.innerHTML = `
                 <div class="the-cyber-card">
@@ -286,29 +310,46 @@ function ChayDongThoiGianFlashcard() {
                 </div>
             `;
         }
-        KichHoatTimeline(cauTruc, nghiaNguPhap);
+        
+        let chuoiDocTiengViet = `Ý nghĩa là ${nghiaNguPhap}, Cách dùng, ${giaiThich}`;
+        KichHoatTimeline(cauTruc, chuoiDocTiengViet, chuoiDocViDuNhat);
     }
 }
 
 // =========================================================================
-// CẬP NHẬT LUỒNG CHẠY TIMELINE & PHÁT ÂM TỰ NHIÊN
+// HÀM KÍCH HOẠT TIMELINE PHÁT ÂM THEO HÀNG ĐỢI TUẦN TỰ (CHỐNG NUỐT CHỮ)
 // =========================================================================
-function KichHoatTimeline(textNhat, textViet) {
+function KichHoatTimeline(textNhat, textViet, textViDuNhat = "") {
     const nutChuyen = document.getElementById('vung-nut-chuyen-trang');
     
-    // Mở khóa cho nút chuyển bài thủ công xuất hiện luôn
     if (nutChuyen) nutChuyen.classList.remove('an-giau');
     CongDiemXP(1);
 
-    // Kích hoạt giọng đọc bất đồng bộ (Đọc tiếng Nhật trước, nghỉ một nhịp rồi đọc tiếng Việt)
-    DocGiongMay(textNhat, 'ja-JP', 0.85, () => {
-        // Sau khi đọc xong tiếng Nhật, nghỉ 300ms rồi mới chuyển sang đọc tiếng Việt cho đỡ bị dính chữ
-        setTimeout(() => {
-            DocGiongMay(textViet, 'vi-VN', 0.95);
-        }, 300);
-    });
+    // Kiểm tra xem có đang bị MUTE không
+    if (!isMuted) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel(); 
+        }
 
-    // KÍCH HOẠT TỰ ĐỘNG CHUYỂN BÀI THÔNG MINH (Tính thời gian giữ chữ để đọc)
+        if (loaiHocHienTai === 'kanji') {
+            DocGiongMay(textViet, 'vi-VN', 0.95);
+        } else {
+            // Chuỗi đọc nối đuôi bất đồng bộ an toàn qua callback (onend)
+            DocGiongMay(textNhat, 'ja-JP', 0.85, () => {
+                setTimeout(() => {
+                    DocGiongMay(textViet, 'vi-VN', 0.95, () => {
+                        if (textViDuNhat && textViDuNhat.trim() !== "") {
+                            setTimeout(() => {
+                                DocGiongMay(textViDuNhat, 'ja-JP', 0.85);
+                            }, 400); 
+                        }
+                    });
+                }, 300); 
+            });
+        }
+    }
+
+    // KÍCH HOẠT TỰ ĐỘNG CHUYỂN BÀI THÔNG MINH
     if (tuDongChuyenBai) {
         const itemHienTai = duLieuHienTai[indexHienTai];
         let textBoSung = "";
@@ -320,25 +361,25 @@ function KichHoatTimeline(textNhat, textViet) {
             textBoSung = itemHienTai.explanation || "";
             mangVd.forEach(vd => { textBoSung += (vd.ja + vd.vi); });
         }
-
-        KichHoatTuDongChuyenThongMinh(textViet, textBoSung);
+        KichHoatTuDongChuyenThongMinh(textViet + textViDuNhat, textBoSung);
     }
 }
 
+// =========================================================================
+// HÀM PHÁT ÂM GỐC - LÀM SẠCH VÀ TẠO NHỊP NGHỈ TỰ NHIÊN
+// =========================================================================
 function DocGiongMay(vanBan, ngonNgu, tocDo, khiXong) {
-    if (!vanBan || vanBan === "None") { if (khiXong) khiXong(); return; }
+    if (!vanBan || vanBan === "None" || vanBan.trim() === "") { 
+        if (khiXong) khiXong(); 
+        return; 
+    }
     
     if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        
-        // 1. Làm sạch chuỗi, loại bỏ các thẻ HTML nếu có
+        // Làm sạch văn bản, xóa thẻ HTML & ruby rubi (rt)
         let vanBanSach = vanBan.replace(/<rt>.*?<\/rt>/g, '').replace(/<\/?[^>]+(>|$)/g, "");
-        
-        // 2. Ép các ký tự đặc biệt / ngoặc thành khoảng trống
         vanBanSach = vanBanSach.replace(/[\/()（）\-ー]/g, ' ');
         
-        // 3. 🔥 TẠO TRỄ TỰ NHIÊN: Biến dấu phẩy, dấu chấm thành chuỗi khoảng lặng ngắt nhịp (Delay ~0.2s)
-        // Kỹ thuật này giúp bộ TTS trên iOS/Android nhận diện điểm ngắt câu cực tốt
+        // Tạo trễ dấu câu
         vanBanSach = vanBanSach.replace(/[,，、]/g, ',   '); 
         vanBanSach = vanBanSach.replace(/[.。]/g, '.   ');
 
@@ -346,8 +387,13 @@ function DocGiongMay(vanBan, ngonNgu, tocDo, khiXong) {
         utterance.lang = ngonNgu;
         utterance.rate = tocDo;
         
-        utterance.onend = () => { if (khiXong) khiXong(); };
-        utterance.onerror = () => { if (khiXong) khiXong(); };
+        utterance.onend = () => { 
+            if (khiXong) khiXong(); 
+        };
+        utterance.onerror = (e) => { 
+            console.error("Lỗi phát âm:", e);
+            if (khiXong) khiXong(); 
+        };
         
         window.speechSynthesis.speak(utterance);
     } else { 
@@ -355,7 +401,7 @@ function DocGiongMay(vanBan, ngonNgu, tocDo, khiXong) {
     }
 }
 
-// 🔥 HÀM TÍNH TOÁN THỜI GIAN GIỮ MÀN HÌNH ĐỂ USER ĐỌC CHỮ (CHUẨN TỐC ĐỘ, BAO CHẠY SAFARI IPHONE)
+// 🔥 HÀM TÍNH TOÁN THỜI GIAN GIỮ MÀN HÌNH ĐỂ USER ĐỌC CHỮ 
 function KichHoatTuDongChuyenThongMinh(vanBan1, vanBan2) {
     clearTimeout(boDemTuDongChuyen);
 
@@ -363,12 +409,10 @@ function KichHoatTuDongChuyenThongMinh(vanBan1, vanBan2) {
     const chuoi2 = vanBan2 || "";
     const tongKyTu = chuoi1.length + chuoi2.length;
 
-    // Thời gian gốc giữ màn hình tối thiểu là 3000ms (3 giây). Mỗi ký tự cộng thêm 70ms để người học thong thả đọc.
     const thoiGianGoc = 3000;
     const thoiGianMoiKyTu = 70;
     const thoiGianChoTinhToan = thoiGianGoc + (tongKyTu * thoiGianMoiKyTu);
 
-    // Ít nhất giữ màn hình 3.5 giây (chữ ngắn), tối đa 9.5 giây (câu dài ngoằng) rồi tự chuyển bài.
     const thoiGianChot = Math.max(3500, Math.min(thoiGianChoTinhToan, 9500));
 
     boDemTuDongChuyen = setTimeout(() => {
@@ -438,7 +482,8 @@ function TaoDeTracNghiem(khoGoc) {
             dapAnDung = (nghia.includes('(') && nghia.includes(')')) ? nghia.substring(nghia.indexOf('(') + 1, nghia.indexOf(')')) : nghia;
         } else {
             cauHoi = `Cấu trúc: <br><span style="font-size:2.3rem; font-weight:bold; color:#38bdf8;">${itemGoc.grammar}</span> có ý nghĩa gì?`;
-            dapAnDung = itemGoc.meaning || "";
+            let dapAnDungRaw = itemGoc.meaning || "";
+            dapAnDung = dapAnDungRaw;
         }
 
         let cacTuKhac = khoGoc.filter(x => x !== itemGoc);
@@ -527,23 +572,6 @@ function CauTestTiepTheo() {
     } else {
         HienThiCauHoiTest();
     }
-}
-
-// =========================================================================
-// PHÁT ÂM VÀ XP
-// =========================================================================
-function DocGiọngMay(vanBan, ngonNgu, tocDo, khiXong) {
-    if (!vanBan || vanBan === "None") { if (khiXong) khiXong(); return; }
-    if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        let vanBanSach = vanBan.replace(/<rt>.*?<\/rt>/g, '').replace(/<\/?[^>]+(>|$)/g, "").replace(/[\/()（）\-,ー]/g, ' ');
-        let utterance = new SpeechSynthesisUtterance(vanBanSach);
-        utterance.lang = ngonNgu;
-        utterance.rate = tocDo;
-        utterance.onend = () => { if (khiXong) khiXong(); };
-        utterance.onerror = () => { if (khiXong) khiXong(); };
-        window.speechSynthesis.speak(utterance);
-    } else { if (khiXong) khiXong(); }
 }
 
 function CongDiemXP(soDiem) {
