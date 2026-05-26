@@ -101,6 +101,7 @@ function ChayDongThoiGianFlashcard() {
     const item = duLieuHienTai[indexHienTai];
 
     if (loaiHocHienTai === 'kanji') {
+        // --- ĐÃ FIX LỖI ĐẢO NGƯỢC CHUỖI KANJI CHUẨN CHỈ ---
         const chuKanji = item.kanji || "字";
         const nghiaGoc = item.meaning || "";
         const onyomi = item.onyomi || "";
@@ -108,10 +109,16 @@ function ChayDongThoiGianFlashcard() {
         const viDu = item.example || "";
 
         let amHanViet = "Chưa rõ";
+        let nghiaTiengViet = "Chưa rõ";
+
+        // Tách chuỗi theo đúng cấu trúc: "GIÁ (Kiếm tiền, máy vận hành)"
         if (nghiaGoc.includes('(') && nghiaGoc.includes(')')) {
-            amHanViet = nghiaGoc.substring(nghiaGoc.indexOf('(') + 1, nghiaGoc.indexOf(')'));
+            amHanViet = nghiaGoc.split('(')[0].trim();
+            nghiaTiengViet = nghiaGoc.substring(nghiaGoc.indexOf('(') + 1, nghiaGoc.indexOf(')'));
+        } else {
+            amHanViet = nghiaGoc;
+            nghiaTiengViet = nghiaGoc;
         }
-        let nghiaTiengViet = nghiaGoc.split('(')[0].trim();
 
         vungChua.innerHTML = `
             <div class="the-cyber-card">
@@ -134,6 +141,7 @@ function ChayDongThoiGianFlashcard() {
         `;
         KichHoatTimeline(onyomi, nghiaTiengViet);
     } else {
+        // --- GIAO DIỆN HỌC NGỮ PHÁP ---
         const cauTruc = item.grammar || "";
         const nghiaNguPhap = item.meaning || "";
         const giaiThich = item.explanation || "";
@@ -197,7 +205,7 @@ function KichHoatTimeline(textNhat, textViet) {
 function ChuyenBaiTiepTheo() { indexHienTai++; ChayDongThoiGianFlashcard(); }
 
 // =========================================================================
-// HOÀN THIỆN LOGIC KHU VỰC ĐẤU TRƯỜNG TEST TRẮC NGHIỆM 4 ĐÁP ÁN
+// KHU VỰC ĐẤU TRƯỜNG TEST TRẮC NGHIỆM 4 ĐÁP ÁN (ĐÃ ĐỒNG BỘ FIX LOGIC TÁCH CHUỖI)
 // =========================================================================
 function KichHoatLamDe(theLoai) {
     theLoaiTestChon = theLoai;
@@ -221,7 +229,6 @@ function TaoDeTracNghiem(khoGốc) {
         return;
     }
     
-    // Trộn ngẫu nhiên kho gốc để bốc ra tối đa 10 câu làm đề test
     let danhSachTrộn = [...khoGốc].sort(() => 0.5 - Math.random());
     let soCau = Math.min(10, danhSachTrộn.length);
     mangCauHoiTest = [];
@@ -231,37 +238,37 @@ function TaoDeTracNghiem(khoGốc) {
         let cauHoi = "";
         let dapAnDung = "";
         
-        // Tùy biến câu hỏi theo thể loại đã chọn
+        // Bóc tách chuẩn đáp án đúng cho bài test
         if (theLoaiTestChon === 'kanji') {
             cauHoi = `Chữ Kanji này có âm Hán Việt là gì: <br><span style="font-size:3.5rem; font-weight:bold; color:#fff;">${itemGốc.kanji}</span>`;
             let nghia = itemGốc.meaning || "";
-            dapAnDung = (nghia.includes('(') && nghia.includes(')')) ? nghia.substring(nghia.indexOf('(') + 1, nghia.indexOf(')')) : nghia;
+            dapAnDung = (nghia.includes('(') && nghia.includes(')')) ? nghia.split('(')[0].trim() : nghia;
         } else if (theLoaiTestChon === 'tu-vung') {
             cauHoi = `Nghĩa tiếng Việt của từ: <br><span style="font-size:2.8rem; font-weight:bold; color:#00ffcc;">${itemGốc.kanji}</span> là gì?`;
-            dapAnDung = (itemGốc.meaning || "").split('(')[0].trim();
+            let nghia = itemGốc.meaning || "";
+            dapAnDung = (nghia.includes('(') && nghia.includes(')')) ? nghia.substring(nghia.indexOf('(') + 1, nghia.indexOf(')')) : nghia;
         } else {
-            // Ngữ pháp
             cauHoi = `Cấu trúc: <br><span style="font-size:2.3rem; font-weight:bold; color:#38bdf8;">${itemGốc.grammar}</span> có ý nghĩa gì?`;
             dapAnDung = itemGốc.meaning || "";
         }
 
-        // Tạo danh sách đáp án nhiễu (3 đáp án sai) từ các từ khác trong kho
+        // Tạo 3 đáp án nhiễu từ kho dữ liệu
         let cácTừKhác = khoGốc.filter(x => x !== itemGốc);
         let dapAnNhieu = cácTừKhác.map(x => {
+            let n = x.meaning || "";
             if (theLoaiTestChon === 'kanji') {
-                let n = x.meaning || "";
-                return (n.includes('(') && n.includes(')')) ? n.substring(n.indexOf('(') + 1, n.indexOf(')')) : n;
+                return (n.includes('(') && n.includes(')')) ? n.split('(')[0].trim() : n;
             } else if (theLoaiTestChon === 'tu-vung') {
-                return (x.meaning || "").split('(')[0].trim();
+                return (n.includes('(') && n.includes(')')) ? n.substring(n.indexOf('(') + 1, n.indexOf(')')) : n;
             } else {
-                return x.meaning || "";
+                return n;
             }
         });
         
-        // Lọc trùng đáp án nhiễu
+        // Lọc trùng lặp đáp án nhiễu
         dapAnNhieu = [...new Set(dapAnNhieu)].filter(d => d !== dapAnDung).sort(() => 0.5 - Math.random());
         
-        // Lấy 3 đáp án nhiễu độc bản ghép với đáp án đúng thành mảng 4 lựa chọn
+        // Tạo bộ 4 lựa chọn ngẫu nhiên vị trí
         let bo4DapAn = [dapAnDung, dapAnNhieu[0], dapAnNhieu[1], dapAnNhieu[2]].sort(() => 0.5 - Math.random());
 
         mangCauHoiTest.push({
@@ -296,21 +303,21 @@ function HienThiCauHoiTest() {
 }
 
 function KiemTraKetQuaTest(nutBam, textChon, textDung) {
-    if(daBamDapAn) return; // Khóa không cho bấm đổi ý
+    if(daBamDapAn) return; 
     daBamDapAn = true;
 
     let tatCaNut = document.querySelectorAll('.nut-option-test');
     tatCaNut.forEach(nut => {
         if(nut.innerText === textDung) {
-            nut.classList.add('dap-an-dung-style'); // Tô xanh đáp án đúng
+            nut.classList.add('dap-an-dung-style'); 
         }
     });
 
     if (textChon === textDung) {
         nutBam.classList.add('dap-an-dung-style');
-        CongDiemXP(5); // Làm đúng đề test thưởng nóng luôn 5 XP bốc lửa
+        CongDiemXP(5); 
     } else {
-        nutBam.classList.add('dap-an-sai-style'); // Tô đỏ đáp án chọn sai
+        nutBam.classList.add('dap-an-sai-style'); 
     }
 
     document.getElementById('vung-nut-chuyen-test').classList.remove('an-giau');
