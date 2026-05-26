@@ -41,6 +41,9 @@ function ChuyenTab(idManHinh) {
 
 function ThoatHocChiTiet() {
     clearTimeout(boDemTuDongChuyen);
+    clearTimeout(boDemThoiGian);
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+
     if (loaiHocHienTai === 'grammar') {
         ChuyenTab('man-home');
     } else {
@@ -59,8 +62,31 @@ function CapNhatCaiDatHoc() {
     hienThiYomi = document.getElementById('chk-hien-yomi').checked;
     tuDongChuyenBai = document.getElementById('chk-auto-next').checked;
     
-    // Nếu tắt tự động chuyển bài khi đang chạy thì hủy bộ đếm ngay lập tức
-    if(!tuDongChuyenBai) clearTimeout(boDemTuDongChuyen);
+    // Xử lý ẩn/hiện lập tức khối Yomi nếu đang ở trong màn hình học
+    const step3 = document.getElementById('step-yomi');
+    const step4 = document.getElementById('step-tu-ghep');
+    
+    if (step3 && step4) {
+        if (hienThiYomi && step3.classList.contains('hien-hien')) {
+            step3.style.setProperty('display', 'block', 'important');
+            step4.style.setProperty('display', 'block', 'important');
+        } else {
+            step3.style.setProperty('display', 'none', 'important');
+            step4.style.setProperty('display', 'none', 'important');
+        }
+    }
+
+    // Nếu người dùng tắt tự động chuyển bài giữa chừng thì hủy bộ đếm ngay
+    if(!tuDongChuyenBai) {
+        clearTimeout(boDemTuDongChuyen);
+    } else {
+        // Nếu bật lên mà nút chuyển trang đã lộ diện rồi thì kích hoạt hẹn giờ đi luôn
+        const nutChuyen = document.getElementById('vung-nut-chuyen-trang');
+        if(nutChuyen && !nutChuyen.classList.contains('an-giau')) {
+            clearTimeout(boDemTuDongChuyen);
+            boDemTuDongChuyen = setTimeout(() => { ChuyenBaiTiepTheo(); }, 2000);
+        }
+    }
 }
 
 // =========================================================================
@@ -76,7 +102,7 @@ function TaiDuLieuHoc(loaiHoc, tenFile) {
 
     ChuyenTab('man-hoc-chi-tiet');
     
-    // Đồng bộ trạng thái checkbox lên giao diện
+    // Đồng bộ trạng thái từ biến lên nút checkbox
     document.getElementById('chk-hien-yomi').checked = hienThiYomi;
     document.getElementById('chk-auto-next').checked = tuDongChuyenBai;
     
@@ -115,6 +141,8 @@ function ChayDongThoiGianFlashcard() {
 
     tieuDe.innerText = `TIẾN ĐỘ: ${indexHienTai + 1} / ${duLieuHienTai.length}`;
     nutChuyen.classList.add('an-giau');
+    
+    // Reset sạch sẽ tất cả các bộ đếm thời gian cũ chống chồng luồng dữ liệu
     clearTimeout(boDemThoiGian);
     clearTimeout(boDemTuDongChuyen);
 
@@ -138,7 +166,7 @@ function ChayDongThoiGianFlashcard() {
             nghiaTiengViet = nghiaGoc;
         }
 
-        // Kiểm tra xem cấu hình có cho hiển thị khối âm đọc Yomi không
+        // Khởi tạo style ẩn/hiện dựa theo cấu hình thời điểm tải thẻ card
         let styleAnYomi = hienThiYomi ? "" : "display: none !important;";
 
         vungChua.innerHTML = `
@@ -161,8 +189,8 @@ function ChayDongThoiGianFlashcard() {
             </div>
         `;
         
-        // Gọi dòng thời gian hiển thị, truyền thêm biến kiểm tra âm đọc Nhật
-        KichHoatTimeline(hienThiYomi ? onyomi : "", nghiaTiengViet);
+        // Luôn truyền âm Nhật để đọc giọng máy, việc ẩn hiển giao diện xử lý riêng ở dưới
+        KichHoatTimeline(onyomi, nghiaTiengViet);
     } else {
         // GIAO DIỆN HỌC NGỮ PHÁP N5
         const cauTruc = item.grammar || "";
@@ -203,6 +231,7 @@ function ChayDongThoiGianFlashcard() {
 
 function KichHoatTimeline(textNhat, textViet) {
     const nutChuyen = document.getElementById('vung-nut-chuyen-trang');
+    
     boDemThoiGian = setTimeout(() => {
         const step1 = document.getElementById('step-am-doc');
         if (step1) step1.className = "khoi-noi-dung hien-hien";
@@ -217,22 +246,31 @@ function KichHoatTimeline(textNhat, textViet) {
                         const step3 = document.getElementById('step-yomi');
                         const step4 = document.getElementById('step-tu-ghep');
                         
-                        // Chỉ hiển thị hiệu ứng khối On/Kun nếu người dùng cho phép
-                        if (hienThiYomi) {
-                            if (step3) step3.className = "khoi-yomi-duoi hien-hien";
-                            if (step4) step4.className = "khoi-tu-ghep hien-hien";
+                        if (step3 && step4) {
+                            step3.className = "khoi-yomi-duoi hien-hien";
+                            step4.className = "khoi-tu-ghep hien-hien";
+                            
+                            // Ép kiểu inline !important kiểm tra sát sườn điều kiện nút tích
+                            if (hienThiYomi) {
+                                step3.style.setProperty('display', 'block', 'important');
+                                step4.style.setProperty('display', 'block', 'important');
+                            } else {
+                                step3.style.setProperty('display', 'none', 'important');
+                                step4.style.setProperty('display', 'none', 'important');
+                            }
                         }
                         
-                        nutChuyen.classList.remove('an-giau');
+                        // Hiện nút chuyển trang thủ công lên
+                        if (nutChuyen) nutChuyen.classList.remove('an-giau');
                         CongDiemXP(1);
 
-                        // --- TÍNH NĂNG ĐẮT GIÁ: TỰ ĐỘNG CHUYỂN BÀI SAU 2 GIÂY ---
+                        // XỬ LÝ KHÓA TỰ ĐỘNG CHUYỂN BÀI CHUẨN ĐÉT SAU 2 GIÂY
                         if (tuDongChuyenBai) {
+                            clearTimeout(boDemTuDongChuyen);
                             boDemTuDongChuyen = setTimeout(() => {
                                 ChuyenBaiTiepTheo();
                             }, 2000);
                         }
-
                     }, 500);
                 });
             }, 500);
@@ -242,6 +280,7 @@ function KichHoatTimeline(textNhat, textViet) {
 
 function ChuyenBaiTiepTheo() { 
     clearTimeout(boDemTuDongChuyen);
+    clearTimeout(boDemThoiGian);
     indexHienTai++; 
     ChayDongThoiGianFlashcard(); 
 }
@@ -388,12 +427,15 @@ function DocGiọngMay(vanBan, ngonNgu, tocDo, khiXong) {
     } else { if(khiXong) khiXong(); }
 }
 
+// Hàm hỗ trợ cộng điểm
 function CongDiemXP(soDiem) {
     diemXP += soDiem;
     localStorage.setItem('kanji_pure_xp', diemXP);
-    document.getElementById('id-xp').innerText = diemXP;
+    const khungXp = document.getElementById('id-xp');
+    if(khungXp) khungXp.innerText = diemXP;
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('id-xp').innerText = diemXP;
+    const khungXp = document.getElementById('id-xp');
+    if(khungXp) khungXp.innerText = diemXP;
 });
