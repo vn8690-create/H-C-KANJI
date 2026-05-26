@@ -226,7 +226,7 @@ function ChayDongThoiGianFlashcard() {
 
     const item = duLieuHienTai[indexHienTai];
 
-    if (loaiHocHienTai === 'kanji') {
+if (loaiHocHienTai === 'kanji') {
         const chuKanji = item.kanji || "字";
         const nghiaGoc = item.meaning || "";
         const onyomi = item.onyomi || "";
@@ -236,9 +236,10 @@ function ChayDongThoiGianFlashcard() {
         let amHanViet = "Chưa rõ";
         let nghiaTiengViet = "Chưa rõ";
 
+        // 🔥 SỬA LOGIC BÓC TÁCH: Chuẩn hóa tách Âm Hán và Nghĩa Tiếng Việt
         if (nghiaGoc.includes('(') && nghiaGoc.includes(')')) {
-            amHanViet = nghiaGoc.split('(')[0].trim();
-            nghiaTiengViet = nghiaGoc.substring(nghiaGoc.indexOf('(') + 1, nghiaGoc.indexOf(')'));
+            amHanViet = nghiaGoc.split('(')[0].trim(); // Ví dụ: "Lục"
+            nghiaTiengViet = nghiaGoc.substring(nghiaGoc.indexOf('(') + 1, nghiaGoc.indexOf(')')).trim(); // Ví dụ: "Sáu"
         } else {
             amHanViet = nghiaGoc;
             nghiaTiengViet = nghiaGoc;
@@ -250,12 +251,17 @@ function ChayDongThoiGianFlashcard() {
             vungChua.innerHTML = `
                 <div class="the-cyber-card">
                     <div class="chu-kanji-khong-lo">${chuKanji}</div>
+                    
                     <div id="step-am-doc" class="khoi-noi-dung hien-hien">
                         <div class="label-am-han">ÂM HÁN: ${amHanViet.toUpperCase()}</div>
                     </div>
+                    
                     <div id="step-nghia-viet" class="khoi-nghia-viet hien-hien">
-                        <div class="text-nghia">${nghiaTiengViet}</div>
+                        <div class="text-nghia" style="color: #00ffcc; font-size: 1.5rem; font-weight: bold;">
+                            ${nghiaTiengViet}
+                        </div>
                     </div>
+                    
                     <div id="step-yomi" class="khoi-yomi-duoi hien-hien" style="${styleAnYomi}">
                         <div class="dong-cach-doc"><strong>Onyomi:</strong> ${onyomi}</div>
                         <div class="dong-cach-doc"><strong>Kunyomi:</strong> ${kunyomi}</div>
@@ -268,51 +274,9 @@ function ChayDongThoiGianFlashcard() {
             `;
         }
         
+        // Cập nhật lại chuỗi đọc máy cho khớp với thứ tự mới: Đọc Âm Hán trước, Nghĩa sau
         let chuoiDocKanjiViet = `Âm Hán, ${amHanViet}, Nghĩa là, ${nghiaTiengViet}`;
         KichHoatTimeline("", chuoiDocKanjiViet, "");
-    } else {
-        const cauTruc = item.grammar || "";
-        const nghiaNguPhap = item.meaning || "";
-        const giaiThich = item.explanation || "";
-        const mangViDu = item.examples || [];
-
-        let htmlViDu = "";
-        let chuoiDocViDuNhat = "";
-
-        mangViDu.forEach(vd => {
-            htmlViDu += `
-                <div class="vd-item" style="margin-bottom: 12px; text-align:left;">
-                    <div class="vd-ja" style="font-size:1.2rem; color:#fff; line-height:2.2;">${vd.ja}</div>
-                    <div class="vd-vi" style="font-size:0.9rem; color:#00ffcc;">💡 ${vd.vi}</div>
-                </div>
-            `;
-            if (vd.ja) {
-                chuoiDocViDuNhat += vd.ja + ",  ";
-            }
-        });
-
-        if (vungChua) {
-            vungChua.innerHTML = `
-                <div class="the-cyber-card">
-                    <div class="chu-kanji-khong-lo" style="font-size: 2.5rem; color: #38bdf8;">${cauTruc}</div>
-                    <div id="step-am-doc" class="khoi-noi-dung hien-hien">
-                        <div class="label-am-han" style="color: #ff00ff;">Ý NGHĨA: ${nghiaNguPhap.toUpperCase()}</div>
-                    </div>
-                    <div id="step-nghia-viet" class="khoi-nghia-viet hien-hien" style="text-align:left;">
-                        <div class="text-nghia" style="font-size:0.95rem; color:#cbd5e1; font-weight:normal;">
-                            <strong>Cách dùng:</strong> ${giaiThich}
-                        </div>
-                    </div>
-                    <div id="step-tu-ghep" class="khoi-tu-ghep hien-hien" style="display:block !important;">
-                        <div class="title-ghep">Các Câu Ví Dụ:</div>
-                        <div>${htmlViDu}</div>
-                    </div>
-                </div>
-            `;
-        }
-        
-        let chuoiDocTiengViet = `Ý nghĩa là ${nghiaNguPhap}, Cách dùng, ${giaiThich}`;
-        KichHoatTimeline(cauTruc, chuoiDocTiengViet, chuoiDocViDuNhat);
     }
 }
 
