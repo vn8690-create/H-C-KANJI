@@ -1,1 +1,1 @@
-# H-C-KANJI
+# HOC-TIENG-NHAT
